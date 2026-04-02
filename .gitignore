@@ -1,0 +1,21 @@
+# Environment
+.env
+.env.local
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Supabase local
+supabase/.branches/
+supabase/.temp/
+
+# Node (if using any tooling)
+node_modules/
+
+# Build artifacts
+*.zip
+*.tar.gz

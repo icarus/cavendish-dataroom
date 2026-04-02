@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CUSTOMIZE: Change the title to your company name -->
+  <title>Your Company — Data Room</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/dataroom/dataroom.css">
+</head>
+<body>
+  <noscript>
+    <div style="padding:40px;text-align:center;font-family:sans-serif;">
+      <h2>JavaScript Required</h2>
+      <p>Please enable JavaScript to access the data room.</p>
+    </div>
+  </noscript>
+
+  <div id="app" class="dataroom-page">
+    <header class="dataroom-header">
+      <!-- CUSTOMIZE: Change the logo text to your company name -->
+      <div class="dataroom-logo"><a href="/">Your Company</a></div>
+      <h1 class="dataroom-title">Data Room</h1>
+      <p class="dataroom-subtitle">Confidential investor materials</p>
+    </header>
+
+    <div class="dataroom-list">
+
+      <!-- Investor Deck -->
+      <div class="dataroom-item">
+        <div class="dataroom-item-top">
+          <div class="dataroom-item-info">
+            <div class="dataroom-item-name">Investor Deck</div>
+            <!-- CUSTOMIZE: Update the slide count -->
+            <div class="dataroom-item-desc">Pitch presentation — 3 slides</div>
+          </div>
+          <div class="dataroom-item-actions">
+            <a href="/dataroom/presentation.html" class="dataroom-btn dataroom-btn--view">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADD YOUR DOCUMENTS: Copy this block for each document you want to add -->
+      <div class="dataroom-item">
+        <div class="dataroom-item-top">
+          <div class="dataroom-item-info">
+            <!-- CUSTOMIZE: Change the document name and description -->
+            <div class="dataroom-item-name">Financial Model</div>
+            <div class="dataroom-item-desc">Revenue projections and unit economics</div>
+          </div>
+          <div class="dataroom-item-actions">
+            <!-- CUSTOMIZE: Update the href to point to your document -->
+            <a href="#" class="dataroom-btn dataroom-btn--view">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              View
+            </a>
+            <!-- Optional: Add a PDF download button -->
+            <a href="#" class="dataroom-btn dataroom-btn--pdf dataroom-btn--disabled" title="PDF coming soon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              PDF
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <footer class="dataroom-footer">
+      <button class="dataroom-signout" id="signoutBtn">Sign out</button>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="/dataroom/auth.js"></script>
+  <script src="/dataroom/tracking.js"></script>
+  <script>
+    (async function () {
+      'use strict';
+
+      var result = await InvestorAuth.guardDocumentPage();
+      if (!result) return;
+
+      // Identify user
+      var email = '';
+      var name = '';
+      if (result.mode === 'authenticated' && result.session) {
+        email = result.session.user.email || '';
+        name = result.session.user.user_metadata.full_name || '';
+      } else if (result.mode === 'email_only') {
+        email = result.email;
+      }
+
+      // Track data room open
+      InvestorTracking.startSession(
+        InvestorAuth.getSupabaseUrl(),
+        InvestorAuth.getAnonKey(),
+        email,
+        name,
+        0
+      );
+      InvestorTracking.trackEvent('document_open', null, { document: 'dataroom' });
+
+      // Track document link clicks
+      var links = document.querySelectorAll('.dataroom-btn--view');
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var docName = this.closest('.dataroom-item').querySelector('.dataroom-item-name').textContent;
+          InvestorTracking.trackEvent('document_click', null, { document: docName });
+        });
+      });
+
+      // Track PDF download clicks
+      var pdfLinks = document.querySelectorAll('.dataroom-btn--pdf');
+      pdfLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          var docName = this.closest('.dataroom-item').querySelector('.dataroom-item-name').textContent;
+          InvestorTracking.trackEvent('pdf_download', null, { document: docName });
+        });
+      });
+
+      // Sign out
+      document.getElementById('signoutBtn').addEventListener('click', async function () {
+        await InvestorTracking.endSession('logout');
+        await InvestorAuth.signOut();
+        window.location.href = '/dataroom/';
+      });
+
+      // Handle timeout hook
+      InvestorAuth.onBeforeTimeout(function () {
+        return InvestorTracking.endSession('timeout');
+      });
+
+      // Handle tab close
+      window.addEventListener('beforeunload', function () {
+        InvestorTracking.endSessionBeacon('tab_close');
+      });
+    })();
+  </script>
+</body>
+</html>

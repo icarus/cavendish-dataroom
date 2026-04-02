@@ -1,0 +1,1222 @@
+/* ================================
+   Open Dataroom — Shared Styles
+   ================================
+   CUSTOMIZE: Search for "--color-brand" to change the accent color.
+   The default blue (#2563EB) works as a neutral starting point.
+   ================================ */
+
+/* ── Design Tokens ─────────────────────────────────────────── */
+:root {
+  /* Brand Accent (Blue) */
+  --color-brand: #2563EB;
+  --color-brand-hover: #1D4ED8;
+  --color-brand-light: rgba(37, 99, 235, 0.08);
+
+  /* Everyday Interactive (Neutral Dark) */
+  --color-interactive: #374151;
+  --color-interactive-hover: #1F2937;
+
+  /* Secondary (Teal) */
+  --color-teal: #0D9488;
+  --color-teal-light: rgba(13, 148, 136, 0.08);
+
+  /* Deprecated — kept for transition */
+  --color-primary: #0D9488;
+  --color-primary-hover: #0F766E;
+  --color-ai: #6366F1;
+
+  /* Legacy aliases */
+  --color-gray-700: #374151;
+
+  /* Investor Portal Palette */
+  --inv-bg: #FAF8F5;
+  --inv-bg-light: #FAF8F5;
+  --inv-bg-dark: #18191B;
+  --inv-surface: #FFFFFF;
+  --inv-surface-warm: #F5F0EB;
+  --inv-text: #1A1A1A;
+  --inv-text-muted: #6B7280;
+  --inv-text-light: #9CA3AF;
+  --inv-border: #E5E7EB;
+  --inv-error: #EF4444;
+  --inv-success: #10B981;
+
+  /* Typography */
+  --font-display: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  /* Transitions */
+  --transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Reset ─────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--inv-bg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--inv-text);
+}
+
+/* Hidden until auth verifies */
+#app {
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* ================================
+   AUTH PAGES — Password Gate & Login
+   ================================ */
+
+.auth-page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--inv-bg);
+  padding: var(--spacing-lg);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--inv-surface);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-2xl);
+}
+
+.auth-logo {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--inv-text);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-2xl);
+  text-align: center;
+}
+
+.auth-logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--inv-text);
+  text-align: center;
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+}
+
+.auth-subtitle {
+  font-size: 15px;
+  color: var(--inv-text-muted);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  line-height: 1.5;
+}
+
+/* ── Form Elements ─────────────────────────────────────────── */
+
+.auth-input-group {
+  margin-bottom: var(--spacing-md);
+}
+
+.auth-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  color: var(--inv-text);
+  background: var(--inv-bg);
+  border: 1.5px solid var(--inv-border);
+  border-radius: var(--radius-md);
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.auth-input:focus {
+  border-color: var(--color-interactive);
+  box-shadow: 0 0 0 3px rgba(55, 65, 81, 0.1);
+}
+
+.auth-input::placeholder {
+  color: var(--inv-text-light);
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 20px;
+  font-family: var(--font-sans);
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--color-brand);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-google {
+  background: var(--inv-surface);
+  color: var(--inv-text);
+  border: 1.5px solid var(--inv-border);
+}
+
+.btn-google:hover:not(:disabled) {
+  background: var(--inv-bg-light);
+  border-color: #D1D5DB;
+}
+
+.btn-google svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ── Divider ───────────────────────────────────────────────── */
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: var(--spacing-lg) 0;
+  color: var(--inv-text-light);
+  font-size: 13px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--inv-border);
+}
+
+/* ── Messages ──────────────────────────────────────────────── */
+
+.auth-message {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: var(--spacing-md);
+  display: none;
+}
+
+.auth-message--error {
+  background: rgba(239, 68, 68, 0.08);
+  color: var(--inv-error);
+  display: block;
+}
+
+.auth-message--success {
+  background: rgba(16, 185, 129, 0.08);
+  color: var(--inv-success);
+  display: block;
+}
+
+.auth-message--info {
+  background: rgba(99, 102, 241, 0.08);
+  color: var(--color-ai);
+  display: block;
+}
+
+/* ── Footer ────────────────────────────────────────────────── */
+
+.auth-footer {
+  text-align: center;
+  margin-top: var(--spacing-xl);
+}
+
+.auth-footer a {
+  font-size: 13px;
+  color: var(--inv-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.auth-footer a:hover {
+  color: var(--color-interactive);
+}
+
+/* ================================
+   PRESENTATION — Slide Engine
+   ================================ */
+
+.presentation {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--inv-bg-dark);
+}
+
+html.presentation-mode,
+html.presentation-mode body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Slide Base ────────────────────────────────────────────── */
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(40px, 5vw, 80px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--transition-smooth),
+    transform var(--transition-smooth),
+    visibility 0s linear 500ms;
+}
+
+.slide--active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition:
+    opacity var(--transition-smooth),
+    transform var(--transition-smooth),
+    visibility 0s linear 0s;
+}
+
+/* Slide Themes */
+.slide--cream { background-color: var(--inv-bg); color: var(--inv-text); }
+.slide--light { background-color: var(--inv-bg-light); color: var(--inv-text); }
+.slide--white { background-color: var(--inv-surface); color: var(--inv-text); }
+.slide--dark  { background-color: var(--inv-bg-dark); color: #EDEEF0; }
+
+/* ── Reveal Animations ─────────────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+.slide--active .reveal {
+  animation: revealUp var(--transition-slow) forwards;
+}
+
+.slide--active .reveal-d1 { animation-delay: 100ms; }
+.slide--active .reveal-d2 { animation-delay: 200ms; }
+.slide--active .reveal-d3 { animation-delay: 300ms; }
+.slide--active .reveal-d4 { animation-delay: 400ms; }
+.slide--active .reveal-d5 { animation-delay: 500ms; }
+.slide--active .reveal-d6 { animation-delay: 600ms; }
+
+@keyframes revealUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Typography ────────────────────────────────────────────── */
+
+.t-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.t-display-xl { font-size: clamp(40px, 5vw, 64px); }
+.t-display-lg { font-size: clamp(36px, 4.5vw, 58px); }
+.t-display-md { font-size: clamp(30px, 3.4vw, 46px); }
+
+.t-body-lg {
+  font-family: var(--font-sans);
+  font-size: clamp(18px, 1.6vw, 23px);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.t-body {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.3vw, 19px);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.t-body-sm {
+  font-family: var(--font-sans);
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.t-label {
+  font-family: var(--font-sans);
+  font-size: clamp(11px, 0.85vw, 13px);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.t-muted { color: var(--inv-text-muted); }
+
+/* ── Navigation Bar ────────────────────────────────────────── */
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  z-index: 100;
+  padding: 0 var(--spacing-lg);
+  pointer-events: none;
+  transition: background var(--transition-fast);
+}
+
+.nav-bar--dark {
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 100%);
+}
+.nav-bar--light {
+  background: linear-gradient(to top, rgba(0,0,0,0.05) 0%, transparent 100%);
+}
+
+.nav-dots {
+  display: flex;
+  gap: 8px;
+  pointer-events: all;
+}
+
+.nav-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.nav-bar--dark .nav-dot { background: rgba(255, 255, 255, 0.25); }
+.nav-bar--dark .nav-dot:hover { background: rgba(255, 255, 255, 0.55); transform: scale(1.3); }
+.nav-bar--dark .nav-dot--active { background: #FFFFFF; transform: scale(1.2); }
+
+.nav-bar--light .nav-dot { background: rgba(0, 0, 0, 0.12); }
+.nav-bar--light .nav-dot:hover { background: rgba(0, 0, 0, 0.3); transform: scale(1.3); }
+.nav-bar--light .nav-dot--active { background: var(--color-gray-700); transform: scale(1.2); }
+
+.slide-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 28px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 100;
+  pointer-events: none;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-fast);
+}
+
+.slide-counter--dark { color: rgba(255, 255, 255, 0.3); }
+.slide-counter--light { color: #9CA3AF; }
+
+/* ── Watermark & Logout ────────────────────────────────────── */
+
+.pres-watermark {
+  position: fixed;
+  top: 24px;
+  left: 28px;
+  z-index: 100;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  pointer-events: none;
+}
+
+.watermark--light { color: #9CA3AF; }
+.watermark--dark { color: rgba(255, 255, 255, 0.25); }
+
+.pres-logout {
+  position: fixed;
+  top: 20px;
+  right: 28px;
+  z-index: 100;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.logout--light {
+  color: var(--inv-text-muted);
+  background: rgba(0, 0, 0, 0.05);
+}
+.logout--light:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--inv-text);
+}
+
+.logout--dark {
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+.logout--dark:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ── Shared Components ─────────────────────────────────────── */
+
+.badge {
+  display: inline-block;
+  padding: 6px 16px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: 100px;
+}
+
+.badge--teal {
+  color: var(--color-teal);
+  background: var(--color-teal-light);
+}
+
+.badge--brand {
+  color: var(--color-brand);
+  background: var(--color-brand-light);
+}
+
+.badge--rose {
+  color: #E11D48;
+  background: rgba(225, 29, 72, 0.06);
+}
+
+.badge--lavender {
+  color: #6366F1;
+  background: rgba(99, 102, 241, 0.08);
+}
+
+/* ================================
+   SLIDE-SPECIFIC LAYOUTS
+   ================================ */
+
+/* ── Slide: Thesis ───────────────────────────────────────── */
+
+.slide-thesis {
+  max-width: 900px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide-thesis > .reveal + .reveal {
+  margin-top: clamp(24px, 2.5vw, 36px);
+}
+
+.thesis-accent {
+  width: 48px;
+  height: 2px;
+  background: #8B8FE8;
+  border-radius: 1px;
+  margin: 0 auto var(--spacing-2xl);
+}
+
+/* ── Slide: Solution (Generic Card Layout) ────────────────── */
+
+.slide-solution {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.solution-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.solution-card {
+  background: var(--inv-surface-warm);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+.solution-card .badge {
+  margin-bottom: 14px;
+}
+
+.solution-card h4 {
+  font-family: var(--font-sans);
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.solution-card p {
+  font-family: var(--font-sans);
+  font-size: clamp(12px, 0.9vw, 14px);
+  line-height: 1.55;
+  color: var(--inv-text-muted);
+  margin-bottom: 8px;
+}
+
+.solution-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Solution Moat Footer ────────────────────────────────── */
+
+.solution-moat-footer {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px 24px;
+  background: var(--inv-surface-warm);
+  border-radius: var(--radius-lg);
+}
+
+.solution-moat-footer p {
+  font-family: var(--font-sans);
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.55;
+  color: var(--inv-text-muted);
+}
+
+.solution-moat-footer strong {
+  color: var(--inv-text);
+  font-weight: 700;
+}
+
+.solution-moat-statement {
+  padding-top: 10px;
+  border-top: 1px solid var(--inv-border);
+}
+
+/* ================================
+   DESIGN PASS — Dark Slide Styles
+   ================================ */
+
+/* ── Dark Slide Atmosphere ─────────────────────────────── */
+
+.slide--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 45%,
+    rgba(99, 102, 241, 0.06) 0%,
+    rgba(99, 102, 241, 0.02) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.slide--dark .slide-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── CTA Atmospheric Background ──────────────────────────── */
+
+.slide-cta-atmosphere {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.slide-cta-atmosphere::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 30% 70%, rgba(37, 99, 235, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 70% 30%, rgba(99, 102, 241, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.02) 0%, transparent 80%);
+}
+
+.slide-cta-atmosphere::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: 0.5;
+}
+
+/* ── Dark Text Utilities ───────────────────────────────── */
+
+.slide--dark .t-muted { color: rgba(255, 255, 255, 0.5); }
+.slide--dark .t-dim { color: rgba(255, 255, 255, 0.35); }
+
+/* ── Dark Intro Slide ──────────────────────────────────── */
+
+.slide-intro--dark {
+  text-align: center;
+  max-width: 800px;
+}
+
+.slide-intro--dark h1 {
+  font-size: clamp(72px, 10vw, 140px);
+  color: #EDEEF0;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  margin-bottom: clamp(24px, 3vw, 40px);
+}
+
+.intro-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 28px);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.5);
+  max-width: 560px;
+  margin: 0 auto;
+  line-height: 1.4;
+}
+
+.intro-body {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: rgba(255, 255, 255, 0.35);
+  max-width: 520px;
+  margin: 12px auto 0;
+  line-height: 1.6;
+}
+
+.intro-bold {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.2vw, 18px);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+/* ── Dark CTA Slide ──────────────────────────────────────── */
+
+.slide-cta--dark {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+}
+
+.slide-cta--dark h2 {
+  color: #EDEEF0;
+}
+
+.slide-cta--dark h2 strong {
+  color: #FFFFFF;
+}
+
+.cta-divider {
+  width: 48px;
+  height: 3px;
+  background: #8B8FE8;
+  border-radius: 2px;
+  opacity: 0.6;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.cta-subline {
+  font-family: var(--font-sans);
+  font-size: clamp(16px, 1.3vw, 19px);
+  color: rgba(255, 255, 255, 0.45);
+  max-width: 480px;
+  margin: var(--spacing-lg) auto 0;
+  line-height: 1.6;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  .slide {
+    overflow-y: auto;
+    align-items: flex-start;
+    padding-top: clamp(60px, 8vw, 100px);
+    padding-bottom: 80px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .slide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .solution-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .slide-intro--dark h1 {
+    font-size: clamp(56px, 9vw, 100px);
+  }
+}
+
+@media (max-width: 768px) {
+  .auth-card {
+    padding: var(--spacing-xl);
+  }
+
+  .slide {
+    padding: clamp(24px, 4vw, 48px);
+    padding-top: clamp(48px, 7vw, 80px);
+    padding-bottom: 60px;
+  }
+
+  .nav-bar {
+    height: 44px;
+  }
+
+  .slide-counter {
+    bottom: 14px;
+    right: 16px;
+    font-size: 11px;
+  }
+
+  .solution-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-intro--dark h1 {
+    font-size: clamp(48px, 12vw, 80px);
+  }
+
+  .slide-cta--dark h2 {
+    font-size: clamp(28px, 6vw, 40px);
+  }
+}
+
+/* ── Slide Footer (print only) ────────────────────────────── */
+
+.slide-footer {
+  display: none;
+}
+
+/* ── Print-to-PDF ─────────────────────────────────────────── */
+/* Cmd+P → Landscape → Scale 100% → Save as PDF               */
+
+@page {
+  size: landscape;
+  margin: 0;
+}
+
+@media print {
+  /* Remove presentation chrome */
+  html.presentation-mode,
+  html.presentation-mode body {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+  }
+
+  .presentation {
+    position: static;
+    overflow: visible;
+    height: auto;
+  }
+
+  .pres-watermark,
+  .pres-logout,
+  .nav-bar,
+  .slide-counter {
+    display: none !important;
+  }
+
+  /* Stack slides vertically, each fills one page */
+  .slide {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100%;
+    height: 100vh;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+    page-break-after: always;
+    break-after: page;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    overflow: visible;
+    padding: 56px 56px 40px;
+  }
+
+  .slide:last-child {
+    page-break-after: auto;
+    break-after: auto;
+  }
+
+  /* Disable all reveal animations — show everything */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+
+  /* Show slide footers */
+  .slide-footer {
+    display: flex;
+    position: absolute;
+    bottom: 20px;
+    left: 56px;
+    right: 56px;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--inv-text-light);
+  }
+
+  .slide--dark .slide-footer {
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Preserve dark backgrounds */
+  .slide--dark {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    color-adjust: exact;
+  }
+}
+
+/* ================================
+   DATA ROOM — Index Page
+   ================================ */
+
+.dataroom-page {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--inv-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-3xl) var(--spacing-lg) var(--spacing-2xl);
+}
+
+.dataroom-header {
+  text-align: center;
+  margin-bottom: var(--spacing-3xl);
+}
+
+.dataroom-logo {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--inv-text);
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.dataroom-logo a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.dataroom-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 400;
+  color: var(--inv-text);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-sm);
+}
+
+.dataroom-subtitle {
+  font-size: 16px;
+  color: var(--inv-text-muted);
+  line-height: 1.5;
+}
+
+.dataroom-list {
+  width: 100%;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.dataroom-item {
+  background: var(--inv-surface);
+  border: 1px solid var(--inv-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.dataroom-item:hover {
+  border-color: #D1D5DB;
+  box-shadow: var(--shadow-sm);
+}
+
+.dataroom-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.dataroom-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dataroom-item-name {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--inv-text);
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.dataroom-item-desc {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--inv-text-muted);
+  line-height: 1.4;
+}
+
+.dataroom-item-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dataroom-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.dataroom-btn--disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.dataroom-btn--view {
+  background: var(--color-brand);
+  color: #FFFFFF;
+}
+
+.dataroom-btn--view:hover {
+  background: var(--color-brand-hover);
+  transform: translateY(-1px);
+}
+
+.dataroom-btn--pdf {
+  background: var(--inv-bg);
+  color: var(--inv-text-muted);
+  border: 1px solid var(--inv-border);
+}
+
+.dataroom-btn--pdf:hover {
+  background: var(--inv-surface-warm);
+  color: var(--inv-text);
+}
+
+.dataroom-btn svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.dataroom-footer {
+  margin-top: var(--spacing-3xl);
+  text-align: center;
+}
+
+.dataroom-signout {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--inv-text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  transition: color var(--transition-fast);
+}
+
+.dataroom-signout:hover {
+  color: var(--inv-text);
+}
+
+/* ================================
+   BACK-TO-DATAROOM NAVIGATION
+   ================================ */
+
+.pres-back-link {
+  position: fixed;
+  top: 20px;
+  left: 28px;
+  z-index: 100;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 6px 14px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.back-link--light {
+  color: var(--inv-text-muted);
+  background: rgba(0, 0, 0, 0.05);
+}
+.back-link--light:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--inv-text);
+}
+
+.back-link--dark {
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+.back-link--dark:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Move watermark when back link is present */
+.pres-back-link + .pres-watermark {
+  left: auto;
+  right: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ── Data Room Responsive ───────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .dataroom-page {
+    padding: var(--spacing-2xl) var(--spacing-md) var(--spacing-lg);
+  }
+
+  .dataroom-item-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dataroom-item-actions {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+  }
+
+  .dataroom-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .pres-back-link {
+    top: 12px;
+    left: 12px;
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+
+  .pres-back-link + .pres-watermark {
+    display: none;
+  }
+}

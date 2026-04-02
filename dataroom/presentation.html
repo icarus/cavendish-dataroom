@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platanus Cavendish LP — Deck</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0f172a;
+      --yellow:   #fcd34d;
+      --black:    #0a0a0a;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--black);
+      font-family: 'Rubik', sans-serif;
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    /* ── Canvas ── */
+    #banana-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      transition: opacity 0.6s ease;
+    }
+
+    /* ── Radial glow ── */
+    .glow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(252,211,77,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+      transition: opacity 0.6s ease;
+    }
+
+    /* ── UI layer ── */
+    .ui {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+    }
+
+    /* ── Back link ── */
+    .back-link {
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+      z-index: 10;
+    }
+    .back-link:hover { color: var(--text-primary); }
+    .back-link::before { content: '← '; }
+
+    /* ── Slide counter ── */
+    .slide-counter {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Oxanium', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--text-secondary);
+      z-index: 10;
+    }
+
+    /* ── Slides ── */
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* ── Shared mark style ── */
+    mark {
+      background: var(--yellow);
+      color: #000;
+      padding: 1px 5px;
+      border-radius: 2px;
+      font-style: normal;
+    }
+
+
+    /* ════════════════════════════════════
+       SLIDE 0 — Title
+    ════════════════════════════════════ */
+    .hero {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .hero-title {
+      font-family: 'Oxanium', sans-serif;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 300;
+      color: var(--text-primary);
+      letter-spacing: 0.04em;
+      line-height: 1.1;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.3em;
+    }
+
+    .hero-subtitle {
+      position: absolute;
+      bottom: 96px;
+      right: 32px;
+      font-family: 'Oxanium', sans-serif;
+      font-size: clamp(10px, 1.4vw, 16px);
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      color: var(--text-secondary);
+    }
+
+    .hero-logo {
+      height: 0.85em;
+      width: auto;
+      display: inline-block;
+      position: relative;
+      top: -0.05em;
+    }
+
+
+    /* ════════════════════════════════════
+       SLIDE 1 — Deal Flow Stats
+    ════════════════════════════════════ */
+    #slide-1 { background: var(--black); }
+
+    .stats-slide {
+      display: flex;
+      height: 100%;
+    }
+
+    .stats-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 80px 72px;
+    }
+
+    .stats-headline {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(18px, 2vw, 30px);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.6;
+      max-width: 500px;
+    }
+
+    .stats-card {
+      background: #1c1c1c;
+      padding: 40px 48px;
+      display: inline-flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+    }
+
+    .stats-card-number {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(52px, 6vw, 80px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .stats-card-label {
+      font-family: 'Rubik', sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: #666;
+    }
+
+    .stats-right {
+      width: 42%;
+      background: var(--yellow);
+      display: flex;
+      flex-direction: column;
+      padding: 72px 64px;
+      position: relative;
+    }
+
+    .stats-big {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(64px, 8vw, 112px);
+      font-weight: 700;
+      color: #000;
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .stats-big-label {
+      font-family: 'Rubik', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: #000;
+      margin-top: 10px;
+    }
+
+    .stats-projection {
+      position: absolute;
+      bottom: 60px;
+      right: 64px;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: rgba(0,0,0,0.6);
+      line-height: 1.8;
+      text-align: right;
+      max-width: 260px;
+    }
+
+
+    /* ════════════════════════════════════
+       SLIDE 2 — Banana House
+    ════════════════════════════════════ */
+    #slide-2 { background: var(--black); }
+
+    .house-slide {
+      position: relative;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Map area — top right */
+    .house-map {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 52%;
+      height: 62%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 40px 80px 32px 40px;
+      gap: 20px;
+    }
+
+    .map-pin {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 6px;
+      align-self: flex-end;
+    }
+    .map-pin:first-child { align-self: flex-start; margin-right: 80px; }
+
+    .map-pin-label {
+      background: #fff;
+      color: #000;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      padding: 7px 16px;
+      display: inline-block;
+    }
+
+    .map-pin-badge {
+      background: var(--yellow);
+      color: #000;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 3px 10px;
+      display: inline-block;
+    }
+
+    /* Text content — left side, vertically centered */
+    .house-content {
+      position: absolute;
+      left: 72px;
+      top: 8%;
+      width: 44%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 62%;
+    }
+
+    .house-title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+
+    .house-body {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(13px, 1.3vw, 17px);
+      font-weight: 300;
+      color: #999;
+      line-height: 1.75;
+    }
+
+    .house-body p + p { margin-top: 18px; }
+
+    /* Photos row — bottom */
+    .house-photos {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 38%;
+      display: flex;
+    }
+
+    .house-photo {
+      flex: 1;
+      background: #141414;
+      border-top: 1px solid #222;
+      border-right: 1px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: #333;
+      text-transform: uppercase;
+    }
+    .house-photo:last-child { border-right: none; }
+
+    /* Replace placeholder with actual images if available */
+    .house-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+
+    /* ════════════════════════════════════
+       SLIDE 3 — Who's in our orbit?
+    ════════════════════════════════════ */
+    #slide-3 { background: var(--black); }
+
+    .orbit-slide {
+      height: 100%;
+      padding: 48px 72px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .orbit-title {
+      font-family: 'Rubik', sans-serif;
+      font-size: clamp(26px, 3.2vw, 46px);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 32px;
+      flex-shrink: 0;
+    }
+
+    .orbit-body {
+      display: flex;
+      gap: 48px;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* Left column: description */
+    .orbit-left {
+      width: 200px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .orbit-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .orbit-section-title {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #fff;
+      line-height: 1.5;
+      text-transform: uppercase;
+    }
+
+    .orbit-section-body {
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    /* Right area: mentors + investors */
+    .orbit-right {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      overflow: hidden;
+    }
+
+    .orbit-mentors {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px 32px;
+    }
+
+    .orbit-mentor {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .orbit-mentor-name {
+      font-family: 'Rubik', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+    }
+
+    .orbit-mentor-company {
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--yellow);
+    }
+
+    .orbit-mentor-desc {
+      font-family: 'Rubik', sans-serif;
+      font-size: 11px;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.45;
+      margin-top: 2px;
+    }
+
+    .orbit-more {
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #444;
+      grid-column: 1 / -1;
+    }
+
+    .orbit-divider {
+      height: 1px;
+      background: #1a1a1a;
+      flex-shrink: 0;
+    }
+
+    /* Matt Mochary section */
+    .orbit-mochary {
+      display: flex;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+
+    .orbit-mochary-name {
+      font-family: 'Rubik', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: #fff;
+      white-space: nowrap;
+      padding-top: 2px;
+    }
+
+    .orbit-mochary-text {
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 300;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .orbit-divider-v {
+      width: 1px;
+      background: #1a1a1a;
+      flex-shrink: 0;
+    }
+
+    /* Investors */
+    .orbit-investors {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+
+    .orbit-invest-label {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: #333;
+      white-space: nowrap;
+      padding-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .orbit-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+    }
+
+    .orbit-logo {
+      font-family: 'Rubik', sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      color: #444;
+      white-space: nowrap;
+    }
+
+  </style>
+</head>
+<body>
+
+  <canvas id="banana-canvas"></canvas>
+  <div class="glow"></div>
+
+  <div class="ui">
+    <a href="/dataroom/" class="back-link">Back</a>
+    <div class="slide-counter" id="slide-counter"></div>
+
+    <!-- ── Slide 0: Title ── -->
+    <div class="slide active" id="slide-0">
+      <div class="hero">
+        <h1 class="hero-title">
+          <img src="/dataroom/images/platanus-symbol.png" class="hero-logo" alt="">
+          Platanus Cavendish LP
+        </h1>
+      </div>
+      <p class="hero-subtitle">BACKING THE BEST TECHNICAL TEAMS IN LATAM</p>
+    </div>
+
+    <!-- ── Slide 1: Deal Flow Stats ── -->
+    <div class="slide" id="slide-1">
+      <div class="stats-slide">
+        <div class="stats-left">
+          <p class="stats-headline">
+            In just five years, <mark>we've assessed<br>more companies than a typical LatAm<br>investor</mark> does in an entire lifetime.
+          </p>
+          <div class="stats-card">
+            <span class="stats-card-number">9.161</span>
+            <span class="stats-card-label">startups reviewed until date</span>
+          </div>
+        </div>
+        <div class="stats-right">
+          <span class="stats-big">20.000+</span>
+          <span class="stats-big-label">startups</span>
+          <p class="stats-projection">IN 4 YEARS, WE PROJECT TO GROW OUR<br>FUNNEL 1.5X YEAR OVER YEAR.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Slide 2: Banana House ── -->
+    <div class="slide" id="slide-2">
+      <div class="house-slide">
+
+        <div class="house-map">
+          <div class="map-pin">
+            <span class="map-pin-label">MEXICO CITY</span>
+            <span class="map-pin-badge">COMING SOON</span>
+          </div>
+          <div class="map-pin">
+            <span class="map-pin-label">SANTIAGO</span>
+          </div>
+        </div>
+
+        <div class="house-content">
+          <h2 class="house-title">The <mark>Banana</mark> House</h2>
+          <div class="house-body">
+            <p>Banana Houses are both offices and residences, fostering real in-person connections beyond Slack. Founders gather here for hackathons, launches, fireside chats, and social events.</p>
+            <p>Each house has beds, promoting early regional expansion, reducing travel costs, and enabling quick access to local networks.</p>
+          </div>
+        </div>
+
+        <div class="house-photos">
+          <div class="house-photo">Photo</div>
+          <div class="house-photo">Photo</div>
+          <div class="house-photo">Photo</div>
+          <div class="house-photo">Photo</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ── Slide 3: Who's in our orbit? ── -->
+    <div class="slide" id="slide-3">
+      <div class="orbit-slide">
+
+        <h2 class="orbit-title">Who's in <mark>our orbit?</mark></h2>
+
+        <div class="orbit-body">
+
+          <div class="orbit-left">
+            <div class="orbit-section">
+              <p class="orbit-section-title">WE OFFER ADVICE FROM EXPERIENCED FOUNDERS.</p>
+              <p class="orbit-section-body">Our mentors are founders who invest 1+ hour biweekly in our portfolio.</p>
+            </div>
+            <div class="orbit-section">
+              <p class="orbit-section-title">WE ARE GREAT AT EARNING BUSY PEOPLE'S TIME.</p>
+              <p class="orbit-section-body">Matt Mochary coaches legendary founders like Sam Altman and Brian Armstrong — we're the only LatAm VC to secure his team's time pro bono.</p>
+            </div>
+          </div>
+
+          <div class="orbit-right">
+
+            <div class="orbit-mentors">
+              <div class="orbit-mentor">
+                <span class="orbit-mentor-name">Juan Pablo Cuevas</span>
+                <span class="orbit-mentor-company">Cornershop</span>
+                <span class="orbit-mentor-desc">Built a unicorn that exited to Uber</span>
+              </div>
+              <div class="orbit-mentor">
+                <span class="orbit-mentor-name">Helena Polyblank</span>
+                <span class="orbit-mentor-company">Mendel</span>
+                <span class="orbit-mentor-desc">Series B female led startup</span>
+              </div>
+              <div class="orbit-mentor">
+                <span class="orbit-mentor-name">Rodolfo Dañino</span>
+                <span class="orbit-mentor-company">Crehana</span>
+                <span class="orbit-mentor-desc">Only ed-tech unicorn company in LatAm</span>
+              </div>
+              <div class="orbit-mentor">
+                <span class="orbit-mentor-name">Agustín Feuerhake</span>
+                <span class="orbit-mentor-company">Fintual</span>
+                <span class="orbit-mentor-desc">Sequoia backed LatAm Fintech</span>
+              </div>
+              <div class="orbit-mentor">
+                <span class="orbit-mentor-name">Alejandro Matamala</span>
+                <span class="orbit-mentor-company">Runway</span>
+                <span class="orbit-mentor-desc">$3B Chilean unicorn</span>
+              </div>
+              <div class="orbit-mentor">
+                <span class="orbit-mentor-name">Jaime Arrieta</span>
+                <span class="orbit-mentor-company">Buk</span>
+                <span class="orbit-mentor-desc">Fastest growing LatAm HR Series B startup</span>
+              </div>
+              <span class="orbit-more">+ 15 other experienced founders.</span>
+            </div>
+
+            <div class="orbit-divider"></div>
+
+            <div class="orbit-investors">
+              <span class="orbit-invest-label">WE INVEST<br>WITH THE BEST</span>
+              <div class="orbit-divider-v"></div>
+              <div class="orbit-logos">
+                <span class="orbit-logo">Bessemer Venture Partners</span>
+                <span class="orbit-logo">monashees+</span>
+                <span class="orbit-logo">General Catalyst</span>
+                <span class="orbit-logo">Gradient</span>
+                <span class="orbit-logo">F/Prime</span>
+                <span class="orbit-logo">Propel</span>
+                <span class="orbit-logo">Wollef</span>
+                <span class="orbit-logo">hi ventures</span>
+                <span class="orbit-logo">Clocktower Technology Ventures</span>
+                <span class="orbit-logo">Y Combinator</span>
+                <span class="orbit-logo">Oak HC/FT</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /ui -->
+
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
+    // ── Slide navigation ──
+    const slides = document.querySelectorAll('.slide');
+    const counter = document.getElementById('slide-counter');
+    const bananaCanvas = document.getElementById('banana-canvas');
+    const glow = document.querySelector('.glow');
+    const total = slides.length;
+    let current = 0;
+
+    function updateCounter() {
+      counter.textContent = `${current + 1} / ${total}`;
+    }
+
+    function goTo(n) {
+      const next = Math.max(0, Math.min(n, total - 1));
+      if (next === current) return;
+      slides[current].classList.remove('active');
+      current = next;
+      slides[current].classList.add('active');
+      updateCounter();
+      const isTitleSlide = current === 0;
+      bananaCanvas.style.opacity = isTitleSlide ? '1' : '0';
+      glow.style.opacity        = isTitleSlide ? '1' : '0';
+    }
+
+    updateCounter(); // initialize
+
+    document.addEventListener('keydown', e => {
+      if      (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(current + 1);
+      else if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(current - 1);
+      else if (e.key === 'Escape') window.location.href = '/dataroom/';
+    });
+
+    document.addEventListener('click', e => {
+      if (!e.target.closest('a')) goTo(current + 1);
+    });
+
+    // ── Three.js banana ──
+    const RESOLUTION   = 320;
+    const PIXEL_SIZE   = 1;
+    const GAP_RATIO    = 1.5;
+    const ROT_SPEED    = 0.0025;
+    const MOUSE_RADIUS = 50.0;
+
+    const canvas = document.getElementById('banana-canvas');
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: false,
+      premultipliedAlpha: false,
+      preserveDrawingBuffer: true,
+    });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0);
+    renderer.setClearAlpha(0);
+
+    const scene = new THREE.Scene();
+    scene.background = null;
+
+    const frustum = 4.5;
+    const camera = new THREE.OrthographicCamera(
+      frustum / -2, frustum / 2,
+      frustum / 2,  frustum / -2,
+      -1000, 1000
+    );
+    camera.position.set(0, 0, 0);
+
+    const addLight = (x, y, z, i) => {
+      const l = new THREE.DirectionalLight(0xffffff, i);
+      l.position.set(x, y, z);
+      scene.add(l);
+    };
+    addLight( 0,  0,  5, 1.5);
+    addLight( 0,  0, -5, 1.5);
+    addLight( 5,  0,  0, 1.5);
+    addLight(-5,  0,  0, 1.5);
+    addLight( 0,  5,  0, 1.5);
+    addLight( 0, -5,  0, 1.0);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+    const renderTarget = new THREE.WebGLRenderTarget(RESOLUTION, RESOLUTION);
+
+    const vertexShader = `
+      varying vec2 vUv;
+      varying float vDepth;
+      void main() {
+        vUv = uv;
+        vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
+        vDepth = -mvPos.z;
+        gl_Position = projectionMatrix * mvPos;
+      }
+    `;
+
+    const fragmentShader = `
+      uniform sampler2D tDiffuse;
+      uniform vec2  resolution;
+      uniform vec2  mousePos;
+      uniform float mouseRadius;
+      uniform float time;
+      uniform float uPixelSize;
+      uniform float uGapRatio;
+      uniform float uRotationAngle;
+
+      varying vec2  vUv;
+      varying float vDepth;
+
+      float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+      }
+
+      vec3 colorama(vec2 uv, vec3 color) {
+        float intensity  = length(color);
+        float angle      = mod(uRotationAngle, 3.14159 * 2.0);
+        float dist90     = abs(angle - 3.14159 / 2.0);
+        float dist270    = abs(angle - 3.14159 * 3.0 / 2.0);
+        float normDist   = min(dist90, dist270) / (3.14159 / 2.0);
+        float curveAmt   = mix(0.18, 0.2, smoothstep(0.0, 0.8, normDist));
+        float curvedY    = uv.y + (sin(uv.x * 3.14159) * curveAmt);
+        float depthFac   = 1.0 - smoothstep(0.2, 0.7, intensity);
+        float factor     = mix(curvedY, depthFac, 0.1);
+
+        vec3 yellow    = vec3(0.95, 0.89, 0.15);
+        vec3 orange    = vec3(0.82, 0.50, 0.05);
+        vec3 brown     = vec3(0.35, 0.25, 0.00);
+        vec3 darkBrown = vec3(0.30, 0.25, 0.00);
+
+        vec3 baseColor;
+        if      (factor < 0.53) baseColor = yellow;
+        else if (factor < 0.56) baseColor = mix(yellow, orange, smoothstep(0.53, 0.56, factor));
+        else if (factor < 0.57) baseColor = orange;
+        else if (factor < 0.65) baseColor = mix(orange, brown,  smoothstep(0.57, 0.65, factor));
+        else if (factor < 0.78) baseColor = brown;
+        else if (factor < 0.88) baseColor = mix(brown, darkBrown, smoothstep(0.78, 0.88, factor));
+        else                    baseColor = darkBrown;
+
+        float darkening = mix(0.3, 1.0, pow(1.0 - depthFac, 0.8));
+        return baseColor * darkening;
+      }
+
+      void main() {
+        float totalSize = uPixelSize + uPixelSize * uGapRatio;
+        vec2 gridPos    = floor(vUv * resolution / totalSize);
+        vec2 pixelCenter = (gridPos + 0.5) * totalSize / resolution;
+        vec2 screenPos  = pixelCenter * resolution;
+
+        vec2  toMouse  = mousePos - screenPos;
+        float distMouse = length(toMouse);
+        float uniqueOff  = hash(gridPos) * 2.0 - 1.0;
+        float timeOff    = time * (0.5 + hash(gridPos) * 0.5);
+        float normDist  = distMouse / (mouseRadius * (1.0 + uniqueOff * 0.1));
+        float decay     = 1.0 / (1.0 + normDist * normDist * 2.0) * 0.8;
+        decay          += sin(timeOff) * 0.1 * decay;
+        float defMove   = sin(timeOff + gridPos.x * 0.1) * cos(timeOff + gridPos.y * 0.1) * 1.0;
+        vec2  dir       = normalize(toMouse + vec2(cos(timeOff), sin(timeOff)) * 0.5);
+        float displace  = max(defMove, decay * mouseRadius * 0.7);
+        vec2  finalPos  = screenPos - dir * displace;
+        vec2  attrUV    = finalPos / resolution;
+
+        float pixRatio = uPixelSize / totalSize;
+        vec2  pxOff    = fract(vUv * resolution / totalSize);
+        if (pxOff.x < 0.5 - pixRatio / 2.0 || pxOff.x > 0.5 + pixRatio / 2.0 ||
+            pxOff.y < 0.5 - pixRatio / 2.0 || pxOff.y > 0.5 + pixRatio / 2.0) {
+          discard;
+        }
+
+        vec4 texel = texture2D(tDiffuse, attrUV);
+        if (texel.a <= 0.0) discard;
+
+        gl_FragColor = vec4(colorama(attrUV, texel.rgb), texel.a * 0.78);
+      }
+    `;
+
+    const centerX = -200.0, centerY = 0.0;
+    const postMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        tDiffuse:       { value: renderTarget.texture },
+        resolution:     { value: new THREE.Vector2(RESOLUTION, RESOLUTION) },
+        mousePos:       { value: new THREE.Vector2(centerX, centerY) },
+        mouseRadius:    { value: MOUSE_RADIUS },
+        time:           { value: 0.0 },
+        uPixelSize:     { value: PIXEL_SIZE },
+        uGapRatio:      { value: GAP_RATIO },
+        uRotationAngle: { value: 0.0 },
+      },
+      vertexShader,
+      fragmentShader,
+      transparent: true,
+    });
+
+    const postScene  = new THREE.Scene();
+    const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMaterial));
+
+    function handleResize() {
+      const sz = Math.min(window.innerWidth, window.innerHeight);
+      renderer.setSize(sz, sz);
+      canvas.style.position = 'absolute';
+      canvas.style.left = `${(window.innerWidth  - sz) / 2}px`;
+      canvas.style.top  = `${(window.innerHeight - sz) / 2}px`;
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    const draco = new DRACOLoader();
+    draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(draco);
+
+    let model = null;
+    let rotAngle = 0;
+    let lastTime = Date.now();
+
+    loader.load('/dataroom/images/banana3d.glb', (gltf) => {
+      model = gltf.scene;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.geometry.computeVertexNormals();
+          if (child.material) child.material.needsUpdate = false;
+        }
+      });
+      model.scale.set(1, 1, 1);
+      model.position.set(0, 0, 0);
+      model.rotation.set(0, 0, 0);
+      scene.add(model);
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      const now = Date.now();
+      const dt  = Math.min((now - lastTime) / 1000, 0.016);
+      lastTime  = now;
+
+      if (model) {
+        rotAngle += ROT_SPEED;
+        model.rotation.y = rotAngle;
+        postMaterial.uniforms.uRotationAngle.value = rotAngle;
+      }
+
+      postMaterial.uniforms.time.value += dt;
+
+      renderer.setRenderTarget(renderTarget);
+      renderer.clear();
+      renderer.render(scene, camera);
+
+      renderer.setRenderTarget(null);
+      renderer.clear();
+      renderer.render(postScene, postCamera);
+    }
+    animate();
+  </script>
+</body>
+</html>

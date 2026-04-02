@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Platanus Cavendish LP — Investor Dataroom</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@200..800&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue-900: #0f172a;
+      --blue-800: #131e2f;
+      --blue-700: #1e293b;
+      --yellow:   #fcd34d;
+      --yellow-dim: rgba(252, 211, 77, 0.12);
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+    }
+
+    html, body {
+      height: 100%;
+      background: var(--blue-900);
+      font-family: 'Rubik', sans-serif;
+      color: var(--text-primary);
+      overflow: hidden;
+    }
+
+    /* ── Canvas ── */
+    #banana-canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 1.0;
+    }
+
+    /* ── Radial glow behind the banana ── */
+    .glow {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(252,211,77,0.10) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── UI layer ── */
+    .ui {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+    }
+
+    /* Header — absolutely centered over the banana */
+    .header {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, calc(-50% - 16px));
+      white-space: nowrap;
+    }
+
+    .header-eyebrow {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--yellow);
+      display: block;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
+    .header-title {
+      font-family: 'Oxanium', sans-serif;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 300;
+      color: var(--text-primary);
+      letter-spacing: 0.04em;
+      line-height: 1;
+      display: flex;
+      align-items: flex-end;
+      gap: 0.3em;
+    }
+
+    .header-title-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header-logo {
+      height: 0.85em;
+      width: auto;
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+      top: -0.05em;
+    }
+
+    /* Buttons — just below banana (~70% from top) */
+    .btn-group {
+      position: absolute;
+      top: 76%;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Footer — platan.us at very bottom */
+    .site-footer {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .nav-btn {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 10px;
+      padding: 13px 24px;
+      transition: background 0.2s, border-color 0.2s, transform 0.1s;
+      white-space: nowrap;
+    }
+
+    .nav-btn--primary {
+      background: var(--yellow);
+      color: var(--blue-900);
+      border: 2px solid var(--yellow);
+    }
+    .nav-btn--primary:hover  { background: #fde68a; border-color: #fde68a; }
+
+    .nav-btn--ghost {
+      background: transparent;
+      color: var(--text-primary);
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .nav-btn--ghost:hover {
+      color: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    .nav-btn:active { transform: scale(0.97); }
+    .btn-enter { opacity: 0.5; font-size: 0.9em; margin-left: 4px; }
+
+    .footer-back {
+      font-size: 12px;
+      color: var(--text-secondary);
+      text-decoration: none;
+    }
+    .footer-back:hover { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+  <canvas id="banana-canvas"></canvas>
+  <div class="glow"></div>
+
+  <div class="ui">
+    <header class="header">
+      <h1 class="header-title">
+        <img src="/dataroom/images/platanus-symbol.png" class="header-logo" alt="">
+        platanus
+      </h1>
+    </header>
+
+    <div class="btn-group">
+      <a href="/dataroom/presentation.html" class="nav-btn nav-btn--primary">Deck <span class="btn-enter">↵</span></a>
+      <a href="/dataroom/dataroom.html" class="nav-btn nav-btn--ghost">Down the Rabbit Hole</a>
+    </div>
+
+    <footer class="site-footer">
+      <a href="https://platan.us/" class="footer-back" target="_blank">platan.us</a>
+    </footer>
+  </div>
+
+  <!-- Three.js + GLTFLoader -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.162.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.162.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+
+    const RESOLUTION   = 320;
+    const PIXEL_SIZE   = 1;
+    const GAP_RATIO    = 1.5;
+    const ROT_SPEED    = 0.0025;
+    const MOUSE_RADIUS = 50.0;
+
+    // ── Canvas / renderer ──────────────────────────────────────────────
+    const canvas = document.getElementById('banana-canvas');
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas,
+      alpha: true,
+      antialias: false,
+      premultipliedAlpha: false,
+      preserveDrawingBuffer: true,
+    });
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0);
+    renderer.setClearAlpha(0);
+
+    // ── Scene / orthographic camera ────────────────────────────────────
+    const scene = new THREE.Scene();
+    scene.background = null;
+
+    const frustum = 4.5;
+    const camera = new THREE.OrthographicCamera(
+      frustum / -2, frustum / 2,
+      frustum / 2,  frustum / -2,
+      -1000, 1000
+    );
+    camera.position.set(0, 0, 0);
+
+    // ── Lights (6-way + ambient for flat stylised look) ────────────────
+    const addLight = (x, y, z, i) => {
+      const l = new THREE.DirectionalLight(0xffffff, i);
+      l.position.set(x, y, z);
+      scene.add(l);
+    };
+    addLight( 0,  0,  5, 1.5);
+    addLight( 0,  0, -5, 1.5);
+    addLight( 5,  0,  0, 1.5);
+    addLight(-5,  0,  0, 1.5);
+    addLight( 0,  5,  0, 1.5);
+    addLight( 0, -5,  0, 1.0);
+    scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+
+    // ── Render target (low-res offscreen pass) ─────────────────────────
+    const renderTarget = new THREE.WebGLRenderTarget(RESOLUTION, RESOLUTION);
+
+    // ── Shaders (ported from forum RotatingBanana.tsx) ─────────────────
+    const vertexShader = `
+      varying vec2 vUv;
+      varying float vDepth;
+      void main() {
+        vUv = uv;
+        vec4 mvPos = modelViewMatrix * vec4(position, 1.0);
+        vDepth = -mvPos.z;
+        gl_Position = projectionMatrix * mvPos;
+      }
+    `;
+
+    const fragmentShader = `
+      uniform sampler2D tDiffuse;
+      uniform vec2  resolution;
+      uniform vec2  mousePos;
+      uniform float mouseRadius;
+      uniform float time;
+      uniform float uPixelSize;
+      uniform float uGapRatio;
+      uniform float uRotationAngle;
+
+      varying vec2  vUv;
+      varying float vDepth;
+
+      float hash(vec2 p) {
+        return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+      }
+
+      float smoothTransition(float e0, float e1, float x) {
+        float t = clamp((x - e0) / (e1 - e0), 0.0, 1.0);
+        return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+      }
+
+      vec3 colorama(vec2 uv, vec3 color) {
+        float intensity  = length(color);
+        float angle      = mod(uRotationAngle, 3.14159 * 2.0);
+        float dist90     = abs(angle - 3.14159 / 2.0);
+        float dist270    = abs(angle - 3.14159 * 3.0 / 2.0);
+        float normDist   = min(dist90, dist270) / (3.14159 / 2.0);
+        float curveAmt   = mix(0.18, 0.2, smoothstep(0.0, 0.8, normDist));
+        float curvedY    = uv.y + (sin(uv.x * 3.14159) * curveAmt);
+        float depthFac   = 1.0 - smoothstep(0.2, 0.7, intensity);
+        float factor     = mix(curvedY, depthFac, 0.1);
+
+        vec3 yellow    = vec3(0.95, 0.89, 0.15);
+        vec3 orange    = vec3(0.82, 0.50, 0.05);
+        vec3 brown     = vec3(0.35, 0.25, 0.00);
+        vec3 darkBrown = vec3(0.30, 0.25, 0.00);
+
+        vec3 baseColor;
+        if      (factor < 0.53) baseColor = yellow;
+        else if (factor < 0.56) baseColor = mix(yellow, orange, smoothstep(0.53, 0.56, factor));
+        else if (factor < 0.57) baseColor = orange;
+        else if (factor < 0.65) baseColor = mix(orange, brown,  smoothstep(0.57, 0.65, factor));
+        else if (factor < 0.78) baseColor = brown;
+        else if (factor < 0.88) baseColor = mix(brown, darkBrown, smoothstep(0.78, 0.88, factor));
+        else                    baseColor = darkBrown;
+
+        float darkening = mix(0.3, 1.0, pow(1.0 - depthFac, 0.8));
+        return baseColor * darkening;
+      }
+
+      void main() {
+        float totalSize = uPixelSize + uPixelSize * uGapRatio;
+
+        vec2 gridPos    = floor(vUv * resolution / totalSize);
+        vec2 pixelCenter = (gridPos + 0.5) * totalSize / resolution;
+        vec2 screenPos  = pixelCenter * resolution;
+
+        vec2  toMouse  = mousePos - screenPos;
+        float distMouse = length(toMouse);
+
+        float uniqueOff  = hash(gridPos) * 2.0 - 1.0;
+        float timeOff    = time * (0.5 + hash(gridPos) * 0.5);
+
+        float normDist  = distMouse / (mouseRadius * (1.0 + uniqueOff * 0.1));
+        float decay     = 1.0 / (1.0 + normDist * normDist * 2.0) * 0.8;
+        decay          += sin(timeOff) * 0.1 * decay;
+
+        float defMove   = sin(timeOff + gridPos.x * 0.1) * cos(timeOff + gridPos.y * 0.1) * 1.0;
+        vec2  dir       = normalize(toMouse + vec2(cos(timeOff), sin(timeOff)) * 0.5);
+        float displace  = max(defMove, decay * mouseRadius * 0.7);
+        vec2  finalPos  = screenPos - dir * displace;
+        vec2  attrUV    = finalPos / resolution;
+
+        // Pixel dot mask (discard gap pixels)
+        float pixRatio = uPixelSize / totalSize;
+        vec2  pxOff    = fract(vUv * resolution / totalSize);
+        if (pxOff.x < 0.5 - pixRatio / 2.0 || pxOff.x > 0.5 + pixRatio / 2.0 ||
+            pxOff.y < 0.5 - pixRatio / 2.0 || pxOff.y > 0.5 + pixRatio / 2.0) {
+          discard;
+        }
+
+        vec4 texel = texture2D(tDiffuse, attrUV);
+        if (texel.a <= 0.0) discard;
+
+        gl_FragColor = vec4(colorama(attrUV, texel.rgb), texel.a * 0.78);
+      }
+    `;
+
+    // ── Post-processing quad ───────────────────────────────────────────
+    const centerX = -200.0, centerY = 0.0;
+    const postMaterial = new THREE.ShaderMaterial({
+      uniforms: {
+        tDiffuse:       { value: renderTarget.texture },
+        resolution:     { value: new THREE.Vector2(RESOLUTION, RESOLUTION) },
+        mousePos:       { value: new THREE.Vector2(centerX, centerY) },
+        mouseRadius:    { value: MOUSE_RADIUS },
+        time:           { value: 0.0 },
+        uPixelSize:     { value: PIXEL_SIZE },
+        uGapRatio:      { value: GAP_RATIO },
+        uRotationAngle: { value: 0.0 },
+      },
+      vertexShader,
+      fragmentShader,
+      transparent: true,
+    });
+
+    const postScene  = new THREE.Scene();
+    const postCamera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMaterial));
+
+    // ── Resize ─────────────────────────────────────────────────────────
+    function handleResize() {
+      const sz = Math.min(window.innerWidth, window.innerHeight);
+      renderer.setSize(sz, sz);
+      canvas.style.position = 'absolute';
+      canvas.style.left = `${(window.innerWidth  - sz) / 2}px`;
+      canvas.style.top  = `${(window.innerHeight - sz) / 2}px`;
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    // ── Load model ─────────────────────────────────────────────────────
+    const draco = new DRACOLoader();
+    draco.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(draco);
+
+    let model = null;
+    let rotAngle = 0;
+    let lastTime = Date.now();
+
+    loader.load('/dataroom/images/banana3d.glb', (gltf) => {
+      model = gltf.scene;
+      model.traverse((child) => {
+        if (child.isMesh) {
+          child.geometry.computeVertexNormals();
+          if (child.material) child.material.needsUpdate = false;
+        }
+      });
+      model.scale.set(1, 1, 1);
+      model.position.set(0, 0, 0);
+      model.rotation.set(0, 0, 0);
+      scene.add(model);
+    });
+
+    // ── Animation loop ─────────────────────────────────────────────────
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const now = Date.now();
+      const dt  = Math.min((now - lastTime) / 1000, 0.016);
+      lastTime  = now;
+
+      if (model) {
+        rotAngle += ROT_SPEED;
+        model.rotation.y = rotAngle;
+        postMaterial.uniforms.uRotationAngle.value = rotAngle;
+      }
+
+      postMaterial.uniforms.time.value += dt;
+
+      // Offscreen pass
+      renderer.setRenderTarget(renderTarget);
+      renderer.clear();
+      renderer.render(scene, camera);
+
+      // Post-processing pass to screen
+      renderer.setRenderTarget(null);
+      renderer.clear();
+      renderer.render(postScene, postCamera);
+    }
+    animate();
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter') window.location.href = '/dataroom/presentation.html';
+    });
+  </script>
+
+</body>
+</html>

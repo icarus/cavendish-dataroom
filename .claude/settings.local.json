@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s https://platan.us/)",
+      "Bash(curl -s https://cdn.platan.us/packs/css/347-a052a360.css)",
+      "Bash(curl -s https://cdn.platan.us/packs/css/landing-2a17ebf1.css)",
+      "Read(//tmp/**)",
+      "WebFetch(domain:cdn.platan.us)",
+      "mcp__Claude_Preview__preview_start",
+      "WebFetch(domain:forum.platan.us)",
+      "WebSearch",
+      "WebFetch(domain:hack.platan.us)",
+      "Bash(ls /tmp/*.png)",
+      "Bash(ls -lt ~/Downloads/*.png)"
+    ]
+  }
+}
