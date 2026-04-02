@@ -1,0 +1,11 @@
+export { Slide2 } from "./slide2";
+export { Slide3 } from "./slide3";
+export { Slide4 } from "./slide4";
+export { Slide5 } from "./slide5";
+export { Slide6 } from "./slide6";
+export { Slide7 } from "./slide7";
+export { Slide8 } from "./slide8";
+export { Slide9 } from "./slide9";
+export { Slide10 } from "./slide10";
+export { Slide11 } from "./slide11";
+export { Slide12 } from "./slide12";
