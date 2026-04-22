@@ -181,7 +181,7 @@ export function SlideTrackRecord({ active }: P) {
             layoutId={`company-${company.name}`}
             transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
             className={cn(
-              "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2",
+              "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2 backdrop-blur-sm",
               cardStyle(company.badge),
               "hover:bg-white/15 transition-all",
             )}
@@ -204,7 +204,7 @@ export function SlideTrackRecord({ active }: P) {
         ))}
       </div>
 
-      <div className="flex items-center justify-end gap-4 mt-2" style={f(on, 200)}>
+      <div className="flex items-center justify-end gap-4 mt-6" style={f(on, 200)}>
         {LEGEND.map(({ badge, dot }) => (
           <div key={badge} className="flex items-center gap-1.5">
             <span className={cn("size-2.5 shrink-0", dot)} />
