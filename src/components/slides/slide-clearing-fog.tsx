@@ -38,7 +38,7 @@ export function SlideClearingFog({ active }: P) {
       </div>
 
       <div style={f(on, 500)}>
-        <p className="font-mono font-medium text-white uppercase tracking-widest text-sm mb-4">
+        <p className="font-mono font-medium text-white uppercase tracking-widest text-base mb-4">
           Our mentors:
         </p>
       </div>
@@ -59,11 +59,11 @@ export function SlideClearingFog({ active }: P) {
               />
             </div>
             <div className="min-w-0">
-              <p className="font-sans font-medium text-white text-sm truncate">{mentor.name}</p>
-              <p className="font-sans font-medium text-white text-xs truncate">{mentor.company}</p>
+              <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
+              <p className="font-sans font-medium text-white text-base truncate">{mentor.company}</p>
             </div>
             {mentor.tagline && (
-              <p className="font-sans font-medium text-white text-xs leading-snug line-clamp-2">{mentor.tagline}</p>
+              <p className="font-sans font-medium text-white text-base leading-snug line-clamp-2">{mentor.tagline}</p>
             )}
           </div>
         ))}
@@ -77,7 +77,7 @@ export function SlideClearingFog({ active }: P) {
         ].map((text, i) => (
           <p
             key={i}
-            className="font-sans font-medium text-white text-xs leading-relaxed"
+            className="font-sans font-medium text-white text-base leading-relaxed"
             style={f(on, 1200 + i * 100)}
           >
             {text}

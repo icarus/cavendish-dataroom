@@ -24,7 +24,7 @@ function CompanyCard({ company, on, delay }: { company: PortfolioCompany; on: bo
       style={f(on, delay)}
     >
       {company.badge && (
-        <span className="font-mono text-black text-[10px] uppercase tracking-widest">
+        <span className="font-mono text-black text-base uppercase tracking-widest">
           {BADGE_LABELS[company.badge]}
         </span>
       )}
@@ -32,26 +32,26 @@ function CompanyCard({ company, on, delay }: { company: PortfolioCompany; on: bo
         <div className="relative size-8 overflow-hidden border border-white/10 shrink-0">
           <Image src={company.image} alt={company.name} fill className="object-cover" />
         </div>
-        <span className={cn("font-sans font-medium text-sm", company.badge ? "text-black" : "text-white")}>
+        <span className={cn("font-sans font-medium text-base", company.badge ? "text-black" : "text-white")}>
           {company.name}
         </span>
       </div>
       {company.tagline && (
-        <p className={cn("font-sans text-xs leading-snug", company.badge ? "text-black" : "text-white")}>
+        <p className={cn("font-sans text-base leading-snug", company.badge ? "text-black" : "text-white")}>
           {company.tagline}
         </p>
       )}
       {company.bullets && company.bullets.length > 0 && (
         <ul className="space-y-0.5">
           {company.bullets.map((b, i) => (
-            <li key={i} className={cn("font-sans text-[10px] leading-snug flex items-start gap-1", company.badge ? "text-black" : "text-white")}>
+            <li key={i} className={cn("font-sans text-base leading-snug flex items-start gap-1", company.badge ? "text-black" : "text-white")}>
               <span className={cn("mt-1 size-1 shrink-0", company.badge ? "bg-black" : "bg-[#FFEC40]")} />
               {b}
             </li>
           ))}
         </ul>
       )}
-      <div className={cn("font-mono text-xs font-medium uppercase mt-auto", company.badge ? "text-black" : "text-white")}>
+      <div className={cn("font-mono text-base font-medium uppercase mt-auto", company.badge ? "text-black" : "text-white")}>
         MOIC {company.moic}
       </div>
     </div>
@@ -65,10 +65,10 @@ function FundRow({ fund, fundIndex, on }: { fund: typeof FUNDS[number]; fundInde
   return (
     <div className="flex-1 min-h-0 flex flex-col">
       <div className="flex items-baseline gap-3 mb-2" style={f(on, baseDelay)}>
-        <span className="font-sans font-medium text-white text-sm">{fund.name}</span>
-        <span className="font-mono text-white text-xs">{fund.year}</span>
-        <span className="font-mono text-white text-[10px] tracking-wider">{fund.amount}</span>
-        <span className="font-mono text-white text-[10px]">MOIC {fund.moicMultiple}</span>
+        <span className="font-sans font-medium text-white text-base">{fund.name}</span>
+        <span className="font-mono text-white text-base">{fund.year}</span>
+        <span className="font-mono text-white text-base tracking-wider">{fund.amount}</span>
+        <span className="font-mono text-white text-base">MOIC {fund.moicMultiple}</span>
       </div>
       <div
         className="flex gap-2 overflow-x-auto scrollbar-hide flex-1"

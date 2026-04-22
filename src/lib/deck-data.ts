@@ -34,10 +34,10 @@ export type Testimonial = {
 };
 
 export const MENTORS: Mentor[] = [
-  { name: "Juan Pablo Cuevas", company: "Cornershop", tagline: "Built a unicorn that exited to Uber", image: "/placeholder-avatar.svg" },
+  { name: "Juan Pablo Cuevas", company: "Cornershop", tagline: "Built a unicorn that exited to Uber", image: "/avatars/juan-pablo-cuevas.jpg" },
   { name: "Helena Polyblank", company: "Mendel", tagline: "Series B female led startup", image: "/placeholder-avatar.svg" },
-  { name: "Rodolfo Dañino", company: "Crehana", tagline: "Only ed-tech unicorn company in LatAm", image: "/placeholder-avatar.svg" },
-  { name: "Jaime Arrieta", company: "Buk", tagline: "Fastest growing LatAm SaaS", image: "/placeholder-avatar.svg" },
+  { name: "Rodolfo Dañino", company: "Crehana", tagline: "Only ed-tech unicorn company in LatAm", image: "/avatars/rodolfo-danino.jpg" },
+  { name: "Jaime Arrieta", company: "Buk", tagline: "Fastest growing LatAm SaaS", image: "/avatars/jaime-arrieta.jpeg" },
   { name: "Paulina Aguilar", company: "Mundi", tagline: "", image: "/placeholder-avatar.svg" },
   { name: "Janan Knust", company: "Klog", tagline: "", image: "/placeholder-avatar.svg" },
   { name: "Agustín Feuerhake", company: "Fintual", tagline: "", image: "/placeholder-avatar.svg" },
@@ -54,7 +54,7 @@ export const MENTORS: Mentor[] = [
   { name: "Pedro Pineda", company: "Fintual", tagline: "", image: "/placeholder-avatar.svg" },
   { name: "Alejandro Matamala", company: "Runway", tagline: "", image: "/placeholder-avatar.svg" },
   { name: "Roger Rea", company: "Grupalia", tagline: "", image: "/placeholder-avatar.svg" },
-  { name: "Cristina Etcheberry", company: "Toku", tagline: "", image: "/placeholder-avatar.svg" },
+  { name: "Cristina Etcheberry", company: "Toku", tagline: "", image: "/avatars/cristina-etcheberry.jpg" },
   { name: "Maite Muñiz", company: "Truora", tagline: "", image: "/placeholder-avatar.svg" },
   { name: "Cristóbal Griffero", company: "Fintoc", tagline: "", image: "/placeholder-avatar.svg" },
   { name: "Sebastián Villarreal", company: "Super Seguros", tagline: "", image: "/placeholder-avatar.svg" },
@@ -71,9 +71,9 @@ export const FUNDS: Fund[] = [
     moicMultiple: "4.49X",
     dpiMultiple: "0.02X",
     companies: [
-      { name: "Fintoc", tagline: "Direct, fast, and cost-effective transactions.", image: "/fintoc.png", moic: "12.46x", badge: "potential-fund-returner", investorsAfter: ["YC", "Monashees", "Propel"], bullets: ["We introduced the founders.", "Seed: 6 months later.", "Series A: $7m at 29m"] },
-      { name: "Reversso", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "Cardda", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: ["YC"] },
+      { name: "Fintoc", tagline: "Direct, fast, and cost-effective transactions.", image: "/avatars/fintoc.png", moic: "12.46x", badge: "potential-fund-returner", investorsAfter: ["YC", "Monashees", "Propel"], bullets: ["We introduced the founders.", "Seed: 6 months later.", "Series A: $7m at 29m"] },
+      { name: "Reversso", tagline: "", image: "/avatars/reversso.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Cardda", tagline: "", image: "/avatars/cardda.png", moic: "[*]x", investorsAfter: ["YC"] },
     ],
   },
   {
@@ -85,9 +85,9 @@ export const FUNDS: Fund[] = [
     moicMultiple: "7.78X",
     dpiMultiple: "1.75X",
     companies: [
-      { name: "Toku", tagline: "Payments for subscription companies in LatAm.", image: "/toku.png", moic: "78.81x", badge: "fund-returner", investorsAfter: [], bullets: ["We were their first institutional ticket in 2021. (50k investment + 7%)", "Seed: $7M at 42M Led by F-PRIME", "Series A: $46M at 180M Led by OAK HC/FT + F-PRIME"] },
+      { name: "Toku", tagline: "Payments for subscription companies in LatAm.", image: "/avatars/toku.png", moic: "78.81x", badge: "fund-returner", investorsAfter: [], bullets: ["We were their first institutional ticket in 2021. (50k investment + 7%)", "Seed: $7M at 42M Led by F-PRIME", "Series A: $46M at 180M Led by OAK HC/FT + F-PRIME"] },
       { name: "Plutto", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "Cero", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
+      { name: "Cero", tagline: "", image: "/avatars/cero.png", moic: "[*]x", investorsAfter: [] },
     ],
   },
   {
@@ -99,15 +99,15 @@ export const FUNDS: Fund[] = [
     moicMultiple: "*1.53X",
     dpiMultiple: "0.06X",
     companies: [
-      { name: "Grupalia", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", badge: "potential-fund-returner", investorsAfter: [] },
-      { name: "Horizon AI", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", badge: "rising-star", investorsAfter: [] },
-      { name: "Kunzapp", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "Shinkansen", tagline: "Automates B2B transactions in real time.", image: "/shinkansen.png", moic: "8.14x", investorsAfter: [], bullets: ["Deal sourced through our network.", "Oversold pre-seed. Oversold Seed Led by 10ventures", "Average growth: 42% MoM"] },
-      { name: "Kapso", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", badge: "rising-star", investorsAfter: [] },
-      { name: "Carvuk", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "Altur", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "CuidaPet", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "Magnar", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
+      { name: "Grupalia", tagline: "", image: "/avatars/grupalia.png", moic: "[*]x", badge: "potential-fund-returner", investorsAfter: [] },
+      { name: "Horizon AI", tagline: "", image: "/avatars/horizon-ai.png", moic: "[*]x", badge: "rising-star", investorsAfter: [] },
+      { name: "Kunzapp", tagline: "", image: "/avatars/kunzapp.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Shinkansen", tagline: "Automates B2B transactions in real time.", image: "/avatars/shinkansen.png", moic: "8.14x", investorsAfter: [], bullets: ["Deal sourced through our network.", "Oversold pre-seed. Oversold Seed Led by 10ventures", "Average growth: 42% MoM"] },
+      { name: "Kapso", tagline: "", image: "/avatars/kapso.png", moic: "[*]x", badge: "rising-star", investorsAfter: [] },
+      { name: "Carvuk", tagline: "", image: "/avatars/carvuk.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Altur", tagline: "", image: "/avatars/altur.ico", moic: "[*]x", investorsAfter: [] },
+      { name: "CuidaPet", tagline: "", image: "/avatars/cuidapet.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Magnar", tagline: "", image: "/avatars/magnar.png", moic: "[*]x", investorsAfter: [] },
       { name: "Sento", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
       { name: "Bemmbo", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", badge: "exited", investorsAfter: [] },
     ],
@@ -127,7 +127,7 @@ export const TESTIMONIALS: Testimonial[] = [
   { name: "Victor Perl", company: "", image: "/placeholder-avatar.svg", text: "Platanus invierte USD 200K pero lo que más vale es la comunidad de gente buena onda, súper dispuesta a ayudarte. Las conversas con ellos me han hecho un mejor founder. Esto vale más que los dólares." },
   { name: "Cris", company: "Puente", image: "/placeholder-avatar.svg", text: "Platanus no te da un cheque y desaparece. Te mete en una red de fundadores que están en las mismas. Y eso vale oro. Mi único consejo: no esperes a sentirte listo. Nosotros no lo estábamos. Y fue la mejor decisión que tomamos." },
   { name: "Juan", company: "Morfy", image: "/placeholder-avatar.svg", text: "Lo que pasó en los tres meses de programa fue increíble. Muchas decisiones difíciles con presión real encima y los mejores operadores de Latam asesorando. Platanus es el mejor fondo early-stage de LATAM." },
-  { name: "Cristina Etcheberry", company: "Toku", image: "/placeholder-avatar.svg", text: "" },
+  { name: "Cristina Etcheberry", company: "Toku", image: "/avatars/cristina-etcheberry.jpg", text: "" },
   { name: "Nath", company: "Neopausia", image: "/placeholder-avatar.svg", text: "Tiempos entretenidos para emprender, más entretenidos aún en Platanus. 1000% recomendado." },
   { name: "José Domingo", company: "Blar", image: "/placeholder-avatar.svg", text: "Más allá del capital, lo que hace la diferencia es la comunidad. Tener acceso a una red de founders que están a otro nivel, poder pedir ayuda o consejos cuando los necesitas, eso es impagable." },
 ];
@@ -145,6 +145,6 @@ export const FUND_STATS = {
 };
 
 export const TEAM = [
-  { name: "Paula Enei", role: "General Partner", image: "/placeholder-avatar.svg" },
-  { name: "Joaquin Stephens", role: "General Partner", image: "/placeholder-avatar.svg" },
+  { name: "Paula Enei", role: "General Partner", image: "/avatars/paula-enei.png" },
+  { name: "Joaquin Stephens", role: "General Partner", image: "/avatars/joaquin-stephens.jpg" },
 ];

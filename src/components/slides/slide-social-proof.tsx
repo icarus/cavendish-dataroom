@@ -48,13 +48,13 @@ export function SlideSocialProof({ active }: P) {
                 />
               </div>
               <div>
-                <p className="font-sans font-medium text-white text-sm">{testimonial.name}</p>
+                <p className="font-sans font-medium text-white text-base">{testimonial.name}</p>
                 {testimonial.company && (
-                  <p className="font-sans font-medium text-white text-xs">{testimonial.company}</p>
+                  <p className="font-sans font-medium text-white text-base">{testimonial.company}</p>
                 )}
               </div>
             </div>
-            <p className="font-sans font-medium text-white text-sm leading-relaxed flex-1 line-clamp-6">
+            <p className="font-sans font-medium text-white text-base leading-relaxed flex-1 line-clamp-6">
               &ldquo;{testimonial.text}&rdquo;
             </p>
           </div>

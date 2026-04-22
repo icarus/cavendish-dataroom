@@ -20,16 +20,16 @@ export function Slide11({ active }: P) {
         <div className="flex-1">
           {left.map(([l, v], i) => (
             <div key={l} className="flex justify-between items-baseline py-3.5 border-b border-white/5" style={f(on, 140 + i * 55)}>
-              <span className="font-mono text-white/30 text-sm tracking-widest uppercase">{l}</span>
-              <span className="font-mono text-white text-sm font-medium tracking-wider uppercase">{v}</span>
+              <span className="font-mono text-white/30 text-base tracking-widest uppercase">{l}</span>
+              <span className="font-mono text-white text-base font-medium tracking-wider uppercase">{v}</span>
             </div>
           ))}
         </div>
         <div className="flex-1">
           {right.map(([l, v], i) => (
             <div key={l} className="flex justify-between items-baseline py-3.5 border-b border-white/5" style={f(on, 200 + i * 55)}>
-              <span className="font-mono text-white/30 text-sm tracking-widest uppercase">{l}</span>
-              <span className="font-mono text-white text-sm font-medium tracking-wider uppercase">{v}</span>
+              <span className="font-mono text-white/30 text-base tracking-widest uppercase">{l}</span>
+              <span className="font-mono text-white text-base font-medium tracking-wider uppercase">{v}</span>
             </div>
           ))}
         </div>

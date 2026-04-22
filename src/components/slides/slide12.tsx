@@ -24,7 +24,7 @@ export function Slide12({ active }: P) {
           joaquin<span className="text-[#FFEC40]">@</span>platan.us
         </button>
         <span
-          className="absolute -top-8 left-1/2 -translate-x-1/2 font-mono text-sm text-black bg-[#FFEC40] px-3 py-1 whitespace-nowrap transition-all duration-300"
+          className="absolute -top-8 left-1/2 -translate-x-1/2 font-mono text-base text-black bg-[#FFEC40] px-3 py-1 whitespace-nowrap transition-all duration-300"
           style={{
             opacity: copied ? 1 : 0,
             transform: copied ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(4px)",

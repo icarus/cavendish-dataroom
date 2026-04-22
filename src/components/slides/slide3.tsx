@@ -63,7 +63,7 @@ export function Slide3({ active }: P) {
             <span className={cn("font-mono leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
               {stat.value}
             </span>
-            <span className={cn("font-mono text-sm tracking-widest uppercase mt-1.5", stat.yellow ? "text-black/60" : "text-white/40")}>
+            <span className={cn("font-mono text-base tracking-widest uppercase mt-1.5", stat.yellow ? "text-black/60" : "text-white/40")}>
               {stat.label}
             </span>
           </div>

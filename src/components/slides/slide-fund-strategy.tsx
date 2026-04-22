@@ -40,11 +40,11 @@ export function SlideFundStrategy({ active }: P) {
       <div className="flex-1 min-h-0 flex flex-col">
         <div className="grid grid-cols-5 gap-px mb-px" style={f(on, 200)}>
           <div className="bg-white/5 px-4 py-3 flex items-center">
-            <span className="font-mono font-medium text-white text-sm uppercase tracking-wider">Entry</span>
+            <span className="font-mono font-medium text-white text-base uppercase tracking-wider">Entry</span>
           </div>
           {EXIT_VALUATIONS.map((v) => (
             <div key={v} className="bg-white/5 px-4 py-3 text-center">
-              <span className="font-mono font-medium text-white text-sm">${v}M exit</span>
+              <span className="font-mono font-medium text-white text-base">${v}M exit</span>
             </div>
           ))}
         </div>
@@ -56,7 +56,7 @@ export function SlideFundStrategy({ active }: P) {
             style={f(on, 300 + ri * 80)}
           >
             <div className={cn("px-4 py-4 flex items-center", entry.highlight ? "bg-[#FFEC40]" : "bg-white/5")}>
-              <span className={cn("font-mono font-medium text-sm", entry.highlight ? "text-black" : "text-white")}>
+              <span className={cn("font-mono font-medium text-base", entry.highlight ? "text-black" : "text-white")}>
                 {entry.label}
               </span>
             </div>

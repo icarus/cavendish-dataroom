@@ -29,14 +29,14 @@ export function Slide10({ active }: P) {
       <div className="flex gap-10">
         {gps.map((gp, i) => (
           <div key={gp.name} className="flex-1" style={f(on, 120 + i * 100)}>
-            <div className="w-11 h-11  bg-white/10 flex items-center justify-center font-mono text-white text-sm font-medium mb-3">
+            <div className="w-11 h-11  bg-white/10 flex items-center justify-center font-mono text-white text-base font-medium mb-3">
               {gp.initials}
             </div>
-            <div className="font-sans font-medium text-white text-sm mb-0.5">{gp.name}</div>
-            <div className="font-mono text-white text-[9px] tracking-widest uppercase mb-3">{gp.role}</div>
+            <div className="font-sans font-medium text-white text-base mb-0.5">{gp.name}</div>
+            <div className="font-mono text-white text-base tracking-widest uppercase mb-3">{gp.role}</div>
             <ul className="space-y-1.5">
               {gp.bullets.map((b, j) => (
-                <li key={j} className="font-sans text-white text-sm leading-relaxed">• {b}</li>
+                <li key={j} className="font-sans text-white text-base leading-relaxed">• {b}</li>
               ))}
             </ul>
           </div>

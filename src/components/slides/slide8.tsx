@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { P, useAnim } from "./utils";
@@ -30,9 +30,21 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
   const startOffset = index * 5;
   const [imgIndex, setImgIndex] = useState(startOffset % images.length);
   const [prevIndex, setPrevIndex] = useState(startOffset % images.length);
+  const [activated, setActivated] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    if (!hovered) return;
+    if (hovered) {
+      timerRef.current = setTimeout(() => setActivated(true), 3000);
+    } else {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      setActivated(false);
+    }
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [hovered]);
+
+  useEffect(() => {
+    if (!activated) return;
     const interval = setInterval(() => {
       setImgIndex((prev) => {
         setPrevIndex(prev);
@@ -40,7 +52,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       });
     }, 1500);
     return () => clearInterval(interval);
-  }, [hovered, images.length]);
+  }, [activated, images.length]);
 
   const delay = 100 + index * 80;
 
@@ -81,7 +93,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       >
         {title}
       </h3>
-      <p className="relative z-10 font-sans font-normal text-white/70 text-center text-base leading-snug px-6 mt-0.5 max-w-[90%]">
+      <p className="relative z-10 font-sans font-medium text-white/70 text-center text-base leading-snug px-6 mt-0.5 max-w-[90%]">
         {desc}
       </p>
     </div>
