@@ -116,41 +116,42 @@ export function SlideSocialProof({ active }: P) {
         );
       })}
 
-      <div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 bg-black/70 backdrop-blur-sm"
-        style={{
-          opacity: isActive ? 1 : 0,
-          transition: "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-        }}
-      >
-        {displayedItem && (
-          <div key={displayedItem.name} className="text-center flex flex-col items-center gap-4 max-w-3xl px-8">
-            <div style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
-              <WordReveal
-                text={`\u201C${displayedItem.text}\u201D`}
-                on={true}
-                baseDelay={0}
-                interval={60}
-                className="font-sans font-medium text-white leading-[1.4]"
-              />
+      {isActive && (
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
+        >
+          {displayedItem && (
+            <div key={displayedItem.name} className="text-center flex flex-col items-center gap-6 max-w-3xl px-8">
+              <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
+                <WordReveal
+                  text={`\u201C${displayedItem.text}\u201D`}
+                  on={true}
+                  baseDelay={0}
+                  interval={60}
+                  className="font-sans font-medium text-white"
+                />
+              </div>
+              <div
+                className="flex items-center gap-2 animate-in fade-in duration-300"
+                style={{
+                  animationDelay: `${Math.min(displayedItem.text.split(" ").length * 60 + 200, 3500)}ms`,
+                  animationFillMode: "both",
+                }}
+              >
+                <span className="font-sans font-medium text-white text-base">{displayedItem.name}</span>
+                {displayedItem.company && (
+                  <>
+                    <span className="size-1 bg-[#FFEC40] shrink-0" />
+                    <span className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
+                      {displayedItem.company}
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
-            <div className="flex items-center gap-2 animate-in fade-in duration-300" style={{
-              animationDelay: `${Math.min(displayedItem.text.split(" ").length * 60 + 200, 4000)}ms`,
-              animationFillMode: "both",
-            }}>
-              <span className="font-sans font-medium text-white text-base">{displayedItem.name}</span>
-              {displayedItem.company && (
-                <>
-                  <span className="size-1 bg-[#FFEC40] shrink-0" />
-                  <span className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
-                    {displayedItem.company}
-                  </span>
-                </>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
