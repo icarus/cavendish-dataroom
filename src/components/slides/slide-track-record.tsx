@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FUNDS } from "@/lib/deck-data";
@@ -55,8 +55,28 @@ function detailBullet(badge?: string) {
   return badge === "fund-returner" ? "bg-black" : "bg-[#FFEC40]";
 }
 
+function primaryBadge(badge?: PortfolioCompany["badge"]): string | undefined {
+  if (!badge) return undefined;
+  if (Array.isArray(badge)) return badge.includes("fund-returner") ? "fund-returner" : badge[0];
+  return badge;
+}
+
+function allBadges(badge?: PortfolioCompany["badge"]): string[] {
+  if (!badge) return [];
+  return Array.isArray(badge) ? badge : [badge];
+}
+
 function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fundName: string }; onClose: () => void }) {
-  const isFR = company.badge === "fund-returner";
+  const primary = primaryBadge(company.badge);
+  const badges = allBadges(company.badge);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { e.stopImmediatePropagation(); onClose(); }
+    };
+    document.addEventListener("keydown", handler, { capture: true });
+    return () => document.removeEventListener("keydown", handler, { capture: true });
+  }, [onClose]);
 
   return (
     <motion.div
@@ -69,7 +89,7 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
     >
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <motion.div
-        className={cn("relative z-10 flex gap-8 max-w-3xl w-full p-8 border", detailBg(company.badge))}
+        className={cn("relative z-10 flex gap-8 max-w-3xl w-full p-8 border", detailBg(primary))}
         layoutId={`company-${company.name}`}
         transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
@@ -78,32 +98,32 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
           <div className="relative size-24 overflow-hidden">
             <Image src={company.image} alt={company.name} fill className="object-contain" />
           </div>
-          <div className={cn("font-mono font-medium", isFR ? "text-black" : "text-[#FFEC40]")} style={{ fontSize: "clamp(22px, 2.5vw, 36px)" }}>
+          <div className={cn("font-mono font-medium", primary === "fund-returner" ? "text-black" : "text-[#FFEC40]")} style={{ fontSize: "clamp(22px, 2.5vw, 36px)" }}>
             {company.moic}
           </div>
         </div>
         <div className="flex-1 flex flex-col gap-3">
           <div className="flex items-center gap-3">
-            <h3 className={cn("font-sans font-medium", detailText(company.badge))} style={{ fontSize: "clamp(20px, 2vw, 32px)" }}>
+            <h3 className={cn("font-sans font-medium", detailText(primary))} style={{ fontSize: "clamp(20px, 2vw, 32px)" }}>
               {company.name}
             </h3>
-            {company.badge && (
-              <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(company.badge))}>
-                {BADGE_LABELS[company.badge]}
+            {badges.length > 0 && badges.map((b) => (
+              <span key={b} className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(primary))}>
+                {BADGE_LABELS[b]}
               </span>
-            )}
+            ))}
           </div>
-          <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(company.badge))}>{company.fundName}</span>
+          <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(primary))}>{company.fundName}</span>
           {company.tagline && (
-            <p className={cn("font-sans font-medium text-base leading-relaxed", detailText(company.badge))}>
+            <p className={cn("font-sans font-medium text-base leading-relaxed", detailText(primary))}>
               {company.tagline}
             </p>
           )}
           {company.bullets && company.bullets.length > 0 && (
             <ul className="space-y-1.5">
               {company.bullets.map((b, i) => (
-                <li key={i} className={cn("font-sans font-medium text-base leading-relaxed flex items-start gap-2", detailText(company.badge))}>
-                  <span className={cn("mt-2 size-1.5 shrink-0", detailBullet(company.badge))} />
+                <li key={i} className={cn("font-sans font-medium text-base leading-relaxed flex items-start gap-2", detailText(primary))}>
+                  <span className={cn("mt-2 size-1.5 shrink-0", detailBullet(primary))} />
                   {b}
                 </li>
               ))}
@@ -111,12 +131,12 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
           )}
           {company.investorsAfter && company.investorsAfter.length > 0 && (
             <div className="mt-auto pt-2">
-              <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(company.badge))}>
+              <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(primary))}>
                 Investors after Platanus:
               </span>
               <div className="flex flex-wrap gap-2 mt-1">
                 {company.investorsAfter.map((inv) => (
-                  <span key={inv} className={cn("font-sans font-medium text-base", detailText(company.badge))}>
+                  <span key={inv} className={cn("font-sans font-medium text-base", detailText(primary))}>
                     {inv}
                   </span>
                 ))}
@@ -181,7 +201,7 @@ export function SlideTrackRecord({ active }: P) {
             transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
             className={cn(
               "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2 backdrop-blur-sm",
-              cardStyle(company.badge),
+              cardStyle(primaryBadge(company.badge)),
               "hover:bg-white/15 transition-all",
             )}
             style={f(on, 150 + i * 40)}
@@ -203,11 +223,11 @@ export function SlideTrackRecord({ active }: P) {
         ))}
       </div>
 
-      <div className="flex items-center justify-end gap-4 mt-6" style={f(on, 200)}>
+      <div className="flex items-center justify-end gap-6 mt-6" style={f(on, 200)}>
         {LEGEND.map(({ badge, dot }) => (
           <div key={badge} className="flex items-center gap-1.5">
             <span className={cn("size-2.5 shrink-0", dot)} />
-            <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
+            <span className="font-mono font-medium text-white text-base uppercase tracking-wider">
               {BADGE_LABELS[badge]}
             </span>
           </div>

@@ -10,7 +10,7 @@ export type PortfolioCompany = {
   tagline: string;
   image: string;
   moic: string;
-  badge?: "fund-returner" | "potential-fund-returner" | "rising-star" | "exited";
+  badge?: ("fund-returner" | "potential-fund-returner" | "rising-star" | "exited") | ("fund-returner" | "potential-fund-returner" | "rising-star" | "exited")[];
   investorsAfter?: string[];
   bullets?: string[];
 };
@@ -99,17 +99,30 @@ export const FUNDS: Fund[] = [
     moicMultiple: "*1.53X",
     dpiMultiple: "0.06X",
     companies: [
-      { name: "Grupalia", tagline: "", image: "/avatars/grupalia.png", moic: "[*]x", badge: "potential-fund-returner", investorsAfter: [] },
-      { name: "Horizon AI", tagline: "", image: "/avatars/horizon-ai.png", moic: "[*]x", badge: "rising-star", investorsAfter: [] },
-      { name: "Kunzapp", tagline: "", image: "/avatars/kunzapp.png", moic: "[*]x", investorsAfter: [] },
-      { name: "Shinkansen", tagline: "Automates B2B transactions in real time.", image: "/avatars/shinkansen.png", moic: "8.14x", investorsAfter: [], bullets: ["Deal sourced through our network.", "Oversold pre-seed. Oversold Seed Led by 10ventures", "Average growth: 42% MoM"] },
-      { name: "Kapso", tagline: "", image: "/avatars/kapso.png", moic: "[*]x", badge: "rising-star", investorsAfter: [] },
-      { name: "Carvuk", tagline: "", image: "/avatars/carvuk.png", moic: "[*]x", investorsAfter: [] },
-      { name: "Altur", tagline: "", image: "/avatars/altur.ico", moic: "[*]x", investorsAfter: [] },
-      { name: "CuidaPet", tagline: "", image: "/avatars/cuidapet.png", moic: "[*]x", investorsAfter: [] },
-      { name: "Magnar", tagline: "", image: "/avatars/magnar.png", moic: "[*]x", investorsAfter: [] },
-      { name: "Sento", tagline: "", image: "/avatars/sento.png", moic: "[*]x", investorsAfter: [] },
-      { name: "Bemmbo", tagline: "", image: "/avatars/bemmbo.webp", moic: "[*]x", badge: "exited", investorsAfter: [] },
+      { name: "Grupalia", tagline: "Group loans for micro-entrepreneurs in Latin America.", image: "/avatars/grupalia.png", moic: "2.46x", badge: "potential-fund-returner", investorsAfter: ["Tantauco", "Semilla Ventures", "Innogen"], bullets: ["The founders met at Platanus. Ramon was our first employee; Roger was our first Visiting Partner.", "Constant growth since inception. ARR of $4.2m.", "Oversubscribed debt facilities secured."] },
+      { name: "Horizon AI", tagline: "AI that makes companies more efficient by talking to their people, mapping current state and uncovering quick wins.", image: "/avatars/horizon-ai.png", moic: "6.32x", badge: "rising-star", investorsAfter: ["NXTP"], bullets: ["Big clients: PWC, D-Local, Mercado Libre and Despegar.", "Raised a $4m Seed round.", "Team moved to San Francisco searching US clients."] },
+      { name: "Kunzapp", tagline: "Detect and alert about underutilized software, duplicate applications, and upcoming renewals.", image: "/avatars/kunzapp.png", moic: "7x", investorsAfter: ["Wollef", "Tantauco", "Fen Ventures"] },
+      { name: "Shinkansen", tagline: "Agentic financial infrastructure.", image: "/avatars/shinkansen.png", moic: "2.14x", investorsAfter: ["Hi Ventures", "Krealo (Credicorp)"], bullets: ["Deal sourced through our network.", "Oversubscribed Seed round.", "Average growth: 42% MoM."] },
+      { name: "Kapso", tagline: "WhatsApp for developers. The fastest way to add official WhatsApp to your product.", image: "/avatars/kapso.png", moic: "1x", badge: "rising-star", investorsAfter: ["TBD"] },
+      { name: "Altur", tagline: "Human-less Call Center. Debt collection and sales managed entirely by AI agents.", image: "/avatars/altur.ico", moic: "17.49x", investorsAfter: ["Y Combinator"], bullets: ["$1.8m of ARR in 11 months, with 5 persons.", "We invested 2 years before YC. They pivoted a couple of times."] },
+      { name: "CuidaPet", tagline: "Full-stack AI veterinary services.", image: "/avatars/cuidapet.png", moic: "1x", investorsAfter: [], bullets: ["Applying a strategy of a software company masquerading as a services firm.", "They have acquired their own surgery facility.", "Cash flow positive."] },
+      { name: "Magnar", tagline: "Legal AI platform to understand case law, analyze private cases, and automate legal tasks.", image: "/avatars/magnar.png", moic: "5x", investorsAfter: ["Carey"], bullets: ["$2.2m of ARR after 10 months.", "Rapid expansion in Chile and Peru."] },
+      { name: "Sento", tagline: "Analyzes all AI conversations of a company to detect sales opportunities, churn risks, and friction points.", image: "/avatars/sento.png", moic: "4.2x", investorsAfter: ["Caricaco"], bullets: ["62 clients, $1.5m ARR, all from Central America.", "Opening operations in Mexico."] },
+      { name: "Bemmbo", tagline: "Payments and collections management.", image: "/avatars/bemmbo.webp", moic: "3.9x", badge: ["exited", "fund-returner"], investorsAfter: [], bullets: ["Acquired by Buk. Jaime Arrieta (Buk) was Bemmbo's Platanus mentor.", "Platanus was the only investor with a MOIC above 1x; thanks to our early investing approach."] },
+    ],
+  },
+  {
+    name: "Cavendish",
+    year: "2024",
+    amount: "USD $TBD",
+    investments: "3 STARTUPS",
+    tupiMultiple: "*1.0X",
+    moicMultiple: "*1.0X",
+    dpiMultiple: "0.0X",
+    companies: [
+      { name: "Stealth #1", tagline: "", image: "/placeholder-avatar.svg", moic: "1.0x", investorsAfter: ["Y Combinator"] },
+      { name: "Stealth #2", tagline: "", image: "/placeholder-avatar.svg", moic: "1.0x", investorsAfter: ["TBD"] },
+      { name: "Stealth #3", tagline: "", image: "/placeholder-avatar.svg", moic: "1.0x", investorsAfter: ["500 Startups"] },
     ],
   },
 ];

@@ -8,8 +8,8 @@ import { TEAM } from "@/lib/deck-data";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import { f, P, useAnim } from "./utils";
 
-const SPRING = { type: "spring" as const, stiffness: 400, damping: 30 };
-const SPRING_SOFT = { type: "spring" as const, stiffness: 300, damping: 25 };
+const SPRING = { type: "spring" as const, stiffness: 400, damping: 35 };
+const SPRING_SOFT = { type: "spring" as const, stiffness: 300, damping: 30 };
 
 const GPS = [
   {
@@ -109,7 +109,7 @@ export function Slide10({ active }: P) {
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 12 }}
                         exit={{ opacity: 0, x: 0 }}
-                        transition={{ ...SPRING, delay: j * 0.03 }}
+                        transition={{ type: "tween", duration: 0.2, ease: "easeOut", delay: j * 0.03 }}
                       >
                         <span className="size-1 bg-[#FFEC40] shrink-0" />
                         {b}

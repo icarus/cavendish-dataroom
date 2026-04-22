@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { MENTORS } from "@/lib/deck-data";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { f, P, useAnim, WordReveal } from "./utils";
+import { Button } from "../ui/button";
 
 const FEATURED = MENTORS.slice(0, 8);
 
@@ -23,6 +24,14 @@ function MentorOverlay({ startIndex, onClose }: { startIndex: number; onClose: (
   const [index, setIndex] = useState(startIndex);
   const [direction, setDirection] = useState(0);
   const mentor = getMentor(index);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { e.stopImmediatePropagation(); onClose(); }
+    };
+    document.addEventListener("keydown", handler, { capture: true });
+    return () => document.removeEventListener("keydown", handler, { capture: true });
+  }, [onClose]);
 
   const go = useCallback((dir: number) => {
     setDirection(dir);
@@ -132,12 +141,14 @@ function MentorOverlay({ startIndex, onClose }: { startIndex: number; onClose: (
         </div>
       </div>
 
-      <button
-        className="absolute top-6 right-6 z-40 font-mono font-medium text-white/40 hover:text-white text-base cursor-pointer"
+      <Button
+        variant="ghost"
+        size="icon"
+        className="absolute top-4 size-9 [&_svg]:size-7 right-4 z-40"
         onClick={onClose}
       >
-        &times;
-      </button>
+        <X />
+      </Button>
     </motion.div>
   );
 }
@@ -148,14 +159,14 @@ export function SlideClearingFog({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="mb-3" style={f(on, 0)}>
+      <div className="mb-1" style={f(on, 0)}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
           Clearing{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">the fog</mark>
         </h2>
       </div>
 
-      <div className="mb-4" style={f(on, 100)}>
+      <div className="mb-6" style={f(on, 100)}>
         <WordReveal
           text="WE HELP OUR STARTUPS WITH A 3 MONTH PROGRAM AIMED TO PUSH THEM INTO BUILDING THEIR PRODUCTS."
           on={on}
@@ -183,7 +194,7 @@ export function SlideClearingFog({ active }: P) {
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-              <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
+              <p className="font-sans font-medium text-white text-lg truncate">{mentor.name}</p>
               <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider truncate">{mentor.company}</p>
             </div>
           </div>

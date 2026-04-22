@@ -4,22 +4,25 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { LandingPanel } from "./_components/landing-panel";
 import { DeckPanel } from "./_components/deck-panel";
 import { RabbitPanel } from "./_components/rabbit-panel";
+import { useSpeedAlert } from "@/components/ui/speed-alert";
 
-const TOTAL_SLIDES = 13;
+const TOTAL_SLIDES = 14;
 
 export default function LandingPage() {
   const [deckOpen, setDeckOpen] = useState(false);
   const [rabbitOpen, setRabbitOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const lastScrollRef = useRef(0);
+  const { showAlert, recordNavigation, dismissAlert } = useSpeedAlert();
 
   const openDeck = useCallback(() => { setCurrent(0); setDeckOpen(true); }, []);
   const closeDeck = useCallback(() => setDeckOpen(false), []);
   const openRabbit = useCallback(() => setRabbitOpen(true), []);
   const closeRabbit = useCallback(() => setRabbitOpen(false), []);
   const goTo = useCallback((n: number) => {
+    recordNavigation();
     setCurrent(Math.max(0, Math.min(n, TOTAL_SLIDES - 1)));
-  }, []);
+  }, [recordNavigation]);
 
   useEffect(() => {
     const THRESHOLD = 20;
@@ -109,7 +112,7 @@ export default function LandingPage() {
         style={{ transform }}
       >
         <LandingPanel onDeck={openDeck} onRabbit={openRabbit} />
-        <DeckPanel current={current} deckOpen={deckOpen} onGoTo={goTo} onBack={closeDeck} />
+        <DeckPanel current={current} deckOpen={deckOpen} onGoTo={goTo} onBack={closeDeck} showAlert={showAlert} onDismissAlert={dismissAlert} />
         <RabbitPanel active={rabbitOpen} onBack={closeRabbit} />
       </div>
     </div>

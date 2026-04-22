@@ -3,22 +3,24 @@
 import { cn } from "@/lib/utils";
 import { f, P, useAnim } from "./utils";
 
-const DILUTIONS = [0.75, 0.60, 0.45];
-const EXIT_VALUATIONS = [100, 200, 500, 1000];
+const DILUTION_FACTOR = 0.52;
+const EXIT_VALUATIONS = [250, 300, 350, 400, 450, 500];
 
 const ENTRIES = [
-  { label: "$200K / 7%", ticket: 200000, equity: 0.07, highlight: true },
-  { label: "$500K / 7%", ticket: 500000, equity: 0.07, highlight: false },
-  { label: "$1M / 10%", ticket: 1000000, equity: 0.10, highlight: false },
-  { label: "$2M / 15%", ticket: 2000000, equity: 0.15, highlight: false },
+  { valuation: 2_857_143, label: "$2,857,143", highlight: true },
+  { valuation: 5_000_000, label: "$5,000,000", highlight: false },
+  { valuation: 7_142_857, label: "$7,142,857", highlight: false },
+  { valuation: 10_000_000, label: "$10,000,000", highlight: false },
+  { valuation: 15_000_000, label: "$15,000,000", highlight: false },
+  { valuation: 20_000_000, label: "$20,000,000", highlight: false },
+  { valuation: 30_000_000, label: "$30,000,000", highlight: false },
 ];
 
-function calcReturn(equity: number, exitM: number, ticket: number): number {
-  const retained = DILUTIONS.reduce((eq, d) => eq * d, equity);
-  return Math.round((retained * exitM * 1_000_000) / ticket);
+function calcReturn(entryVal: number, exitM: number): number {
+  return Math.round((DILUTION_FACTOR * exitM * 1_000_000) / entryVal * 10) / 10;
 }
 
-const MAX_RETURN = calcReturn(0.07, 1000, 200000);
+const MAX_RETURN = calcReturn(ENTRIES[0].valuation, EXIT_VALUATIONS[EXIT_VALUATIONS.length - 1]);
 
 export function SlideFundStrategy({ active }: P) {
   const on = useAnim(active);
@@ -33,49 +35,50 @@ export function SlideFundStrategy({ active }: P) {
           </h2>
         </div>
         <p className="font-sans font-medium text-white/40 text-base max-w-lg text-right" style={f(on, 100)}>
-          Returns on a $200K investment depending on entry price and exit valuation, considering three standard dilution rounds.
+          Return multiples depending on entry valuation and exit valuation, considering standard dilution rounds.
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-5 grid-rows-5">
-        <div className="bg-white/5 backdrop-blur-sm flex items-center justify-center" style={f(on, 150)}>
-          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Entry</span>
+      <div className="flex-1 min-h-0 grid gap-px" style={{ gridTemplateColumns: `1fr repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
+        <div className="bg-white/5 backdrop-blur-sm flex items-center justify-center p-2" style={f(on, 150)}>
+          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Entry Val.</span>
         </div>
         {EXIT_VALUATIONS.map((v, i) => (
-          <div key={v} className="bg-white/5 backdrop-blur-sm flex items-center justify-center" style={f(on, 180 + i * 40)}>
-            <span className="font-mono font-medium text-white text-base">${v}M exit</span>
+          <div key={v} className="bg-white/5 backdrop-blur-sm flex items-center justify-center p-2" style={f(on, 180 + i * 30)}>
+            <span className="font-mono font-medium text-white text-base">${v}M</span>
           </div>
         ))}
 
         {ENTRIES.map((entry, ri) => (
           <>
             <div
-              key={`label-${entry.label}`}
+              key={`label-${entry.valuation}`}
               className={cn(
                 "flex items-center justify-center px-3 backdrop-blur-sm",
-                entry.highlight ? "bg-[#FFEC40]" : "bg-white/5 backdrop-blur-sm",
+                entry.highlight ? "bg-[#FFEC40]" : "bg-white/5",
               )}
-              style={f(on, 250 + ri * 60)}
+              style={f(on, 250 + ri * 40)}
             >
               <span className={cn("font-mono font-medium text-base", entry.highlight ? "text-black" : "text-white")}>
                 {entry.label}
               </span>
             </div>
             {EXIT_VALUATIONS.map((exitM, ci) => {
-              const ret = calcReturn(entry.equity, exitM, entry.ticket);
+              const ret = calcReturn(entry.valuation, exitM);
               const scale = Math.min(ret / MAX_RETURN, 1);
+              const isAbove60 = ret >= 60;
               const fontSize = entry.highlight
-                ? `clamp(18px, ${1.5 + scale * 3}vw, ${24 + scale * 36}px)`
-                : `clamp(16px, ${1 + scale * 1.5}vw, ${18 + scale * 14}px)`;
+                ? `clamp(16px, ${1.2 + scale * 2.5}vw, ${20 + scale * 28}px)`
+                : `clamp(14px, ${0.9 + scale * 1.2}vw, ${16 + scale * 10}px)`;
 
               return (
                 <div
-                  key={`${entry.label}-${exitM}`}
+                  key={`${entry.valuation}-${exitM}`}
                   className={cn(
                     "flex items-center justify-center relative",
                     entry.highlight ? "bg-[#FFEC40]" : "bg-white/5 backdrop-blur-sm",
                   )}
-                  style={f(on, 280 + ri * 60 + ci * 30)}
+                  style={f(on, 270 + ri * 40 + ci * 20)}
                 >
                   {entry.highlight && (
                     <div
@@ -86,7 +89,7 @@ export function SlideFundStrategy({ active }: P) {
                   <span
                     className={cn(
                       "font-mono font-medium relative z-10",
-                      entry.highlight ? "text-black" : "text-white",
+                      entry.highlight ? "text-black" : isAbove60 ? "text-[#FFEC40]" : "text-white",
                     )}
                     style={{ fontSize }}
                   >

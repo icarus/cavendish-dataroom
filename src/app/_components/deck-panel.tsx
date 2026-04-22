@@ -1,14 +1,13 @@
 "use client";
 
-import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, SlideClearingFog,
   Slide6, SlideFundStrategy, SlideTrackRecord,
-  Slide7, Slide8, Slide9, Slide10, Slide11, SlideSocialProof, Slide12,
+  Slide7, Slide8, Slide10, Slide11, SlideSocialProof, Slide12,
 } from "@/components/slides";
-import { SpeedAlert, useSpeedAlert } from "@/components/ui/speed-alert";
+import { SpeedAlert } from "@/components/ui/speed-alert";
 
 const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
   { Comp: Slide2 },
@@ -32,15 +31,12 @@ interface Props {
   deckOpen: boolean;
   onGoTo: (n: number) => void;
   onBack: () => void;
+  showAlert: boolean;
+  onDismissAlert: () => void;
 }
 
-export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
-  const { showAlert, recordNavigation, dismissAlert } = useSpeedAlert();
-
-  const handleGoTo = useCallback((n: number) => {
-    recordNavigation();
-    onGoTo(n);
-  }, [recordNavigation, onGoTo]);
+export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDismissAlert }: Props) {
+  const isYellow = SLIDES[current]?.bg === "#FFEC40";
 
   return (
     <div
@@ -68,7 +64,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
         </Button>
       </div>
 
-      <div className="absolute top-6 right-6 text-sm text-white/30 font-mono tabular-nums z-10">
+      <div className={`absolute top-6 right-6 text-sm font-mono tabular-nums z-10 transition-colors ${isYellow ? "text-black/30" : "text-white/30"}`}>
         {current + 1} / {SLIDES.length}
       </div>
 
@@ -76,8 +72,8 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
         <Button
           variant="default"
           size="icon"
-          onClick={() => handleGoTo(Math.max(0, current - 1))}
-          className="!bg-transparent !border-0 text-white/50 hover:text-white"
+          onClick={() => onGoTo(Math.max(0, current - 1))}
+          className={`!bg-transparent !border-0 ${isYellow ? "text-black/50 hover:text-black" : "text-white/50 hover:text-white"}`}
           disabled={current === 0}
         >
           <ChevronLeft />
@@ -88,24 +84,24 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
               key={i}
               variant={i === current ? "default" : "outline"}
               size="icon"
-              onClick={() => handleGoTo(i)}
+              onClick={() => onGoTo(i)}
               style={{ width: i === current ? 24 : 6, height: 6, minWidth: 0, borderRadius: 9999, padding: 0, transition: "width 300ms" }}
-              className={i === current ? "!bg-[#FFEC40]" : "bg-white/25 border-0"}
+              className={i === current ? (isYellow ? "!bg-black" : "!bg-[#FFEC40]") : (isYellow ? "bg-black/25 border-0" : "bg-white/25 border-0")}
             />
           ))}
         </div>
         <Button
           variant="default"
           size="icon"
-          onClick={() => handleGoTo(Math.min(SLIDES.length - 1, current + 1))}
-          className="!bg-transparent !border-0 text-white/50 hover:text-white"
+          onClick={() => onGoTo(Math.min(SLIDES.length - 1, current + 1))}
+          className={`!bg-transparent !border-0 ${isYellow ? "text-black/50 hover:text-black" : "text-white/50 hover:text-white"}`}
           disabled={current === SLIDES.length - 1}
         >
           <ChevronRight />
         </Button>
       </div>
 
-      {showAlert && <SpeedAlert onDone={dismissAlert} />}
+      {showAlert && <SpeedAlert onDone={onDismissAlert} />}
     </div>
   );
 }
