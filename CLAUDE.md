@@ -144,3 +144,10 @@ Every visitor session records:
 - Engagement score (0-100 based on coverage, depth, and time)
 
 Session summaries are emailed to `NOTIFY_EMAIL` via Resend when a session ends.
+
+## Slide Design Rules
+
+- Never use opacity on text. Text is either white or highlighted in yellow (`<mark className="bg-[#FFEC40] text-black">`).
+- Use consistent font size within a slide (unless a deliberate hierarchy is needed).
+- Yellow highlight (`<mark>`) is used for emphasis, not yellow text color.
+- WordReveal animation reveals words one by one with staggered delays for cinematic feel.

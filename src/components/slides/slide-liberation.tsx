@@ -28,13 +28,13 @@ export function SlideLiberation({ active }: P) {
           />
         </div>
 
-        <div className="leading-[1.5] pt-4" style={{ fontSize: "clamp(16px, 2vw, 28px)" }}>
+        <div className="leading-[1.5] pt-4" style={{ fontSize: "clamp(22px, 3vw, 44px)" }}>
           <WordReveal
             text="Real liberation capital so talent can thrive."
             on={on}
             baseDelay={1600}
             interval={80}
-            className="font-sans font-medium text-black/50"
+            className="font-sans font-medium text-black"
           />
         </div>
       </div>

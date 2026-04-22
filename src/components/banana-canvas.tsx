@@ -5,7 +5,7 @@ import { useEffect, useRef } from "react";
 const RESOLUTION = 320;
 const PIXEL_SIZE = 1;
 const GAP_RATIO = 1.5;
-const ROT_SPEED = 0.0025;
+const ROT_SPEED = 0.001;
 const MOUSE_RADIUS = 50.0;
 
 const vertexShader = `
