@@ -34,7 +34,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
     if (!hovered) return;
     const interval = setInterval(() => {
       setImgIndex((prev) => (prev + 1) % images.length);
-    }, 2000);
+    }, 300);
     return () => clearInterval(interval);
   }, [hovered, images.length]);
 
@@ -43,7 +43,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       className={cn(
         "relative overflow-hidden flex flex-col items-center justify-center cursor-pointer transition-all duration-500",
         hovered ? "scale-105 z-10 shadow-2xl shadow-black/50" : "grayscale",
-        dimmed && "opacity-40",
+        dimmed && "opacity-20",
       )}
       style={f(on, 100 + index * 80)}
       onMouseEnter={onHover}
