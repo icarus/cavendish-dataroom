@@ -5,7 +5,7 @@ import { LandingPanel } from "./_components/landing-panel";
 import { DeckPanel } from "./_components/deck-panel";
 import { RabbitPanel } from "./_components/rabbit-panel";
 
-const TOTAL_SLIDES = 13;
+const TOTAL_SLIDES = 14;
 
 export default function LandingPage() {
   const [deckOpen, setDeckOpen] = useState(false);

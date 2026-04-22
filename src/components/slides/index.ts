@@ -2,6 +2,7 @@ export { Slide2 } from "./slide2";
 export { SlideFounderQuote } from "./slide-founder-quote";
 export { SlideRiskAverse } from "./slide-risk-averse";
 export { SlideLiberation } from "./slide-liberation";
+export { SlideClearingFog } from "./slide-clearing-fog";
 export { Slide3 } from "./slide3";
 export { Slide4 } from "./slide4";
 export { Slide5 } from "./slide5";
