@@ -52,9 +52,9 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
       )}
       style={{
         opacity: on ? (dimmed ? 0.15 : 1) : 0,
-        transform: on ? (activated ? "scale(1.05)" : "scale(1)") : "translateY(14px)",
+        transform: on ? "translateY(0)" : "translateY(14px)",
         filter: activated ? "grayscale(0)" : "grayscale(1)",
-        transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease, filter 0.5s ease`,
+        transition: `opacity 0.2s ease-out ${delay}ms, transform 0.2s ease-out ${delay}ms, filter 0.2s ease-out`,
       }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
@@ -69,10 +69,10 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
         src={images[imgIndex]}
         alt={title}
         fill
-        className="object-cover transition-opacity duration-500"
+        className="object-cover transition-opacity duration-200"
       />
       <div className={cn(
-        "absolute inset-0 transition-colors duration-500",
+        "absolute inset-0 transition-colors duration-200",
         activated ? "bg-black/40" : "bg-black/60",
       )} />
       <h3
