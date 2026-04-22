@@ -13,82 +13,95 @@ const ENTRIES = [
   { label: "$2M / 15%", ticket: 2000000, equity: 0.15, highlight: false },
 ];
 
-function calcReturn(equity: number, exitM: number, ticket: number): string {
+function calcReturn(equity: number, exitM: number, ticket: number): number {
   const retained = DILUTIONS.reduce((eq, d) => eq * d, equity);
-  const returnVal = (retained * exitM * 1_000_000) / ticket;
-  return `${returnVal.toFixed(0)}x`;
+  return Math.round((retained * exitM * 1_000_000) / ticket);
 }
+
+const MAX_RETURN = calcReturn(0.07, 1000, 200000);
 
 export function SlideFundStrategy({ active }: P) {
   const on = useAnim(active);
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%]">
-      <div className="mb-4" style={f(on, 0)}>
-        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
-          Fund{" "}
-          <mark className="bg-[#FFEC40] text-black px-1 not-italic">Strategy</mark>
-        </h2>
-      </div>
-
-      <div className="mb-6" style={f(on, 100)}>
-        <p className="font-sans font-medium text-white" style={{ fontSize: "clamp(12px, 1.2vw, 18px)" }}>
+      <div className="flex items-end justify-between mb-3">
+        <div style={f(on, 0)}>
+          <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+            Fund{" "}
+            <mark className="bg-[#FFEC40] text-black px-1 not-italic">Strategy</mark>
+          </h2>
+        </div>
+        <p className="font-sans font-medium text-white/50 text-base max-w-lg text-right" style={f(on, 100)}>
           Returns on a $200K investment depending on entry price and exit valuation, considering three standard dilution rounds.
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 flex flex-col">
-        <div className="grid grid-cols-5 gap-px mb-px" style={f(on, 200)}>
-          <div className="bg-white/5 px-4 py-3 flex items-center">
-            <span className="font-mono font-medium text-white text-base uppercase tracking-wider">Entry</span>
-          </div>
-          {EXIT_VALUATIONS.map((v) => (
-            <div key={v} className="bg-white/5 px-4 py-3 text-center">
-              <span className="font-mono font-medium text-white text-base">${v}M exit</span>
-            </div>
-          ))}
+      <div className="flex-1 min-h-0 grid grid-cols-5 grid-rows-5 gap-px">
+        <div className="bg-white/5 flex items-center justify-center" style={f(on, 150)}>
+          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Entry</span>
         </div>
+        {EXIT_VALUATIONS.map((v, i) => (
+          <div key={v} className="bg-white/5 flex items-center justify-center" style={f(on, 180 + i * 40)}>
+            <span className="font-mono font-medium text-white text-base">${v}M exit</span>
+          </div>
+        ))}
 
         {ENTRIES.map((entry, ri) => (
-          <div
-            key={entry.label}
-            className={cn("grid grid-cols-5 gap-px mb-px", entry.highlight && "relative")}
-            style={f(on, 300 + ri * 80)}
-          >
-            <div className={cn("px-4 py-4 flex items-center", entry.highlight ? "bg-[#FFEC40]" : "bg-white/5")}>
+          <>
+            <div
+              key={`label-${entry.label}`}
+              className={cn(
+                "flex items-center justify-center px-3",
+                entry.highlight ? "bg-[#FFEC40]" : "bg-white/5",
+              )}
+              style={f(on, 250 + ri * 60)}
+            >
               <span className={cn("font-mono font-medium text-base", entry.highlight ? "text-black" : "text-white")}>
                 {entry.label}
               </span>
             </div>
-            {EXIT_VALUATIONS.map((exitM) => {
+            {EXIT_VALUATIONS.map((exitM, ci) => {
               const ret = calcReturn(entry.equity, exitM, entry.ticket);
-              const retNum = parseFloat(ret);
-              const isHigh = retNum >= 60;
+              const scale = Math.min(ret / MAX_RETURN, 1);
+              const fontSize = entry.highlight
+                ? `clamp(18px, ${1.5 + scale * 3}vw, ${24 + scale * 36}px)`
+                : `clamp(16px, ${1 + scale * 1.5}vw, ${18 + scale * 14}px)`;
+
               return (
                 <div
-                  key={exitM}
+                  key={`${entry.label}-${exitM}`}
                   className={cn(
-                    "px-4 py-4 text-center flex items-center justify-center",
-                    entry.highlight ? "bg-[#FFEC40]" : "bg-white/5"
+                    "flex items-center justify-center relative",
+                    entry.highlight ? "bg-[#FFEC40]" : "bg-white/5",
                   )}
+                  style={f(on, 280 + ri * 60 + ci * 30)}
                 >
-                  <span className={cn(
-                    "font-mono font-medium",
-                    entry.highlight ? "text-black" : "text-white",
-                    isHigh && "text-lg",
-                  )}>
-                    {ret}
+                  {entry.highlight && (
+                    <div
+                      className="absolute inset-0 bg-white/20"
+                      style={{ opacity: scale * 0.4 }}
+                    />
+                  )}
+                  <span
+                    className={cn(
+                      "font-mono font-medium relative z-10",
+                      entry.highlight ? "text-black" : "text-white",
+                    )}
+                    style={{ fontSize }}
+                  >
+                    {ret}x
                   </span>
                 </div>
               );
             })}
-          </div>
+          </>
         ))}
       </div>
 
-      <div className="mt-4" style={f(on, 700)}>
-        <p className="font-sans font-medium text-white" style={{ fontSize: "clamp(12px, 1.2vw, 18px)" }}>
-          Only our standard valuation of $200K for 7% reaches a return multiple of 60x.
+      <div className="mt-3" style={f(on, 600)}>
+        <p className="font-sans font-medium text-white text-base">
+          Only our standard valuation of <span className="text-[#FFEC40]">$200K for 7%</span> reaches a return multiple of 60x.
         </p>
       </div>
     </div>
