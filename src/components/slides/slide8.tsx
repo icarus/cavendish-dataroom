@@ -47,7 +47,7 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-black backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer",
+        "relative overflow-hidden bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer",
         activated ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
       )}
       style={{
@@ -100,7 +100,7 @@ export function Slide8({ active }: P) {
   const handleHover = useCallback((i: number) => {
     setHoveredIndex(i);
     if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setActivatedIndex(i), 400);
+    timerRef.current = setTimeout(() => setActivatedIndex(i), 0);
   }, []);
   const handleLeave = useCallback(() => {
     setHoveredIndex(null);

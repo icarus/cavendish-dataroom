@@ -47,7 +47,7 @@ export function Slide10({ active }: P) {
           return (
             <motion.div
               key={gp.name}
-              className="relative overflow-hidden cursor-pointer"
+              className="relative overflow-hidden cursor-pointer backdrop-blur-sm"
               animate={{
                 flex: isHovered ? 2 : 1,
                 opacity: on ? (isDimmed ? 0.4 : 1) : 0,

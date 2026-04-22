@@ -240,7 +240,7 @@ export function AnimatedModel({
     frameRef.current = requestAnimationFrame(animate);
 
     if (!isAnimatingRef.current) {
-      rotationAngleRef.current += 0.006;
+      rotationAngleRef.current += 0.002;
       if (modelRef.current) {
         modelRef.current.rotation.y = rotationAngleRef.current;
       }
