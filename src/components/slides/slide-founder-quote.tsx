@@ -8,13 +8,13 @@ export function SlideFounderQuote({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-center p-[8%]">
       <div className="max-w-4xl space-y-10">
-        <blockquote className="leading-[1.4]" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
+        <blockquote className="leading-[1.4] flex flex-col -space-y-8" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
             text="In LatAm there are thousands of founders with big ideas, solving real problems in massive markets."
             on={on}
             baseDelay={0}
             interval={70}
-            className="font-sans font-medium text-white/80"
+            className="font-sans font-medium"
           />
           <br />
           <WordReveal
@@ -22,19 +22,19 @@ export function SlideFounderQuote({ active }: P) {
             on={on}
             baseDelay={1200}
             interval={70}
-            className="font-sans font-medium text-white/40"
+            className="font-sans font-medium"
           />
         </blockquote>
 
-        <div style={{ fontSize: "clamp(18px, 2vw, 30px)" }}>
+        <mark className="bg-[#FFEC40] text-black px-2 py-0.5 inline-block not-italic" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
             text="Platanus resolves that."
             on={on}
             baseDelay={2600}
             interval={100}
-            className="font-sans font-semibold text-[#FFEC40]"
+            className="font-sans font-semibold"
           />
-        </div>
+        </mark>
 
         <div
           className="flex items-center gap-3 pt-4"

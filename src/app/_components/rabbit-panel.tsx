@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUp, Lock } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -30,14 +30,11 @@ export function RabbitPanel({ active, onBack }: Props) {
     <div className="absolute top-[50%] left-0 w-screen h-screen bg-black flex items-center justify-center">
       <div className="w-full max-w-sm px-8 space-y-8">
         <div className="flex flex-col items-center gap-4">
-          <div className="flex items-center justify-center size-12 rounded-full border border-white/10 bg-white/5">
-            <Lock className="size-5 text-[#FFEC40]" />
-          </div>
-          <div className="text-center space-y-2">
-            <h2 className="text-white text-lg font-mono uppercase tracking-widest">
+          <div className="text-center space-y-0">
+            <h2 className="text-white text-lg font-mono uppercase">
               Restricted access
             </h2>
-            <p className="text-white/40 text-sm font-mono uppercase tracking-wider">
+            <p className="text-white/40 text-sm font-mono uppercase">
               Enter the access code to continue
             </p>
           </div>
@@ -56,27 +53,23 @@ export function RabbitPanel({ active, onBack }: Props) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoFocus={active}
-            className="border-white/20 bg-white/5 text-white placeholder:text-white/30 focus-visible:ring-[#FFEC40] font-mono text-center tracking-widest"
           />
           <Button
             type="submit"
             disabled={loading}
-            className="w-full bg-[#FFEC40] text-black hover:bg-[#FFEC40]/80 font-mono uppercase tracking-widest"
+            className="w-full"
           >
             {loading ? "Verifying..." : "Enter"}
           </Button>
-        </form>
-
-        <div className="text-center">
           <Button
             variant="ghost"
             onClick={onBack}
-            className="text-white/30 hover:text-white/60 font-mono uppercase text-xs tracking-widest"
+            className="w-full -mt-1"
           >
-            <ArrowUp className="size-3" />
+            <ArrowUp />
             Back
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   );
