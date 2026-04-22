@@ -27,7 +27,7 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.15 }}
     >
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <motion.div
@@ -36,6 +36,7 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
           company.badge ? "bg-[#FFEC40] border-black/10" : "bg-[#111] border-white/10",
         )}
         layoutId={`company-${company.name}`}
+        transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="shrink-0 flex flex-col items-center gap-3">
@@ -132,6 +133,7 @@ export function SlideTrackRecord({ active }: P) {
           <motion.div
             key={company.name}
             layoutId={`company-${company.name}`}
+            transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
             className={cn(
               "relative aspect-square cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-1 p-3",
               company.badge ? "bg-[#FFEC40] border-black/10" : "bg-white/5 border-white/10",
@@ -156,14 +158,29 @@ export function SlideTrackRecord({ active }: P) {
         ))}
       </div>
 
-      <div className="flex gap-4 mt-3" style={f(on, 200)}>
-        {FUNDS.map((fund) => (
-          <div key={fund.name} className="flex items-baseline gap-2">
-            <span className="font-sans font-medium text-white text-base">{fund.name}</span>
-            <span className="font-mono text-white/40 text-base">{fund.year}</span>
-            <span className="font-mono text-white/40 text-base">MOIC {fund.moicMultiple}</span>
-          </div>
-        ))}
+      <div className="flex items-center justify-between mt-3" style={f(on, 200)}>
+        <div className="flex gap-4">
+          {FUNDS.map((fund) => (
+            <div key={fund.name} className="flex items-baseline gap-2">
+              <span className="font-sans font-medium text-white text-base">{fund.name}</span>
+              <span className="font-mono text-white/40 text-base">{fund.year}</span>
+              <span className="font-mono text-white/40 text-base">MOIC {fund.moicMultiple}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-4">
+          {[
+            { label: "Fund Returner", color: "bg-[#FFEC40]" },
+            { label: "Potential Fund Returner", color: "bg-[#FFEC40]" },
+            { label: "Rising Star", color: "bg-[#FFEC40]" },
+            { label: "Exited", color: "bg-[#FFEC40]" },
+          ].map(({ label, color }) => (
+            <div key={label} className="flex items-center gap-1.5">
+              <span className={cn("size-2.5 shrink-0", color)} />
+              <span className="font-mono text-white/40 text-base uppercase tracking-wider">{label}</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       <AnimatePresence>

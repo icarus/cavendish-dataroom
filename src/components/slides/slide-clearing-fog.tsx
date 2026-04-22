@@ -17,12 +17,13 @@ function MentorDetail({ mentor, onClose }: { mentor: typeof MENTORS[number]; onC
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
+      transition={{ duration: 0.15 }}
     >
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <motion.div
         className="relative z-10 flex gap-8 items-center"
         layoutId={`mentor-${mentor.name}`}
+        transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative size-48 overflow-hidden border border-white/10 shrink-0">
@@ -68,6 +69,7 @@ export function SlideClearingFog({ active }: P) {
           <motion.div
             key={mentor.name}
             layoutId={`mentor-${mentor.name}`}
+            transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
             className="relative aspect-square cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group"
             style={f(on, 400 + i * 80)}
             onClick={() => setSelected(mentor)}
