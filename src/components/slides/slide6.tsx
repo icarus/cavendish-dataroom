@@ -21,14 +21,14 @@ export function Slide6({ active }: P) {
         {items.slice(0, 3).map(({ Icon, title, desc }, i) => (
           <div key={title} className="justify-center items-center text-center p-6 flex flex-col gap-2.5" style={f(on, 80 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
-            <div className="font-mono text-white text-sm font-semibold uppercase">{title}</div>
-            <p className="font-sans text-white/40 text-sm leading-relaxed">{desc}</p>
+            <div className="font-mono text-white text-sm font-medium uppercase">{title}</div>
+            <p className="font-sans text-white text-sm leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
 
       <div className="flex items-center justify-center py-5" style={f(on, 0)}>
-        <h2 className="font-sans font-semibold text-white" style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
           How <mark className="bg-[#FFEC40] text-black px-2 not-italic">we win</mark>
         </h2>
       </div>
@@ -37,8 +37,8 @@ export function Slide6({ active }: P) {
         {items.slice(3).map(({ Icon, title, desc }, i) => (
           <div key={title} className="justify-center items-center text-center p-6 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
-            <div className="font-mono text-white text-sm font-semibold uppercase">{title}</div>
-            <p className="font-sans text-white/40 text-sm leading-relaxed">{desc}</p>
+            <div className="font-mono text-white text-sm font-medium uppercase">{title}</div>
+            <p className="font-sans text-white text-sm leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>

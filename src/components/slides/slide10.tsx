@@ -24,19 +24,19 @@ export function Slide10({ active }: P) {
     <div className="slide aspect-video w-full relative p-[5%_6%]">
       <h2 className="font-sans text-white mb-8 leading-snug" style={{ fontSize: "clamp(16px, 2vw, 30px)", ...f(on, 0) }}>
         GPs have all the necessary skills to attract and select the best startups:{" "}
-        <mark className="bg-[#FFEC40] text-black px-1 not-italic font-semibold">founders, operators, software, and legal.</mark>
+        <mark className="bg-[#FFEC40] text-black px-1 not-italic font-medium">founders, operators, software, and legal.</mark>
       </h2>
       <div className="flex gap-10">
         {gps.map((gp, i) => (
           <div key={gp.name} className="flex-1" style={f(on, 120 + i * 100)}>
-            <div className="w-11 h-11 rounded-full bg-white/10 flex items-center justify-center font-mono text-white/50 text-sm font-semibold mb-3">
+            <div className="w-11 h-11  bg-white/10 flex items-center justify-center font-mono text-white text-sm font-medium mb-3">
               {gp.initials}
             </div>
-            <div className="font-sans font-semibold text-white text-sm mb-0.5">{gp.name}</div>
-            <div className="font-mono text-white/40 text-[9px] tracking-widest uppercase mb-3">{gp.role}</div>
+            <div className="font-sans font-medium text-white text-sm mb-0.5">{gp.name}</div>
+            <div className="font-mono text-white text-[9px] tracking-widest uppercase mb-3">{gp.role}</div>
             <ul className="space-y-1.5">
               {gp.bullets.map((b, j) => (
-                <li key={j} className="font-sans text-white/45 text-sm leading-relaxed">• {b}</li>
+                <li key={j} className="font-sans text-white text-sm leading-relaxed">• {b}</li>
               ))}
             </ul>
           </div>

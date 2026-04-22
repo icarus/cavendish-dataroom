@@ -17,15 +17,15 @@ export function Slide8({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative flex">
       <div className="flex items-center justify-center w-14 border-r border-white/10 shrink-0">
-        <h2 className="font-sans font-semibold text-white rotate-[-90deg] whitespace-nowrap" style={{ fontSize: "clamp(16px, 2vw, 28px)", ...f(on, 0) }}>
+        <h2 className="font-sans font-medium text-white rotate-[-90deg] whitespace-nowrap" style={{ fontSize: "clamp(16px, 2vw, 28px)", ...f(on, 0) }}>
           Our <mark className="bg-[#FFEC40] text-black px-1 not-italic">events</mark>
         </h2>
       </div>
       <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-px bg-white/5">
         {events.map(({ title, desc }, i) => (
           <div key={title} className="bg-[#0d0d0d] flex flex-col justify-end p-5 gap-1.5" style={f(on, 100 + i * 60)}>
-            <div className="font-mono text-white text-[9px] font-semibold tracking-widest uppercase">{title}</div>
-            <p className="font-sans text-white/40 text-sm leading-relaxed">{desc}</p>
+            <div className="font-mono text-white text-[9px] font-medium tracking-widest uppercase">{title}</div>
+            <p className="font-sans text-white text-sm leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
