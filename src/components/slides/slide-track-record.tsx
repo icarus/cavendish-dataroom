@@ -169,23 +169,23 @@ export function SlideTrackRecord({ active }: P) {
         </div>
         <div className="flex gap-2" style={f(on, 100)}>
           {[
-            { key: "all", label: "All", detail: "" },
-            ...FUNDS.map((fund) => ({ key: fund.name, label: fund.name, detail: `${fund.year} · ${fund.moicMultiple} MOIC` })),
-          ].map(({ key, label, detail }) => (
+            { key: "all", label: "All", year: "", moic: "" },
+            ...FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year, moic: fund.moicMultiple })),
+          ].map(({ key, label, year, moic }) => (
             <button
               key={key}
               onClick={() => setActiveFund(key)}
               className={cn(
-                "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer flex items-center gap-2 backdrop-blur-sm",
+                "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap",
                 activeFund === key
                   ? "bg-[#FFEC40] text-black border-[#FFEC40]"
                   : "bg-transparent text-white/40 border-white/20 hover:border-white/40 hover:bg-white/10",
               )}
             >
               {label}
-              {detail && (
-                <span className={cn("font-mono font-medium", activeFund === key ? "text-black/40" : "text-white/40")}>
-                  ({detail})
+              {year && (
+                <span className={cn("font-mono font-medium ml-1", activeFund === key ? "text-black/40" : "text-white/40")}>
+                  {year} {moic}
                 </span>
               )}
             </button>

@@ -9,18 +9,28 @@ const EXIT_VALUATIONS = [250, 300, 350, 400, 450, 500];
 const ENTRIES = [
   { valuation: 2_857_143, label: "$2,857,143", highlight: true },
   { valuation: 5_000_000, label: "$5,000,000", highlight: false },
-  { valuation: 7_142_857, label: "$7,142,857", highlight: false },
   { valuation: 10_000_000, label: "$10,000,000", highlight: false },
   { valuation: 15_000_000, label: "$15,000,000", highlight: false },
   { valuation: 20_000_000, label: "$20,000,000", highlight: false },
+  { valuation: 25_000_000, label: "$25,000,000", highlight: false },
   { valuation: 30_000_000, label: "$30,000,000", highlight: false },
 ];
 
 function calcReturn(entryVal: number, exitM: number): number {
-  return Math.round((DILUTION_FACTOR * exitM * 1_000_000) / entryVal * 10) / 10;
+  return Math.round((DILUTION_FACTOR * exitM * 1_000_000) / entryVal);
 }
 
-const MAX_RETURN = calcReturn(ENTRIES[0].valuation, EXIT_VALUATIONS[EXIT_VALUATIONS.length - 1]);
+const ALL_RETURNS = ENTRIES.flatMap((e) => EXIT_VALUATIONS.map((ex) => calcReturn(e.valuation, ex)));
+const MAX_RETURN = Math.max(...ALL_RETURNS);
+const MIN_RETURN = Math.min(...ALL_RETURNS);
+
+function heatColor(value: number): string {
+  const t = (value - MIN_RETURN) / (MAX_RETURN - MIN_RETURN);
+  if (t > 0.7) return "rgba(255, 236, 64, 0.35)";
+  if (t > 0.45) return "rgba(255, 236, 64, 0.18)";
+  if (t > 0.25) return "rgba(255, 236, 64, 0.08)";
+  return "rgba(255, 255, 255, 0.03)";
+}
 
 export function SlideFundStrategy({ active }: P) {
   const on = useAnim(active);
@@ -39,12 +49,12 @@ export function SlideFundStrategy({ active }: P) {
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 grid gap-px" style={{ gridTemplateColumns: `1fr repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
-        <div className="bg-white/5 backdrop-blur-sm flex items-center justify-center p-2" style={f(on, 150)}>
+      <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(120px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
+        <div className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 150)}>
           <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Entry Val.</span>
         </div>
         {EXIT_VALUATIONS.map((v, i) => (
-          <div key={v} className="bg-white/5 backdrop-blur-sm flex items-center justify-center p-2" style={f(on, 180 + i * 30)}>
+          <div key={v} className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 180 + i * 30)}>
             <span className="font-mono font-medium text-white text-base">${v}M</span>
           </div>
         ))}
@@ -54,44 +64,37 @@ export function SlideFundStrategy({ active }: P) {
             <div
               key={`label-${entry.valuation}`}
               className={cn(
-                "flex items-center justify-center px-3 backdrop-blur-sm",
-                entry.highlight ? "bg-[#FFEC40]" : "bg-white/5",
+                "flex items-center px-3",
+                entry.highlight ? "bg-[#FFEC40]" : "",
               )}
               style={f(on, 250 + ri * 40)}
             >
-              <span className={cn("font-mono font-medium text-base", entry.highlight ? "text-black" : "text-white")}>
+              <span className={cn("font-mono font-medium text-base whitespace-nowrap", entry.highlight ? "text-black" : "text-white/40")}>
                 {entry.label}
               </span>
             </div>
             {EXIT_VALUATIONS.map((exitM, ci) => {
               const ret = calcReturn(entry.valuation, exitM);
-              const scale = Math.min(ret / MAX_RETURN, 1);
               const isAbove60 = ret >= 60;
-              const fontSize = entry.highlight
-                ? `clamp(16px, ${1.2 + scale * 2.5}vw, ${20 + scale * 28}px)`
-                : `clamp(14px, ${0.9 + scale * 1.2}vw, ${16 + scale * 10}px)`;
 
               return (
                 <div
                   key={`${entry.valuation}-${exitM}`}
                   className={cn(
                     "flex items-center justify-center relative",
-                    entry.highlight ? "bg-[#FFEC40]" : "bg-white/5 backdrop-blur-sm",
+                    entry.highlight ? "bg-[#FFEC40]" : "",
                   )}
-                  style={f(on, 270 + ri * 40 + ci * 20)}
+                  style={{
+                    ...f(on, 270 + ri * 40 + ci * 20),
+                    backgroundColor: entry.highlight ? undefined : heatColor(ret),
+                  }}
                 >
-                  {entry.highlight && (
-                    <div
-                      className="absolute inset-0 bg-white/20"
-                      style={{ opacity: scale * 0.4 }}
-                    />
-                  )}
                   <span
                     className={cn(
                       "font-mono font-medium relative z-10",
                       entry.highlight ? "text-black" : isAbove60 ? "text-[#FFEC40]" : "text-white",
                     )}
-                    style={{ fontSize }}
+                    style={{ fontSize: entry.highlight ? "clamp(18px, 2vw, 28px)" : "clamp(14px, 1.2vw, 18px)" }}
                   >
                     {ret}x
                   </span>
