@@ -29,6 +29,7 @@ export default function LandingPage() {
     const COOLDOWN = 400;
 
     const handle = (dx: number, dy: number) => {
+      if (showAlert) return;
       const now = Date.now();
       if (now - lastScrollRef.current < COOLDOWN) return;
 
@@ -73,10 +74,11 @@ export default function LandingPage() {
       document.removeEventListener("touchstart", onTouchStart);
       document.removeEventListener("touchend", onTouchEnd);
     };
-  }, [deckOpen, rabbitOpen, current, openDeck, closeDeck, openRabbit, closeRabbit, goTo]);
+  }, [deckOpen, rabbitOpen, current, showAlert, openDeck, closeDeck, openRabbit, closeRabbit, goTo]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
+      if (showAlert) return;
       if (rabbitOpen) { if (e.key === "Escape") closeRabbit(); return; }
       if (!deckOpen) {
         if (e.key === "Enter" || e.key === "ArrowRight") openDeck();
@@ -97,7 +99,7 @@ export default function LandingPage() {
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, [deckOpen, rabbitOpen, current, openDeck, closeDeck, closeRabbit, goTo]);
+  }, [deckOpen, rabbitOpen, current, showAlert, openDeck, closeDeck, closeRabbit, goTo]);
 
   const transform = deckOpen
     ? "translateX(-50%)"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { DancingBanana } from "./dancing-banana";
 
 const DISCO_COLORS = [
@@ -85,9 +85,10 @@ const SPEED_STREAK = 4;
 export function useSpeedAlert() {
   const [showAlert, setShowAlert] = useState(false);
   const [timestamps, setTimestamps] = useState<number[]>([]);
+  const hasShownRef = useRef(false);
 
   const recordNavigation = useCallback(() => {
-    if (showAlert) return;
+    if (showAlert || hasShownRef.current) return;
     const now = Date.now();
     setTimestamps((prev) => {
       const recent = [...prev, now].filter((t) => now - t < 5000);
@@ -97,6 +98,7 @@ export function useSpeedAlert() {
       }).length;
       if (fastCount >= SPEED_STREAK) {
         setShowAlert(true);
+        hasShownRef.current = true;
         return [];
       }
       return recent;

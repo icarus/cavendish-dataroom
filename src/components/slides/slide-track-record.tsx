@@ -193,7 +193,7 @@ export function SlideTrackRecord({ active }: P) {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-6 gap-2 content-start overflow-hidden" style={{ gridTemplateRows: "repeat(3, 1fr)" }}>
+      <div className="flex-1 min-h-0 grid gap-2 content-start overflow-hidden" style={{ gridTemplateColumns: `repeat(${Math.min(Math.ceil(filtered.length / 3), 7)}, 1fr)`, gridTemplateRows: "repeat(3, 1fr)" }}>
         {filtered.map((company, i) => (
           <motion.div
             key={company.name}
