@@ -13,5 +13,6 @@ export { Slide7 } from "./slide7";
 export { Slide8 } from "./slide8";
 export { Slide9 } from "./slide9";
 export { Slide10 } from "./slide10";
+export { Slide11 } from "./slide11";
 export { SlideSocialProof } from "./slide-social-proof";
 export { Slide12 } from "./slide12";

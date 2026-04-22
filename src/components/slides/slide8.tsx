@@ -16,13 +16,13 @@ const EVENTS = [
   { title: "AI Summit with OpenAI", desc: "Co-organizers of the first OpenAI Summit in Mexico City, promoting technology in the region.", images: HACK_IMAGES },
 ];
 
-function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, onLeave }: {
+function EventCard({ title, desc, images, index, on, activated, dimmed, onHover, onLeave }: {
   title: string;
   desc: string;
   images: string[];
   index: number;
   on: boolean;
-  hovered: boolean;
+  activated: boolean;
   dimmed: boolean;
   onHover: () => void;
   onLeave: () => void;
@@ -30,18 +30,6 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
   const startOffset = index * 5;
   const [imgIndex, setImgIndex] = useState(startOffset % images.length);
   const [prevIndex, setPrevIndex] = useState(startOffset % images.length);
-  const [activated, setActivated] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (hovered) {
-      timerRef.current = setTimeout(() => setActivated(true), 3000);
-    } else {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      setActivated(false);
-    }
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [hovered]);
 
   useEffect(() => {
     if (!activated) return;
@@ -60,12 +48,12 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
     <div
       className={cn(
         "relative overflow-hidden bg-black flex flex-col items-center justify-center cursor-pointer",
-        hovered ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
+        activated ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
       )}
       style={{
         opacity: on ? (dimmed ? 0.15 : 1) : 0,
-        transform: on ? (hovered ? "scale(1.05)" : "scale(1)") : "translateY(14px)",
-        filter: hovered ? "grayscale(0)" : "grayscale(1)",
+        transform: on ? (activated ? "scale(1.05)" : "scale(1)") : "translateY(14px)",
+        filter: activated ? "grayscale(0)" : "grayscale(1)",
         transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease, filter 0.5s ease`,
       }}
       onMouseEnter={onHover}
@@ -85,7 +73,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       />
       <div className={cn(
         "absolute inset-0 transition-colors duration-500",
-        hovered ? "bg-black/40" : "bg-black/60",
+        activated ? "bg-black/40" : "bg-black/60",
       )} />
       <h3
         className="relative z-10 font-mono font-medium text-white text-center px-4 leading-tight uppercase tracking-wider"
@@ -103,9 +91,19 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
 export function Slide8({ active }: P) {
   const on = useAnim(active);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [activatedIndex, setActivatedIndex] = useState<number | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const handleHover = useCallback((i: number) => setHoveredIndex(i), []);
-  const handleLeave = useCallback(() => setHoveredIndex(null), []);
+  const handleHover = useCallback((i: number) => {
+    setHoveredIndex(i);
+    if (timerRef.current) clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(() => setActivatedIndex(i), 3000);
+  }, []);
+  const handleLeave = useCallback(() => {
+    setHoveredIndex(null);
+    setActivatedIndex(null);
+    if (timerRef.current) clearTimeout(timerRef.current);
+  }, []);
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[3%]">
@@ -128,8 +126,8 @@ export function Slide8({ active }: P) {
             images={event.images}
             index={i}
             on={on}
-            hovered={hoveredIndex === i}
-            dimmed={hoveredIndex !== null && hoveredIndex !== i}
+            activated={activatedIndex === i}
+            dimmed={activatedIndex !== null && activatedIndex !== i}
             onHover={() => handleHover(i)}
             onLeave={handleLeave}
           />

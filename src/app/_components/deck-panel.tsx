@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import {
   Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, SlideClearingFog,
   Slide6, SlideFundStrategy, SlideTrackRecord,
-  Slide7, Slide8, Slide9, Slide10, SlideSocialProof, Slide12,
+  Slide7, Slide8, Slide9, Slide10, Slide11, SlideSocialProof, Slide12,
 } from "@/components/slides";
 
 const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
@@ -20,8 +20,9 @@ const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] 
   { Comp: Slide6 },
   { Comp: SlideTrackRecord },
   { Comp: Slide10 },
-  { Comp: Slide12 },
+  { Comp: Slide11 },
   { Comp: SlideSocialProof },
+  { Comp: Slide12 },
 ];
 
 interface Props {
