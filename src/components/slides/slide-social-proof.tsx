@@ -7,8 +7,6 @@ import { P, useAnim } from "./utils";
 
 const ITEMS = TESTIMONIALS.filter((t) => t.text);
 
-const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
-
 const ORBITS = ITEMS.map((t, i) => {
   const ring = i % 3;
   const ringIndex = Math.floor(i / 3);
@@ -18,15 +16,17 @@ const ORBITS = ITEMS.map((t, i) => {
   const radiusY = [22, 15, 8][ring];
   const speed = [0.15, 0.1, 0.07][ring];
   const tilt = 0.6;
-  return { ...t, baseAngle, radiusX, radiusY, speed, tilt, ring };
+  return { ...t, baseAngle, radiusX, radiusY, speed, tilt, ring, idx: i };
 });
 
 export function SlideSocialProof({ active }: P) {
   const on = useAnim(active);
   const [hovered, setHovered] = useState<number | null>(null);
+  const [displayed, setDisplayed] = useState<number | null>(null);
   const [time, setTime] = useState(0);
   const rafRef = useRef<number>(0);
   const startRef = useRef<number>(0);
+  const lingerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (!active) {
@@ -43,6 +43,17 @@ export function SlideSocialProof({ active }: P) {
     return () => cancelAnimationFrame(rafRef.current);
   }, [active]);
 
+  const handleHover = useCallback((i: number) => {
+    if (lingerRef.current) clearTimeout(lingerRef.current);
+    setHovered(i);
+    setDisplayed(i);
+  }, []);
+
+  const handleLeave = useCallback(() => {
+    setHovered(null);
+    lingerRef.current = setTimeout(() => setDisplayed(null), 3000);
+  }, []);
+
   const getPos = useCallback((item: typeof ORBITS[0]) => {
     const angle = item.baseAngle + time * item.speed;
     const x = 50 + item.radiusX * Math.sin(angle);
@@ -55,7 +66,8 @@ export function SlideSocialProof({ active }: P) {
     return { x, y: yRaw, z, scale, blur, opacity, zIndex };
   }, [time]);
 
-  const hoveredItem = hovered !== null ? ORBITS[hovered] : null;
+  const displayedItem = displayed !== null ? ORBITS[displayed] : null;
+  const isActive = displayed !== null;
 
   return (
     <div className="slide aspect-video w-full relative overflow-hidden">
@@ -73,7 +85,8 @@ export function SlideSocialProof({ active }: P) {
       {ORBITS.map((item, i) => {
         const pos = getPos(item);
         const isHovered = hovered === i;
-        const isDimmed = hovered !== null && !isHovered;
+        const isDisplayed = displayed === i;
+        const isDimmed = isActive && !isHovered && !isDisplayed;
 
         return (
           <div
@@ -82,14 +95,14 @@ export function SlideSocialProof({ active }: P) {
             style={{
               left: `${pos.x}%`,
               top: `${pos.y}%`,
-              zIndex: isHovered ? 50 : pos.zIndex,
+              zIndex: isHovered || isDisplayed ? 50 : pos.zIndex,
               opacity: on ? (isDimmed ? 0.15 : pos.opacity) : 0,
-              transform: `translate(-50%, -50%) scale(${isHovered ? 1.3 : pos.scale})`,
-              filter: `blur(${isHovered ? 0 : pos.blur}px)`,
-              transition: "opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out",
+              transform: `translate(-50%, -50%) scale(${isHovered ? 1.3 : isDisplayed ? 1.2 : pos.scale})`,
+              filter: `blur(${isHovered || isDisplayed ? 0 : pos.blur}px)`,
+              transition: "opacity 0.3s ease-out, transform 0.3s ease-out, filter 0.3s ease-out",
             }}
-            onMouseEnter={() => setHovered(i)}
-            onMouseLeave={() => setHovered(null)}
+            onMouseEnter={() => handleHover(i)}
+            onMouseLeave={handleLeave}
           >
             <div className="relative size-14 overflow-hidden border-2 border-white/20 hover:border-[#FFEC40] transition-colors backdrop-blur-sm">
               <Image
@@ -104,24 +117,27 @@ export function SlideSocialProof({ active }: P) {
       })}
 
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-xl w-full px-8 pointer-events-none z-30"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-2xl w-full px-8 pointer-events-none z-30"
         style={{
-          opacity: hoveredItem ? 1 : 0,
-          transform: hoveredItem ? "translateY(0)" : "translateY(8px)",
-          transition: "opacity 0.2s ease-out, transform 0.2s ease-out",
+          opacity: isActive ? 1 : 0,
+          transform: isActive ? "translateY(0) scale(1)" : "translateY(12px) scale(0.97)",
+          transition: "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
-        {hoveredItem && (
+        {displayedItem && (
           <div className="text-center flex flex-col items-center gap-4">
-            <p className="font-sans font-medium text-white text-base leading-relaxed">
-              &ldquo;{hoveredItem.text}&rdquo;
+            <p className="font-sans font-medium text-white leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
+              &ldquo;{displayedItem.text}&rdquo;
             </p>
-            <div>
-              <span className="font-sans font-medium text-white text-base">{hoveredItem.name}</span>
-              {hoveredItem.company && (
-                <span className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider ml-3">
-                  {hoveredItem.company}
-                </span>
+            <div className="flex items-center gap-2">
+              <span className="font-sans font-medium text-white text-base">{displayedItem.name}</span>
+              {displayedItem.company && (
+                <>
+                  <span className="size-1 bg-[#FFEC40] shrink-0" />
+                  <span className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
+                    {displayedItem.company}
+                  </span>
+                </>
               )}
             </div>
           </div>
