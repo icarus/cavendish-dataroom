@@ -1,49 +1,113 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { MENTORS } from "@/lib/deck-data";
 import { AnimatePresence, motion } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { f, P, useAnim, WordReveal } from "./utils";
 
 const FEATURED = MENTORS.slice(0, 8);
 
-function MentorDetail({ mentor, onClose }: { mentor: typeof MENTORS[number]; onClose: () => void }) {
+function MentorOverlay({ startIndex, onClose }: { startIndex: number; onClose: () => void }) {
+  const [index, setIndex] = useState(startIndex);
+  const [direction, setDirection] = useState(0);
+  const mentor = MENTORS[index];
+
+  const go = useCallback((dir: number) => {
+    setDirection(dir);
+    setIndex((prev) => (prev + dir + MENTORS.length) % MENTORS.length);
+  }, []);
+
   return (
     <motion.div
-      className="absolute inset-0 z-30 flex items-center justify-center cursor-pointer"
+      className="absolute inset-0 z-30 flex items-stretch cursor-pointer"
       onClick={onClose}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.15 }}
     >
-      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
-      <motion.div
-        className="relative z-10 flex gap-8 items-center"
-        layoutId={`mentor-${mentor.name}`}
-        transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
-        onClick={(e) => e.stopPropagation()}
+      <div className="absolute inset-0 bg-black/85 backdrop-blur-sm" />
+
+      <div className="relative z-10 flex w-full" onClick={(e) => e.stopPropagation()}>
+        <div className="w-1/2 relative overflow-hidden">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={mentor.name}
+              className="absolute inset-0"
+              initial={{ x: direction > 0 ? "100%" : "-100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: direction > 0 ? "-100%" : "100%", opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <Image
+                src={mentor.image}
+                alt={mentor.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/60" />
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        <div className="w-1/2 flex flex-col justify-center px-[5%] relative">
+          <AnimatePresence mode="popLayout" initial={false}>
+            <motion.div
+              key={mentor.name}
+              className="flex flex-col gap-3"
+              initial={{ opacity: 0, y: direction > 0 ? 20 : -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: direction > 0 ? -20 : 20 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(24px, 3vw, 48px)" }}>
+                {mentor.name}
+              </h3>
+              <p className="font-sans font-medium text-[#FFEC40] text-xl">{mentor.company}</p>
+              {mentor.tagline && (
+                <p className="font-sans font-medium text-white/60 text-base leading-relaxed max-w-md">
+                  {mentor.tagline}
+                </p>
+              )}
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="absolute bottom-8 right-8 flex gap-3">
+            <button
+              onClick={() => go(-1)}
+              className="size-10 border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/40 transition-colors cursor-pointer"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button
+              onClick={() => go(1)}
+              className="size-10 border border-white/20 flex items-center justify-center text-white/50 hover:text-white hover:border-white/40 transition-colors cursor-pointer"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
+
+          <div className="absolute bottom-8 left-[5%] font-mono text-white/30 text-base tabular-nums">
+            {index + 1} / {MENTORS.length}
+          </div>
+        </div>
+      </div>
+
+      <button
+        className="absolute top-6 right-6 z-20 font-mono text-white/40 hover:text-white text-xl cursor-pointer"
+        onClick={onClose}
       >
-        <div className="relative size-48 overflow-hidden border border-white/10 shrink-0">
-          <Image src={mentor.image} alt={mentor.name} fill className="object-cover" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <h3 className="font-sans font-medium text-white text-3xl">{mentor.name}</h3>
-          <p className="font-sans font-medium text-[#FFEC40] text-xl">{mentor.company}</p>
-          {mentor.tagline && (
-            <p className="font-sans font-medium text-white/70 text-base max-w-md leading-relaxed">{mentor.tagline}</p>
-          )}
-        </div>
-      </motion.div>
+        &times;
+      </button>
     </motion.div>
   );
 }
 
 export function SlideClearingFog({ active }: P) {
   const on = useAnim(active);
-  const [selected, setSelected] = useState<typeof MENTORS[number] | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
@@ -66,13 +130,11 @@ export function SlideClearingFog({ active }: P) {
 
       <div className="flex-1 grid grid-cols-4 grid-rows-2 gap-3 min-h-0">
         {FEATURED.map((mentor, i) => (
-          <motion.div
+          <div
             key={mentor.name}
-            layoutId={`mentor-${mentor.name}`}
-            transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
             className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group"
             style={f(on, 400 + i * 80)}
-            onClick={() => setSelected(mentor)}
+            onClick={() => setSelectedIndex(i)}
           >
             <div className="absolute inset-0">
               <Image
@@ -87,7 +149,7 @@ export function SlideClearingFog({ active }: P) {
               <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
               <p className="font-sans font-medium text-[#FFEC40] text-base truncate">{mentor.company}</p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -98,8 +160,8 @@ export function SlideClearingFog({ active }: P) {
       </div>
 
       <AnimatePresence>
-        {selected && (
-          <MentorDetail mentor={selected} onClose={() => setSelected(null)} />
+        {selectedIndex !== null && (
+          <MentorOverlay startIndex={selectedIndex} onClose={() => setSelectedIndex(null)} />
         )}
       </AnimatePresence>
     </div>
