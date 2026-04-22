@@ -27,7 +27,7 @@ function QuoteDisplay({ item }: { item: typeof ORBITS[0] }) {
   }, []);
 
   return (
-    <div className="text-center flex flex-col items-center gap-6 max-w-3xl px-8">
+    <div className="text-center flex flex-col items-center gap-6 max-w-5xl px-8">
       <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
         <WordReveal
           text={`\u201C${item.text}\u201D`}
@@ -158,7 +158,7 @@ export function SlideSocialProof({ active }: P) {
 
       {isActive && displayedItem && (
         <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 bg-black/20 animate-in fade-in duration-300"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 bg-black/40 animate-in fade-in duration-300"
         >
           <QuoteDisplay item={displayedItem} />
         </div>

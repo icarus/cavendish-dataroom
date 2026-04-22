@@ -36,7 +36,7 @@ export function Slide9({ active }: P) {
           <div className="grid grid-cols-3 gap-x-6 gap-y-4">
             {mentors.map((m, i) => (
               <div key={m.name} style={f(on, 150 + i * 50)}>
-                <div className="font-sans text-white text-base font-medium">{m.name}</div>
+                <div className="font-sans text-white text-lg font-medium">{m.name}</div>
                 <div className="font-sans font-medium text-[#FFEC40] text-base mt-0.5">{m.company}</div>
                 <div className="font-sans font-medium text-white/40 text-base mt-0.5 leading-relaxed">{m.desc}</div>
               </div>
