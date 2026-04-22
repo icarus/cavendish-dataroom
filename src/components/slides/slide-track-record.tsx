@@ -22,19 +22,6 @@ const BADGE_CARD_STYLES: Record<string, string> = {
   exited: "bg-white/10 border-white/30",
 };
 
-const BADGE_TEXT_STYLES: Record<string, string> = {
-  "fund-returner": "text-black",
-  "potential-fund-returner": "text-[#FFEC40]",
-  "rising-star": "text-[#FFEC40]/80",
-  exited: "text-white/60",
-};
-
-const BADGE_MOIC_STYLES: Record<string, string> = {
-  "fund-returner": "text-black",
-  "potential-fund-returner": "text-[#FFEC40]",
-  "rising-star": "text-[#FFEC40]/70",
-  exited: "text-white/50",
-};
 
 const LEGEND = [
   { badge: "fund-returner", card: "bg-[#FFEC40]", dot: "bg-[#FFEC40]" },
@@ -50,16 +37,6 @@ const ALL_COMPANIES = FUNDS.flatMap((fund) =>
 function cardStyle(badge?: string) {
   if (!badge) return "bg-white/5 border-white/10";
   return BADGE_CARD_STYLES[badge] ?? "bg-white/5 border-white/10";
-}
-
-function textStyle(badge?: string) {
-  if (!badge) return "text-white";
-  return BADGE_TEXT_STYLES[badge] ?? "text-white";
-}
-
-function moicStyle(badge?: string) {
-  if (!badge) return "text-[#FFEC40]";
-  return BADGE_MOIC_STYLES[badge] ?? "text-[#FFEC40]";
 }
 
 function detailBg(badge?: string) {
@@ -164,7 +141,7 @@ export function SlideTrackRecord({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="flex items-end justify-between mb-4">
+      <div className="flex items-center justify-between mb-4">
         <div style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
             Track{" "}
@@ -183,7 +160,7 @@ export function SlideTrackRecord({ active }: P) {
                 "font-mono text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer flex items-center gap-2",
                 activeFund === key
                   ? "bg-[#FFEC40] text-black border-[#FFEC40]"
-                  : "bg-transparent text-white/50 border-white/20 hover:border-white/40",
+                  : "bg-transparent text-white/50 border-white/20 hover:border-white/40 hover:bg-white/10",
               )}
             >
               {label}
@@ -197,14 +174,14 @@ export function SlideTrackRecord({ active }: P) {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-6 gap-2 content-start auto-rows-min overflow-hidden">
+      <div className="flex-1 min-h-0 grid grid-cols-6 gap-2 content-start overflow-hidden" style={{ gridAutoRows: "1fr" }}>
         {filtered.map((company, i) => (
           <motion.div
             key={company.name}
             layoutId={`company-${company.name}`}
             transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
             className={cn(
-              "relative aspect-square cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-1 p-2",
+              "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2",
               cardStyle(company.badge),
               "hover:brightness-125 transition-all",
             )}
@@ -214,13 +191,13 @@ export function SlideTrackRecord({ active }: P) {
             <div className="relative size-8 overflow-hidden shrink-0">
               <Image src={company.image} alt={company.name} fill className="object-cover" />
             </div>
-            <span className={cn("font-sans font-medium text-base text-center leading-none truncate w-full", textStyle(company.badge))}>
+            <span className="font-sans font-medium text-white text-base text-center leading-none truncate w-full">
               {company.name}
             </span>
-            <span className={cn(
-              "absolute top-0.5 right-1 font-mono font-medium leading-none",
-              moicStyle(company.badge),
-            )} style={{ fontSize: "clamp(10px, 1vw, 14px)" }}>
+            <span
+              className="absolute top-1 right-1.5 font-mono font-medium text-[#FFEC40] leading-none"
+              style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+            >
               {company.moic}
             </span>
           </motion.div>
