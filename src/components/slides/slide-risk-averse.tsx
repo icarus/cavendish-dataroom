@@ -1,6 +1,6 @@
 "use client";
 
-import { P, useAnim, WordReveal } from "./utils";
+import { f, P, useAnim, WordReveal } from "./utils";
 
 export function SlideRiskAverse({ active }: P) {
   const on = useAnim(active);
