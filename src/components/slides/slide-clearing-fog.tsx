@@ -70,7 +70,7 @@ export function SlideClearingFog({ active }: P) {
             key={mentor.name}
             layoutId={`mentor-${mentor.name}`}
             transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
-            className="relative aspect-square cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group"
+            className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group"
             style={f(on, 400 + i * 80)}
             onClick={() => setSelected(mentor)}
           >
