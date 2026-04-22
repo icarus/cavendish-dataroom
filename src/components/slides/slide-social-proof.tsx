@@ -117,15 +117,14 @@ export function SlideSocialProof({ active }: P) {
       })}
 
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-4xl w-full px-8 py-6 pointer-events-none z-30 bg-black/60 backdrop-blur-sm border border-white/5"
+        className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 bg-black/70 backdrop-blur-sm"
         style={{
           opacity: isActive ? 1 : 0,
-          transform: isActive ? "translateY(0) scale(1)" : "translateY(12px) scale(0.97)",
-          transition: "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          transition: "opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
         }}
       >
         {displayedItem && (
-          <div key={displayedItem.name} className="text-center flex flex-col items-center gap-4">
+          <div key={displayedItem.name} className="text-center flex flex-col items-center gap-4 max-w-3xl px-8">
             <div style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
               <WordReveal
                 text={`\u201C${displayedItem.text}\u201D`}
