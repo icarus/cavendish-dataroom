@@ -26,16 +26,15 @@ export function SlideFounderQuote({ active }: P) {
           />
         </blockquote>
 
-        <div style={{ ...f(on, 2600), fontSize: "clamp(22px, 3.2vw, 48px)" }}>
-        <mark className="bg-[#FFEC40] text-black px-2 py-0.5 inline-block not-italic">
+        <div style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
             text="Platanus resolves that."
             on={on}
             baseDelay={2600}
             interval={100}
             className="font-sans font-medium"
+            highlight
           />
-        </mark>
         </div>
 
         <div

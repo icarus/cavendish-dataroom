@@ -7,7 +7,7 @@ function Card({ name, tagline, bullets, moic, delay, on, image }: { name: string
   return (
     <div className="bg-white/10 backdrop-blur-lg border border-white/10 p-5 flex flex-col gap-6" style={f(on, delay)}>
       <div className="flex items-center gap-3">
-        <div className="rounded-md border border-white/10 overflow-hidden shrink-0 w-10 h-10">
+        <div className="border border-white/10 overflow-hidden shrink-0 w-10 h-10">
           <Image src={image} alt={name} width={40} height={40} className="object-cover w-full h-full" />
         </div>
         <div>

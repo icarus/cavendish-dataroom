@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
 export type P = { active: boolean };
@@ -28,14 +29,14 @@ export const grow = (on: boolean, d = 0): React.CSSProperties => ({
   transition: `transform 0.8s cubic-bezier(0.4,0,0.2,1) ${d}ms`,
 });
 
-export function WordReveal({ text, on, baseDelay = 0, interval = 60, className }: { text: string; on: boolean; baseDelay?: number; interval?: number; className?: string }) {
+export function WordReveal({ text, on, baseDelay = 0, interval = 60, className, highlight }: { text: string; on: boolean; baseDelay?: number; interval?: number; className?: string; highlight?: boolean }) {
   const words = text.split(" ");
   return (
-    <span className={className}>
+    <span className={cn("text-balance", highlight && "text-black", className)}>
       {words.map((word, i) => (
         <span
           key={i}
-          className="inline-block"
+          className={cn("inline-block text-balance", highlight && "bg-[#FFEC40] px-0.5 py-0.5 -mx-0.5")}
           style={{
             opacity: on ? 1 : 0,
             transform: on ? "translateY(0)" : "translateY(8px)",

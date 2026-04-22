@@ -39,7 +39,7 @@ export function SlideSocialProof({ active }: P) {
             style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
           >
             <div className="flex items-center gap-3">
-              <div className="relative size-10 rounded-full overflow-hidden border border-white/10 shrink-0">
+              <div className="relative size-10 overflow-hidden border border-white/10 shrink-0">
                 <Image
                   src={testimonial.image}
                   alt={testimonial.name}

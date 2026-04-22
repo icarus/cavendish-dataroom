@@ -50,7 +50,7 @@ export function SlideClearingFog({ active }: P) {
             className="flex flex-col items-center text-center gap-2"
             style={f(on, 600 + i * 80)}
           >
-            <div className="relative size-16 rounded-full overflow-hidden border border-white/10 shrink-0">
+            <div className="relative size-16 overflow-hidden border border-white/10 shrink-0">
               <Image
                 src={mentor.image}
                 alt={mentor.name}
