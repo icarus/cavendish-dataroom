@@ -3,9 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "motion/react";
 import { TEAM } from "@/lib/deck-data";
 import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import { f, P, useAnim } from "./utils";
+
+const SPRING = { type: "spring" as const, stiffness: 400, damping: 30 };
+const SPRING_SOFT = { type: "spring" as const, stiffness: 300, damping: 25 };
 
 const GPS = [
   {
@@ -41,15 +45,18 @@ export function Slide10({ active }: P) {
           const isDimmed = hovered !== null && hovered !== i;
 
           return (
-            <div
+            <motion.div
               key={gp.name}
-              className="relative overflow-hidden cursor-pointer group"
-              style={{
+              className="relative overflow-hidden cursor-pointer"
+              animate={{
                 flex: isHovered ? 2 : 1,
                 opacity: on ? (isDimmed ? 0.4 : 1) : 0,
-                transform: on ? "translateY(0)" : "translateY(14px)",
-                transition: "flex 0.15s ease-out, opacity 0.15s ease-out, transform 0.15s ease-out",
-                transitionDelay: on ? `${120 + i * 100}ms` : "0ms",
+                y: on ? 0 : 14,
+              }}
+              transition={{
+                flex: SPRING,
+                opacity: { duration: 0.2 },
+                y: { duration: 0.4, delay: on ? 0.12 + i * 0.1 : 0 },
               }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
@@ -71,50 +78,47 @@ export function Slide10({ active }: P) {
               <ProgressiveBlur position="bottom" height="50%" />
 
               <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
-                <div
+                <motion.div
                   className="font-sans font-medium text-white text-base"
-                  style={{
-                    transform: isHovered ? "translateX(12px)" : "translateX(0)",
-                    transition: "transform 0.15s ease-out",
-                  }}
+                  animate={{ x: isHovered ? 12 : 0 }}
+                  transition={SPRING}
                 >
                   {gp.name}
-                </div>
-                <div
+                </motion.div>
+                <motion.div
                   className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1"
-                  style={{
-                    transform: isHovered ? "translateX(12px)" : "translateX(0)",
-                    transition: "transform 0.15s ease-out 20ms",
-                  }}
+                  animate={{ x: isHovered ? 12 : 0 }}
+                  transition={{ ...SPRING, delay: 0.02 }}
                 >
                   {gp.role}
-                </div>
+                </motion.div>
 
-                <ul
+                <motion.ul
                   className="mt-3 space-y-1 overflow-hidden"
-                  style={{
-                    maxHeight: isHovered ? "300px" : "0px",
+                  animate={{
+                    height: isHovered ? "auto" : 0,
                     opacity: isHovered ? 1 : 0,
-                    transition: "max-height 0.2s ease-out, opacity 0.15s ease-out",
                   }}
+                  transition={{ height: SPRING_SOFT, opacity: { duration: 0.15 } }}
                 >
-                  {gp.bullets.map((b, j) => (
-                    <li
-                      key={j}
-                      className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2"
-                      style={{
-                        opacity: isHovered ? 1 : 0,
-                        transform: isHovered ? "translateX(12px)" : "translateX(0)",
-                        transition: `opacity 0.15s ease-out ${j * 30}ms, transform 0.15s ease-out ${j * 30}ms`,
-                      }}
-                    >
-                      <span className="size-1 bg-[#FFEC40] shrink-0" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
+                  <AnimatePresence>
+                    {isHovered && gp.bullets.map((b, j) => (
+                      <motion.li
+                        key={j}
+                        className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2"
+                        initial={{ opacity: 0, x: 0 }}
+                        animate={{ opacity: 1, x: 12 }}
+                        exit={{ opacity: 0, x: 0 }}
+                        transition={{ ...SPRING, delay: j * 0.03 }}
+                      >
+                        <span className="size-1 bg-[#FFEC40] shrink-0" />
+                        {b}
+                      </motion.li>
+                    ))}
+                  </AnimatePresence>
+                </motion.ul>
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>
