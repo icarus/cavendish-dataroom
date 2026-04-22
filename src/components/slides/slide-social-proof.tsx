@@ -12,8 +12,8 @@ const ORBITS = ITEMS.map((t, i) => {
   const ringIndex = Math.floor(i / 3);
   const ringCount = Math.ceil(ITEMS.length / 3);
   const baseAngle = (ringIndex / ringCount) * Math.PI * 2 + ring * 0.7;
-  const radiusX = [44, 32, 20][ring];
-  const radiusY = [38, 28, 16][ring];
+  const radiusX = [36, 24, 13][ring];
+  const radiusY = [30, 20, 10][ring];
   const speed = [0.15, 0.1, 0.07][ring];
   const tilt = 0.85;
   return { ...t, baseAngle, radiusX, radiusY, speed, tilt, ring, idx: i };
@@ -51,7 +51,7 @@ export function SlideSocialProof({ active }: P) {
 
   const handleLeave = useCallback(() => {
     setHovered(null);
-    lingerRef.current = setTimeout(() => setDisplayed(null), 3000);
+    lingerRef.current = setTimeout(() => setDisplayed(null), 1500);
   }, []);
 
   const getPos = useCallback((item: typeof ORBITS[0]) => {
@@ -96,7 +96,7 @@ export function SlideSocialProof({ active }: P) {
               left: `${pos.x}%`,
               top: `${pos.y}%`,
               zIndex: isHovered || isDisplayed ? 50 : pos.zIndex,
-              opacity: on ? (isDimmed ? 0.15 : pos.opacity) : 0,
+              opacity: on ? (isDimmed ? 0.35 : pos.opacity) : 0,
               transform: `translate(-50%, -50%) scale(${isHovered ? 1.3 : isDisplayed ? 1.2 : pos.scale})`,
               filter: `blur(${isHovered || isDisplayed ? 0 : pos.blur}px)`,
               transition: "opacity 0.3s ease-out, transform 0.3s ease-out, filter 0.3s ease-out",
