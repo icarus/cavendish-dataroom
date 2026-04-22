@@ -147,7 +147,33 @@ Session summaries are emailed to `NOTIFY_EMAIL` via Resend when a session ends.
 
 ## Slide Design Rules
 
-- Never use opacity on text. Text is either white or highlighted in yellow (`<mark className="bg-[#FFEC40] text-black">`).
+- Never use opacity on text. Text is either white or highlighted in yellow.
 - Use consistent font size within a slide (unless a deliberate hierarchy is needed).
-- Yellow highlight (`<mark>`) is used for emphasis, not yellow text color.
+- Yellow highlight uses `WordReveal` with `highlight` prop so the bg animates per-word. Never use a static `<mark>` wrapping a `WordReveal`.
 - WordReveal animation reveals words one by one with staggered delays for cinematic feel.
+- All avatars/images are square (no rounded corners).
+- font-medium for all text in slides.
+
+## Deck Structure
+
+Current slide order and status:
+
+| # | Slide | Component | Status |
+|---|-------|-----------|--------|
+| 1 | Forging Latin American... | `Slide2` | done |
+| 2 | Founder Quote (Natan) | `SlideFounderQuote` | done |
+| 3 | Risk-Averse Mentality | `SlideRiskAverse` | done |
+| 4 | Liberation Capital (yellow bg) | `SlideLiberation` | done |
+| 5 | Clearing the Fog (mentors) | `SlideClearingFog` | done |
+| 6 | Community | — | pending (need Figma text) |
+| 7 | Events | `Slide8` | existing |
+| 8 | Banana House | `Slide7` | existing |
+| 9 | Fund Strategy (return table) | `SlideFundStrategy` | done |
+| 10 | Elegir al equipo correcto | — | pending (need Figma text) |
+| 11 | How We Win | `Slide6` | existing |
+| 12 | Track Record (fund carousels) | `SlideTrackRecord` | done |
+| 13 | Team | `Slide10` | existing |
+| 14 | Fund Terms | `Slide12` | existing |
+| 15 | Social Proof (testimonials) | `SlideSocialProof` | done |
+
+Data source of truth: `src/lib/deck-data.ts` (mentors, portfolio companies, funds, testimonials, fund stats, team).
