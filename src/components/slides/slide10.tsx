@@ -1,46 +1,103 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { TEAM } from "@/lib/deck-data";
 import { f, P, useAnim } from "./utils";
+
+const GPS = [
+  {
+    ...TEAM[0],
+    bullets: ["Founded her first company in 2014.", "Worked with over 500 companies through Start-Up Chile.", "Recognized as a top woman investor by LatCA for the last 3 years.", "Notable investments: Fintoc, Toku, and Shinkansen."],
+  },
+  {
+    ...TEAM[1],
+    bullets: ["Engineer from Universidad Catolica de Chile.", "Master's in Cryptography.", "Led a team of 25+ software engineers at Platanus' software factory."],
+  },
+  {
+    ...TEAM[2],
+    bullets: ["Unconventional lawyer from Universidad Catolica de Chile.", "Structured the VC arm for CHS Carey & Allende in Chile.", "He trail runs, his ATH is 110km.", "Notable investments: Toku, Examedi and Grupalia."],
+  },
+];
 
 export function Slide10({ active }: P) {
   const on = useAnim(active);
-
-  const gps = [
-    {
-      initials: "PE", name: "Paula Enei", role: "Co-Founder, Managing Partner",
-      bullets: ["Founded her first company in 2014.","Worked with over 500 companies through Start-Up Chile.","Recognized as a top woman investor by LatCA for the last 3 years.","Notable investments: Fintoc, Toku, and Shinkansen."],
-    },
-    {
-      initials: "RH", name: "Raimundo Herrera", role: "General Partner, CTO",
-      bullets: ["Engineer from Universidad Católica de Chile.","Master's in Cryptography.","Led a team of 25+ software engineers at Platanus' software factory."],
-    },
-    {
-      initials: "JS", name: "Joaquin Stephens", role: "Co-Founder, General Partner",
-      bullets: ["Unconventional lawyer from Universidad Católica de Chile.","Structured the VC arm for CHS Carey & Allende in Chile.","He trail runs, his ATH is 110km.","Notable investments: Toku, Examedi and Grupalia."],
-    },
-  ];
+  const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <div className="slide aspect-video w-full relative p-[5%_6%]">
-      <h2 className="font-sans text-white mb-8 leading-snug" style={{ fontSize: "clamp(16px, 2vw, 30px)", ...f(on, 0) }}>
-        GPs have all the necessary skills to attract and select the best startups:{" "}
-        <mark className="bg-[#FFEC40] text-black px-1 not-italic font-medium">founders, operators, software, and legal.</mark>
-      </h2>
-      <div className="flex gap-10">
-        {gps.map((gp, i) => (
-          <div key={gp.name} className="flex-1" style={f(on, 120 + i * 100)}>
-            <div className="w-11 h-11  bg-white/10 flex items-center justify-center font-mono text-white text-base font-medium mb-3">
-              {gp.initials}
+    <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%]">
+      <div className="mb-4" style={f(on, 0)}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+          The{" "}
+          <mark className="bg-[#FFEC40] text-black px-1 not-italic">Team</mark>
+        </h2>
+      </div>
+
+      <div className="flex-1 flex gap-3 min-h-0">
+        {GPS.map((gp, i) => {
+          const isHovered = hovered === i;
+          const isDimmed = hovered !== null && hovered !== i;
+
+          return (
+            <div
+              key={gp.name}
+              className="relative overflow-hidden cursor-pointer group"
+              style={{
+                flex: isHovered ? 2 : 1,
+                opacity: on ? (isDimmed ? 0.4 : 1) : 0,
+                transform: on ? "translateY(0)" : "translateY(14px)",
+                transition: "flex 0.4s ease, opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s",
+                transitionDelay: on ? `${120 + i * 100}ms` : "0ms",
+              }}
+              onMouseEnter={() => setHovered(i)}
+              onMouseLeave={() => setHovered(null)}
+            >
+              <Image
+                src={gp.image}
+                alt={gp.name}
+                fill
+                className={cn(
+                  "object-cover transition-all duration-500",
+                  isHovered ? "scale-105 grayscale-0" : "grayscale",
+                )}
+              />
+              <div className={cn(
+                "absolute inset-0 transition-colors duration-500",
+                isHovered ? "bg-black/50" : "bg-black/70",
+              )} />
+
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
+                <div className="font-sans font-medium text-white text-xl">{gp.name}</div>
+                <div className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1">{gp.role}</div>
+
+                <ul
+                  className="mt-3 space-y-1.5 overflow-hidden"
+                  style={{
+                    maxHeight: isHovered ? "300px" : "0px",
+                    opacity: isHovered ? 1 : 0,
+                    transition: "max-height 0.4s ease, opacity 0.3s ease",
+                  }}
+                >
+                  {gp.bullets.map((b, j) => (
+                    <li
+                      key={j}
+                      className="font-sans font-medium text-white text-base leading-relaxed flex items-start gap-2"
+                      style={{
+                        opacity: isHovered ? 1 : 0,
+                        transform: isHovered ? "translateY(0)" : "translateY(8px)",
+                        transition: `opacity 0.3s ease ${j * 60}ms, transform 0.3s ease ${j * 60}ms`,
+                      }}
+                    >
+                      <span className="mt-2 size-1.5 bg-[#FFEC40] shrink-0" />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div className="font-sans font-medium text-white text-base mb-0.5">{gp.name}</div>
-            <div className="font-mono text-white text-base tracking-widest uppercase mb-3">{gp.role}</div>
-            <ul className="space-y-1.5">
-              {gp.bullets.map((b, j) => (
-                <li key={j} className="font-sans text-white text-base leading-relaxed">• {b}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

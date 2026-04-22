@@ -35,7 +35,7 @@ interface Props {
 export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
   return (
     <div
-      className="absolute top-0 left-[50%] w-screen h-screen overflow-hidden transition-colors duration-600"
+      className="absolute top-0 left-[50%] w-screen h-screen overflow-hidden transition-colors duration-300"
       style={{ backgroundColor: SLIDES[current]?.bg ?? "rgba(0,0,0,0.4)" }}
     >
       {SLIDES.map(({ Comp }, i) => (
@@ -44,7 +44,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
           className="absolute aspect-video left-1/2 -translate-x-1/2 w-screen top-1/2 -translate-y-1/2"
           style={{
             transform: `translateX(${(i - current) * 100}%)`,
-            transition: "transform 600ms cubic-bezier(0.4, 0, 0.2, 1)",
+            transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
             pointerEvents: i === current ? "auto" : "none",
           }}
         >
