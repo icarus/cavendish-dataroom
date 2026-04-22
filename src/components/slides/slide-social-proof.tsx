@@ -131,12 +131,12 @@ export function SlideSocialProof({ active }: P) {
                 text={`\u201C${displayedItem.text}\u201D`}
                 on={true}
                 baseDelay={0}
-                interval={25}
+                interval={60}
                 className="font-sans font-medium text-white leading-[1.4]"
               />
             </div>
             <div className="flex items-center gap-2 animate-in fade-in duration-300" style={{
-              animationDelay: `${Math.min(displayedItem.text.split(" ").length * 25 + 200, 2000)}ms`,
+              animationDelay: `${Math.min(displayedItem.text.split(" ").length * 60 + 200, 4000)}ms`,
               animationFillMode: "both",
             }}>
               <span className="font-sans font-medium text-white text-base">{displayedItem.name}</span>
