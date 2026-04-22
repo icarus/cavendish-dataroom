@@ -27,7 +27,7 @@ export function RabbitPanel({ active, onBack }: Props) {
   }
 
   return (
-    <div className="absolute top-[100%] left-0 w-screen h-screen bg-black flex items-center justify-center">
+    <div className="absolute top-[50%] left-0 w-screen h-screen bg-black flex items-center justify-center">
       <div className="w-full max-w-sm px-8 space-y-8">
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center justify-center size-12 rounded-full border border-white/10 bg-white/5">
