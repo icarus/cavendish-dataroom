@@ -23,7 +23,7 @@ const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] 
   { Comp: SlideTrackRecord },
   { Comp: Slide10 },
   { Comp: Slide11 },
-  { Comp: SlideSocialProof },
+  { Comp: SlideSocialProof, bg: "transparent" },
   { Comp: Slide12 },
 ];
 
