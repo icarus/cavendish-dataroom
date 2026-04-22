@@ -3,11 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import {
-  Slide2, Slide3, Slide4, Slide5, Slide6,
-  Slide7, Slide8, Slide9, Slide10, Slide11, Slide12,
+  Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation,
+  Slide3, Slide4, Slide5, Slide6,
+  Slide7, Slide8, Slide9, Slide10, Slide12,
 } from "@/components/slides";
 
-const SLIDES = [Slide2, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide11, Slide12];
+const SLIDES = [Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide12];
 
 interface Props {
   current: number;

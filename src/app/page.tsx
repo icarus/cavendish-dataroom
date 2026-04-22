@@ -5,7 +5,7 @@ import { LandingPanel } from "./_components/landing-panel";
 import { DeckPanel } from "./_components/deck-panel";
 import { RabbitPanel } from "./_components/rabbit-panel";
 
-const TOTAL_SLIDES = 12;
+const TOTAL_SLIDES = 13;
 
 export default function LandingPage() {
   const [deckOpen, setDeckOpen] = useState(false);
@@ -23,7 +23,7 @@ export default function LandingPage() {
 
   useEffect(() => {
     const THRESHOLD = 20;
-    const COOLDOWN = 200;
+    const COOLDOWN = 400;
 
     const handle = (dx: number, dy: number) => {
       const now = Date.now();
@@ -75,7 +75,11 @@ export default function LandingPage() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (rabbitOpen) { if (e.key === "Escape") closeRabbit(); return; }
-      if (!deckOpen) { if (e.key === "Enter") openDeck(); return; }
+      if (!deckOpen) {
+        if (e.key === "Enter" || e.key === "ArrowRight") openDeck();
+        else if (e.key === "ArrowDown") openRabbit();
+        return;
+      }
       switch (e.key) {
         case "ArrowRight": case "ArrowDown": case " ":
           e.preventDefault(); goTo(current + 1); break;

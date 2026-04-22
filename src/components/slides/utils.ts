@@ -27,3 +27,24 @@ export const grow = (on: boolean, d = 0): React.CSSProperties => ({
   transformOrigin: "bottom",
   transition: `transform 0.8s cubic-bezier(0.4,0,0.2,1) ${d}ms`,
 });
+
+export function WordReveal({ text, on, baseDelay = 0, interval = 60, className }: { text: string; on: boolean; baseDelay?: number; interval?: number; className?: string }) {
+  const words = text.split(" ");
+  return (
+    <span className={className}>
+      {words.map((word, i) => (
+        <span
+          key={i}
+          className="inline-block"
+          style={{
+            opacity: on ? 1 : 0,
+            transform: on ? "translateY(0)" : "translateY(8px)",
+            transition: `opacity 0.4s ease ${baseDelay + i * interval}ms, transform 0.4s ease ${baseDelay + i * interval}ms`,
+          }}
+        >
+          {word}{i < words.length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </span>
+  );
+}
