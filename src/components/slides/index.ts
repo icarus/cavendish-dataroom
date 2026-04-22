@@ -4,6 +4,7 @@ export { SlideRiskAverse } from "./slide-risk-averse";
 export { SlideLiberation } from "./slide-liberation";
 export { SlideClearingFog } from "./slide-clearing-fog";
 export { Slide3 } from "./slide3";
+export { SlideTrackRecord } from "./slide-track-record";
 export { Slide4 } from "./slide4";
 export { Slide5 } from "./slide5";
 export { Slide6 } from "./slide6";

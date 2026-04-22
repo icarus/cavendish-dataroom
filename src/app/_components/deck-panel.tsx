@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import {
   Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, SlideClearingFog,
-  Slide3, Slide4, Slide5, Slide6, SlideFundStrategy,
+  Slide6, SlideFundStrategy, SlideTrackRecord,
   Slide7, Slide8, Slide9, Slide10, SlideSocialProof, Slide12,
 } from "@/components/slides";
 
@@ -14,17 +14,14 @@ const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] 
   { Comp: SlideRiskAverse },
   { Comp: SlideLiberation, bg: "#FFEC40" },
   { Comp: SlideClearingFog },
-  { Comp: Slide3 },
-  { Comp: Slide4 },
-  { Comp: Slide5 },
-  { Comp: Slide6 },
-  { Comp: SlideFundStrategy },
-  { Comp: Slide7 },
   { Comp: Slide8 },
-  { Comp: Slide9 },
+  { Comp: Slide7 },
+  { Comp: SlideFundStrategy },
+  { Comp: Slide6 },
+  { Comp: SlideTrackRecord },
   { Comp: Slide10 },
-  { Comp: SlideSocialProof },
   { Comp: Slide12 },
+  { Comp: SlideSocialProof },
 ];
 
 interface Props {
