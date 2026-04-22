@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 import {
   Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, SlideClearingFog,
-  Slide3, Slide4, Slide5, Slide6,
-  Slide7, Slide8, Slide9, Slide10, Slide12,
+  Slide3, Slide4, Slide5, Slide6, SlideFundStrategy,
+  Slide7, Slide8, Slide9, Slide10, SlideSocialProof, Slide12,
 } from "@/components/slides";
 
 const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
@@ -18,10 +18,12 @@ const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] 
   { Comp: Slide4 },
   { Comp: Slide5 },
   { Comp: Slide6 },
+  { Comp: SlideFundStrategy },
   { Comp: Slide7 },
   { Comp: Slide8 },
   { Comp: Slide9 },
   { Comp: Slide10 },
+  { Comp: SlideSocialProof },
   { Comp: Slide12 },
 ];
 
