@@ -117,7 +117,7 @@ export function SlideSocialProof({ active }: P) {
       })}
 
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-2xl w-full px-8 pointer-events-none z-30"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 max-w-4xl w-full px-8 py-6 pointer-events-none z-30 bg-black/60 backdrop-blur-sm border border-white/5"
         style={{
           opacity: isActive ? 1 : 0,
           transform: isActive ? "translateY(0) scale(1)" : "translateY(12px) scale(0.97)",
