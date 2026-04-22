@@ -41,7 +41,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDism
   return (
     <div
       className="absolute top-0 left-[50%] w-screen h-screen overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: SLIDES[current]?.bg ?? "#000" }}
+      style={{ backgroundColor: SLIDES[current]?.bg ?? "rgba(0,0,0,0.85)" }}
     >
       {SLIDES.map(({ Comp }, i) => (
         <div

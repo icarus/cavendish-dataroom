@@ -19,6 +19,46 @@ const ORBITS = ITEMS.map((t, i) => {
   return { ...t, baseAngle, radiusX, radiusY, speed, tilt, ring, idx: i };
 });
 
+function QuoteDisplay({ item }: { item: typeof ORBITS[0] }) {
+  const [reveal, setReveal] = useState(false);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setReveal(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  return (
+    <div className="text-center flex flex-col items-center gap-6 max-w-3xl px-8">
+      <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
+        <WordReveal
+          text={`\u201C${item.text}\u201D`}
+          on={reveal}
+          baseDelay={0}
+          interval={60}
+          className="font-sans font-medium text-white"
+        />
+      </div>
+      <div
+        className="flex items-center gap-2"
+        style={{
+          opacity: reveal ? 1 : 0,
+          transform: reveal ? "translateY(0)" : "translateY(8px)",
+          transition: "opacity 0.4s ease 100ms, transform 0.4s ease 100ms",
+        }}
+      >
+        <span className="font-sans font-medium text-white text-base">{item.name}</span>
+        {item.company && (
+          <>
+            <span className="size-1 bg-[#FFEC40] shrink-0" />
+            <span className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
+              {item.company}
+            </span>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function SlideSocialProof({ active }: P) {
   const on = useAnim(active);
   const [hovered, setHovered] = useState<number | null>(null);
@@ -116,40 +156,11 @@ export function SlideSocialProof({ active }: P) {
         );
       })}
 
-      {isActive && (
+      {isActive && displayedItem && (
         <div
           className="absolute inset-0 flex items-center justify-center pointer-events-none z-30 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300"
         >
-          {displayedItem && (
-            <div key={displayedItem.name} className="text-center flex flex-col items-center gap-6 max-w-3xl px-8">
-              <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
-                <WordReveal
-                  text={`\u201C${displayedItem.text}\u201D`}
-                  on={true}
-                  baseDelay={0}
-                  interval={60}
-                  className="font-sans font-medium text-white"
-                />
-              </div>
-              <div
-                className="flex items-center gap-2 animate-in fade-in duration-300"
-                style={{
-                  animationDelay: `${Math.min(displayedItem.text.split(" ").length * 60 + 200, 3500)}ms`,
-                  animationFillMode: "both",
-                }}
-              >
-                <span className="font-sans font-medium text-white text-base">{displayedItem.name}</span>
-                {displayedItem.company && (
-                  <>
-                    <span className="size-1 bg-[#FFEC40] shrink-0" />
-                    <span className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
-                      {displayedItem.company}
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-          )}
+          <QuoteDisplay item={displayedItem} />
         </div>
       )}
     </div>
