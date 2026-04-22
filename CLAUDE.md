@@ -148,11 +148,15 @@ Session summaries are emailed to `NOTIFY_EMAIL` via Resend when a session ends.
 ## Slide Design Rules
 
 - Never use opacity on text. Text is either white or highlighted in yellow.
-- Use consistent font size within a slide (unless a deliberate hierarchy is needed).
+- Minimum font size: text-base (16px). No text-xs, text-sm, or smaller.
 - Yellow highlight uses `WordReveal` with `highlight` prop so the bg animates per-word. Never use a static `<mark>` wrapping a `WordReveal`.
 - WordReveal animation reveals words one by one with staggered delays for cinematic feel.
 - All avatars/images are square (no rounded corners).
 - font-medium for all text in slides.
+
+## Deck Goal
+
+Capture attention to generate a meeting. Show only positives. Tell the story of how Platanus supports founders with capital and networks.
 
 ## Deck Structure
 
@@ -166,14 +170,19 @@ Current slide order and status:
 | 4 | Liberation Capital (yellow bg) | `SlideLiberation` | done |
 | 5 | Clearing the Fog (mentors) | `SlideClearingFog` | done |
 | 6 | Community | — | pending (need Figma text) |
-| 7 | Events | `Slide8` | existing |
-| 8 | Banana House | `Slide7` | existing |
+| 7 | Events | `Slide8` | done |
+| 8 | Banana House | `Slide7` | done |
 | 9 | Fund Strategy (return table) | `SlideFundStrategy` | done |
 | 10 | Elegir al equipo correcto | — | pending (need Figma text) |
-| 11 | How We Win | `Slide6` | existing |
+| 11 | How We Win | `Slide6` | done |
 | 12 | Track Record (fund carousels) | `SlideTrackRecord` | done |
-| 13 | Team | `Slide10` | existing |
-| 14 | Fund Terms | `Slide12` | existing |
+| 13 | Team | `Slide10` | done |
+| 14 | Fund Terms | `Slide11` | done |
 | 15 | Social Proof (testimonials) | `SlideSocialProof` | done |
+| 16 | Contact (email copy) | `Slide12` | done |
 
 Data source of truth: `src/lib/deck-data.ts` (mentors, portfolio companies, funds, testimonials, fund stats, team).
+
+## Down the Rabbit Hole
+
+Password-protected section with full investment details: track record deep dive, investment strategy, portfolio construction.

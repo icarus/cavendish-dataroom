@@ -97,7 +97,7 @@ export function Slide8({ active }: P) {
   const handleHover = useCallback((i: number) => {
     setHoveredIndex(i);
     if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setActivatedIndex(i), 3000);
+    timerRef.current = setTimeout(() => setActivatedIndex(i), 400);
   }, []);
   const handleLeave = useCallback(() => {
     setHoveredIndex(null);

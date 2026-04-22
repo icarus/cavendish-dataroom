@@ -72,7 +72,7 @@ export const FUNDS: Fund[] = [
     dpiMultiple: "0.02X",
     companies: [
       { name: "Fintoc", tagline: "Direct, fast, and cost-effective transactions.", image: "/avatars/fintoc.png", moic: "12.46x", badge: "potential-fund-returner", investorsAfter: ["YC", "Monashees", "Propel"], bullets: ["We introduced the founders.", "Seed: 6 months later.", "Series A: $7m at 29m"] },
-      { name: "Reversso", tagline: "", image: "/avatars/reversso.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Reversso", tagline: "Simple returns and exchanges.", image: "/avatars/reversso.png", moic: "10.77x", investorsAfter: ["Blue Express", "Copec"], bullets: ["280 customers with 560 active stores.", "Operations in Chile, Colombia and Mexico.", "Cash flow positive."] },
       { name: "Cardda", tagline: "", image: "/avatars/cardda.png", moic: "[*]x", investorsAfter: ["YC"] },
     ],
   },
@@ -85,8 +85,8 @@ export const FUNDS: Fund[] = [
     moicMultiple: "7.78X",
     dpiMultiple: "1.75X",
     companies: [
-      { name: "Toku", tagline: "Payments for subscription companies in LatAm.", image: "/avatars/toku.png", moic: "78.81x", badge: "fund-returner", investorsAfter: [], bullets: ["We were their first institutional ticket in 2021. (50k investment + 7%)", "Seed: $7M at 42M Led by F-PRIME", "Series A: $46M at 180M Led by OAK HC/FT + F-PRIME"] },
-      { name: "Plutto", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
+      { name: "Toku", tagline: "Platform for enterprise payment collection.", image: "/avatars/toku.png", moic: "93.50x", badge: "fund-returner", investorsAfter: ["Oak HC/FT", "Gradient", "F-Prime", "Wollef", "Y Combinator", "Clocktower Technologies"], bullets: ["Growth average of 37% QoQ from inception to date (2021).", "Operations in Chile, Mexico and Brasil.", "Series B of $40m at $250m."] },
+      { name: "Plutto", tagline: "Third-party risk assessment and management.", image: "/placeholder-avatar.svg", moic: "21x", investorsAfter: ["Y Combinator"], bullets: ["EBITDA of 20% with +$2.5m in ARR.", "Tremendous capital efficiency. Only one round raised after Platanus."] },
       { name: "Cero", tagline: "", image: "/avatars/cero.png", moic: "[*]x", investorsAfter: [] },
     ],
   },
@@ -115,21 +115,22 @@ export const FUNDS: Fund[] = [
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
-  { name: "Francisco Suarez", company: "CuidaPet", image: "/placeholder-avatar.svg", text: "Cuando empezamos, entrar a Platanus fue una de las mejores decisiones. El monto del financiamiento es muy bueno para early stage y es muy founder friendly. La comunidad es muy potente, estás a un mensaje de Slack de algunos de los mejores fundadores de Latam." },
+  { name: "Francisco Suarez", company: "CuidaPet", image: "/placeholder-avatar.svg", text: "El monto del financiamiento es muy bueno para early stage y es muy founder friendly. El programa es ligero en horas, pero te ayuda a mantener el foco y ser súper ambicioso. La comunidad es muy potente, estás a un mensaje de Slack de algunos de los mejores fundadores de Latam." },
   { name: "Laura del Castillo", company: "Kunzapp", image: "/placeholder-avatar.svg", text: "No porque te \"enseñen a emprender\", sino por cómo te obligan a operar: más rápido, con más foco, con menos excusas. Para nosotros, fue clave en dos cosas: acelerar muchísimo el ritmo de ejecución y tener feedback constante de gente que ya había pasado por lo mismo." },
   { name: "Natan", company: "Felz", image: "/placeholder-avatar.svg", text: "En Latam no falta talento. Falta capital. Hay miles de founders con ideas reales, resolviendo problemas reales, en mercados enormes. Pero la mayoría nunca arranca porque nadie les da ese primer voto de confianza. Platanus resuelve exactamente eso." },
-  { name: "Antonia San Martín", company: "Plutto", image: "/placeholder-avatar.svg", text: "Sin Platanus probablemente nunca habría entrado a este mundo. Fueron los primeros en confiar en que podíamos construir algo como Plutto (YC S22)." },
+  { name: "Antonia San Martín", company: "Plutto", image: "/placeholder-avatar.svg", text: "Sin Platanus probablemente nunca habría entrado a este mundo. Fueron los primeros en confiar en que podíamos construir algo como Plutto (YC S22). Si tienes una idea que te obsesiona, el ecosistema necesita personas buenas que se atrevan a armar buenas startups tech." },
   { name: "Andrés Matte", company: "Kapso", image: "/placeholder-avatar.svg", text: "Platanus is the best thing that can happen to a technical founder in LatAm." },
   { name: "Roger Rea", company: "Grupalia", image: "/placeholder-avatar.svg", text: "Cuando me preguntan si vale la pena, siempre digo lo mismo: tener un inversionista como Platanus es un privilegio. Platanus siempre ha estado ahí para apoyar. Desde el inicio y en cada etapa. Por mucho, uno de nuestros mejores inversionistas." },
   { name: "Jan Henivrta", company: "Former founder & VC", image: "/placeholder-avatar.svg", text: "Pocos fondos en latam realmente son tan founder-first como Platanus. Yo no he visto un fondo donde el GP se pone a cocinar para todos sus founders. O donde de repente uno de los partners te recibe para dormir en su depa para que no gastes en hospedaje." },
   { name: "Diego Fernandez", company: "Sento", image: "/placeholder-avatar.svg", text: "Paula Enei y Joaquin Stephens han construido algo muy especial. No es solo un programa, es un grupo de personas que realmente están ahí contigo, en la trinchera, empujando, dando feedback y acompañando en momentos buenos y malos." },
-  { name: "Pablo Diaz", company: "", image: "/placeholder-avatar.svg", text: "No puedo recomendar Platanus lo suficiente. Una experiencia de altísimo nivel y exigencia: batch con metas claras, office hours dedicados, mentores de primerísimo nivel y una comunidad increíble." },
+  { name: "Pablo Diaz", company: "", image: "/placeholder-avatar.svg", text: "No puedo recomendar Platanus lo suficiente. Una experiencia de altísimo nivel y exigencia: batch con metas claras, office hours dedicados, mentores de primerísimo nivel y una comunidad increíble a un Slack real, activa todos los días." },
   { name: "Victor Perl", company: "", image: "/placeholder-avatar.svg", text: "Platanus invierte USD 200K pero lo que más vale es la comunidad de gente buena onda, súper dispuesta a ayudarte. Las conversas con ellos me han hecho un mejor founder. Esto vale más que los dólares." },
   { name: "Cris", company: "Puente", image: "/placeholder-avatar.svg", text: "Platanus no te da un cheque y desaparece. Te mete en una red de fundadores que están en las mismas. Y eso vale oro. Mi único consejo: no esperes a sentirte listo. Nosotros no lo estábamos. Y fue la mejor decisión que tomamos." },
   { name: "Juan", company: "Morfy", image: "/placeholder-avatar.svg", text: "Lo que pasó en los tres meses de programa fue increíble. Muchas decisiones difíciles con presión real encima y los mejores operadores de Latam asesorando. Platanus es el mejor fondo early-stage de LATAM." },
   { name: "Cristina Etcheberry", company: "Toku", image: "/avatars/cristina-etcheberry.jpg", text: "" },
   { name: "Nath", company: "Neopausia", image: "/placeholder-avatar.svg", text: "Tiempos entretenidos para emprender, más entretenidos aún en Platanus. 1000% recomendado." },
   { name: "José Domingo", company: "Blar", image: "/placeholder-avatar.svg", text: "Más allá del capital, lo que hace la diferencia es la comunidad. Tener acceso a una red de founders que están a otro nivel, poder pedir ayuda o consejos cuando los necesitas, eso es impagable." },
+  { name: "Nico", company: "Lokal", image: "/placeholder-avatar.svg", text: "La eficiencia de resolver problemas completos en una cabeza hace que tener un equipo grande sea una desventaja. Cambiar tu solución mientras construyes es lo más importante en un inicio. Seguro viene una ola de startups que se van a sumar a esa oportunidad con IA." },
 ];
 
 export const FUND_STATS = {
@@ -145,6 +146,7 @@ export const FUND_STATS = {
 };
 
 export const TEAM = [
-  { name: "Paula Enei", role: "General Partner", image: "/avatars/paula-enei.png" },
-  { name: "Joaquin Stephens", role: "General Partner", image: "/avatars/joaquin-stephens.jpg" },
+  { name: "Paula Enei", role: "Co-Founder, Managing Partner", image: "/avatars/paula-enei.png" },
+  { name: "Raimundo Herrera", role: "General Partner, CTO", image: "/placeholder-avatar.svg" },
+  { name: "Joaquin Stephens", role: "Co-Founder, General Partner", image: "/avatars/joaquin-stephens.jpg" },
 ];
