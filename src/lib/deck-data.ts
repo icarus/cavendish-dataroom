@@ -86,7 +86,7 @@ export const FUNDS: Fund[] = [
     dpiMultiple: "1.75X",
     companies: [
       { name: "Toku", tagline: "Platform for enterprise payment collection.", image: "/avatars/toku.png", moic: "93.50x", badge: "fund-returner", investorsAfter: ["Oak HC/FT", "Gradient", "F-Prime", "Wollef", "Y Combinator", "Clocktower Technologies"], bullets: ["Growth average of 37% QoQ from inception to date (2021).", "Operations in Chile, Mexico and Brasil.", "Series B of $40m at $250m."] },
-      { name: "Plutto", tagline: "Third-party risk assessment and management.", image: "/placeholder-avatar.svg", moic: "21x", investorsAfter: ["Y Combinator"], bullets: ["EBITDA of 20% with +$2.5m in ARR.", "Tremendous capital efficiency. Only one round raised after Platanus."] },
+      { name: "Plutto", tagline: "Third-party risk assessment and management.", image: "/avatars/plutto.png", moic: "21x", investorsAfter: ["Y Combinator"], bullets: ["EBITDA of 20% with +$2.5m in ARR.", "Tremendous capital efficiency. Only one round raised after Platanus."] },
       { name: "Cero", tagline: "", image: "/avatars/cero.png", moic: "[*]x", investorsAfter: [] },
     ],
   },
@@ -108,8 +108,8 @@ export const FUNDS: Fund[] = [
       { name: "Altur", tagline: "", image: "/avatars/altur.ico", moic: "[*]x", investorsAfter: [] },
       { name: "CuidaPet", tagline: "", image: "/avatars/cuidapet.png", moic: "[*]x", investorsAfter: [] },
       { name: "Magnar", tagline: "", image: "/avatars/magnar.png", moic: "[*]x", investorsAfter: [] },
-      { name: "Sento", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", investorsAfter: [] },
-      { name: "Bemmbo", tagline: "", image: "/placeholder-avatar.svg", moic: "[*]x", badge: "exited", investorsAfter: [] },
+      { name: "Sento", tagline: "", image: "/avatars/sento.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Bemmbo", tagline: "", image: "/avatars/bemmbo.webp", moic: "[*]x", badge: "exited", investorsAfter: [] },
     ],
   },
 ];
