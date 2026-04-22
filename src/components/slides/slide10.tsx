@@ -47,7 +47,7 @@ export function Slide10({ active }: P) {
                 flex: isHovered ? 2 : 1,
                 opacity: on ? (isDimmed ? 0.4 : 1) : 0,
                 transform: on ? "translateY(0)" : "translateY(14px)",
-                transition: "flex 0.4s ease, opacity 0.4s ease 0.1s, transform 0.4s ease 0.1s",
+                transition: "flex 0.3s ease, opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s",
                 transitionDelay: on ? `${120 + i * 100}ms` : "0ms",
               }}
               onMouseEnter={() => setHovered(i)}
@@ -58,12 +58,12 @@ export function Slide10({ active }: P) {
                 alt={gp.name}
                 fill
                 className={cn(
-                  "object-cover transition-all duration-500",
+                  "object-cover transition-all duration-150",
                   isHovered ? "scale-105 grayscale-0" : "grayscale",
                 )}
               />
               <div className={cn(
-                "absolute inset-0 transition-colors duration-500",
+                "absolute inset-0 transition-colors duration-150",
                 isHovered ? "bg-black/50" : "bg-black/70",
               )} />
 
@@ -76,20 +76,20 @@ export function Slide10({ active }: P) {
                   style={{
                     maxHeight: isHovered ? "300px" : "0px",
                     opacity: isHovered ? 1 : 0,
-                    transition: "max-height 0.4s ease, opacity 0.3s ease",
+                    transition: "max-height 0.3s ease, opacity 0.3s ease",
                   }}
                 >
                   {gp.bullets.map((b, j) => (
                     <li
                       key={j}
-                      className="font-sans font-medium text-white text-base leading-relaxed flex items-start gap-2"
+                      className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-1"
                       style={{
                         opacity: isHovered ? 1 : 0,
                         transform: isHovered ? "translateY(0)" : "translateY(8px)",
                         transition: `opacity 0.3s ease ${j * 60}ms, transform 0.3s ease ${j * 60}ms`,
                       }}
                     >
-                      <span className="mt-2 size-1.5 bg-[#FFEC40] shrink-0" />
+                      <span className="size-1 bg-[#FFEC40] shrink-0" />
                       {b}
                     </li>
                   ))}
