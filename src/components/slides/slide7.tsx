@@ -27,11 +27,11 @@ export function Slide7({ active }: P) {
             height={1080}
             className="scale-150 opacity-70 -mt-56 -ml-24 object-contain"
           />
-          <div className="absolute" style={{ top: "18%", left: "42%" }}>
-            <div className="font-mono text-white text-base font-medium tracking-widest uppercase border border-white/40 px-3 py-1.5 bg-black/60 mb-1.5 w-fit">
+          <div className="absolute flex flex-col items-center" style={{ top: "18%", left: "16%" }}>
+            <div className="font-mono text-white text-base font-medium tracking-widest uppercase border border-white/40 px-3 py-1.5 bg-black/60 mb-2.5 w-fit">
               MEXICO CITY
             </div>
-            <div className="font-mono text-[#FFEC40] text-base font-medium tracking-widest uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
+            <div className="font-mono text-[#FFEC40] text-sm font-medium tracking-widest uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
               COMING SOON
             </div>
           </div>
