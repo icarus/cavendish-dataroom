@@ -76,8 +76,8 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
         onClick={(e) => e.stopPropagation()}
       >
         <div className="shrink-0 flex flex-col items-center gap-3">
-          <div className="relative size-24 overflow-hidden border border-white/10">
-            <Image src={company.image} alt={company.name} fill className="object-cover" />
+          <div className="relative size-24 overflow-hidden">
+            <Image src={company.image} alt={company.name} fill className="object-contain" />
           </div>
           <div className={cn("font-mono text-2xl font-medium", isFR ? "text-black" : "text-[#FFEC40]")}>
             {company.moic}
@@ -183,7 +183,7 @@ export function SlideTrackRecord({ active }: P) {
             className={cn(
               "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2",
               cardStyle(company.badge),
-              "hover:brightness-125 transition-all",
+              "hover:bg-white/15 transition-all",
             )}
             style={f(on, 150 + i * 40)}
             onClick={() => setSelected(company)}
