@@ -9,7 +9,7 @@ const PHRASES = [
 
 const TYPING_SPEED = 60;
 const DELETE_SPEED = 40;
-const PAUSE_AFTER_TYPE = 1800;
+const PAUSE_AFTER_TYPE = 150;
 const PAUSE_AFTER_DELETE = 400;
 
 const FAVICON_FRAMES = Array.from(

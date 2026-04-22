@@ -217,20 +217,23 @@ export function TypingAnimation({
     <MotionComponent
       ref={elementRef}
       className={cn(
-        "leading-20 tracking-[-0.02em]",
+        "leading-20 tracking-[-0.02em] relative",
         Component === "span" && "inline-block",
         className
       )}
       {...props}
     >
-      {displayedText}
-      {shouldShowCursor && (
-        <span
-          className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
-        >
-          {getCursorChar()}
-        </span>
-      )}
+      <span aria-hidden className="invisible whitespace-pre-wrap">{wordsToAnimate[currentWordIndex] ?? ""}</span>
+      <span className="absolute inset-0 whitespace-pre-wrap">
+        {displayedText}
+        {shouldShowCursor && (
+          <span
+            className={cn("inline-block", blinkCursor && "animate-blink-cursor")}
+          >
+            {getCursorChar()}
+          </span>
+        )}
+      </span>
     </MotionComponent>
   )
 }

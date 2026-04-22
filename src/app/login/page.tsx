@@ -84,7 +84,7 @@ export default function LoginPage() {
 
         <div className="flex items-center gap-3">
           <Separator className="flex-1 bg-white/10" />
-          <span className="text-xs text-slate-500">or</span>
+          <span className="text-sm text-slate-500">or</span>
           <Separator className="flex-1 bg-white/10" />
         </div>
 

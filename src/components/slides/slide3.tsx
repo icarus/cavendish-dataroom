@@ -36,31 +36,31 @@ export function Slide3({ active }: P) {
         </h2>
       </div>
 
-      <div className="flex flex-1 min-h-0 border border-white/10">
+      <div className="flex gap-2 flex-1 min-h-0 border border-white/10">
         {funds.map((fund, fi) => (
-          <div key={fund.name} className="flex-1 border-r border-white/10 last:border-r-0 flex flex-col">
-            <div className="flex justify-between px-4 py-3 border-b border-white/10" style={f(on, 80 + fi * 30)}>
-              <span className="font-mono text-white text-sm font-semibold tracking-widest uppercase">{fund.name}</span>
-              <span className="font-mono text-white/40 text-sm">{fund.year}</span>
+          <div key={fund.name} className="bg-white/10 backdrop-blur-lg flex-1 flex flex-col">
+            <div className="flex justify-between px-8 pt-8 mb-6" style={f(on, 80 + fi * 30)}>
+              <span className="font-sans text-white font-medium text-3xl">{fund.name}</span>
+              <span className="font-sans text-white/40 text-3xl">{fund.year}</span>
             </div>
             {fund.rows.map(([label, value], ri) => (
-              <div key={label} className="flex justify-between items-center px-4 py-3 border-b border-white/5 last:border-b-0 flex-1" style={f(on, 160 + ri * 50 + fi * 20)}>
-                <span className="font-mono text-white/40 text-sm tracking-widest uppercase">{label}</span>
-                <span className="font-mono text-white text-sm font-medium">{value}</span>
+              <div key={label} className="flex justify-between items-center px-8 py-2 border-b border-white/5 last:border-b-0 flex-1" style={f(on, 160 + ri * 50 + fi * 20)}>
+                <span className="font-mono text-white/40 text-lg tracking-widest uppercase">{label}</span>
+                <span className="font-mono text-white text-lg font-medium">{value}</span>
               </div>
             ))}
           </div>
         ))}
       </div>
 
-      <div className="flex mt-3 gap-1">
+      <div className="flex mt-3 gap-2">
         {stats.map((stat, i) => (
           <div
             key={stat.label}
             className={cn("flex-1 flex flex-col justify-center px-5 py-4", stat.yellow ? "bg-[#FFEC40]" : "bg-[#1a1a1a]")}
             style={grow(on, 300 + i * 70)}
           >
-            <span className={cn("font-sans font-semibold leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
+            <span className={cn("font-mono leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
               {stat.value}
             </span>
             <span className={cn("font-mono text-sm tracking-widest uppercase mt-1.5", stat.yellow ? "text-black/60" : "text-white/40")}>
