@@ -29,7 +29,7 @@ export function SlideRiskAverse({ active }: P) {
         </div>
 
         <div className="leading-[1.4]" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
-          <mark className="bg-[#FFEC40] text-black px-2 py-0.5 inline-block not-italic">
+          <mark className="bg-[#FFEC40] text-black px-2 py-0.5 inline-block not-italic" style={f(on, 2000)}>
             <WordReveal
               text="That's not early stage Venture Capital."
               on={on}
