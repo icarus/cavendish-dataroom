@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/deck-data";
-import { P, useAnim } from "./utils";
+import { P, useAnim, WordReveal } from "./utils";
 
 const ITEMS = TESTIMONIALS.filter((t) => t.text);
 
@@ -12,10 +12,10 @@ const ORBITS = ITEMS.map((t, i) => {
   const ringIndex = Math.floor(i / 3);
   const ringCount = Math.ceil(ITEMS.length / 3);
   const baseAngle = (ringIndex / ringCount) * Math.PI * 2 + ring * 0.7;
-  const radiusX = [38, 26, 14][ring];
-  const radiusY = [22, 15, 8][ring];
+  const radiusX = [44, 32, 20][ring];
+  const radiusY = [38, 28, 16][ring];
   const speed = [0.15, 0.1, 0.07][ring];
-  const tilt = 0.6;
+  const tilt = 0.85;
   return { ...t, baseAngle, radiusX, radiusY, speed, tilt, ring, idx: i };
 });
 
@@ -125,11 +125,20 @@ export function SlideSocialProof({ active }: P) {
         }}
       >
         {displayedItem && (
-          <div className="text-center flex flex-col items-center gap-4">
-            <p className="font-sans font-medium text-white leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
-              &ldquo;{displayedItem.text}&rdquo;
-            </p>
-            <div className="flex items-center gap-2">
+          <div key={displayedItem.name} className="text-center flex flex-col items-center gap-4">
+            <div style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
+              <WordReveal
+                text={`\u201C${displayedItem.text}\u201D`}
+                on={true}
+                baseDelay={0}
+                interval={25}
+                className="font-sans font-medium text-white leading-[1.4]"
+              />
+            </div>
+            <div className="flex items-center gap-2 animate-in fade-in duration-300" style={{
+              animationDelay: `${Math.min(displayedItem.text.split(" ").length * 25 + 200, 2000)}ms`,
+              animationFillMode: "both",
+            }}>
               <span className="font-sans font-medium text-white text-base">{displayedItem.name}</span>
               {displayedItem.company && (
                 <>
