@@ -8,7 +8,21 @@ import {
   Slide7, Slide8, Slide9, Slide10, Slide12,
 } from "@/components/slides";
 
-const SLIDES = [Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, Slide3, Slide4, Slide5, Slide6, Slide7, Slide8, Slide9, Slide10, Slide12];
+const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
+  { Comp: Slide2 },
+  { Comp: SlideFounderQuote },
+  { Comp: SlideRiskAverse },
+  { Comp: SlideLiberation, bg: "#FFEC40" },
+  { Comp: Slide3 },
+  { Comp: Slide4 },
+  { Comp: Slide5 },
+  { Comp: Slide6 },
+  { Comp: Slide7 },
+  { Comp: Slide8 },
+  { Comp: Slide9 },
+  { Comp: Slide10 },
+  { Comp: Slide12 },
+];
 
 interface Props {
   current: number;
@@ -19,8 +33,11 @@ interface Props {
 
 export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
   return (
-    <div className="absolute top-0 left-[50%] bg-black/40 w-screen h-screen overflow-hidden">
-      {SLIDES.map((SlideComp, i) => (
+    <div
+      className="absolute top-0 left-[50%] w-screen h-screen overflow-hidden transition-colors duration-600"
+      style={{ backgroundColor: SLIDES[current]?.bg ?? "rgba(0,0,0,0.4)" }}
+    >
+      {SLIDES.map(({ Comp }, i) => (
         <div
           key={i}
           className="absolute aspect-video left-1/2 -translate-x-1/2 w-screen top-1/2 -translate-y-1/2"
@@ -30,7 +47,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
             pointerEvents: i === current ? "auto" : "none",
           }}
         >
-          <SlideComp active={i === current && deckOpen} />
+          <Comp active={i === current && deckOpen} />
         </div>
       ))}
 

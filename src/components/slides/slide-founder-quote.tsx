@@ -6,7 +6,7 @@ export function SlideFounderQuote({ active }: P) {
   const on = useAnim(active);
 
   return (
-    <div className="slide aspect-video w-full relative flex items-center justify-center p-[8%]">
+    <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
       <div className="max-w-4xl space-y-10">
         <blockquote className="leading-[1.4] flex flex-col -space-y-8" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
@@ -32,7 +32,7 @@ export function SlideFounderQuote({ active }: P) {
             on={on}
             baseDelay={2600}
             interval={100}
-            className="font-sans font-semibold"
+            className="font-sans font-medium"
           />
         </mark>
 
@@ -43,8 +43,8 @@ export function SlideFounderQuote({ active }: P) {
             transition: "opacity 0.6s ease 3200ms",
           }}
         >
-          <div className="w-px h-6 bg-white/20" />
-          <span className="font-mono text-white/30 text-sm uppercase tracking-widest">
+          <div className="w-0.5 h-9 bg-white/20" />
+          <span className="font-mono text-white/30 text-3xl uppercase tracking-widest">
             Natan, CEO of Felz
           </span>
         </div>

@@ -6,7 +6,7 @@ export function SlideRiskAverse({ active }: P) {
   const on = useAnim(active);
 
   return (
-    <div className="slide aspect-video w-full relative flex items-center justify-center p-[8%]">
+    <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
       <div className="max-w-4xl space-y-10">
         <div className="leading-[1.4]" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
@@ -14,7 +14,7 @@ export function SlideRiskAverse({ active }: P) {
             on={on}
             baseDelay={0}
             interval={80}
-            className="font-sans font-semibold text-white"
+            className="font-sans font-medium text-white"
           />
         </div>
 
@@ -24,7 +24,7 @@ export function SlideRiskAverse({ active }: P) {
             on={on}
             baseDelay={800}
             interval={60}
-            className="font-sans text-white"
+            className="font-sans font-medium text-white"
           />
         </div>
 
@@ -46,7 +46,7 @@ export function SlideRiskAverse({ active }: P) {
             on={on}
             baseDelay={2800}
             interval={70}
-            className="font-sans text-white"
+            className="font-sans font-medium text-white"
           />
         </div>
       </div>
