@@ -19,7 +19,7 @@ function MentorDetail({ mentor, onClose }: { mentor: typeof MENTORS[number]; onC
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="absolute inset-0 bg-black/80" />
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <motion.div
         className="relative z-10 flex gap-8 items-center"
         layoutId={`mentor-${mentor.name}`}
@@ -68,7 +68,7 @@ export function SlideClearingFog({ active }: P) {
           <motion.div
             key={mentor.name}
             layoutId={`mentor-${mentor.name}`}
-            className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group"
+            className="relative aspect-square cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group"
             style={f(on, 400 + i * 80)}
             onClick={() => setSelected(mentor)}
           >

@@ -29,7 +29,7 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <div className="absolute inset-0 bg-black/80" />
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
       <motion.div
         className={cn(
           "relative z-10 flex gap-8 max-w-3xl w-full p-8 border",
@@ -133,7 +133,7 @@ export function SlideTrackRecord({ active }: P) {
             key={company.name}
             layoutId={`company-${company.name}`}
             className={cn(
-              "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-1 p-3",
+              "relative aspect-square cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-1 p-3",
               company.badge ? "bg-[#FFEC40] border-black/10" : "bg-white/5 border-white/10",
               "hover:scale-105 transition-transform",
             )}
