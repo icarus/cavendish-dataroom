@@ -45,7 +45,7 @@ export function SlideFounderQuote({ active }: P) {
           }}
         >
           <div className="w-0.5 h-9 bg-white/20" />
-          <span className="font-mono text-white/30 text-3xl uppercase tracking-widest">
+          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
             Natan, CEO of Felz
           </span>
         </div>

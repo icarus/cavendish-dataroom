@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { TEAM } from "@/lib/deck-data";
+import { ProgressiveBlur } from "@/components/ui/progressive-blur";
 import { f, P, useAnim } from "./utils";
 
 const GPS = [
@@ -47,7 +48,7 @@ export function Slide10({ active }: P) {
                 flex: isHovered ? 2 : 1,
                 opacity: on ? (isDimmed ? 0.4 : 1) : 0,
                 transform: on ? "translateY(0)" : "translateY(14px)",
-                transition: "flex 0.3s ease, opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s",
+                transition: "flex 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out",
                 transitionDelay: on ? `${120 + i * 100}ms` : "0ms",
               }}
               onMouseEnter={() => setHovered(i)}
@@ -58,35 +59,53 @@ export function Slide10({ active }: P) {
                 alt={gp.name}
                 fill
                 className={cn(
-                  "object-cover transition-all duration-150",
+                  "object-cover transition-all duration-200",
                   isHovered ? "scale-105 grayscale-0" : "grayscale",
                 )}
               />
               <div className={cn(
-                "absolute inset-0 transition-colors duration-150",
-                isHovered ? "bg-black/50" : "bg-black/70",
+                "absolute inset-0 transition-colors duration-200",
+                isHovered ? "bg-black/30" : "bg-black/60",
               )} />
 
-              <div className="absolute bottom-0 left-0 right-0 p-5 z-10">
-                <div className="font-sans font-medium text-white text-xl">{gp.name}</div>
-                <div className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1">{gp.role}</div>
+              <ProgressiveBlur position="bottom" height="50%" />
+
+              <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
+                <div
+                  className="font-sans font-medium text-white text-base"
+                  style={{
+                    transform: isHovered ? "translateX(12px)" : "translateX(0)",
+                    transition: "transform 0.3s ease-out",
+                  }}
+                >
+                  {gp.name}
+                </div>
+                <div
+                  className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1"
+                  style={{
+                    transform: isHovered ? "translateX(12px)" : "translateX(0)",
+                    transition: "transform 0.3s ease-out 30ms",
+                  }}
+                >
+                  {gp.role}
+                </div>
 
                 <ul
-                  className="mt-3 space-y-1.5 overflow-hidden"
+                  className="mt-3 space-y-1 overflow-hidden"
                   style={{
                     maxHeight: isHovered ? "300px" : "0px",
                     opacity: isHovered ? 1 : 0,
-                    transition: "max-height 0.3s ease, opacity 0.3s ease",
+                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out",
                   }}
                 >
                   {gp.bullets.map((b, j) => (
                     <li
                       key={j}
-                      className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-1"
+                      className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2"
                       style={{
                         opacity: isHovered ? 1 : 0,
-                        transform: isHovered ? "translateY(0)" : "translateY(8px)",
-                        transition: `opacity 0.3s ease ${j * 60}ms, transform 0.3s ease ${j * 60}ms`,
+                        transform: isHovered ? "translateX(12px)" : "translateX(0)",
+                        transition: `opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${80 + j * 40}ms, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${80 + j * 40}ms`,
                       }}
                     >
                       <span className="size-1 bg-[#FFEC40] shrink-0" />

@@ -22,7 +22,7 @@ export function Slide6({ active }: P) {
           <div key={title} className="justify-center items-center text-center p-6 flex flex-col gap-2.5" style={f(on, 80 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
             <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
-            <p className="font-sans text-white text-base leading-relaxed">{desc}</p>
+            <p className="font-sans font-medium text-white text-base leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
@@ -38,7 +38,7 @@ export function Slide6({ active }: P) {
           <div key={title} className="justify-center items-center text-center p-6 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
             <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
-            <p className="font-sans text-white text-base leading-relaxed">{desc}</p>
+            <p className="font-sans font-medium text-white text-base leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>

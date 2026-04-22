@@ -47,14 +47,16 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-black flex flex-col items-center justify-center cursor-pointer",
+        "relative overflow-hidden bg-black backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer",
         activated ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
       )}
       style={{
-        opacity: on ? (dimmed ? 0.15 : 1) : 0,
+        opacity: on ? (dimmed ? 0.5 : 1) : 0,
         transform: on ? "translateY(0)" : "translateY(14px)",
         filter: activated ? "grayscale(0)" : "grayscale(1)",
-        transition: `opacity 0.2s ease-out ${delay}ms, transform 0.2s ease-out ${delay}ms, filter 0.2s ease-out`,
+        transition: on
+          ? `opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out`
+          : `opacity 0.2s ease-out ${delay}ms, transform 0.2s ease-out ${delay}ms, filter 0.2s ease-out`,
       }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
@@ -73,15 +75,16 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
       />
       <div className={cn(
         "absolute inset-0 transition-colors duration-200",
-        activated ? "bg-black/40" : "bg-black/60",
+        activated ? "bg-black/40" : "bg-black/70",
       )} />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
       <h3
         className="relative z-10 font-mono font-medium text-white text-center px-4 leading-tight uppercase tracking-wider"
-        style={{ fontSize: "clamp(12px, 1.4vw, 22px)" }}
+        style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
       >
         {title}
       </h3>
-      <p className="relative z-10 font-sans font-medium text-white/70 text-center text-base leading-snug px-6 mt-0.5 max-w-[90%]">
+      <p className="relative z-10 font-sans font-medium text-white text-center text-base leading-snug px-6 mt-0.5 max-w-[90%]">
         {desc}
       </p>
     </div>

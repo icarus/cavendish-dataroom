@@ -28,15 +28,15 @@ export function Slide7({ active }: P) {
             className="scale-150 opacity-70 -mt-56 -ml-24 object-contain"
           />
           <div className="absolute flex flex-col items-center" style={{ top: "18%", left: "16%" }}>
-            <div className="font-mono text-white text-base font-medium tracking-widest uppercase border border-white/40 px-3 py-1.5 bg-black/60 mb-2.5 w-fit">
+            <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 mb-2.5 w-fit">
               MEXICO CITY
             </div>
-            <div className="font-mono text-[#FFEC40] text-sm font-medium tracking-widest uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
+            <div className="font-mono text-[#FFEC40] text-base font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
               COMING SOON
             </div>
           </div>
           <div className="absolute" style={{ bottom: "32%", right: "20%" }}>
-            <div className="font-mono text-white text-base font-medium tracking-widest uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
+            <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>
           </div>
@@ -44,8 +44,8 @@ export function Slide7({ active }: P) {
       </div>
       <div className="flex h-[34%]" style={f(on, 280)}>
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="flex-1 border-r border-white/5 last:border-r-0 bg-white/5 flex items-center justify-center">
-            <span className="font-mono text-white/15 text-base tracking-widest uppercase">Photo {i + 1}</span>
+          <div key={i} className="flex-1 border-r border-white/5 last:border-r-0 bg-white/5 backdrop-blur-sm flex items-center justify-center">
+            <span className="font-mono text-white/15 text-base tracking-wider uppercase">Photo {i + 1}</span>
           </div>
         ))}
       </div>

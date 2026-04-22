@@ -153,6 +153,27 @@ Session summaries are emailed to `NOTIFY_EMAIL` via Resend when a session ends.
 - WordReveal animation reveals words one by one with staggered delays for cinematic feel.
 - All avatars/images are square (no rounded corners).
 - font-medium for all text in slides.
+- All hoverable/interactive elements must have `backdrop-blur-sm`.
+- Default slide background is solid `#000`, not semi-transparent.
+
+### 5 Standardized Text Styles
+
+Every text element in slides must use one of these 5 styles:
+
+| Style | Classes | Use for |
+|-------|---------|---------|
+| **Title** | `font-sans font-medium text-white` + clamp size | Slide headings |
+| **Body** | `font-sans font-medium text-white text-base leading-relaxed` | Paragraphs, descriptions |
+| **Label** | `font-mono font-medium text-white/40 text-base uppercase tracking-wider` | Categories, metadata |
+| **Accent** | `font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider` | Yellow labels, highlights |
+| **Muted** | `font-sans font-medium text-white/40 text-base leading-relaxed` | Secondary descriptions |
+
+Rules:
+- Always `font-medium`, never `font-light`, `font-normal`, or `font-semibold`.
+- Always `tracking-wider`, never `tracking-widest` or other variants.
+- Muted opacity is always `white/40`, never `white/30`, `white/50`, `white/60`.
+- On yellow backgrounds, swap `text-white` for `text-black` and `text-white/40` for `text-black/40`.
+- Big hero numbers (clamp sizes) are exceptions but still follow font-mono font-medium.
 
 ## Deck Goal
 

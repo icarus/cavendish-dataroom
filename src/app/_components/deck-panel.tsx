@@ -1,12 +1,14 @@
 "use client";
 
+import { useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Slide2, SlideFounderQuote, SlideRiskAverse, SlideLiberation, SlideClearingFog,
   Slide6, SlideFundStrategy, SlideTrackRecord,
   Slide7, Slide8, Slide9, Slide10, Slide11, SlideSocialProof, Slide12,
 } from "@/components/slides";
+import { SpeedAlert, useSpeedAlert } from "@/components/ui/speed-alert";
 
 const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
   { Comp: Slide2 },
@@ -33,10 +35,17 @@ interface Props {
 }
 
 export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
+  const { showAlert, recordNavigation, dismissAlert } = useSpeedAlert();
+
+  const handleGoTo = useCallback((n: number) => {
+    recordNavigation();
+    onGoTo(n);
+  }, [recordNavigation, onGoTo]);
+
   return (
     <div
       className="absolute top-0 left-[50%] w-screen h-screen overflow-hidden transition-colors duration-300"
-      style={{ backgroundColor: SLIDES[current]?.bg ?? "rgba(0,0,0,0.4)" }}
+      style={{ backgroundColor: SLIDES[current]?.bg ?? "#000" }}
     >
       {SLIDES.map(({ Comp }, i) => (
         <div
@@ -63,18 +72,40 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack }: Props) {
         {current + 1} / {SLIDES.length}
       </div>
 
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 items-center z-10">
-        {SLIDES.map((_, i) => (
-          <Button
-            key={i}
-            variant={i === current ? "default" : "outline"}
-            size="icon"
-            onClick={() => onGoTo(i)}
-            style={{ width: i === current ? 24 : 6, height: 6, minWidth: 0, borderRadius: 9999, padding: 0, transition: "width 300ms" }}
-            className={i === current ? "!bg-[#FFEC40]" : "bg-white/25 border-0"}
-          />
-        ))}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 items-center z-10">
+        <Button
+          variant="default"
+          size="icon"
+          onClick={() => handleGoTo(Math.max(0, current - 1))}
+          className="!bg-transparent !border-0 text-white/50 hover:text-white"
+          disabled={current === 0}
+        >
+          <ChevronLeft />
+        </Button>
+        <div className="flex gap-1.5 items-center">
+          {SLIDES.map((_, i) => (
+            <Button
+              key={i}
+              variant={i === current ? "default" : "outline"}
+              size="icon"
+              onClick={() => handleGoTo(i)}
+              style={{ width: i === current ? 24 : 6, height: 6, minWidth: 0, borderRadius: 9999, padding: 0, transition: "width 300ms" }}
+              className={i === current ? "!bg-[#FFEC40]" : "bg-white/25 border-0"}
+            />
+          ))}
+        </div>
+        <Button
+          variant="default"
+          size="icon"
+          onClick={() => handleGoTo(Math.min(SLIDES.length - 1, current + 1))}
+          className="!bg-transparent !border-0 text-white/50 hover:text-white"
+          disabled={current === SLIDES.length - 1}
+        >
+          <ChevronRight />
+        </Button>
       </div>
+
+      {showAlert && <SpeedAlert onDone={dismissAlert} />}
     </div>
   );
 }

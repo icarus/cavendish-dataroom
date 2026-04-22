@@ -35,7 +35,7 @@ export function SlideSocialProof({ active }: P) {
         {visible.map((testimonial, i) => (
           <div
             key={`${testimonial.name}-${offset}`}
-            className="bg-white/5 border border-white/10 p-6 flex flex-col gap-4 animate-in fade-in duration-500"
+            className="bg-white/5 backdrop-blur-sm border border-white/10 p-6 flex flex-col gap-4 animate-in fade-in duration-500"
             style={{ animationDelay: `${i * 100}ms`, animationFillMode: "both" }}
           >
             <div className="flex items-center gap-3">

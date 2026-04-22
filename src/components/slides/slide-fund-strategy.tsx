@@ -32,17 +32,17 @@ export function SlideFundStrategy({ active }: P) {
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Strategy</mark>
           </h2>
         </div>
-        <p className="font-sans font-medium text-white/50 text-base max-w-lg text-right" style={f(on, 100)}>
+        <p className="font-sans font-medium text-white/40 text-base max-w-lg text-right" style={f(on, 100)}>
           Returns on a $200K investment depending on entry price and exit valuation, considering three standard dilution rounds.
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 grid grid-cols-5 grid-rows-5 gap-px">
-        <div className="bg-white/5 flex items-center justify-center" style={f(on, 150)}>
+      <div className="flex-1 min-h-0 grid grid-cols-5 grid-rows-5">
+        <div className="bg-white/5 backdrop-blur-sm flex items-center justify-center" style={f(on, 150)}>
           <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Entry</span>
         </div>
         {EXIT_VALUATIONS.map((v, i) => (
-          <div key={v} className="bg-white/5 flex items-center justify-center" style={f(on, 180 + i * 40)}>
+          <div key={v} className="bg-white/5 backdrop-blur-sm flex items-center justify-center" style={f(on, 180 + i * 40)}>
             <span className="font-mono font-medium text-white text-base">${v}M exit</span>
           </div>
         ))}
@@ -52,8 +52,8 @@ export function SlideFundStrategy({ active }: P) {
             <div
               key={`label-${entry.label}`}
               className={cn(
-                "flex items-center justify-center px-3",
-                entry.highlight ? "bg-[#FFEC40]" : "bg-white/5",
+                "flex items-center justify-center px-3 backdrop-blur-sm",
+                entry.highlight ? "bg-[#FFEC40]" : "bg-white/5 backdrop-blur-sm",
               )}
               style={f(on, 250 + ri * 60)}
             >
@@ -73,7 +73,7 @@ export function SlideFundStrategy({ active }: P) {
                   key={`${entry.label}-${exitM}`}
                   className={cn(
                     "flex items-center justify-center relative",
-                    entry.highlight ? "bg-[#FFEC40]" : "bg-white/5",
+                    entry.highlight ? "bg-[#FFEC40]" : "bg-white/5 backdrop-blur-sm",
                   )}
                   style={f(on, 280 + ri * 60 + ci * 30)}
                 >

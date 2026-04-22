@@ -12,12 +12,12 @@ function Card({ name, tagline, bullets, moic, delay, on, image }: { name: string
         </div>
         <div>
           <div className="font-sans font-medium text-white text-base">{name}</div>
-          <div className="font-sans text-white/40 -mt-0.5 text-base">{tagline}</div>
+          <div className="font-sans font-medium text-white/40 -mt-0.5 text-base">{tagline}</div>
         </div>
       </div>
       <ul className="flex-1 space-y-1">
         {bullets.map((b, i) => (
-          <li key={i} className="font-sans text-white text-base leading-relaxed flex items-center gap-2">
+          <li key={i} className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2">
             <div className="size-1 bg-[#FFEC40] shrink-0" />
             {b}
           </li>
