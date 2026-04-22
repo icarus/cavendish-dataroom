@@ -173,9 +173,9 @@ export function SlideTrackRecord({ active }: P) {
         </div>
         <div className="flex gap-2" style={f(on, 100)}>
           {[
-            { key: "all", label: "All", moic: "" },
-            ...FUNDS.map((fund) => ({ key: fund.name, label: fund.name, moic: fund.moicMultiple })),
-          ].map(({ key, label, moic }) => (
+            { key: "all", label: "All", detail: "" },
+            ...FUNDS.map((fund) => ({ key: fund.name, label: fund.name, detail: `${fund.year} · ${fund.moicMultiple} MOIC` })),
+          ].map(({ key, label, detail }) => (
             <button
               key={key}
               onClick={() => setActiveFund(key)}
@@ -187,9 +187,9 @@ export function SlideTrackRecord({ active }: P) {
               )}
             >
               {label}
-              {moic && (
+              {detail && (
                 <span className={cn("font-mono", activeFund === key ? "text-black/50" : "text-white/30")}>
-                  {moic}
+                  ({detail})
                 </span>
               )}
             </button>
