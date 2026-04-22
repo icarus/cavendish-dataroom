@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FUNDS } from "@/lib/deck-data";
+import type { PortfolioCompany } from "@/lib/deck-data";
 import { AnimatePresence, motion } from "motion/react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { f, P, useAnim } from "./utils";
 
 const BADGE_LABELS: Record<string, string> = {
@@ -15,46 +15,128 @@ const BADGE_LABELS: Record<string, string> = {
   exited: "Exited",
 };
 
-const BADGE_DOT: Record<string, string> = {
-  "fund-returner": "bg-[#FFEC40]",
-  "potential-fund-returner": "border border-[#FFEC40] bg-transparent",
-  "rising-star": "bg-[#FFEC40]/30",
-  exited: "bg-white/30",
+const BADGE_CARD_STYLES: Record<string, string> = {
+  "fund-returner": "bg-[#FFEC40] border-[#FFEC40]",
+  "potential-fund-returner": "bg-[#FFEC40]/10 border-[#FFEC40]",
+  "rising-star": "bg-[#FFEC40]/5 border-[#FFEC40]/40",
+  exited: "bg-white/10 border-white/30",
 };
+
+const LEGEND = [
+  { badge: "fund-returner", dot: "bg-[#FFEC40]" },
+  { badge: "potential-fund-returner", dot: "border border-[#FFEC40] bg-transparent" },
+  { badge: "rising-star", dot: "bg-[#FFEC40]/30" },
+  { badge: "exited", dot: "bg-white/30" },
+];
 
 const ALL_COMPANIES = FUNDS.flatMap((fund) =>
   fund.companies.map((c) => ({ ...c, fundName: fund.name }))
 ).sort((a, b) => a.name.localeCompare(b.name));
 
+function cardStyle(badge?: string) {
+  if (!badge) return "bg-white/5 border-white/10";
+  return BADGE_CARD_STYLES[badge] ?? "bg-white/5 border-white/10";
+}
+
+function detailBg(badge?: string) {
+  if (badge === "fund-returner") return "bg-[#FFEC40] border-black/10";
+  return "bg-[#111] border-white/10";
+}
+
+function detailText(badge?: string) {
+  return badge === "fund-returner" ? "text-black" : "text-white";
+}
+
+function detailMuted(badge?: string) {
+  return badge === "fund-returner" ? "text-black/40" : "text-white/40";
+}
+
+function detailBullet(badge?: string) {
+  return badge === "fund-returner" ? "bg-black" : "bg-[#FFEC40]";
+}
+
+function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fundName: string }; onClose: () => void }) {
+  const isFR = company.badge === "fund-returner";
+
+  return (
+    <motion.div
+      className="absolute inset-0 z-30 flex items-center justify-center p-[5%] cursor-pointer"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.15 }}
+    >
+      <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <motion.div
+        className={cn("relative z-10 flex gap-8 max-w-3xl w-full p-8 border", detailBg(company.badge))}
+        layoutId={`company-${company.name}`}
+        transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="shrink-0 flex flex-col items-center gap-3">
+          <div className="relative size-24 overflow-hidden">
+            <Image src={company.image} alt={company.name} fill className="object-contain" />
+          </div>
+          <div className={cn("font-mono font-medium", isFR ? "text-black" : "text-[#FFEC40]")} style={{ fontSize: "clamp(22px, 2.5vw, 36px)" }}>
+            {company.moic}
+          </div>
+        </div>
+        <div className="flex-1 flex flex-col gap-3">
+          <div className="flex items-center gap-3">
+            <h3 className={cn("font-sans font-medium", detailText(company.badge))} style={{ fontSize: "clamp(20px, 2vw, 32px)" }}>
+              {company.name}
+            </h3>
+            {company.badge && (
+              <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(company.badge))}>
+                {BADGE_LABELS[company.badge]}
+              </span>
+            )}
+          </div>
+          <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(company.badge))}>{company.fundName}</span>
+          {company.tagline && (
+            <p className={cn("font-sans font-medium text-base leading-relaxed", detailText(company.badge))}>
+              {company.tagline}
+            </p>
+          )}
+          {company.bullets && company.bullets.length > 0 && (
+            <ul className="space-y-1.5">
+              {company.bullets.map((b, i) => (
+                <li key={i} className={cn("font-sans font-medium text-base leading-relaxed flex items-start gap-2", detailText(company.badge))}>
+                  <span className={cn("mt-2 size-1.5 shrink-0", detailBullet(company.badge))} />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          )}
+          {company.investorsAfter && company.investorsAfter.length > 0 && (
+            <div className="mt-auto pt-2">
+              <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted(company.badge))}>
+                Investors after Platanus:
+              </span>
+              <div className="flex flex-wrap gap-2 mt-1">
+                {company.investorsAfter.map((inv) => (
+                  <span key={inv} className={cn("font-sans font-medium text-base", detailText(company.badge))}>
+                    {inv}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export function SlideTrackRecord({ active }: P) {
   const on = useAnim(active);
+  const [selected, setSelected] = useState<(PortfolioCompany & { fundName: string }) | null>(null);
   const [activeFund, setActiveFund] = useState<string>("all");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
 
   const filtered = activeFund === "all"
     ? ALL_COMPANIES
     : ALL_COMPANIES.filter((c) => c.fundName === activeFund);
-
-  const company = filtered[currentIndex % filtered.length];
-
-  const go = useCallback((dir: number) => {
-    setDirection(dir);
-    setCurrentIndex((prev) => (prev + dir + filtered.length) % filtered.length);
-  }, [filtered.length]);
-
-  const jumpTo = useCallback((i: number) => {
-    setDirection(i > currentIndex ? 1 : -1);
-    setCurrentIndex(i);
-  }, [currentIndex]);
-
-  const handleFundChange = useCallback((key: string) => {
-    setActiveFund(key);
-    setCurrentIndex(0);
-    setDirection(0);
-  }, []);
-
-  const isFR = company?.badge === "fund-returner";
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
@@ -72,7 +154,7 @@ export function SlideTrackRecord({ active }: P) {
           ].map(({ key, label, detail }) => (
             <button
               key={key}
-              onClick={() => handleFundChange(key)}
+              onClick={() => setActiveFund(key)}
               className={cn(
                 "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer flex items-center gap-2 backdrop-blur-sm",
                 activeFund === key
@@ -91,134 +173,52 @@ export function SlideTrackRecord({ active }: P) {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 flex items-center relative" style={f(on, 200)}>
-        <button
-          onClick={() => go(-1)}
-          className="shrink-0 size-10 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm mr-6"
-        >
-          <ChevronLeft size={20} />
-        </button>
-
-        <div className="flex-1 h-full relative overflow-hidden">
-          <AnimatePresence mode="popLayout" initial={false}>
-            {company && (
-              <motion.div
-                key={company.name}
-                className={cn(
-                  "absolute inset-0 flex gap-8 items-center p-8 border backdrop-blur-sm",
-                  isFR ? "bg-[#FFEC40] border-[#FFEC40]" : "bg-white/5 border-white/10",
-                )}
-                initial={{ x: direction > 0 ? "100%" : "-100%", opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: direction > 0 ? "-100%" : "100%", opacity: 0 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-              >
-                <div className="shrink-0 flex flex-col items-center gap-4 w-48">
-                  <div className="relative size-32 overflow-hidden">
-                    <Image src={company.image} alt={company.name} fill className="object-contain" />
-                  </div>
-                  <div className={cn(
-                    "font-mono font-medium leading-none",
-                    isFR ? "text-black" : "text-[#FFEC40]",
-                  )} style={{ fontSize: "clamp(24px, 3vw, 48px)" }}>
-                    {company.moic}
-                  </div>
-                  {company.badge && (
-                    <div className="flex items-center gap-1.5">
-                      <span className={cn("size-2", BADGE_DOT[company.badge] ?? "bg-white/30")} />
-                      <span className={cn(
-                        "font-mono font-medium text-base uppercase tracking-wider",
-                        isFR ? "text-black/40" : "text-white/40",
-                      )}>
-                        {BADGE_LABELS[company.badge]}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex-1 flex flex-col gap-3 min-w-0">
-                  <h3 className={cn("font-sans font-medium", isFR ? "text-black" : "text-white")} style={{ fontSize: "clamp(22px, 2.5vw, 38px)" }}>
-                    {company.name}
-                  </h3>
-                  <span className={cn("font-mono font-medium text-base uppercase tracking-wider", isFR ? "text-black/40" : "text-white/40")}>
-                    {company.fundName}
-                  </span>
-                  {company.tagline && (
-                    <p className={cn("font-sans font-medium text-base leading-relaxed", isFR ? "text-black" : "text-white")}>
-                      {company.tagline}
-                    </p>
-                  )}
-                  {company.bullets && company.bullets.length > 0 && (
-                    <ul className="space-y-1.5">
-                      {company.bullets.map((b, i) => (
-                        <li key={i} className={cn("font-sans font-medium text-base leading-relaxed flex items-start gap-2", isFR ? "text-black" : "text-white")}>
-                          <span className={cn("mt-2 size-1.5 shrink-0", isFR ? "bg-black" : "bg-[#FFEC40]")} />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {company.investorsAfter && company.investorsAfter.length > 0 && (
-                    <div className="mt-auto pt-2">
-                      <span className={cn("font-mono font-medium text-base uppercase tracking-wider", isFR ? "text-black/40" : "text-white/40")}>
-                        Investors after Platanus:
-                      </span>
-                      <div className="flex flex-wrap gap-2 mt-1">
-                        {company.investorsAfter.map((inv) => (
-                          <span key={inv} className={cn("font-sans font-medium text-base", isFR ? "text-black" : "text-white")}>
-                            {inv}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
+      <div className="flex-1 min-h-0 grid grid-cols-6 gap-2 content-start overflow-hidden" style={{ gridTemplateRows: "repeat(3, 1fr)" }}>
+        {filtered.map((company, i) => (
+          <motion.div
+            key={company.name}
+            layoutId={`company-${company.name}`}
+            transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
+            className={cn(
+              "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2 backdrop-blur-sm",
+              cardStyle(company.badge),
+              "hover:bg-white/15 transition-all",
             )}
-          </AnimatePresence>
-        </div>
-
-        <button
-          onClick={() => go(1)}
-          className="shrink-0 size-10 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm ml-6"
-        >
-          <ChevronRight size={20} />
-        </button>
-      </div>
-
-      <div className="flex items-center justify-between mt-4" style={f(on, 300)}>
-        <div className="font-mono font-medium text-white/40 text-base tabular-nums">
-          {(currentIndex % filtered.length) + 1} / {filtered.length}
-        </div>
-
-        <div className="flex gap-2 items-center">
-          {filtered.map((c, i) => (
-            <button
-              key={c.name}
-              onClick={() => jumpTo(i)}
-              className={cn(
-                "relative overflow-hidden border transition-all cursor-pointer backdrop-blur-sm",
-                i === currentIndex % filtered.length
-                  ? "size-10 border-[#FFEC40] bg-white/10"
-                  : "size-8 border-white/10 bg-white/5 hover:bg-white/10 opacity-50 hover:opacity-100",
-              )}
-            >
-              <Image src={c.image} alt={c.name} fill className="object-contain p-1" />
-            </button>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-4">
-          {Object.entries(BADGE_LABELS).map(([badge, label]) => (
-            <div key={badge} className="flex items-center gap-1.5">
-              <span className={cn("size-2 shrink-0", BADGE_DOT[badge])} />
-              <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
-                {label}
-              </span>
+            style={f(on, 150 + i * 40)}
+            onClick={() => setSelected(company)}
+          >
+            <div className="relative size-8 overflow-hidden shrink-0">
+              <Image src={company.image} alt={company.name} fill className="object-cover" />
             </div>
-          ))}
-        </div>
+            <span className="font-sans font-medium text-white text-base text-center leading-none truncate w-full">
+              {company.name}
+            </span>
+            <span
+              className="absolute top-1 right-1.5 font-mono font-medium text-[#FFEC40] leading-none"
+              style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+            >
+              {company.moic}
+            </span>
+          </motion.div>
+        ))}
       </div>
+
+      <div className="flex items-center justify-end gap-4 mt-6" style={f(on, 200)}>
+        {LEGEND.map(({ badge, dot }) => (
+          <div key={badge} className="flex items-center gap-1.5">
+            <span className={cn("size-2.5 shrink-0", dot)} />
+            <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
+              {BADGE_LABELS[badge]}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <AnimatePresence>
+        {selected && (
+          <CompanyDetail company={selected} onClose={() => setSelected(null)} />
+        )}
+      </AnimatePresence>
     </div>
   );
 }

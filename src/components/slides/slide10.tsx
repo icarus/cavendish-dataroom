@@ -48,7 +48,7 @@ export function Slide10({ active }: P) {
                 flex: isHovered ? 2 : 1,
                 opacity: on ? (isDimmed ? 0.4 : 1) : 0,
                 transform: on ? "translateY(0)" : "translateY(14px)",
-                transition: "flex 0.3s ease-out, opacity 0.3s ease-out, transform 0.3s ease-out",
+                transition: "flex 0.15s ease-out, opacity 0.15s ease-out, transform 0.15s ease-out",
                 transitionDelay: on ? `${120 + i * 100}ms` : "0ms",
               }}
               onMouseEnter={() => setHovered(i)}
@@ -75,7 +75,7 @@ export function Slide10({ active }: P) {
                   className="font-sans font-medium text-white text-base"
                   style={{
                     transform: isHovered ? "translateX(12px)" : "translateX(0)",
-                    transition: "transform 0.3s ease-out",
+                    transition: "transform 0.15s ease-out",
                   }}
                 >
                   {gp.name}
@@ -84,7 +84,7 @@ export function Slide10({ active }: P) {
                   className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1"
                   style={{
                     transform: isHovered ? "translateX(12px)" : "translateX(0)",
-                    transition: "transform 0.3s ease-out 30ms",
+                    transition: "transform 0.15s ease-out 20ms",
                   }}
                 >
                   {gp.role}
@@ -95,7 +95,7 @@ export function Slide10({ active }: P) {
                   style={{
                     maxHeight: isHovered ? "300px" : "0px",
                     opacity: isHovered ? 1 : 0,
-                    transition: "max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-out",
+                    transition: "max-height 0.2s ease-out, opacity 0.15s ease-out",
                   }}
                 >
                   {gp.bullets.map((b, j) => (
@@ -105,7 +105,7 @@ export function Slide10({ active }: P) {
                       style={{
                         opacity: isHovered ? 1 : 0,
                         transform: isHovered ? "translateX(12px)" : "translateX(0)",
-                        transition: `opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${80 + j * 40}ms, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) ${80 + j * 40}ms`,
+                        transition: `opacity 0.15s ease-out ${j * 30}ms, transform 0.15s ease-out ${j * 30}ms`,
                       }}
                     >
                       <span className="size-1 bg-[#FFEC40] shrink-0" />
