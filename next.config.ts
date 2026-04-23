@@ -33,6 +33,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "sequoiacap.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.platan.us",
+      },
+      {
+        protocol: "https",
+        hostname: "www.truora.com",
+      },
     ],
   },
 };

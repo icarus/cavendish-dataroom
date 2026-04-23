@@ -52,13 +52,13 @@ export const MENTORS: Mentor[] = [
   { name: "Antonia San Martín", company: "Plutto", tagline: "", image: "https://bookface-images.s3.amazonaws.com/avatars/eec5d2c3c3657fe3e4bf2fc4dd52b98666c13426.jpg" },
   { name: "Nicolás Rossi", company: "Agenda Pro", tagline: "", image: "https://bookface-images.s3.amazonaws.com/avatars/1a6dbb81b8aa2784b9bda643169d2ad87abad838.jpg" },
   { name: "Pedro Pineda", company: "Fintual", tagline: "", image: "https://sequoiacap.com/wp-content/uploads/sites/6/2021/12/pedro-pineda-fintual-profile-v2.jpg" },
-  { name: "Alejandro Matamala", company: "Runway", tagline: "", image: "/placeholder-avatar.svg" },
-  { name: "Roger Rea", company: "Grupalia", tagline: "", image: "/placeholder-avatar.svg" },
+  { name: "Alejandro Matamala", company: "Runway", tagline: "", image: "https://cdn.platan.us/assets/landing/runway-alejandro-11fcd2c385a6ee0ceebcaaf40bf459665cd1ed9b420de550500d6bc8dfb8e623.webp" },
+  { name: "Roger Rea", company: "Grupalia", tagline: "", image: "https://platan.us/rails/active_storage/representations/redirect/eyJfcmFpbHMiOnsiZGF0YSI6MTE1NzMsInB1ciI6ImJsb2JfaWQifX0=--e0193e018b95dd5b925553e5a44efda7bce8e770/eyJfcmFpbHMiOnsiZGF0YSI6eyJmb3JtYXQiOiJqcGVnIiwicmVzaXplX3RvX2xpbWl0IjpbMjU2LDI1Nl19LCJwdXIiOiJ2YXJpYXRpb24ifX0=--9e7052f799709872372d1d0cc2368e861306a477/Icono%20whatsapp%20Grupalia.jpeg" },
   { name: "Cristina Etcheberry", company: "Toku", tagline: "", image: "/avatars/cristina-etcheberry.jpg" },
-  { name: "Maite Muñiz", company: "Truora", tagline: "", image: "/placeholder-avatar.svg" },
-  { name: "Cristóbal Griffero", company: "Fintoc", tagline: "", image: "/placeholder-avatar.svg" },
-  { name: "Sebastián Villarreal", company: "Super Seguros", tagline: "", image: "/placeholder-avatar.svg" },
-  { name: "Alfonso de los Rios", company: "Nowports", tagline: "", image: "/placeholder-avatar.svg" },
+  { name: "Maite Muñiz", company: "Truora", tagline: "", image: "https://www.truora.com/hubfs/Maite.png" },
+  { name: "Cristóbal Griffero", company: "Fintoc", tagline: "", image: "https://media.licdn.com/dms/image/v2/D4E03AQGIEcNg_aDN4w/profile-displayphoto-shrink_200_200/B4EZP.O_a4GYAY-/0/1735137163398?e=2147483647&v=beta&t=khsRLBFlxC6K8enBKpiEP4AaFx2om2evsHLsHFhcpck" },
+  { name: "Sebastián Villarreal", company: "Super Seguros", tagline: "", image: "https://media.licdn.com/dms/image/v2/C4D03AQEiJGly_9Jlww/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1542298643441?e=2147483647&v=beta&t=7i6PwFzdGJapQuNypbWv__g8ZNggVSMjjE7afI_Ecqs" },
+  { name: "Alfonso de los Rios", company: "Nowports", tagline: "", image: "https://media.licdn.com/dms/image/v2/D5603AQGcU5P4RRJZeQ/profile-displayphoto-scale_200_200/B56ZzbMv7qIcAY-/0/1773204081729?e=2147483647&v=beta&t=AUoQL0ch_RxVoSGcA0v9iRJze2tLU2FoL99fBcQNxYY" },
 ];
 
 export const FUNDS: Fund[] = [
