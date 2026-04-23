@@ -1,14 +1,12 @@
 "use client";
 
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import Image from "next/image";
 import { MENTORS } from "@/lib/deck-data";
 import { AnimatePresence, motion } from "motion/react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { f, P, useAnim, WordReveal } from "./utils";
 import { Button } from "../ui/button";
-
-const VISIBLE_COUNT = 6;
 
 const QUEUE_POSITIONS = [
   { x: "0%", scale: 1, opacity: 1, zIndex: 30, blur: 0 },
@@ -153,69 +151,63 @@ function MentorOverlay({ startIndex, onClose }: { startIndex: number; onClose: (
   );
 }
 
-function MentorCarousel({ on, onSelect }: { on: boolean; onSelect: (i: number) => void }) {
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
-  const cardWidth = 100 / VISIBLE_COUNT;
+const HALF = Math.ceil(MENTORS.length / 2);
+const ROW1 = MENTORS.slice(0, HALF);
+const ROW2 = MENTORS.slice(HALF);
 
-  const canPrev = offset > 0;
-  const canNext = offset < MENTORS.length - VISIBLE_COUNT;
+function MentorCard({ mentor, index, on, onSelect }: { mentor: typeof MENTORS[0]; index: number; on: boolean; onSelect: () => void }) {
+  return (
+    <div
+      className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group backdrop-blur-sm shrink-0 h-full"
+      style={{ aspectRatio: "3/4", ...f(on, 300 + index * 20) }}
+      onClick={onSelect}
+    >
+      <div className="absolute inset-0">
+        <Image
+          src={mentor.image}
+          alt={mentor.name}
+          fill
+          className="object-cover opacity-30 group-hover:opacity-100 transition-opacity"
+        />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 p-2 z-10">
+        <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
+        <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider truncate">{mentor.company}</p>
+      </div>
+    </div>
+  );
+}
 
-  const go = useCallback((dir: number) => {
-    setOffset((prev) => Math.max(0, Math.min(MENTORS.length - VISIBLE_COUNT, prev + dir)));
-  }, []);
+function MarqueeRow({ mentors, direction, on, onSelect, baseIndex }: {
+  mentors: typeof MENTORS;
+  direction: "left" | "right";
+  on: boolean;
+  onSelect: (i: number) => void;
+  baseIndex: number;
+}) {
+  const doubled = [...mentors, ...mentors];
+  const animName = direction === "left" ? "marquee-left" : "marquee-right";
 
   return (
-    <div className="relative flex items-center gap-3">
-      <button
-        onClick={() => go(-1)}
-        disabled={!canPrev}
-        className="size-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm disabled:opacity-20 disabled:cursor-default shrink-0"
+    <div className="overflow-hidden flex-1 min-h-0">
+      <div
+        className="flex gap-3 h-full"
+        style={{
+          animation: `${animName} ${mentors.length * 4}s linear infinite`,
+          width: "max-content",
+        }}
       >
-        <ChevronLeft size={16} />
-      </button>
-
-      <div className="flex-1 overflow-hidden" ref={trackRef}>
-        <div
-          className="flex gap-3 transition-transform duration-300 ease-out"
-          style={{ transform: `translateX(-${offset * cardWidth}%)` }}
-        >
-          {MENTORS.map((mentor, i) => (
-            <div
-              key={mentor.name}
-              className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group backdrop-blur-sm shrink-0"
-              style={{
-                width: `calc(${cardWidth}% - ${(VISIBLE_COUNT - 1) * 12 / VISIBLE_COUNT}px)`,
-                aspectRatio: "3/4",
-                ...f(on, 300 + i * 40),
-              }}
-              onClick={() => onSelect(i)}
-            >
-              <div className="absolute inset-0">
-                <Image
-                  src={mentor.image}
-                  alt={mentor.name}
-                  fill
-                  className="object-cover opacity-30 group-hover:opacity-100 transition-opacity"
-                />
-              </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-                <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
-                <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider truncate">{mentor.company}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {doubled.map((mentor, i) => (
+          <MentorCard
+            key={`${mentor.name}-${i}`}
+            mentor={mentor}
+            index={i % mentors.length}
+            on={on}
+            onSelect={() => onSelect(baseIndex + (i % mentors.length))}
+          />
+        ))}
       </div>
-
-      <button
-        onClick={() => go(1)}
-        disabled={!canNext}
-        className="size-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm disabled:opacity-20 disabled:cursor-default shrink-0"
-      >
-        <ChevronRight size={16} />
-      </button>
     </div>
   );
 }
@@ -254,8 +246,9 @@ export function SlideClearingFog({ active }: P) {
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 flex flex-col justify-end">
-        <MentorCarousel on={on} onSelect={setSelectedIndex} />
+      <div className="flex-1 min-h-0 flex flex-col gap-3">
+        <MarqueeRow mentors={ROW1} direction="left" on={on} onSelect={setSelectedIndex} baseIndex={0} />
+        <MarqueeRow mentors={ROW2} direction="right" on={on} onSelect={setSelectedIndex} baseIndex={HALF} />
       </div>
 
       <AnimatePresence>
