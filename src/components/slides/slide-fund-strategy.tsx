@@ -26,10 +26,10 @@ const MIN_RETURN = Math.min(...ALL_RETURNS);
 
 function heatColor(value: number): string {
   const t = (value - MIN_RETURN) / (MAX_RETURN - MIN_RETURN);
-  if (t > 0.7) return "rgba(255, 236, 64, 0.35)";
-  if (t > 0.45) return "rgba(255, 236, 64, 0.18)";
-  if (t > 0.25) return "rgba(255, 236, 64, 0.08)";
-  return "rgba(255, 255, 255, 0.03)";
+  if (t > 0.7) return "rgba(255, 236, 64, 0.7)";
+  if (t > 0.45) return "rgba(255, 236, 64, 0.5)";
+  if (t > 0.25) return "rgba(255, 236, 64, 0.25)";
+  return "rgba(255, 255, 255, 0.15)";
 }
 
 export function SlideFundStrategy({ active }: P) {
@@ -60,11 +60,11 @@ export function SlideFundStrategy({ active }: P) {
         ))}
 
         {ENTRIES.map((entry, ri) => (
-          <>
+          <div key={entry.valuation} style={{ display: "contents" }}>
             <div
               key={`label-${entry.valuation}`}
               className={cn(
-                "flex items-center px-3",
+                "flex w-full h-full items-center px-3",
                 entry.highlight ? "bg-[#FFEC40]" : "",
               )}
               style={f(on, 250 + ri * 40)}
@@ -101,7 +101,7 @@ export function SlideFundStrategy({ active }: P) {
                 </div>
               );
             })}
-          </>
+          </div>
         ))}
       </div>
 
