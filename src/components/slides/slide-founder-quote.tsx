@@ -8,7 +8,7 @@ export function SlideFounderQuote({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
       <div className="max-w-4xl space-y-10">
-        <blockquote className="leading-[1.4] flex flex-col -space-y-8" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
+        <blockquote className="leading-[1.4] flex flex-col -space-y-8" style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
           <WordReveal
             text="In LatAm there are thousands of founders with big ideas, solving real problems in massive markets."
             on={on}
@@ -26,7 +26,7 @@ export function SlideFounderQuote({ active }: P) {
           />
         </blockquote>
 
-        <div style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
+        <div style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
           <WordReveal
             text="Platanus solves that."
             on={on}
