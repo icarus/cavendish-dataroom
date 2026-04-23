@@ -70,18 +70,10 @@ export function SlideFundStrategy({ active }: P) {
       </div>
 
       <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
-        <div className="relative overflow-hidden border-b border-white/10" style={f(on, 120)}>
-          <div className="absolute inset-0 flex">
-            <div className="absolute bottom-1 left-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider">
-              Entry Val.
-            </div>
-            <div className="absolute top-1 right-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider">
-              Exit Price
-            </div>
-            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-              <line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-            </svg>
-          </div>
+        <div className="flex items-center justify-center border-b border-white/10" style={f(on, 120)}>
+          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
+            Entry Val. / Exit Price
+          </span>
         </div>
         {EXIT_VALUATIONS.map((v, i) => (
           <div key={v} className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 150 + i * 30)}>
@@ -136,10 +128,10 @@ export function SlideFundStrategy({ active }: P) {
       </div>
 
       <div className="mt-2 flex items-center justify-between" style={f(on, 500)}>
-        <p className="font-sans font-medium text-white/40 text-base">
+        <p className="font-sans font-normal text-white/40 text-sm">
           Return multiples depending on entry valuation and exit valuation, considering standard dilution rounds.
         </p>
-        <p className="font-sans font-medium text-white/40 text-base shrink-0 ml-4">
+        <p className="font-sans font-normal text-white/40 text-sm shrink-0 ml-4">
           A good VC strategy is investing as early as possible.
         </p>
       </div>
