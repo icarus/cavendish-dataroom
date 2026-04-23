@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/deck-data";
-import { DancingBanana } from "@/components/ui/dancing-banana";
 import { P, useAnim, WordReveal } from "./utils";
 
 const ITEMS = TESTIMONIALS.filter((t) => t.text);
@@ -123,16 +122,6 @@ export function SlideSocialProof({ active }: P) {
           What founders{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">say</mark>
         </h2>
-      </div>
-
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
-        style={{
-          opacity: on ? (isActive ? 0.3 : 0.6) : 0,
-          transition: "opacity 0.4s ease",
-        }}
-      >
-        <DancingBanana size={100} />
       </div>
 
       {ORBITS.map((item, i) => {
