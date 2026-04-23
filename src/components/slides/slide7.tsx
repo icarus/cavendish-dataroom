@@ -28,10 +28,10 @@ export function Slide7({ active }: P) {
           <h2 className="font-sans font-medium text-white mb-4" style={{ fontSize: "clamp(22px, 3vw, 44px)", ...f(on, 0) }}>
             The <mark className="bg-[#FFEC40] text-black px-2 not-italic">Banana</mark> House
           </h2>
-          <p className="font-sans font-medium text-white text-base leading-relaxed mb-3" style={f(on, 100)}>
+          <p className="font-sans font-medium text-white/70 text-base leading-relaxed mb-3" style={f(on, 100)}>
             Banana Houses are both offices and residences, fostering real in-person connections beyond Slack. Founders gather here for hackathons, launches, fireside chats, and social events.
           </p>
-          <p className="font-sans font-medium text-white text-base leading-relaxed" style={f(on, 180)}>
+          <p className="font-sans font-medium text-white/70 text-base leading-relaxed" style={f(on, 180)}>
             Each house has beds, promoting early regional expansion, reducing travel costs, and enabling quick access to local networks.
           </p>
         </div>
@@ -66,11 +66,11 @@ export function Slide7({ active }: P) {
           </div>
         </div>
       </div>
-      <div className="flex h-[40%]" style={f(on, 280)}>
+      <div className="flex flex-1 min-h-0" style={f(on, 280)}>
         {["/banana-house/image.png", "/banana-house/image-1.png", "/banana-house/image 17.png", "/banana-house/image 18.png"].map((src, i) => (
-          <div key={i} className="flex-1 min-w-0 overflow-hidden">
+          <div key={i} className="flex-1 min-w-0 relative">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={src} alt="Banana House" className="w-full h-full object-cover" />
+            <img src={src} alt="Banana House" className="absolute inset-0 w-full h-full object-cover" />
           </div>
         ))}
       </div>
