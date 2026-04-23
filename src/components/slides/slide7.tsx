@@ -23,7 +23,7 @@ export function Slide7({ active }: P) {
   const on = useAnim(active);
   return (
     <div className="slide aspect-video w-full relative flex flex-col">
-      <div className="flex flex-1 min-h-0">
+      <div className="flex min-h-0" style={{ flex: "0 0 45%" }}>
         <div className="w-[46%] flex flex-col justify-center p-[5%_4%_5%_6%]">
           <h2 className="font-sans font-medium text-white mb-4" style={{ fontSize: "clamp(22px, 3vw, 44px)", ...f(on, 0) }}>
             The <mark className="bg-[#FFEC40] text-black px-2 not-italic">Banana</mark> House
