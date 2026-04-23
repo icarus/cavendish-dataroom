@@ -24,12 +24,26 @@ const ALL_RETURNS = ENTRIES.flatMap((e) => EXIT_VALUATIONS.map((ex) => calcRetur
 const MAX_RETURN = Math.max(...ALL_RETURNS);
 const MIN_RETURN = Math.min(...ALL_RETURNS);
 
+function heatT(value: number): number {
+  return (value - MIN_RETURN) / (MAX_RETURN - MIN_RETURN);
+}
+
 function heatColor(value: number): string {
-  const t = (value - MIN_RETURN) / (MAX_RETURN - MIN_RETURN);
+  const t = heatT(value);
   if (t > 0.7) return "rgba(255, 236, 64, 0.7)";
   if (t > 0.45) return "rgba(255, 236, 64, 0.5)";
   if (t > 0.25) return "rgba(255, 236, 64, 0.25)";
   return "rgba(255, 255, 255, 0.15)";
+}
+
+function heatFontSize(value: number): string {
+  const t = heatT(value);
+  const minVw = 1;
+  const maxVw = 2;
+  const vw = minVw + t * (maxVw - minVw);
+  const minPx = 12;
+  const maxPx = 28;
+  return `clamp(${Math.round(minPx + t * (maxPx - minPx))}px, ${vw.toFixed(1)}vw, ${maxPx}px)`;
 }
 
 export function SlideFundStrategy({ active }: P) {
@@ -94,7 +108,7 @@ export function SlideFundStrategy({ active }: P) {
                       "font-mono font-medium relative z-10",
                       entry.highlight ? "text-black" : isAbove60 ? "text-[#FFEC40]" : "text-white",
                     )}
-                    style={{ fontSize: entry.highlight ? "clamp(18px, 2vw, 28px)" : "clamp(14px, 1.2vw, 18px)" }}
+                    style={{ fontSize: entry.highlight ? "clamp(18px, 2vw, 28px)" : heatFontSize(ret) }}
                   >
                     {ret}x
                   </span>
