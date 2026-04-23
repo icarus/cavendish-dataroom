@@ -11,7 +11,7 @@ const ROW2 = MENTORS.slice(HALF);
 function MentorCard({ mentor, index, on }: { mentor: typeof MENTORS[0]; index: number; on: boolean }) {
   return (
     <div
-      className="relative overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group backdrop-blur-sm shrink-0 h-full"
+      className="mentor-card relative overflow-hidden border border-white/10 bg-white/15 hover:bg-white/20 transition-all backdrop-blur-xl shrink-0 h-full hover:grayscale-0"
       style={{ aspectRatio: "1/1", ...f(on, 300 + index * 20) }}
     >
       <div className="absolute inset-0">
@@ -19,7 +19,7 @@ function MentorCard({ mentor, index, on }: { mentor: typeof MENTORS[0]; index: n
           src={mentor.image}
           alt={mentor.name}
           fill
-          className="object-cover opacity-30 group-hover:opacity-100 transition-opacity"
+          className="object-cover opacity-100 transition-opacity"
         />
       </div>
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
@@ -42,7 +42,7 @@ function MarqueeRow({ mentors, direction, on }: {
   return (
     <div className="overflow-hidden flex-1 min-h-0">
       <div
-        className="flex gap-3 h-full"
+        className="marquee-track flex gap-3 h-full"
         style={{
           animation: `${animName} ${mentors.length * 4}s linear infinite`,
           width: "max-content",
