@@ -153,11 +153,14 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
                 Investors after Platanus:
               </span>
               <div className="flex flex-wrap gap-2 mt-1">
-                {company.investorsAfter.map((inv) => (
-                  <span key={inv} className={cn("font-sans font-medium text-base", detailText())}>
-                    {inv}
-                  </span>
-                ))}
+                {company.investorsAfter.map((inv) => {
+                  const name = typeof inv === "string" ? inv : inv.name;
+                  return (
+                    <span key={name} className={cn("font-sans font-medium text-base", detailText())}>
+                      {name}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           )}
