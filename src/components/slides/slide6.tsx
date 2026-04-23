@@ -7,12 +7,12 @@ export function Slide6({ active }: P) {
   const on = useAnim(active);
 
   const items = [
-    { Icon: Code2, title: "TECHNICAL FOUNDER THESIS", desc: "Having a technical founder from day one derails the investment. The company goes faster and avoids high initial expense." },
-    { Icon: Zap, title: "ELITE DEVELOPER COMMUNITY", desc: "Before investing, we were a software factory. For 12 years, we've built an elite developer community, uniquely positioning us to fund top tech startups." },
-    { Icon: Globe, title: "IN PERSON COMMUNITY-DRIVEN MODEL", desc: "Our tight-knit community is our moat. Founders meet & build at Banana Houses, networking knowledge, capital, and resources. Founder trust drives deal flow." },
-    { Icon: RefreshCw, title: "CONSISTENT PRESENCE", desc: "Great founders build when they want. To capture opportunities, you need early capital to stay top-of-mind for founders raising. In 2022, we were LATAM's most active investor." },
-    { Icon: Lightbulb, title: "EARLY, SMART INVESTING", desc: "We found a sweetspot. Our value-add allows us to invest at better terms than typical pre-seed funds while attracting top LatAm startups." },
-    { Icon: TrendingUp, title: "CLEAR EXIT PATH", desc: "LATAM has a strong VC ecosystem up to Series B. As the first institutional investor, Platanus has a clear exit path through secondary sales and M&As." },
+    { Icon: Code2, title: "TECHNICAL FOUNDER THESIS", desc: "A technical founder from day one means the company moves faster and avoids high initial expense." },
+    { Icon: Zap, title: "ELITE DEVELOPER COMMUNITY", desc: "12 years building an elite developer community uniquely positions us to fund top tech startups." },
+    { Icon: Globe, title: "COMMUNITY-DRIVEN MODEL", desc: "Founders meet & build at Banana Houses. Trust drives deal flow, community is our moat." },
+    { Icon: RefreshCw, title: "CONSISTENT PRESENCE", desc: "Early capital keeps us top-of-mind. In 2022, we were LATAM's most active investor." },
+    { Icon: Lightbulb, title: "EARLY, SMART INVESTING", desc: "Our value-add lets us invest at better terms than typical pre-seed funds while attracting top startups." },
+    { Icon: TrendingUp, title: "CLEAR EXIT PATH", desc: "Strong VC ecosystem up to Series B. As first institutional investor, we exit via secondaries and M&As." },
   ];
 
   return (

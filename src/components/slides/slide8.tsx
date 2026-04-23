@@ -8,12 +8,12 @@ import { P, useAnim } from "./utils";
 const HACK_IMAGES = Array.from({ length: 31 }, (_, i) => `/events/platanus-hack/platanus-hack-${i + 1}.jpeg`);
 
 const EVENTS = [
-  { title: "Platanus Hack", desc: "A 36-hour hackathon where 120 software engineers participate, first in its kind in LatAm.", images: HACK_IMAGES },
-  { title: "Platanus Forum", desc: "An annual community gathering to discuss new technologies and strengthen connections.", images: HACK_IMAGES },
-  { title: "Breakfasts, Lunches & Dinners", desc: "Weekly founder gatherings with top founders sharing unfiltered, off-the-record experiences.", images: HACK_IMAGES },
-  { title: "Demo Dev", desc: "10 CTOs showcase how they use code to build businesses. Attendance of over 600+ developers.", images: HACK_IMAGES },
-  { title: "In-Person Fundraising", desc: "Bi-annual event in CDMX with top VC decision-makers, from firms like Monashees, Kaszek & Softbank.", images: HACK_IMAGES },
-  { title: "AI Summit with OpenAI", desc: "Co-organizers of the first OpenAI Summit in Mexico City, promoting technology in the region.", images: HACK_IMAGES },
+  { title: "Platanus Hack", desc: "36-hour hackathon, 120 engineers. First of its kind in LatAm.", images: HACK_IMAGES },
+  { title: "Platanus Forum", desc: "Annual gathering to discuss tech and strengthen connections.", images: HACK_IMAGES },
+  { title: "Breakfasts, Lunches & Dinners", desc: "Weekly founder gatherings sharing unfiltered experiences.", images: HACK_IMAGES },
+  { title: "Demo Dev", desc: "10 CTOs showcase code-built businesses. 600+ developers attend.", images: HACK_IMAGES },
+  { title: "In-Person Fundraising", desc: "Bi-annual CDMX event with Monashees, Kaszek & Softbank.", images: HACK_IMAGES },
+  { title: "AI Summit with OpenAI", desc: "Co-organized the first OpenAI Summit in Mexico City.", images: HACK_IMAGES },
 ];
 
 function EventCard({ title, desc, images, index, on, activated, dimmed, onHover, onLeave }: {
@@ -84,10 +84,7 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
       >
         {title}
       </h3>
-      <p className={cn(
-        "relative z-10 font-sans font-medium text-white text-center text-base leading-snug px-6 mt-0.5 max-w-[90%] transition-opacity duration-200",
-        activated ? "opacity-100" : "opacity-0",
-      )}>
+      <p className="relative z-10 font-sans font-normal text-white text-center text-sm text-balance leading-snug px-6 mt-0.5 max-w-[90%] transition-opacity duration-200">
         {desc}
       </p>
     </div>
