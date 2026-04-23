@@ -225,19 +225,17 @@ export function SlideClearingFog({ active }: P) {
         </h2>
       </div>
 
-      <div className="mb-2" style={f(on, 80)}>
-        <div className="font-mono font-medium text-white uppercase tracking-wider" style={{ fontSize: "clamp(16px, 1.8vw, 26px)" }}>
-          <WordReveal
-            text="A 3 MONTH PROGRAM GIVES OUR STARTUPS AN INCREDIBLE EDGE."
-            on={on}
-            baseDelay={100}
-            interval={30}
-            className="font-mono font-medium text-white uppercase tracking-wider"
-          />
-        </div>
+      <div className="mb-1" style={f(on, 80)}>
+        <WordReveal
+          text="A 3 MONTH PROGRAM GIVES OUR STARTUPS AN INCREDIBLE EDGE."
+          on={on}
+          baseDelay={100}
+          interval={30}
+          className="font-mono font-medium text-white uppercase tracking-wider text-base"
+        />
       </div>
 
-      <div className="mb-4 max-w-3xl space-y-1" style={f(on, 150)}>
+      <div className="mb-3 max-w-3xl space-y-0.5" style={f(on, 150)}>
         <p className="font-sans font-medium text-white/40 text-base leading-relaxed">
           Being around other ambitious founders raises their ambitions.
         </p>

@@ -7,7 +7,7 @@ export function SlideLiberation({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
-      <div className="w-full space-y-10" style={{ fontSize: "clamp(32px, 5vw, 76px)" }}>
+      <div className="w-full space-y-10" style={{ fontSize: "clamp(28px, 4vw, 62px)" }}>
         <div className="leading-[1.3]">
           <WordReveal
             text="We invest $200,000 in the earliest stages of tech startups."
