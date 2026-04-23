@@ -11,7 +11,7 @@ const ROW2 = MENTORS.slice(HALF);
 function MentorCard({ mentor, index, on }: { mentor: typeof MENTORS[0]; index: number; on: boolean }) {
   return (
     <div
-      className="mentor-card relative overflow-hidden border border-white/10 bg-white/15 hover:bg-white/20 transition-all backdrop-blur-xl shrink-0 h-full hover:grayscale-0"
+      className="mentor-card relative overflow-hidden border border-white/10 bg-white/15 hover:bg-white/20 transition-all backdrop-blur-xl shrink-0 h-full grayscale blur-[1px] hover:grayscale-0 hover:blur-0"
       style={{ aspectRatio: "1/1", ...f(on, 300 + index * 20) }}
     >
       <div className="absolute inset-0">
