@@ -33,7 +33,9 @@ function parseMoic(moic: string): number {
   return isNaN(n) ? 0 : n;
 }
 
-const ALL_COMPANIES = FUNDS.flatMap((fund) =>
+const VISIBLE_FUNDS = FUNDS.filter((f) => f.name !== "Cavendish");
+
+const ALL_COMPANIES = VISIBLE_FUNDS.flatMap((fund) =>
   fund.companies.map((c) => ({ ...c, fundName: fund.name }))
 ).sort((a, b) => parseMoic(b.moic) - parseMoic(a.moic));
 
@@ -186,7 +188,7 @@ export function SlideTrackRecord({ active }: P) {
         <div className="flex gap-2" style={f(on, 100)}>
           {[
             { key: "all", label: "All", year: "", moic: "" },
-            ...FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year, moic: fund.moicMultiple })),
+            ...VISIBLE_FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year, moic: fund.moicMultiple })),
           ].map(({ key, label, year, moic }) => (
             <button
               key={key}
