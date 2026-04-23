@@ -10,8 +10,8 @@ import {
 } from "@/components/slides";
 import { SpeedAlert } from "@/components/ui/speed-alert";
 
-const REF_W = 1920;
-const REF_H = 1080;
+const REF_W = 1280;
+const REF_H = 720;
 
 function useSlideScale() {
   const [scale, setScale] = useState(1);
