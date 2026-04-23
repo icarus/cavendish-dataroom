@@ -36,7 +36,7 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
     <div
       className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-6"
       style={{
-        background: `radial-gradient(circle at 50% 50%, ${DISCO_COLORS[colorIndex]}22, ${DISCO_COLORS[(colorIndex + 3) % DISCO_COLORS.length]}11, black 70%)`,
+        background: `radial-gradient(circle at 50% 50%, ${DISCO_COLORS[colorIndex]}22, ${DISCO_COLORS[(colorIndex + 3) % DISCO_COLORS.length]}11, black 90%)`,
         transition: "background 0.2s ease",
       }}
     >
@@ -56,7 +56,7 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
           <DancingBanana size={80} />
         </div>
 
-        <div className="font-mono font-medium text-white text-base uppercase tracking-wider text-center">
+        <div className="font-mono font-medium text-white text-2xl uppercase tracking-wider text-center">
           You got rate limited.
         </div>
 
