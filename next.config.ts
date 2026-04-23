@@ -41,6 +41,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "www.truora.com",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.prod.website-files.com",
+      },
     ],
   },
 };
