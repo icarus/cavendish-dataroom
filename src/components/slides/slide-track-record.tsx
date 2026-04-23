@@ -64,17 +64,18 @@ function allBadges(badge?: PortfolioCompany["badge"]): string[] {
   return Array.isArray(badge) ? badge : [badge];
 }
 
-function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fundName: string }; onClose: () => void }) {
-  const primary = primaryBadge(company.badge);
+function CompanyDetail({ company, onClose, onPrev, onNext }: { company: PortfolioCompany & { fundName: string }; onClose: () => void; onPrev: () => void; onNext: () => void }) {
   const badges = allBadges(company.badge);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") { e.stopImmediatePropagation(); onClose(); }
+      if (e.key === "ArrowLeft") { e.stopImmediatePropagation(); onPrev(); }
+      if (e.key === "ArrowRight") { e.stopImmediatePropagation(); onNext(); }
     };
     document.addEventListener("keydown", handler, { capture: true });
     return () => document.removeEventListener("keydown", handler, { capture: true });
-  }, [onClose]);
+  }, [onClose, onPrev, onNext]);
 
   return (
     <motion.div
@@ -86,6 +87,18 @@ function CompanyDetail({ company, onClose }: { company: PortfolioCompany & { fun
       transition={{ duration: 0.15 }}
     >
       <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+      <button
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        className="absolute left-[3%] top-1/2 -translate-y-1/2 z-20 size-10 flex items-center justify-center border border-white/20 bg-black/60 text-white/60 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M12 4L6 10L12 16" stroke="currentColor" strokeWidth="1.5" /></svg>
+      </button>
+      <button
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        className="absolute right-[3%] top-1/2 -translate-y-1/2 z-20 size-10 flex items-center justify-center border border-white/20 bg-black/60 text-white/60 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm"
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4L14 10L8 16" stroke="currentColor" strokeWidth="1.5" /></svg>
+      </button>
       <motion.div
         className={cn("relative z-10 flex gap-8 max-w-3xl w-full p-8 border", detailBg())}
         layoutId={`company-${company.name}`}
@@ -242,7 +255,18 @@ export function SlideTrackRecord({ active }: P) {
 
       <AnimatePresence>
         {selected && (
-          <CompanyDetail company={selected} onClose={() => setSelected(null)} />
+          <CompanyDetail
+            company={selected}
+            onClose={() => setSelected(null)}
+            onPrev={() => {
+              const idx = filtered.findIndex((c) => c.name === selected.name);
+              setSelected(filtered[(idx - 1 + filtered.length) % filtered.length]);
+            }}
+            onNext={() => {
+              const idx = filtered.findIndex((c) => c.name === selected.name);
+              setSelected(filtered[(idx + 1) % filtered.length]);
+            }}
+          />
         )}
       </AnimatePresence>
     </div>
