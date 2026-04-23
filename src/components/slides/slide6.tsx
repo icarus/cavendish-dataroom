@@ -11,8 +11,8 @@ export function Slide6({ active }: P) {
     { Icon: Zap, title: "ELITE DEVELOPER COMMUNITY", desc: "12 years building an elite developer community uniquely positions us to fund top tech startups." },
     { Icon: Globe, title: "COMMUNITY-DRIVEN MODEL", desc: "Founders meet & build at Banana Houses. Trust drives deal flow, community is our moat." },
     { Icon: RefreshCw, title: "CONSISTENT PRESENCE", desc: "Early capital keeps us top-of-mind. In 2022, we were LATAM's most active investor." },
-    { Icon: Lightbulb, title: "EARLY, SMART INVESTING", desc: "Our value-add lets us invest at better terms than typical pre-seed funds while attracting top startups." },
-    { Icon: TrendingUp, title: "CLEAR EXIT PATH", desc: "Strong VC ecosystem up to Series B. As first institutional investor, we exit via secondaries and M&As." },
+    { Icon: Lightbulb, title: "EARLY, SMART INVESTING", desc: "Our value-add lets us invest at better terms than typical pre-seed funds." },
+    { Icon: TrendingUp, title: "CLEAR EXIT PATH", desc: "Strong VC ecosystem up to Series B. We exit via secondaries and M&As." },
   ];
 
   return (
@@ -22,7 +22,7 @@ export function Slide6({ active }: P) {
           <div key={title} className="justify-start items-center text-center p-6 pt-4 flex flex-col gap-2.5" style={f(on, 80 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
             <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
-            <p className="font-sans font-medium text-white text-base leading-relaxed">{desc}</p>
+            <p className="font-sans font-normal text-white/70 text-base leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
@@ -38,7 +38,7 @@ export function Slide6({ active }: P) {
           <div key={title} className="justify-start items-center text-center p-6 pt-4 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
             <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
-            <p className="font-sans font-medium text-white text-base leading-relaxed">{desc}</p>
+            <p className="font-sans font-normal text-white/70 text-base leading-relaxed">{desc}</p>
           </div>
         ))}
       </div>
