@@ -13,7 +13,7 @@ export function SlideLiberation({ active }: P) {
             text="We invest $200,000 in the earliest stages of tech startups."
             on={on}
             baseDelay={0}
-            interval={100}
+            interval={55}
             className="font-sans font-medium text-black"
           />
         </div>
@@ -22,8 +22,8 @@ export function SlideLiberation({ active }: P) {
           <WordReveal
             text="Fast."
             on={on}
-            baseDelay={1200}
-            interval={100}
+            baseDelay={650}
+            interval={60}
             className="font-sans font-medium text-black"
           />
         </div>
@@ -32,8 +32,8 @@ export function SlideLiberation({ active }: P) {
           <WordReveal
             text="Real liberation capital so talent can thrive."
             on={on}
-            baseDelay={1600}
-            interval={80}
+            baseDelay={900}
+            interval={50}
             className="font-sans font-medium text-black"
           />
         </div>

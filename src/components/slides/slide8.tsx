@@ -50,7 +50,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-black/80 backdrop-blur-sm flex flex-col items-center justify-end cursor-pointer",
+        "relative overflow-hidden bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer",
         hovered ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
       )}
       style={{
@@ -82,17 +82,17 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       )} />
       <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
 
-      <div className="relative z-10 px-4 pb-4 w-full">
+      <div className="relative z-10 px-4 w-full flex flex-col items-center">
         <motion.h3
           className="font-mono font-medium text-white text-center leading-tight uppercase tracking-wider"
           style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
-          animate={{ y: hovered ? -8 : 0 }}
+          animate={{ y: hovered ? -10 : 0 }}
           transition={SPRING}
         >
           {title}
         </motion.h3>
         <motion.p
-          className="font-sans font-normal text-white/40 text-base text-center text-balance leading-snug mt-1"
+          className="font-sans font-normal text-white/40 text-lg text-center text-balance leading-snug mt-1"
           animate={{
             opacity: hovered ? 1 : 0,
             y: hovered ? 0 : 8,

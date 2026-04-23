@@ -41,7 +41,7 @@ export function Slide7({ active }: P) {
             alt="Latin America map"
             width={1920}
             height={1080}
-            className="scale-150 opacity-70 -mt-60 -ml-24 object-contain"
+            className="scale-150 opacity-70 -mt-72 -ml-24 object-contain"
           />
 
           <div className="absolute flex items-center" style={{ top: "12%", left: "10%" }}>
@@ -57,7 +57,7 @@ export function Slide7({ active }: P) {
             <PulsingDot color="white" delay={0} />
           </div>
 
-          <div className="absolute flex items-center" style={{ bottom: "25%", right: "7%" }}>
+          <div className="absolute flex items-center" style={{ bottom: "15%", right: "10%" }}>
             <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>
