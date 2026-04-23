@@ -80,27 +80,27 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
         "absolute inset-0 transition-colors duration-200",
         hovered ? "bg-black/40" : "bg-black/70",
       )} />
-      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-
-      <div className="relative z-10 px-4 w-full flex flex-col items-center">
-        <motion.h3
-          className="font-mono font-medium text-white text-center leading-tight uppercase tracking-wider"
-          style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
-          animate={{ y: hovered ? -10 : 0 }}
-          transition={SPRING}
-        >
-          {title}
-        </motion.h3>
-        <motion.p
-          className="font-sans font-normal text-white/80 text-lg text-center text-balance leading-snug mt-1"
-          animate={{
-            opacity: hovered ? 1 : 0,
-            y: hovered ? 0 : 8,
-          }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-        >
-          {desc}
-        </motion.p>
+      <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
+        <div className="flex flex-col items-center">
+          <motion.h3
+            className="font-mono font-medium text-white text-center leading-tight uppercase tracking-wider"
+            style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
+            animate={{ y: hovered ? -10 : 0 }}
+            transition={SPRING}
+          >
+            {title}
+          </motion.h3>
+          <motion.p
+            className="font-sans font-normal text-white/80 text-lg text-center text-balance leading-snug mt-1"
+            animate={{
+              opacity: hovered ? 1 : 0,
+              y: hovered ? 0 : 8,
+            }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+          >
+            {desc}
+          </motion.p>
+        </div>
       </div>
     </div>
   );

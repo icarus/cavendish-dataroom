@@ -63,7 +63,7 @@ export function SlideFundStrategy({ active }: P) {
         </p>
       </div>
 
-      <div className="mb-2" style={f(on, 80)}>
+      <div className="mb-8" style={f(on, 80)}>
         <p className="font-sans font-medium text-white text-base">
           Only our standard valuation of <span className="text-[#FFEC40]">$200K for 7%</span> reaches a return multiple of 60x.
         </p>
