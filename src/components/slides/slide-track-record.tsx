@@ -109,7 +109,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
       <motion.div
         className={cn("relative z-10 flex gap-8 max-w-3xl w-full p-8 border", detailBg())}
         layoutId={`company-${company.name}`}
-        transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
+        transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="shrink-0 flex flex-col items-center gap-3">
@@ -219,7 +219,7 @@ export function SlideTrackRecord({ active }: P) {
           <motion.div
             key={company.name}
             layoutId={`company-${company.name}`}
-            transition={{ layout: { duration: 0.2, ease: "easeOut" } }}
+            transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
             className={cn(
               "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2 backdrop-blur-sm",
               cardStyle(primaryBadge(company.badge)),
