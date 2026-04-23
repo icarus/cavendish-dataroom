@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -8,6 +9,24 @@ import {
   Slide7, Slide8, Slide10, Slide11, SlideSocialProof, Slide12,
 } from "@/components/slides";
 import { SpeedAlert } from "@/components/ui/speed-alert";
+
+const REF_W = 1920;
+const REF_H = 1080;
+
+function useSlideScale() {
+  const [scale, setScale] = useState(1);
+  useEffect(() => {
+    const update = () => {
+      const sw = window.innerWidth;
+      const sh = window.innerHeight;
+      setScale(Math.min(sw / REF_W, sh / REF_H));
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+  return scale;
+}
 
 const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
   { Comp: Slide2 },
@@ -37,6 +56,7 @@ interface Props {
 
 export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDismissAlert }: Props) {
   const isYellow = SLIDES[current]?.bg === "#FFEC40";
+  const scale = useSlideScale();
 
   return (
     <div
@@ -46,9 +66,11 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDism
       {SLIDES.map(({ Comp }, i) => (
         <div
           key={i}
-          className="absolute aspect-video left-1/2 -translate-x-1/2 w-screen top-1/2 -translate-y-1/2"
+          className="absolute left-1/2 top-1/2"
           style={{
-            transform: `translateX(${(i - current) * 100}%)`,
+            width: REF_W,
+            height: REF_H,
+            transform: `translate(-50%, -50%) translateX(${(i - current) * REF_W}px) scale(${scale})`,
             transition: "transform 300ms cubic-bezier(0.4, 0, 0.2, 1)",
             pointerEvents: i === current ? "auto" : "none",
           }}
