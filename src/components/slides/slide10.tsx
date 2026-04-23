@@ -67,7 +67,7 @@ export function Slide10({ active }: P) {
                 fill
                 className={cn(
                   "object-cover transition-all duration-200",
-                  isHovered ? "scale-105 grayscale-0" : "grayscale",
+                  isHovered ? "scale-105" : "",
                 )}
               />
               <div className={cn(

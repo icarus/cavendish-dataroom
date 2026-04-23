@@ -50,25 +50,41 @@ export function SlideFundStrategy({ active }: P) {
   const on = useAnim(active);
 
   return (
-    <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%]">
-      <div className="flex items-end justify-between mb-3">
+    <div className="slide aspect-video w-full relative flex flex-col p-[3%_4%]">
+      <div className="flex items-start justify-between mb-2">
         <div style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
             Fund{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Strategy</mark>
           </h2>
         </div>
-        <p className="font-sans font-medium text-white/40 text-base max-w-lg text-right" style={f(on, 100)}>
-          Return multiples depending on entry valuation and exit valuation, considering standard dilution rounds.
+        <p className="font-sans font-medium text-white text-base max-w-md text-right leading-snug" style={f(on, 50)}>
+          10% of a successful VC portfolio returns 25x cash on cash.
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(120px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
-        <div className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 150)}>
-          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Entry Val.</span>
+      <div className="mb-2" style={f(on, 80)}>
+        <p className="font-sans font-medium text-white text-base">
+          Only our standard valuation of <span className="text-[#FFEC40]">$200K for 7%</span> reaches a return multiple of 60x.
+        </p>
+      </div>
+
+      <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
+        <div className="relative overflow-hidden border-b border-white/10" style={f(on, 120)}>
+          <div className="absolute inset-0 flex">
+            <div className="absolute bottom-1 left-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider">
+              Entry Val.
+            </div>
+            <div className="absolute top-1 right-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider">
+              Exit Price
+            </div>
+            <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+              <line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+            </svg>
+          </div>
         </div>
         {EXIT_VALUATIONS.map((v, i) => (
-          <div key={v} className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 180 + i * 30)}>
+          <div key={v} className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 150 + i * 30)}>
             <span className="font-mono font-medium text-white text-base">${v}M</span>
           </div>
         ))}
@@ -81,7 +97,7 @@ export function SlideFundStrategy({ active }: P) {
                 "flex w-full h-full items-center px-3",
                 entry.highlight ? "bg-[#FFEC40]" : "",
               )}
-              style={f(on, 250 + ri * 40)}
+              style={f(on, 200 + ri * 40)}
             >
               <span className={cn("font-mono font-medium text-base whitespace-nowrap", entry.highlight ? "text-black" : "text-white/40")}>
                 {entry.label}
@@ -99,7 +115,7 @@ export function SlideFundStrategy({ active }: P) {
                     entry.highlight ? "bg-[#FFEC40]" : "",
                   )}
                   style={{
-                    ...f(on, 270 + ri * 40 + ci * 20),
+                    ...f(on, 220 + ri * 40 + ci * 20),
                     backgroundColor: entry.highlight ? undefined : heatColor(ret),
                   }}
                 >
@@ -119,9 +135,12 @@ export function SlideFundStrategy({ active }: P) {
         ))}
       </div>
 
-      <div className="mt-3" style={f(on, 600)}>
-        <p className="font-sans font-medium text-white text-base">
-          Only our standard valuation of <span className="text-[#FFEC40]">$200K for 7%</span> reaches a return multiple of 60x.
+      <div className="mt-2 flex items-center justify-between" style={f(on, 500)}>
+        <p className="font-sans font-medium text-white/40 text-base">
+          Return multiples depending on entry valuation and exit valuation, considering standard dilution rounds.
+        </p>
+        <p className="font-sans font-medium text-white/40 text-base shrink-0 ml-4">
+          A good VC strategy is investing as early as possible.
         </p>
       </div>
     </div>

@@ -6,8 +6,8 @@ export function SlideRiskAverse({ active }: P) {
   const on = useAnim(active);
 
   return (
-    <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
-      <div className="max-w-4xl space-y-10">
+    <div className="slide aspect-video w-full relative flex items-center justify-start p-[6%_8%]">
+      <div className="max-w-4xl space-y-6">
         <div className="leading-[1.4]" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
             text="Risk-averse mentality is a curse for startups."
@@ -20,7 +20,7 @@ export function SlideRiskAverse({ active }: P) {
 
         <div className="leading-[1.5]" style={{ fontSize: "clamp(22px, 3.2vw, 48px)" }}>
           <WordReveal
-            text="Funds in LatAm tend to need safety to invest: traction, incredible founders' CVs, a familiar business model."
+            text="Funds in LatAm tend to favor safer investments: traction, traditional founder's CVs, proven business model."
             on={on}
             baseDelay={800}
             interval={60}

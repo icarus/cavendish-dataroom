@@ -19,7 +19,7 @@ export function Slide6({ active }: P) {
     <div className="slide aspect-video w-full relative flex flex-col p-[4%]">
       <div className="grid grid-cols-3 gap-px flex-1">
         {items.slice(0, 3).map(({ Icon, title, desc }, i) => (
-          <div key={title} className="justify-center items-center text-center p-6 flex flex-col gap-2.5" style={f(on, 80 + i * 60)}>
+          <div key={title} className="justify-start items-center text-center p-6 pt-4 flex flex-col gap-2.5" style={f(on, 80 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
             <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
             <p className="font-sans font-medium text-white text-base leading-relaxed">{desc}</p>
@@ -35,7 +35,7 @@ export function Slide6({ active }: P) {
 
       <div className="grid grid-cols-3 gap-px flex-1">
         {items.slice(3).map(({ Icon, title, desc }, i) => (
-          <div key={title} className="justify-center items-center text-center p-6 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
+          <div key={title} className="justify-start items-center text-center p-6 pt-4 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
             <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
             <p className="font-sans font-medium text-white text-base leading-relaxed">{desc}</p>

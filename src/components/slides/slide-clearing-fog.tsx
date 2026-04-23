@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { MENTORS } from "@/lib/deck-data";
 import { AnimatePresence, motion } from "motion/react";
@@ -8,7 +8,7 @@ import { ChevronLeft, ChevronRight, X } from "lucide-react";
 import { f, P, useAnim, WordReveal } from "./utils";
 import { Button } from "../ui/button";
 
-const FEATURED = MENTORS.slice(0, 8);
+const VISIBLE_COUNT = 6;
 
 const QUEUE_POSITIONS = [
   { x: "0%", scale: 1, opacity: 1, zIndex: 30, blur: 0 },
@@ -153,58 +153,109 @@ function MentorOverlay({ startIndex, onClose }: { startIndex: number; onClose: (
   );
 }
 
+function MentorCarousel({ on, onSelect }: { on: boolean; onSelect: (i: number) => void }) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [offset, setOffset] = useState(0);
+  const cardWidth = 100 / VISIBLE_COUNT;
+
+  const canPrev = offset > 0;
+  const canNext = offset < MENTORS.length - VISIBLE_COUNT;
+
+  const go = useCallback((dir: number) => {
+    setOffset((prev) => Math.max(0, Math.min(MENTORS.length - VISIBLE_COUNT, prev + dir)));
+  }, []);
+
+  return (
+    <div className="relative flex items-center gap-3">
+      <button
+        onClick={() => go(-1)}
+        disabled={!canPrev}
+        className="size-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm disabled:opacity-20 disabled:cursor-default shrink-0"
+      >
+        <ChevronLeft size={16} />
+      </button>
+
+      <div className="flex-1 overflow-hidden" ref={trackRef}>
+        <div
+          className="flex gap-3 transition-transform duration-300 ease-out"
+          style={{ transform: `translateX(-${offset * cardWidth}%)` }}
+        >
+          {MENTORS.map((mentor, i) => (
+            <div
+              key={mentor.name}
+              className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group backdrop-blur-sm shrink-0"
+              style={{
+                width: `calc(${cardWidth}% - ${(VISIBLE_COUNT - 1) * 12 / VISIBLE_COUNT}px)`,
+                aspectRatio: "3/4",
+                ...f(on, 300 + i * 40),
+              }}
+              onClick={() => onSelect(i)}
+            >
+              <div className="absolute inset-0">
+                <Image
+                  src={mentor.image}
+                  alt={mentor.name}
+                  fill
+                  className="object-cover opacity-30 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
+                <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider truncate">{mentor.company}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <button
+        onClick={() => go(1)}
+        disabled={!canNext}
+        className="size-8 border border-white/20 flex items-center justify-center text-white/40 hover:text-white hover:border-white/40 transition-colors cursor-pointer backdrop-blur-sm disabled:opacity-20 disabled:cursor-default shrink-0"
+      >
+        <ChevronRight size={16} />
+      </button>
+    </div>
+  );
+}
+
 export function SlideClearingFog({ active }: P) {
   const on = useAnim(active);
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="mb-1" style={f(on, 0)}>
+      <div className="mb-2" style={f(on, 0)}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
-          Clearing{" "}
-          <mark className="bg-[#FFEC40] text-black px-1 not-italic">the fog</mark>
+          The right{" "}
+          <mark className="bg-[#FFEC40] text-black px-1 not-italic">room</mark>
         </h2>
       </div>
 
-      <div className="mb-6" style={f(on, 100)}>
-        <WordReveal
-          text="WE HELP OUR STARTUPS WITH A 3 MONTH PROGRAM AIMED TO PUSH THEM INTO BUILDING THEIR PRODUCTS."
-          on={on}
-          baseDelay={200}
-          interval={30}
-          className="font-mono font-medium text-white uppercase tracking-wider text-base"
-        />
+      <div className="mb-2" style={f(on, 80)}>
+        <div className="font-mono font-medium text-white uppercase tracking-wider" style={{ fontSize: "clamp(16px, 1.8vw, 26px)" }}>
+          <WordReveal
+            text="A 3 MONTH PROGRAM GIVES OUR STARTUPS AN INCREDIBLE EDGE."
+            on={on}
+            baseDelay={100}
+            interval={30}
+            className="font-mono font-medium text-white uppercase tracking-wider"
+          />
+        </div>
       </div>
 
-      <div className="flex-1 grid grid-cols-4 grid-rows-2 gap-3 min-h-0">
-        {FEATURED.map((mentor, i) => (
-          <div
-            key={mentor.name}
-            className="relative cursor-pointer overflow-hidden border border-white/10 bg-white/5 hover:bg-white/10 transition-colors group backdrop-blur-sm"
-            style={f(on, 400 + i * 80)}
-            onClick={() => setSelectedIndex(i)}
-          >
-            <div className="absolute inset-0">
-              <Image
-                src={mentor.image}
-                alt={mentor.name}
-                fill
-                className="object-cover opacity-30 group-hover:opacity-100 transition-opacity"
-              />
-            </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-              <p className="font-sans font-medium text-white text-lg truncate">{mentor.name}</p>
-              <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider truncate">{mentor.company}</p>
-            </div>
-          </div>
-        ))}
+      <div className="mb-4 max-w-3xl space-y-1" style={f(on, 150)}>
+        <p className="font-sans font-medium text-white/40 text-base leading-relaxed">
+          Being around other ambitious founders raises their ambitions.
+        </p>
+        <p className="font-sans font-medium text-white/40 text-base leading-relaxed">
+          The accountability & advice from this top-tier founders gives them speed, clarity and conviction.
+        </p>
       </div>
 
-      <div className="mt-3 flex items-center gap-2" style={f(on, 1000)}>
-        <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
-          + {MENTORS.length - 8} other experienced founders in our network
-        </span>
+      <div className="flex-1 min-h-0 flex flex-col justify-end">
+        <MentorCarousel on={on} onSelect={setSelectedIndex} />
       </div>
 
       <AnimatePresence>

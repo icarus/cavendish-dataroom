@@ -84,7 +84,10 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
       >
         {title}
       </h3>
-      <p className="relative z-10 font-sans font-medium text-white text-center text-base leading-snug px-6 mt-0.5 max-w-[90%]">
+      <p className={cn(
+        "relative z-10 font-sans font-medium text-white text-center text-base leading-snug px-6 mt-0.5 max-w-[90%] transition-opacity duration-200",
+        activated ? "opacity-100" : "opacity-0",
+      )}>
         {desc}
       </p>
     </div>
@@ -116,8 +119,8 @@ export function Slide8({ active }: P) {
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
-          Our{" "}
-          <mark className="bg-[#FFEC40] text-black px-1 not-italic">events</mark>
+          Building the tech scene of{" "}
+          <mark className="bg-[#FFEC40] text-black px-1 not-italic">LatAm</mark>
         </h2>
       </div>
       <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-3 min-h-0">

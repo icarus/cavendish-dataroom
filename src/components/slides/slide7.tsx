@@ -66,7 +66,7 @@ export function Slide7({ active }: P) {
           </div>
         </div>
       </div>
-      <div className="flex h-[34%]" style={f(on, 280)}>
+      <div className="flex h-[40%]" style={f(on, 280)}>
         {["/banana-house/image.png", "/banana-house/image-1.png", "/banana-house/image 17.png", "/banana-house/image 18.png"].map((src, i) => (
           <div key={i} className="flex-1 min-w-0 overflow-hidden">
             {/* eslint-disable-next-line @next/next/no-img-element */}

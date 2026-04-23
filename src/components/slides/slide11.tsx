@@ -10,13 +10,13 @@ export function Slide11({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative p-[4%_6%] flex flex-col">
-      <div style={f(on, 0)} className="mb-12">
+      <div style={f(on, 0)} className="mb-6">
         <div className="font-sans font-medium text-white leading-tight" style={{ fontSize: "clamp(26px, 3.5vw, 54px)" }}>Built for</div>
         <mark className="font-sans font-medium bg-[#FFEC40] text-black px-2 not-italic inline-block" style={{ fontSize: "clamp(26px, 3.5vw, 54px)" }}>
           speed and adaptability
         </mark>
       </div>
-      <div className="flex gap-16 mt-6 flex-1">
+      <div className="flex gap-16 flex-1">
         <div className="flex-1 flex flex-col">
           {left.map(([l, v], i) => (
             <div key={l} className="flex justify-between items-baseline flex-1 border-b border-white/20 py-8" style={f(on, 140 + i * 55)}>

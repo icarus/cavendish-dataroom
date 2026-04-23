@@ -36,15 +36,16 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
     <div
       className="absolute inset-0 z-50 flex flex-col items-center justify-center gap-6"
       style={{
-        background: `radial-gradient(circle at 50% 50%, ${DISCO_COLORS[colorIndex]}22, ${DISCO_COLORS[(colorIndex + 3) % DISCO_COLORS.length]}11, black 90%)`,
+        background: `radial-gradient(circle at 50% 50%, ${DISCO_COLORS[colorIndex]}15, rgba(30,30,30,0.95) 60%, rgba(20,20,20,0.98) 100%)`,
+        backdropFilter: "blur(20px)",
         transition: "background 0.2s ease",
       }}
     >
       <div
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-15"
         style={{
           background: `conic-gradient(from ${colorIndex * 60}deg, ${DISCO_COLORS.join(", ")})`,
-          filter: "blur(80px)",
+          filter: "blur(120px)",
           transition: "background 0.2s ease",
         }}
       />
@@ -57,7 +58,7 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
         </div>
 
         <div className="font-mono font-medium text-white text-2xl uppercase tracking-wider text-center">
-          You got rate limited.
+          Slow down cowboy, enjoy the deck.
         </div>
 
         <div
