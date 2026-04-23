@@ -15,7 +15,7 @@ export function LandingPanel({ onDeck, onRabbit }: Props) {
         width={1920}
         height={1080}
         alt="Platanus logo"
-        className="z-10 select-none pointer-events-none animate-in fade-in duration-600 delay-900 fill-mode-both absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-24"
+        className="z-10 select-none pointer-events-none animate-in fade-in duration-600 delay-900 fill-mode-both absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-14 md:h-24"
       />
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col gap-2 w-72">
         <Button onClick={onDeck}>

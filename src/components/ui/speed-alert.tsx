@@ -73,7 +73,7 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
         </div>
 
         <div className="font-sans font-medium text-white/40 text-base">
-          Slow down and enjoy the deck.
+          Calm down, the deck is not going anywhere.
         </div>
       </div>
     </div>

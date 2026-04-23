@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "blog.platan.us",
+      },
+      {
+        protocol: "https",
         hostname: "whatdesigncando.s3.eu-central-1.amazonaws.com",
       },
       {

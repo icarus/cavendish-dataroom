@@ -71,7 +71,7 @@ export function SlideFundStrategy({ active }: P) {
 
       <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
         <div className="flex items-center justify-center border-b border-white/10" style={f(on, 120)}>
-          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
+          <span className="font-mono font-medium text-white/40 text-sm uppercase tracking-tight">
             Entry Val. / Exit Price
           </span>
         </div>

@@ -28,7 +28,7 @@ export function SlideLiberation({ active }: P) {
           />
         </div>
 
-        <div className="leading-[1.5] pt-4">
+        <div className="leading-[1.5] text-balance pt-4">
           <WordReveal
             text="Real liberation capital so talent can thrive."
             on={on}

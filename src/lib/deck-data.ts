@@ -5,13 +5,18 @@ export type Mentor = {
   image: string;
 };
 
+export type Investor = {
+  name: string;
+  logo?: string;
+};
+
 export type PortfolioCompany = {
   name: string;
   tagline: string;
   image: string;
   moic: string;
   badge?: ("fund-returner" | "potential-fund-returner" | "rising-star" | "exited") | ("fund-returner" | "potential-fund-returner" | "rising-star" | "exited")[];
-  investorsAfter?: string[];
+  investorsAfter?: (string | Investor)[];
   bullets?: string[];
 };
 
@@ -71,9 +76,8 @@ export const FUNDS: Fund[] = [
     moicMultiple: "4.49X",
     dpiMultiple: "0.02X",
     companies: [
-      { name: "Fintoc", tagline: "Direct, fast, and cost-effective transactions.", image: "/avatars/fintoc.png", moic: "12.46x", badge: "potential-fund-returner", investorsAfter: ["YC", "Monashees", "Propel"], bullets: ["We introduced the founders.", "Seed: 6 months later.", "Series A: $7m at 29m"] },
-      { name: "Reversso", tagline: "Simple returns and exchanges.", image: "/avatars/reversso.png", moic: "10.77x", investorsAfter: ["Blue Express", "Copec"], bullets: ["280 customers with 560 active stores.", "Operations in Chile, Colombia and Mexico.", "Cash flow positive."] },
-      { name: "Cardda", tagline: "", image: "/avatars/cardda.png", moic: "[*]x", investorsAfter: ["YC"] },
+      { name: "Fintoc", tagline: "Direct, fast, and cost-effective transactions.", image: "/avatars/fintoc.png", moic: "12.46x", badge: "potential-fund-returner", investorsAfter: [{ name: "YC", logo: "https://logo.clearbit.com/ycombinator.com" }, { name: "Monashees", logo: "https://logo.clearbit.com/monashees.com" }, { name: "Propel", logo: "https://logo.clearbit.com/propel.vc" }], bullets: ["We introduced the founders.", "Seed: 6 months later.", "Series A: $7m at 29m"] },
+      { name: "Reversso", tagline: "Simple returns and exchanges.", image: "/avatars/reversso.png", moic: "10.77x", investorsAfter: [{ name: "Blue Express", logo: "https://logo.clearbit.com/bluex.cl" }, { name: "Copec", logo: "https://logo.clearbit.com/copec.cl" }], bullets: ["280 customers with 560 active stores across.", "Operations in Chile, Colombia and Mexico.", "Cash flow positive."] },
     ],
   },
   {
@@ -85,9 +89,8 @@ export const FUNDS: Fund[] = [
     moicMultiple: "7.78X",
     dpiMultiple: "1.75X",
     companies: [
-      { name: "Toku", tagline: "Platform for enterprise payment collection.", image: "https://media.licdn.com/dms/image/v2/D4E0BAQHOzdxx7n-B1g/company-logo_200_200/B4EZx70IrcIkAI-/0/1771603790870/trytoku_logo?e=1778716800&v=beta&t=j7vqly7IuVRWabOEYkAL_ZD_9YZVLuoEF_LSZ6VlSVI", moic: "93.50x", badge: "fund-returner", investorsAfter: ["Oak HC/FT", "Gradient", "F-Prime", "Wollef", "Y Combinator", "Clocktower Technologies"], bullets: ["Growth average of 37% QoQ from inception to date (2021).", "Operations in Chile, Mexico and Brasil.", "Series B of $40m at $250m."] },
-      { name: "Plutto", tagline: "Third-party risk assessment and management.", image: "/avatars/plutto.png", moic: "21x", investorsAfter: ["Y Combinator"], bullets: ["EBITDA of 20% with +$2.5m in ARR.", "Tremendous capital efficiency. Only one round raised after Platanus."] },
-      { name: "Cero", tagline: "", image: "/avatars/cero.png", moic: "[*]x", investorsAfter: [] },
+      { name: "Toku", tagline: "Platform for enterprise payment collection.", image: "https://media.licdn.com/dms/image/v2/D4E0BAQHOzdxx7n-B1g/company-logo_200_200/B4EZx70IrcIkAI-/0/1771603790870/trytoku_logo?e=1778716800&v=beta&t=j7vqly7IuVRWabOEYkAL_ZD_9YZVLuoEF_LSZ6VlSVI", moic: "93.50x", badge: "fund-returner", investorsAfter: [{ name: "Oak HC/FT", logo: "https://logo.clearbit.com/oakhcft.com" }, { name: "Gradient", logo: "https://logo.clearbit.com/gradient.com" }, { name: "F-Prime", logo: "https://logo.clearbit.com/fprimecapital.com" }, { name: "Wollef" }, { name: "Y Combinator", logo: "https://logo.clearbit.com/ycombinator.com" }, { name: "Clocktower" }], bullets: ["Growth average of 37% QoQ from inception to date (2021).", "Operations in Chile, Mexico and Brasil.", "Series B of $40m at $250m."] },
+      { name: "Plutto", tagline: "Third-party risk assessment and management.", image: "/avatars/plutto.png", moic: "21x", investorsAfter: [{ name: "Y Combinator", logo: "https://logo.clearbit.com/ycombinator.com" }], bullets: ["EBITDA of 20% with +$2.5m in ARR.", "Tremendous capital efficiency. Only one round after Platanus."] },
     ],
   },
   {
@@ -99,15 +102,15 @@ export const FUNDS: Fund[] = [
     moicMultiple: "*1.53X",
     dpiMultiple: "0.06X",
     companies: [
-      { name: "Grupalia", tagline: "Group loans for micro-entrepreneurs in Latin America.", image: "https://media.licdn.com/dms/image/v2/D4E0BAQFVi20lbceGOQ/company-logo_200_200/B4EZmWWUh7KcAI-/0/1759164058085?e=1778716800&v=beta&t=l9-xEWq_78gpp833PSEoe7kGX5R-6qsw1l7Z-WY622E", moic: "2.46x", badge: "potential-fund-returner", investorsAfter: ["Tantauco", "Semilla Ventures", "Innogen"], bullets: ["The founders met at Platanus. Ramon was our first employee; Roger was our first Visiting Partner.", "Constant growth since inception. ARR of $4.2m.", "Oversubscribed debt facilities secured."] },
-      { name: "Horizon AI", tagline: "AI that makes companies more efficient by talking to their people, mapping current state and uncovering quick wins.", image: "https://media.licdn.com/dms/image/v2/D4D0BAQGDOIe-12517Q/company-logo_200_200/B4DZwAdr4iI8AI-/0/1769534308674/horizonaiprocess_logo?e=1778716800&v=beta&t=znW4UbBb1Wnc4vnWXDF79I8n0xU96-yWLoMm542CiJw", moic: "6.32x", badge: "rising-star", investorsAfter: ["NXTP"], bullets: ["Big clients: PWC, D-Local, Mercado Libre and Despegar.", "Raised a $4m Seed round.", "Team moved to San Francisco searching US clients."] },
-      { name: "Kunzapp", tagline: "Detect and alert about underutilized software, duplicate applications, and upcoming renewals.", image: "/avatars/kunzapp.png", moic: "7x", investorsAfter: ["Wollef", "Tantauco", "Fen Ventures"] },
-      { name: "Shinkansen", tagline: "Agentic financial infrastructure.", image: "/avatars/shinkansen.png", moic: "2.14x", investorsAfter: ["Hi Ventures", "Krealo (Credicorp)"], bullets: ["Deal sourced through our network.", "Oversubscribed Seed round.", "Average growth: 42% MoM."] },
-      { name: "Kapso", tagline: "WhatsApp for developers. The fastest way to add official WhatsApp to your product.", image: "/avatars/kapso.png", moic: "1x", badge: "rising-star", investorsAfter: ["TBD"] },
-      { name: "Altur", tagline: "Human-less Call Center. Debt collection and sales managed entirely by AI agents.", image: "/avatars/altur.ico", moic: "17.49x", investorsAfter: ["Y Combinator"], bullets: ["$1.8m of ARR in 11 months, with 5 persons.", "We invested 2 years before YC. They pivoted a couple of times."] },
+      { name: "Grupalia", tagline: "Group loans for micro-entrepreneurs in Latin America.", image: "https://media.licdn.com/dms/image/v2/D4E0BAQFVi20lbceGOQ/company-logo_200_200/B4EZmWWUh7KcAI-/0/1759164058085?e=1778716800&v=beta&t=l9-xEWq_78gpp833PSEoe7kGX5R-6qsw1l7Z-WY622E", moic: "2.46x", badge: "potential-fund-returner", investorsAfter: [{ name: "Tantauco" }, { name: "Semilla Ventures" }, { name: "Innogen" }], bullets: ["The founders met at Platanus. Ramon was our first employee; Roger was our first Visiting Partner.", "Constant growth since inception. ARR of $4.2m.", "Oversubscribed debt facilities secured."] },
+      { name: "Horizon AI", tagline: "AI that makes companies more efficient by talking to their people, mapping current state and uncovering quick wins.", image: "https://media.licdn.com/dms/image/v2/D4D0BAQGDOIe-12517Q/company-logo_200_200/B4DZwAdr4iI8AI-/0/1769534308674/horizonaiprocess_logo?e=1778716800&v=beta&t=znW4UbBb1Wnc4vnWXDF79I8n0xU96-yWLoMm542CiJw", moic: "6.32x", badge: "rising-star", investorsAfter: [{ name: "NXTP", logo: "https://logo.clearbit.com/nxtpventures.com" }], bullets: ["Big clients: PWC, D-Local, Mercado Libre and Despegar.", "Raised a $4m Seed round.", "Team moved to San Francisco searching US clients."] },
+      { name: "Kunzapp", tagline: "Detect and alert about underutilized software, duplicate applications, and upcoming renewals.", image: "/avatars/kunzapp.png", moic: "7x", investorsAfter: [{ name: "Wollef" }, { name: "Tantauco" }, { name: "Fen Ventures" }] },
+      { name: "Shinkansen", tagline: "Agentic financial infrastructure.", image: "/avatars/shinkansen.png", moic: "2.14x", investorsAfter: [{ name: "Hi Ventures" }, { name: "Krealo", logo: "https://logo.clearbit.com/krealo.com.pe" }], bullets: ["Deal sourced through our network.", "Oversubscribed Seed round.", "Average growth 42% MoM."] },
+      { name: "Kapso", tagline: "WhatsApp for developers. The fastest way to add official WhatsApp to your product.", image: "/avatars/kapso.png", moic: "1x", badge: "rising-star", investorsAfter: [] },
+      { name: "Altur", tagline: "Human-less Call Center. Debt collection and sales managed entirely by AI agents.", image: "/avatars/altur.ico", moic: "17.49x", investorsAfter: [{ name: "Y Combinator", logo: "https://logo.clearbit.com/ycombinator.com" }], bullets: ["$1.8m of ARR in 11 months, with 5 persons.", "We invested 2 years before YC. They pivoted a couple of times."] },
       { name: "CuidaPet", tagline: "Full-stack AI veterinary services.", image: "/avatars/cuidapet.png", moic: "1x", investorsAfter: [], bullets: ["Applying a strategy of a software company masquerading as a services firm.", "They have acquired their own surgery facility.", "Cash flow positive."] },
-      { name: "Magnar", tagline: "Legal AI platform to understand case law, analyze private cases, and automate legal tasks.", image: "/avatars/magnar.png", moic: "5x", investorsAfter: ["Carey"], bullets: ["$2.2m of ARR after 10 months.", "Rapid expansion in Chile and Peru."] },
-      { name: "Sento", tagline: "Analyzes all AI conversations of a company to detect sales opportunities, churn risks, and friction points.", image: "/avatars/sento.png", moic: "4.2x", investorsAfter: ["Caricaco"], bullets: ["62 clients, $1.5m ARR, all from Central America.", "Opening operations in Mexico."] },
+      { name: "Magnar", tagline: "Legal AI platform to understand case law, analyze private cases, and automate legal tasks.", image: "/avatars/magnar.png", moic: "5x", investorsAfter: [{ name: "Carey", logo: "https://logo.clearbit.com/carey.cl" }], bullets: ["$2.2m of ARR after 10 months.", "Rapid expansion in Chile and Peru."] },
+      { name: "Sento", tagline: "Analyzes all AI conversations of a company to detect sales opportunities, churn risks, and friction points.", image: "/avatars/sento.png", moic: "4.2x", investorsAfter: [{ name: "Caricaco" }], bullets: ["62 clients, $1.5m ARR, all from Central America.", "Opening operations in Mexico."] },
       { name: "Bemmbo", tagline: "Payments and collections management.", image: "/avatars/bemmbo.webp", moic: "3.9x", badge: ["exited", "fund-returner"], investorsAfter: [], bullets: ["Acquired by Buk. Jaime Arrieta (Buk) was Bemmbo's Platanus mentor.", "Platanus was the only investor with a MOIC above 1x; thanks to our early investing approach."] },
     ],
   },

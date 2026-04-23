@@ -56,7 +56,7 @@ export function Slide10({ active }: P) {
               transition={{
                 flex: SPRING,
                 opacity: { duration: 0.2 },
-                y: { duration: 0.4, delay: on ? 0.12 + i * 0.1 : 0 },
+                y: { duration: 0.3, delay: on ? 0.12 + i * 0.1 : 0 },
               }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
@@ -79,14 +79,14 @@ export function Slide10({ active }: P) {
 
               <div className="absolute bottom-0 left-0 right-0 p-5 z-20">
                 <motion.div
-                  className="font-sans font-medium text-white text-base"
+                  className="font-sans font-medium text-white text-lg"
                   animate={{ x: isHovered ? 12 : 0 }}
                   transition={SPRING}
                 >
                   {gp.name}
                 </motion.div>
                 <motion.div
-                  className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1"
+                  className="font-mono font-medium text-[#FFEC40] text-sm uppercase tracking-wider mt-1"
                   animate={{ x: isHovered ? 12 : 0 }}
                   transition={{ ...SPRING, delay: 0.02 }}
                 >
@@ -96,16 +96,16 @@ export function Slide10({ active }: P) {
                 <motion.ul
                   className="mt-3 space-y-1 overflow-hidden"
                   animate={{
-                    height: isHovered ? gp.bullets.length * 32 : 0,
+                    height: isHovered ? gp.bullets.length * 26 : 0,
                     opacity: isHovered ? 1 : 0,
                   }}
-                  transition={{ height: SPRING_SOFT, opacity: { duration: 0.15 } }}
+                  transition={{ height: SPRING_SOFT, opacity: { duration: 0.1 } }}
                 >
                   <AnimatePresence>
                     {isHovered && gp.bullets.map((b, j) => (
                       <motion.li
                         key={j}
-                        className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2"
+                        className="font-sans font-medium text-white text-sm leading-relaxed flex items-center gap-2"
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 12 }}
                         exit={{ opacity: 0, x: 0 }}

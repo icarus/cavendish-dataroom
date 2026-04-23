@@ -7,7 +7,7 @@ export function Slide6({ active }: P) {
   const on = useAnim(active);
 
   const items = [
-    { Icon: Code2, title: "TECHNICAL FOUNDER THESIS", desc: "A technical founder from day one means the company moves faster and avoids high initial expense." },
+    { Icon: Code2, title: "TECHNICAL FOUNDER THESIS", desc: "A technical founder from day one means the company moves faster and avoids high expense." },
     { Icon: Zap, title: "ELITE DEVELOPER COMMUNITY", desc: "12 years building an elite developer community uniquely positions us to fund top tech startups." },
     { Icon: Globe, title: "COMMUNITY-DRIVEN MODEL", desc: "Founders meet & build at Banana Houses. Trust drives deal flow, community is our moat." },
     { Icon: RefreshCw, title: "CONSISTENT PRESENCE", desc: "Early capital keeps us top-of-mind. In 2022, we were LATAM's most active investor." },
@@ -33,7 +33,7 @@ export function Slide6({ active }: P) {
         </h2>
       </div>
 
-      <div className="grid grid-cols-3 gap-px flex-1">
+      <div className="items-end grid grid-cols-3 gap-px flex-1">
         {items.slice(3).map(({ Icon, title, desc }, i) => (
           <div key={title} className="justify-start items-center text-center p-6 pt-4 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
