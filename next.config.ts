@@ -13,6 +13,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "platan.us",
       },
+      {
+        protocol: "https",
+        hostname: "whatdesigncando.s3.eu-central-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "neopausia.com",
+      },
     ],
   },
 };
