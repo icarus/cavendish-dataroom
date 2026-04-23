@@ -28,9 +28,14 @@ const LEGEND = [
   { badge: "rising-star", dot: "bg-[#FFEC40]/30" },
 ];
 
+function parseMoic(moic: string): number {
+  const n = parseFloat(moic.replace(/[^0-9.]/g, ""));
+  return isNaN(n) ? 0 : n;
+}
+
 const ALL_COMPANIES = FUNDS.flatMap((fund) =>
   fund.companies.map((c) => ({ ...c, fundName: fund.name }))
-).sort((a, b) => a.name.localeCompare(b.name));
+).sort((a, b) => parseMoic(b.moic) - parseMoic(a.moic));
 
 function cardStyle(badge?: string) {
   if (!badge) return "bg-white/5 border-white/10";
