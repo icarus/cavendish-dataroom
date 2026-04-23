@@ -100,7 +100,7 @@ export function SlideSocialProof({ active }: P) {
     const yRaw = 50 + item.radiusY * Math.cos(angle) * item.tilt;
     const z = Math.cos(angle);
     const scale = 0.5 + (z + 1) * 0.35;
-    const blur = Math.max(0, (1 - z) * 3);
+    const blur = Math.max(0, (1 - z) * 1.2);
     const opacity = 0.3 + (z + 1) * 0.35;
     const zIndex = Math.round((z + 1) * 15);
     return { x, y: yRaw, z, scale, blur, opacity, zIndex };
