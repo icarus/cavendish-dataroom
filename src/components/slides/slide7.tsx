@@ -45,7 +45,7 @@ export function Slide7({ active }: P) {
           />
 
           <div className="absolute flex items-center" style={{ top: "12%", left: "10%" }}>
-            <div className="flex flex-col justify-center items-center gap-1.5">
+            <div className="pt-8 flex flex-col justify-center items-center gap-1.5">
               <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
                 MEXICO CITY
               </div>
@@ -57,7 +57,7 @@ export function Slide7({ active }: P) {
             <PulsingDot color="white" delay={0} />
           </div>
 
-          <div className="absolute flex items-center" style={{ bottom: "30%", right: "10%" }}>
+          <div className="absolute flex items-center" style={{ bottom: "25%", right: "7%" }}>
             <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>
@@ -68,8 +68,9 @@ export function Slide7({ active }: P) {
       </div>
       <div className="flex h-[34%]" style={f(on, 280)}>
         {["/banana-house/image.png", "/banana-house/image-1.png", "/banana-house/image 17.png", "/banana-house/image 18.png"].map((src, i) => (
-          <div key={i} className="flex-1 border-r border-white/5 last:border-r-0 relative overflow-hidden">
-            <Image src={src} alt="Banana House" fill className="object-cover" />
+          <div key={i} className="flex-1 min-w-0 overflow-hidden">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={src} alt="Banana House" className="w-full h-full object-cover" />
           </div>
         ))}
       </div>
