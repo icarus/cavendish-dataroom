@@ -41,19 +41,19 @@ export function Slide7({ active }: P) {
             alt="Latin America map"
             width={1920}
             height={1080}
-            className="scale-150 opacity-70 -mt-56 -ml-24 object-contain"
+            className="scale-150 opacity-70 -mt-60 -ml-24 object-contain"
           />
 
           <div className="absolute flex items-center" style={{ top: "12%", left: "10%" }}>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col justify-center items-center gap-1.5">
               <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
                 MEXICO CITY
               </div>
-              <div className="font-mono text-[#FFEC40] text-base font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
+              <div className="font-mono bg-[#FFEC40]/5 text-[#FFEC40] text-sm font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
                 COMING SOON
               </div>
             </div>
-            <div className="w-12 h-px bg-white/30" />
+            <div className="w-24 -mr-6 h-px bg-white" />
             <PulsingDot color="white" delay={0} />
           </div>
 
@@ -61,15 +61,15 @@ export function Slide7({ active }: P) {
             <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>
-            <div className="w-12 h-px bg-white/30" />
+            <div className="w-24 -mr-6 h-px bg-white" />
             <PulsingDot color="white" delay={0.4} />
           </div>
         </div>
       </div>
       <div className="flex h-[34%]" style={f(on, 280)}>
-        {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="flex-1 border-r border-white/5 last:border-r-0 bg-white/5 backdrop-blur-sm flex items-center justify-center">
-            <span className="font-mono text-white/15 text-base tracking-wider uppercase">Photo {i + 1}</span>
+        {["/banana-house/image.png", "/banana-house/image-1.png", "/banana-house/image 17.png", "/banana-house/image 18.png"].map((src, i) => (
+          <div key={i} className="flex-1 border-r border-white/5 last:border-r-0 relative overflow-hidden">
+            <Image src={src} alt="Banana House" fill className="object-cover" />
           </div>
         ))}
       </div>
