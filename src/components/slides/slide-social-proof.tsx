@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { TESTIMONIALS } from "@/lib/deck-data";
+import { DancingBanana } from "@/components/ui/dancing-banana";
 import { P, useAnim, WordReveal } from "./utils";
 
 const ITEMS = TESTIMONIALS.filter((t) => t.text);
@@ -63,20 +64,22 @@ export function SlideSocialProof({ active }: P) {
   const on = useAnim(active);
   const [hovered, setHovered] = useState<number | null>(null);
   const [displayed, setDisplayed] = useState<number | null>(null);
-  const [time, setTime] = useState(0);
+  const timeRef = useRef(0);
   const rafRef = useRef<number>(0);
   const startRef = useRef<number>(0);
   const lingerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [, forceRender] = useState(0);
 
   useEffect(() => {
     if (!active) {
-      setTime(0);
+      timeRef.current = 0;
       startRef.current = 0;
       return;
     }
     const tick = (ts: number) => {
       if (!startRef.current) startRef.current = ts;
-      setTime((ts - startRef.current) / 1000);
+      timeRef.current = (ts - startRef.current) / 1000;
+      forceRender((n) => n + 1);
       rafRef.current = requestAnimationFrame(tick);
     };
     rafRef.current = requestAnimationFrame(tick);
@@ -95,7 +98,7 @@ export function SlideSocialProof({ active }: P) {
   }, []);
 
   const getPos = useCallback((item: typeof ORBITS[0]) => {
-    const angle = item.baseAngle + time * item.speed;
+    const angle = item.baseAngle + timeRef.current * item.speed;
     const x = 50 + item.radiusX * Math.sin(angle);
     const yRaw = 50 + item.radiusY * Math.cos(angle) * item.tilt;
     const z = Math.cos(angle);
@@ -104,7 +107,7 @@ export function SlideSocialProof({ active }: P) {
     const opacity = 0.3 + (z + 1) * 0.35;
     const zIndex = Math.round((z + 1) * 15);
     return { x, y: yRaw, z, scale, blur, opacity, zIndex };
-  }, [time]);
+  }, []);
 
   const displayedItem = displayed !== null ? ORBITS[displayed] : null;
   const isActive = displayed !== null;
@@ -120,6 +123,16 @@ export function SlideSocialProof({ active }: P) {
           What founders{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">say</mark>
         </h2>
+      </div>
+
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20"
+        style={{
+          opacity: on ? (isActive ? 0.3 : 0.6) : 0,
+          transition: "opacity 0.4s ease",
+        }}
+      >
+        <DancingBanana size={100} />
       </div>
 
       {ORBITS.map((item, i) => {
@@ -145,7 +158,7 @@ export function SlideSocialProof({ active }: P) {
             onMouseEnter={() => handleHover(i)}
             onMouseLeave={handleLeave}
           >
-            <div className="relative size-20 overflow-hidden border-2 border-white/20 hover:border-[#FFEC40] transition-colors backdrop-blur-sm">
+            <div className="relative size-18 overflow-hidden border-2 border-white/20 hover:border-[#FFEC40] transition-colors backdrop-blur-sm">
               <Image
                 src={item.image}
                 alt={item.name}
@@ -159,7 +172,7 @@ export function SlideSocialProof({ active }: P) {
 
       {isActive && displayedItem && (
         <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-[60] bg-black/40 animate-in fade-in duration-300"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-60 bg-black/40 animate-in fade-in duration-300"
         >
           <QuoteDisplay key={displayedItem.idx} item={displayedItem} />
         </div>
