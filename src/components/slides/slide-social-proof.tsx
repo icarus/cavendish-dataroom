@@ -131,6 +131,7 @@ export function SlideSocialProof({ active }: P) {
         return (
           <div
             key={item.name}
+            suppressHydrationWarning
             className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer"
             style={{
               left: `${pos.x}%`,
