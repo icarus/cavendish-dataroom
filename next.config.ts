@@ -21,6 +21,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "neopausia.com",
       },
+      {
+        protocol: "https",
+        hostname: "bookface-images.s3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+      },
+      {
+        protocol: "https",
+        hostname: "sequoiacap.com",
+      },
     ],
   },
 };
