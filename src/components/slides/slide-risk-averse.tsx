@@ -28,24 +28,14 @@ export function SlideRiskAverse({ active }: P) {
           />
         </div>
 
-        <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
-          <WordReveal
-            text="That's not early stage Venture Capital."
-            on={on}
-            baseDelay={1200}
-            interval={50}
-            className="font-sans font-medium"
-            highlight
-          />
-        </div>
-
         <div className="leading-[1.5]" style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
           <WordReveal
             text="Pre-seed funds should invest in the unknown to maximize economic upside."
             on={on}
-            baseDelay={1700}
+            baseDelay={1200}
             interval={40}
-            className="font-sans font-medium text-white"
+            className="font-sans font-medium"
+            highlight
           />
         </div>
       </div>
