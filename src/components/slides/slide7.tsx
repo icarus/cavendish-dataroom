@@ -5,7 +5,7 @@ import { f, P, useAnim } from "./utils";
 
 function PulsingDot({ color = "white", delay = 0 }: { color?: string; delay?: number }) {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <svg width="28" height="28" viewBox="0 0 28 28" className="shrink-0">
       <circle cx="14" cy="14" r="12" fill="none" stroke={color} strokeWidth="1" opacity="0.3">
         <animate attributeName="r" values="6;14" dur="2s" begin={`${delay}s`} repeatCount="indefinite" />
         <animate attributeName="opacity" values="0.5;0" dur="2s" begin={`${delay}s`} repeatCount="indefinite" />
@@ -44,28 +44,20 @@ export function Slide7({ active }: P) {
             className="scale-150 opacity-70 -mt-56 -ml-24 object-contain"
           />
 
-          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={f(on, 200)}>
-            <line x1="30%" y1="22%" x2="22%" y2="30%" stroke="white" strokeWidth="1" opacity="0.3" />
-            <line x1="62%" y1="60%" x2="55%" y2="52%" stroke="white" strokeWidth="1" opacity="0.3" />
-          </svg>
-
-          <div className="absolute" style={{ top: "18%", left: "22%" }}>
+          <div className="absolute flex items-center gap-2" style={{ top: "12%", left: "10%" }}>
             <PulsingDot color="white" delay={0} />
+            <div className="flex flex-col gap-1">
+              <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
+                MEXICO CITY
+              </div>
+              <div className="font-mono text-[#FFEC40] text-base font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
+                COMING SOON
+              </div>
+            </div>
           </div>
 
-          <div className="absolute" style={{ bottom: "36%", right: "34%" }}>
+          <div className="absolute flex items-center gap-2" style={{ bottom: "30%", right: "10%" }}>
             <PulsingDot color="white" delay={0.4} />
-          </div>
-
-          <div className="absolute flex flex-col items-center" style={{ top: "8%", left: "28%" }}>
-            <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 mb-2.5 w-fit">
-              MEXICO CITY
-            </div>
-            <div className="font-mono text-[#FFEC40] text-base font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
-              COMING SOON
-            </div>
-          </div>
-          <div className="absolute" style={{ bottom: "28%", right: "14%" }}>
             <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>
