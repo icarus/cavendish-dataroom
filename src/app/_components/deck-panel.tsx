@@ -21,7 +21,7 @@ function useSlideLayout() {
       const sw = window.innerWidth;
       const sh = window.innerHeight;
       const portrait = sh > sw;
-      const scale = Math.min(sw / REF_W, sh / REF_H);
+      const scale = Math.min(sw / REF_W, sh / REF_H) * 0.92;
       setLayout({ portrait, scale });
     };
     update();
