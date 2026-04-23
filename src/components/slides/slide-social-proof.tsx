@@ -33,7 +33,7 @@ function QuoteDisplay({ item }: { item: typeof ORBITS[0] }) {
           text={`\u201C${item.text}\u201D`}
           on={reveal}
           baseDelay={0}
-          interval={60}
+          interval={30}
           className="font-sans font-medium text-white"
         />
       </div>
