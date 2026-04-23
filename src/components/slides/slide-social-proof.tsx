@@ -145,7 +145,7 @@ export function SlideSocialProof({ active }: P) {
             onMouseEnter={() => handleHover(i)}
             onMouseLeave={handleLeave}
           >
-            <div className="relative size-14 overflow-hidden border-2 border-white/20 hover:border-[#FFEC40] transition-colors backdrop-blur-sm">
+            <div className="relative size-20 overflow-hidden border-2 border-white/20 hover:border-[#FFEC40] transition-colors backdrop-blur-sm">
               <Image
                 src={item.image}
                 alt={item.name}
