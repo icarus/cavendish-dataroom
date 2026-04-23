@@ -5,16 +5,16 @@ import { f, P, useAnim } from "./utils";
 
 function PulsingDot({ color = "white", delay = 0 }: { color?: string; delay?: number }) {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" className="shrink-0">
-      <circle cx="14" cy="14" r="12" fill="none" stroke={color} strokeWidth="1" opacity="0.3">
-        <animate attributeName="r" values="6;14" dur="2s" begin={`${delay}s`} repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.5;0" dur="2s" begin={`${delay}s`} repeatCount="indefinite" />
+    <svg width="56" height="56" viewBox="0 0 56 56" className="shrink-0">
+      <circle cx="28" cy="28" r="24" fill="none" stroke={color} strokeWidth="1.5" opacity="0.3">
+        <animate attributeName="r" values="10;28" dur="2s" begin={`${delay}s`} repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.6;0" dur="2s" begin={`${delay}s`} repeatCount="indefinite" />
       </circle>
-      <circle cx="14" cy="14" r="12" fill="none" stroke={color} strokeWidth="1" opacity="0.3">
-        <animate attributeName="r" values="6;14" dur="2s" begin={`${delay + 0.7}s`} repeatCount="indefinite" />
-        <animate attributeName="opacity" values="0.5;0" dur="2s" begin={`${delay + 0.7}s`} repeatCount="indefinite" />
+      <circle cx="28" cy="28" r="24" fill="none" stroke={color} strokeWidth="1.5" opacity="0.3">
+        <animate attributeName="r" values="10;28" dur="2s" begin={`${delay + 0.7}s`} repeatCount="indefinite" />
+        <animate attributeName="opacity" values="0.6;0" dur="2s" begin={`${delay + 0.7}s`} repeatCount="indefinite" />
       </circle>
-      <circle cx="14" cy="14" r="5" fill={color} opacity="0.9" />
+      <circle cx="28" cy="28" r="8" fill={color} opacity="0.9" />
     </svg>
   );
 }
@@ -44,8 +44,7 @@ export function Slide7({ active }: P) {
             className="scale-150 opacity-70 -mt-56 -ml-24 object-contain"
           />
 
-          <div className="absolute flex items-center gap-2" style={{ top: "12%", left: "10%" }}>
-            <PulsingDot color="white" delay={0} />
+          <div className="absolute flex items-center" style={{ top: "12%", left: "10%" }}>
             <div className="flex flex-col gap-1">
               <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
                 MEXICO CITY
@@ -54,13 +53,16 @@ export function Slide7({ active }: P) {
                 COMING SOON
               </div>
             </div>
+            <div className="w-12 h-px bg-white/30" />
+            <PulsingDot color="white" delay={0} />
           </div>
 
-          <div className="absolute flex items-center gap-2" style={{ bottom: "30%", right: "10%" }}>
-            <PulsingDot color="white" delay={0.4} />
+          <div className="absolute flex items-center" style={{ bottom: "30%", right: "10%" }}>
             <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>
+            <div className="w-12 h-px bg-white/30" />
+            <PulsingDot color="white" delay={0.4} />
           </div>
         </div>
       </div>
