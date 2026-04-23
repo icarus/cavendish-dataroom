@@ -55,7 +55,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       )}
       style={{
         opacity: on ? (dimmed ? 0.5 : 1) : 0,
-        transform: on ? "translateY(0)" : "translateY(14px)",
+        transform: on ? "translateY(0)" : "translateY(0px)",
         filter: hovered ? "grayscale(0) blur(0px)" : dimmed ? "grayscale(1) blur(2px)" : "grayscale(1) blur(0px)",
         transition: on
           ? `opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out`
@@ -124,7 +124,7 @@ export function Slide8({ active }: P) {
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <div className="mb-4" style={{
         opacity: on ? 1 : 0,
-        transform: on ? "translateY(0)" : "translateY(14px)",
+        transform: on ? "translateY(0)" : "translateY(12px)",
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
