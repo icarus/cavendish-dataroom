@@ -191,7 +191,7 @@ export function SlideTrackRecord({ active }: P) {
         </div>
       </div>
 
-      <div className="flex-1 min-h-0 grid gap-2 content-start overflow-hidden" style={{ gridTemplateColumns: `repeat(${Math.min(Math.ceil(filtered.length / 3), 7)}, 1fr)`, gridTemplateRows: "repeat(3, 1fr)" }}>
+      <div className="flex-1 min-h-0 grid gap-2 content-start overflow-hidden" style={{ gridTemplateColumns: `repeat(${Math.min(Math.ceil(ALL_COMPANIES.length / 3), 7)}, 1fr)`, gridTemplateRows: "repeat(3, 1fr)" }}>
         {filtered.map((company, i) => (
           <motion.div
             key={company.name}
@@ -216,10 +216,15 @@ export function SlideTrackRecord({ active }: P) {
               style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
             >
               {company.moic}
-              {allBadges(company.badge).includes("exited") && (
-                <span className="text-white/40">Exited $6m</span>
-              )}
             </span>
+            {allBadges(company.badge).includes("exited") && (
+              <span
+                style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+                className="absolute bottom-2 right-2  font-mono uppercase bg-white text-black px-1 py-0.5"
+              >
+                Exited
+              </span>
+            )}
           </motion.div>
         ))}
       </div>
