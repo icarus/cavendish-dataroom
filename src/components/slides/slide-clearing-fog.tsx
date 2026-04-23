@@ -189,7 +189,7 @@ export function SlideClearingFog({ active }: P) {
                 src={mentor.image}
                 alt={mentor.name}
                 fill
-                className="object-cover opacity-60 group-hover:opacity-80 transition-opacity"
+                className="object-cover opacity-30 group-hover:opacity-100 transition-opacity"
               />
             </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />

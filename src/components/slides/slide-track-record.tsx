@@ -24,8 +24,8 @@ const BADGE_CARD_STYLES: Record<string, string> = {
 
 const LEGEND = [
   { badge: "fund-returner", dot: "bg-[#FFEC40]" },
-  { badge: "potential-fund-returner", dot: "border border-[#FFEC40] bg-transparent" },
-  { badge: "rising-star", dot: "bg-[#FFEC40]/30" },
+  { badge: "potential-fund-returner", dot: "border bg-[#FFEC40]/30 border-[#FFEC40]" },
+  { badge: "rising-star", dot: "bg-[#FFEC40]/30 border border-[#FFEC40]/50" },
 ];
 
 function parseMoic(moic: string): number {
@@ -249,7 +249,7 @@ export function SlideTrackRecord({ active }: P) {
 
       <div className="flex items-center justify-end gap-6 mt-6" style={f(on, 200)}>
         {LEGEND.map(({ badge, dot }) => (
-          <div key={badge} className="flex items-center gap-1.5">
+          <div key={badge} className="flex items-center gap-2">
             <span className={cn("size-2.5 shrink-0", dot)} />
             <span className="font-mono font-medium text-white text-base uppercase tracking-wider">
               {BADGE_LABELS[badge]}
