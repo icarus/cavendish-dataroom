@@ -7,10 +7,10 @@ const PHRASES = [
   "Apply Now 🍌",
 ];
 
-const TYPING_SPEED = 35;
-const DELETE_SPEED = 20;
-const PAUSE_AFTER_TYPE = 80;
-const PAUSE_AFTER_DELETE = 200;
+const TYPING_SPEED = 65;
+const DELETE_SPEED = 35;
+const PAUSE_AFTER_TYPE = 120;
+const PAUSE_AFTER_DELETE = 300;
 
 const FAVICON_FRAMES = Array.from(
   { length: 8 },
