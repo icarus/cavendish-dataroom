@@ -96,7 +96,7 @@ export function Slide10({ active }: P) {
                 <motion.ul
                   className="mt-3 space-y-1 overflow-hidden"
                   animate={{
-                    height: isHovered ? "auto" : 0,
+                    height: isHovered ? gp.bullets.length * 32 : 0,
                     opacity: isHovered ? 1 : 0,
                   }}
                   transition={{ height: SPRING_SOFT, opacity: { duration: 0.15 } }}
