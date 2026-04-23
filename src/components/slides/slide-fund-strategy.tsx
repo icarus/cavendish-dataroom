@@ -51,29 +51,35 @@ export function SlideFundStrategy({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="flex items-start justify-between mb-2">
+      <div className="flex items-start justify-between mb-1">
         <div style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
             Fund{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Strategy</mark>
           </h2>
         </div>
-        <p className="font-sans font-medium text-white text-base max-w-md text-right leading-snug" style={f(on, 50)}>
-          10% of a successful VC portfolio returns 25x cash on cash.
-        </p>
       </div>
 
-      <div className="mb-8" style={f(on, 80)}>
-        <p className="font-sans font-medium text-white text-base">
+      <div className="flex items-baseline justify-between mb-4" style={f(on, 80)}>
+        <p className="font-sans font-normal text-white/40 text-base">
           Only our standard valuation of <span className="text-[#FFEC40]">$200K for 7%</span> reaches a return multiple of 60x.
+        </p>
+        <p className="font-mono font-medium text-white/40 text-base uppercase tracking-wider shrink-0 ml-4">
+          10% of a VC portfolio returns 25x
         </p>
       </div>
 
       <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
-        <div className="flex items-center justify-center border-b border-white/10" style={f(on, 120)}>
-          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
-            Entry Val. / Exit Price
+        <div className="relative overflow-hidden border-b border-white/10" style={f(on, 120)}>
+          <span className="absolute bottom-1 left-1 font-mono font-medium text-white/40 text-base uppercase tracking-wider leading-none">
+            Entry Val.
           </span>
+          <span className="absolute top-1 right-1 font-mono font-medium text-white/40 text-base uppercase tracking-wider leading-none">
+            Exit Price
+          </span>
+          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+            <line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
+          </svg>
         </div>
         {EXIT_VALUATIONS.map((v, i) => (
           <div key={v} className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 150 + i * 30)}>
