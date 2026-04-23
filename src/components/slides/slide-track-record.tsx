@@ -231,7 +231,7 @@ export function SlideTrackRecord({ active }: P) {
             <div className="relative size-8 overflow-hidden shrink-0">
               <Image src={company.image} alt={company.name} fill className="object-cover" />
             </div>
-            <span className="font-sans font-medium text-white text-base text-center leading-none truncate w-full">
+            <span className="font-sans font-medium text-white text-lg text-center leading-none truncate w-full">
               {company.name}
             </span>
             <span

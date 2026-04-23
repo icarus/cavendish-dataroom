@@ -45,7 +45,7 @@ function QuoteDisplay({ item }: { item: typeof ORBITS[0] }) {
           transition: "opacity 0.4s ease 100ms, transform 0.4s ease 100ms",
         }}
       >
-        <span className="font-sans font-medium text-white text-base">{item.name}</span>
+        <span className="font-sans font-medium text-white text-lg">{item.name}</span>
         {item.company && (
           <>
             <span className="size-1 bg-[#FFEC40] shrink-0" />
