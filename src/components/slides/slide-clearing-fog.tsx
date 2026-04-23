@@ -25,7 +25,7 @@ function MentorCard({ mentor, index, on }: { mentor: typeof MENTORS[0]; index: n
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-2 z-10">
         <p className="font-sans font-medium text-white text-base truncate">{mentor.name}</p>
-        <p className="font-mono font-medium text-[#FFEC40] text-sm uppercase tracking-wider truncate">{mentor.company}</p>
+        <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider truncate">{mentor.company}</p>
       </div>
     </div>
   );

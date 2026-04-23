@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { motion } from "motion/react";
 import { P, useAnim } from "./utils";
 
 const HACK_IMAGES = Array.from({ length: 31 }, (_, i) => `/events/platanus-hack/platanus-hack-${i + 1}.jpeg`);
@@ -16,13 +17,15 @@ const EVENTS = [
   { title: "AI Summit with OpenAI", desc: "Co-organized the first OpenAI Summit in Mexico City.", images: HACK_IMAGES },
 ];
 
-function EventCard({ title, desc, images, index, on, activated, dimmed, onHover, onLeave }: {
+const SPRING = { type: "spring" as const, stiffness: 400, damping: 35 };
+
+function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, onLeave }: {
   title: string;
   desc: string;
   images: string[];
   index: number;
   on: boolean;
-  activated: boolean;
+  hovered: boolean;
   dimmed: boolean;
   onHover: () => void;
   onLeave: () => void;
@@ -32,7 +35,7 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
   const [prevIndex, setPrevIndex] = useState(startOffset % images.length);
 
   useEffect(() => {
-    if (!activated) return;
+    if (!hovered) return;
     const interval = setInterval(() => {
       setImgIndex((prev) => {
         setPrevIndex(prev);
@@ -40,20 +43,20 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
       });
     }, 1500);
     return () => clearInterval(interval);
-  }, [activated, images.length]);
+  }, [hovered, images.length]);
 
   const delay = 100 + index * 80;
 
   return (
     <div
       className={cn(
-        "relative overflow-hidden bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center cursor-pointer",
-        activated ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
+        "relative overflow-hidden bg-black/80 backdrop-blur-sm flex flex-col items-center justify-end cursor-pointer",
+        hovered ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
       )}
       style={{
         opacity: on ? (dimmed ? 0.5 : 1) : 0,
         transform: on ? "translateY(0)" : "translateY(14px)",
-        filter: activated ? "grayscale(0)" : "grayscale(1)",
+        filter: hovered ? "grayscale(0) blur(0px)" : dimmed ? "grayscale(1) blur(2px)" : "grayscale(1) blur(0px)",
         transition: on
           ? `opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out`
           : `opacity 0.2s ease-out ${delay}ms, transform 0.2s ease-out ${delay}ms, filter 0.2s ease-out`,
@@ -75,18 +78,30 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
       />
       <div className={cn(
         "absolute inset-0 transition-colors duration-200",
-        activated ? "bg-black/40" : "bg-black/70",
+        hovered ? "bg-black/40" : "bg-black/70",
       )} />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-      <h3
-        className="relative z-10 font-mono font-medium text-white text-center px-4 leading-tight uppercase tracking-wider"
-        style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
-      >
-        {title}
-      </h3>
-      <p className="relative z-10 font-sans font-normal text-white text-center text-sm text-balance leading-snug px-6 mt-0.5 max-w-[90%] transition-opacity duration-200">
-        {desc}
-      </p>
+      <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
+
+      <div className="relative z-10 px-4 pb-4 w-full">
+        <motion.h3
+          className="font-mono font-medium text-white text-center leading-tight uppercase tracking-wider"
+          style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
+          animate={{ y: hovered ? -8 : 0 }}
+          transition={SPRING}
+        >
+          {title}
+        </motion.h3>
+        <motion.p
+          className="font-sans font-normal text-white/40 text-base text-center text-balance leading-snug mt-1"
+          animate={{
+            opacity: hovered ? 1 : 0,
+            y: hovered ? 0 : 8,
+          }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        >
+          {desc}
+        </motion.p>
+      </div>
     </div>
   );
 }
@@ -94,22 +109,19 @@ function EventCard({ title, desc, images, index, on, activated, dimmed, onHover,
 export function Slide8({ active }: P) {
   const on = useAnim(active);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-  const [activatedIndex, setActivatedIndex] = useState<number | null>(null);
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleHover = useCallback((i: number) => {
     setHoveredIndex(i);
     if (timerRef.current) clearTimeout(timerRef.current);
-    timerRef.current = setTimeout(() => setActivatedIndex(i), 0);
   }, []);
   const handleLeave = useCallback(() => {
     setHoveredIndex(null);
-    setActivatedIndex(null);
     if (timerRef.current) clearTimeout(timerRef.current);
   }, []);
 
   return (
-    <div className="slide aspect-video w-full relative flex flex-col p-[3%]">
+    <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <div className="mb-4" style={{
         opacity: on ? 1 : 0,
         transform: on ? "translateY(0)" : "translateY(14px)",
@@ -129,8 +141,8 @@ export function Slide8({ active }: P) {
             images={event.images}
             index={i}
             on={on}
-            activated={activatedIndex === i}
-            dimmed={activatedIndex !== null && activatedIndex !== i}
+            hovered={hoveredIndex === i}
+            dimmed={hoveredIndex !== null && hoveredIndex !== i}
             onHover={() => handleHover(i)}
             onLeave={handleLeave}
           />

@@ -5,6 +5,14 @@ import React, { useEffect, useState } from "react";
 
 export type P = { active: boolean };
 
+export const TEXT = {
+  title: "font-sans font-medium text-white",
+  body: "font-sans font-normal text-white/40 text-base leading-relaxed",
+  label: "font-mono font-medium text-white/40 text-base uppercase tracking-wider",
+  accent: "font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider",
+  muted: "font-sans font-medium text-white/40 text-base leading-relaxed",
+} as const;
+
 export function useAnim(active: boolean) {
   const [on, setOn] = useState(false);
   useEffect(() => {

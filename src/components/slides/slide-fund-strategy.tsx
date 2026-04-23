@@ -50,7 +50,7 @@ export function SlideFundStrategy({ active }: P) {
   const on = useAnim(active);
 
   return (
-    <div className="slide aspect-video w-full relative flex flex-col p-[3%_4%]">
+    <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <div className="flex items-start justify-between mb-2">
         <div style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
@@ -71,7 +71,7 @@ export function SlideFundStrategy({ active }: P) {
 
       <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
         <div className="flex items-center justify-center border-b border-white/10" style={f(on, 120)}>
-          <span className="font-mono font-medium text-white/40 text-sm uppercase tracking-tight">
+          <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
             Entry Val. / Exit Price
           </span>
         </div>
@@ -128,10 +128,10 @@ export function SlideFundStrategy({ active }: P) {
       </div>
 
       <div className="mt-2 flex items-center justify-between" style={f(on, 500)}>
-        <p className="font-sans font-normal text-white/40 text-sm">
+        <p className="font-sans font-normal text-white/40 text-base">
           Return multiples depending on entry valuation and exit valuation, considering standard dilution rounds.
         </p>
-        <p className="font-sans font-normal text-white/40 text-sm shrink-0 ml-4">
+        <p className="font-sans font-normal text-white/40 text-base shrink-0 ml-4">
           A good VC strategy is investing as early as possible.
         </p>
       </div>

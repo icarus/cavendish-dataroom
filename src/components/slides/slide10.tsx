@@ -31,7 +31,7 @@ export function Slide10({ active }: P) {
   const [hovered, setHovered] = useState<number | null>(null);
 
   return (
-    <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%]">
+    <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <div className="mb-4" style={f(on, 0)}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
           The{" "}
@@ -86,7 +86,7 @@ export function Slide10({ active }: P) {
                   {gp.name}
                 </motion.div>
                 <motion.div
-                  className="font-mono font-medium text-[#FFEC40] text-sm uppercase tracking-wider mt-1"
+                  className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1"
                   animate={{ x: isHovered ? 12 : 0 }}
                   transition={{ ...SPRING, delay: 0.02 }}
                 >
@@ -105,7 +105,7 @@ export function Slide10({ active }: P) {
                     {isHovered && gp.bullets.map((b, j) => (
                       <motion.li
                         key={j}
-                        className="font-sans font-medium text-white text-sm leading-relaxed flex items-center gap-2"
+                        className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2"
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 12 }}
                         exit={{ opacity: 0, x: 0 }}
