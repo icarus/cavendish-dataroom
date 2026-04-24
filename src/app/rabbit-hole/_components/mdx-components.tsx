@@ -31,7 +31,7 @@ export function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export function Hl({ children }: { children: React.ReactNode }) {
-  return <span className="bg-[#474402] text-[#FFEC40] px-1">{children}</span>;
+  return <span className="bg-[#FFEC40] text-black px-1">{children}</span>;
 }
 
 export function Section({
@@ -142,11 +142,11 @@ export function Step({
 }) {
   return (
     <div className="flex gap-6">
-      <span className="inline-flex items-start justify-center bg-[#474402] text-[#FFEC40] font-mono font-medium text-sm w-8 h-7 shrink-0 mt-0.5">
+      <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-6 h-fit shrink-0 mt-0.5">
         {n}
       </span>
       <div className="mt-0.5">
-        <h4 className="font-sans font-medium text-black/40 text-sm mb-3">{title}</h4>
+        <h4 className="font-sans font-medium text-base text-black mb-3">{title}</h4>
         <div className="space-y-3">{children}</div>
       </div>
     </div>
@@ -465,7 +465,7 @@ export const rabbitHoleComponents: MDXComponents = {
   ul: (props) => <ul className="list-disc list-outside pl-5 space-y-2" {...props} />,
   ol: (props) => <ol className="list-decimal list-outside pl-5 space-y-2" {...props} />,
   li: (props) => <li className="font-sans font-medium text-black/60 text-sm leading-relaxed" {...props} />,
-  strong: (props) => <span className="bg-[#474402] text-[#FFEC40] px-1" {...props} />,
+  strong: (props) => <span className="bg-[#FFEC40] text-black px-1" {...props} />,
   em: (props) => <span className="italic" {...props} />,
   blockquote: (props) => (
     <div className="border border-[#FFEC40] bg-[#FFEC40]/10 p-5 my-6 [&>p]:mb-0" {...props} />
