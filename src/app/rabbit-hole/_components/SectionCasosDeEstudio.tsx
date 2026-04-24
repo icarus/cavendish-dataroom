@@ -129,6 +129,77 @@ function CaseFintoc() {
   );
 }
 
+function CaseToku() {
+  return (
+    <div className="border border-white/10 bg-white/5 mb-4">
+      <div className="p-6 border-b border-white/10">
+        <div className="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">Génesis · 2021</p>
+            <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Toku</h3>
+          </div>
+          <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El caso que valida la tesis</span>
+        </div>
+        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-5">
+          Automatiza todo el proceso de cobranza y gestión de pagos recurrentes para empresas con alto volumen. Fund returner del Génesis Fund — devolvió el fondo en menos de 2 años.
+        </p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <StatCard label="MOIC" value="76.81x" />
+          <StatCard label="Inversión" value="$50K por 7%" />
+          <StatCard label="Valoración entrada" value="$715K post-money" />
+          <StatCard label="ARR actual" value="$16M (Q3 2025)" />
+        </div>
+      </div>
+      <div className="px-6">
+        <CaseSection title="Resumen ejecutivo">
+          <Body>De $18K ARR (agosto 2020) a $16M ARR (Q3 2025) = <span className="text-white">889x en 5 años</span>. ARR duplicado por tercer año consecutivo (2023–2025). Operando en Chile, México y Brasil con 260 personas. Serie A de $48M a $180M — la más grande de LatAm liderada por una mujer. Cristina y Fran fueron las primeras mujeres chilenas en Y Combinator.</Body>
+        </CaseSection>
+        <CaseSection title="Cómo nos conocimos y por qué invertimos">
+          <Body>Conocimos a Cristina, Francisca y Enzo en enero de 2021 en el Build Sprint de Platanus. Tenían apenas 4 clientes pagando por su software de automatización de cobranzas.</Body>
+          <Body>La meta durante el Build Sprint era ambiciosa: duplicar de 4 a 8 clientes en 4 semanas. Sus clientes no eran pymes sino corporaciones grandes, y ya existían muchos competidores. Al cierre del programa parecía que no lo lograrían — entonces llegó el último reporte: habían cerrado 3 nuevos clientes esa semana. <span className="text-white">Prometieron 8, entregaron 9.</span></Body>
+          <Body>Fuimos su primer inversionista institucional. Lo que nos convenció fue el equipo: skin in the game (cada founder aportó $2.5K propio), capacidad de ejecución excepcional bajo presión, y obsesión por los datos.</Body>
+        </CaseSection>
+        <CaseSection title="El equipo">
+          <div className="space-y-3">
+            <PersonCard
+              name="Cristina Etcheberry — CEO"
+              role="Ex CPO/COO, clara líder del equipo"
+              bio="Desde los primeros contactos se destacó como la líder natural. Claridad mental y capacidad de empuje. Sus pares de colegio y universidad apostaban a que sería la más exitosa del grupo."
+            />
+            <PersonCard
+              name="Francisca Noguera — CRO"
+              role="Ex CEO"
+              bio="Posicionó CMR Puntos como el programa de fidelización más grande de Chile. Habilidades comerciales y de negociación excepcionales."
+            />
+            <PersonCard
+              name="Enzo Tamburini — VP of Engineering"
+              role="Ex CTO"
+              bio="Ayudante jefe de programación avanzada por 3 años. Talento técnico de alto nivel con capacidad para resolver problemas complejos de escalabilidad."
+            />
+          </div>
+        </CaseSection>
+        <CaseSection title="Cómo los apoyamos">
+          <Body>Programa de aceleración febrero–junio 2021: coliseos bi-semanales con Pedro Pineda (CEO Fintual), Agustín Feuerhake y Jaime Bünzli. Check-in semanal individual con el team Platanus.</Body>
+          <Body><span className="text-white">Demo Day:</span> evento de levantamiento online con ~70 inversionistas seleccionados. Apoyamos con narrativa, condiciones de ronda e introducciones. Toku sobresuscribió su ronda, levantando más de $1M en 3 días.</Body>
+        </CaseSection>
+        <CaseSection title="Historia de fundraising">
+          <FundraisingTable rows={[
+            { ronda: "Platanus", fecha: "03/2021", monto: "$50K", valoracion: "$715K", investors: "Platanus Génesis — primer ticket institucional" },
+            { ronda: "Demo Day / Pre-seed", fecha: "09/2021", monto: "$2.1M", valoracion: "$15M", investors: "Y Combinator, Clocktower Ventures" },
+            { ronda: "Seed", fecha: "03/2022", monto: "$7M", valoracion: "$42M", investors: "Wollef, F-Prime Capital" },
+            { ronda: "Serie A", fecha: "04/2025", monto: "$48M", valoracion: "$180M", investors: "Oak HC/FT, F-Prime, Gradient Ventures (Google), Clocktower, YC, Honey Island by 8UM" },
+          ]} />
+        </CaseSection>
+        <CaseSection title="Lo que aprendimos">
+          <Body><span className="text-white">En pre-semilla todo puede cambiar excepto el equipo:</span> Toku, como Fintoc, Grupalia y Bemmbo, pivoteó en algún momento. Lo que importa es invertir en equipos con agencia y ambición.</Body>
+          <Body><span className="text-white">La ventaja estructural de entrar antes que YC:</span> las mejores oportunidades suelen pasar de ronda angel a fondos tier 1 de EEUU, saltándose los fondos locales. La única forma de competirle a YC es entrar antes. Platanus ha construido esa capacidad.</Body>
+          <Body><span className="text-white">Comprobación del modelo:</span> $50K invertidos tienen hoy un valor de $3,840,576 USD (76.81x). En diciembre 2022 vendimos secundarias en la Serie A dejando el DPI del Génesis Fund en 1.41x — devolvimos el fondo en menos de 2 años manteniendo ~2% de participación.</Body>
+        </CaseSection>
+      </div>
+    </div>
+  );
+}
+
 function CaseBemmbo() {
   return (
     <div className="border border-white/10 bg-white/5 mb-4">
@@ -338,6 +409,7 @@ export function SectionCasosDeEstudio() {
         </p>
       </div>
       <CaseFintoc />
+      <CaseToku />
       <CaseBemmbo />
       <CaseGrupalia />
       <CaseBoom />
