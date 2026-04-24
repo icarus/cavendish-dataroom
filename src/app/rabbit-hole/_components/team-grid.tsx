@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 type Member = {
   name: string;
@@ -82,13 +83,21 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
   }, [onClose]);
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+    <motion.div
+      className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/40 backdrop-blur-xl"
       onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
     >
-      <div
+      <motion.div
         className="border border-black/10 bg-white w-full max-w-sm"
         onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.95, y: 10 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 10 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
       >
         <div className="relative w-full" style={{ aspectRatio: "1 / 1", maxHeight: 260 }}>
           {member.photo ? (
@@ -132,8 +141,8 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
             LinkedIn →
           </a>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -181,12 +190,14 @@ export function TeamGrid() {
       <h3 className="font-sans font-medium text-black mt-10 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Strategic Partners
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {strategicPartners.map((m) => (
           <MemberCard key={m.name} member={m} onClick={() => setSelected(m)} />
         ))}
       </div>
-      {selected && <MemberModal member={selected} onClose={close} />}
+      <AnimatePresence>
+        {selected && <MemberModal member={selected} onClose={close} />}
+      </AnimatePresence>
     </>
   );
 }
