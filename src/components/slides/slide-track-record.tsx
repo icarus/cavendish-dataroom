@@ -107,13 +107,13 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4L14 10L8 16" stroke="currentColor" strokeWidth="1.5" /></svg>
       </button>
       <motion.div
-        className={cn("relative z-10 flex gap-8 max-w-3xl w-full p-8 border", detailBg())}
+        className={cn("relative z-10 flex gap-8 max-w-3xl w-full h-[340px] p-8 border overflow-y-auto", detailBg())}
         layoutId={`company-${company.name}`}
         transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="shrink-0 flex flex-col items-center gap-3">
-          <div className="relative size-24 overflow-hidden">
+          <div className="relative min-w-24 size-24 overflow-hidden shrink-0 aspect-square">
             <Image src={company.image} alt={company.name} fill className="object-contain" />
           </div>
           <div className={cn("font-mono font-medium text-[#FFEC40]")} style={{ fontSize: "clamp(22px, 2.5vw, 36px)" }}>
@@ -131,18 +131,18 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
               </span>
             ))}
           </div>
-          <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted())}>{company.fundName}</span>
+          <span className={cn("font-mono font-normal text-base uppercase tracking-wider", detailMuted())}>{company.fundName}</span>
           {company.tagline && (
-            <p className={cn("font-sans font-medium text-base leading-relaxed", detailText())}>
+            <p className={cn("font-sans font-normal text-base leading-relaxed", detailText())}>
               {company.tagline}
             </p>
           )}
           {company.bullets && company.bullets.length > 0 && (
             <ul className="space-y-1.5">
               {company.bullets.map((b, i) => (
-                <li key={i} className={cn("font-sans font-medium text-base leading-relaxed flex items-start gap-2", detailText())}>
-                  <span className={cn("mt-2 size-1.5 shrink-0", detailBullet())} />
-                  {b}
+                <li key={i} className={cn("font-sans font-normal text-base leading-relaxed flex items-center gap-2", detailText())}>
+                  <span className={cn("size-1 shrink-0", detailBullet())} />
+                  <span className="text-white/70">{b}</span>
                 </li>
               ))}
             </ul>
@@ -152,13 +152,27 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
               <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted())}>
                 Investors after Platanus:
               </span>
-              <div className="flex flex-wrap gap-2 mt-1">
+              <div className="flex flex-wrap items-center gap-3 mt-2">
                 {company.investorsAfter.map((inv) => {
-                  const name = typeof inv === "string" ? inv : inv.name;
-                  return (
-                    <span key={name} className={cn("font-sans font-medium text-base", detailText())}>
-                      {name}
+                  const investor = typeof inv === "string" ? { name: inv } : inv;
+                  const content = investor.logo ? (
+                    <img
+                      src={investor.logo}
+                      alt={investor.name}
+                      title={investor.name}
+                      className="h-6 w-6 shrink-0 aspect-square object-contain bg-white rounded-sm"
+                    />
+                  ) : (
+                    <span className={cn("font-sans font-medium text-base", detailText())}>
+                      {investor.name}
                     </span>
+                  );
+                  return investor.url ? (
+                    <a key={investor.name} href={investor.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                      {content}
+                    </a>
+                  ) : (
+                    <span key={investor.name}>{content}</span>
                   );
                 })}
               </div>
@@ -235,19 +249,31 @@ export function SlideTrackRecord({ active }: P) {
               {company.name}
             </span>
             <span
-              className="absolute top-1 right-1.5 font-mono font-medium text-[#FFEC40] leading-none flex items-center gap-1"
-              style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
+              className="absolute top-1.5 right-1.5 font-mono font-medium text-[#FFEC40] leading-none bg-[#FFEC40]/10 px-1.5 py-0.5"
+              style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
             >
               {company.moic}
             </span>
-            {allBadges(company.badge).includes("exited") && (
+            <div className="absolute bottom-1.5 left-1.5 right-1.5 flex flex-wrap gap-1">
               <span
-                style={{ fontSize: "clamp(10px, 1vw, 14px)" }}
-                className="absolute bottom-2 right-2  font-mono uppercase bg-white text-black px-1 py-0.5"
+                style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
+                className="font-mono font-medium uppercase tracking-wider bg-white/10 text-white/60 px-1.5 py-0.5"
               >
-                Exited
+                {company.fundName}
               </span>
-            )}
+              {allBadges(company.badge).map((b) => (
+                <span
+                  key={b}
+                  style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
+                  className={cn(
+                    "font-mono font-medium uppercase tracking-wider px-1.5 py-0.5",
+                    b === "exited" ? "bg-white text-black" : "bg-[#FFEC40]/20 text-[#FFEC40]",
+                  )}
+                >
+                  {BADGE_LABELS[b]}
+                </span>
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>
