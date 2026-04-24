@@ -3,42 +3,35 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Badge } from "@/components/ui/badge";
 
 export function ExpandableSection({
-  id,
-  badge,
-  title,
-  preview,
   children,
+  collapsedHeight = 400,
 }: {
-  id: string;
-  badge: string;
-  title: string;
-  preview: React.ReactNode;
   children: React.ReactNode;
+  collapsedHeight?: number;
 }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id={id} className="py-16 border-b border-black/10">
-      <Badge variant="solid" className="mb-4">{badge}</Badge>
-      <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
-        {title}
-      </h2>
-      {!open && preview}
-      {open && children}
+    <div className="relative">
+      <div
+        className={cn("overflow-hidden transition-all duration-500", !open && "relative")}
+        style={!open ? { maxHeight: collapsedHeight } : undefined}
+      >
+        {children}
+        {!open && (
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none" />
+        )}
+      </div>
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className={cn(
-          "flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors cursor-pointer",
-          !open && "mt-6"
-        )}
+        className="flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors cursor-pointer mt-4"
       >
-        {open ? "Cerrar" : "Leer completo"}
+        {open ? "Mostrar menos" : "Leer completo"}
         <ChevronDown size={14} className={cn("transition-transform", open && "rotate-180")} />
       </button>
-    </section>
+    </div>
   );
 }

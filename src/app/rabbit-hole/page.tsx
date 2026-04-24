@@ -17,7 +17,6 @@ import Estructura from "./content/estructura.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
 import { ExpandableSection } from "./_components/expandable-section";
-import { P, StatGrid, Hl } from "./_components/mdx-components";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -148,48 +147,16 @@ export default function RabbitHolePage() {
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
-          <ExpandableSection id="portafolio" badge="05" title="Construcción del portafolio" preview={
-            <div className="space-y-4">
-              <P>Al planear una construcción de portafolio tenemos que comprobar como se logra llegar a un retorno de 3x en base a un portafolio exitoso.</P>
-              <P>Destinaremos <Hl>$6,400,000</Hl> para inversiones del programa de aceleración en <Hl>32 nuevas startups</Hl>, <Hl>$1,800,000</Hl> para inversiones oportunísticas y <Hl>$3,600,000</Hl> para follow ons.</P>
-            </div>
-          }>
-            <Portafolio />
-          </ExpandableSection>
+          <ExpandableSection><Portafolio /></ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection id="proceso" badge="06" title="Proceso de selección" preview={
-            <div className="space-y-4">
-              <P>Diseñamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones. Desde el 2020 hemos recibido más de <Hl>9.549 aplicaciones</Hl> y seleccionado <Hl>121 startups</Hl>.</P>
-              <StatGrid items={[
-                { label: "Postulaciones revisadas", value: "+9.549" },
-                { label: "Entrevistas realizadas", value: "+1.600" },
-                { label: "Tasa de aceptación", value: "~1%" },
-              ]} />
-            </div>
-          }>
-            <Proceso />
-          </ExpandableSection>
+          <ExpandableSection><Proceso /></ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection id="kalio" badge="07" title="Kalio" preview={
-            <div className="space-y-4">
-              <P>Kalio es el <Hl>centro de la operación de Platanus</Hl>. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos.</P>
-              <P>Kalio gestiona todo: postulaciones, proceso de selección, programa de aceleración, Demo Days y seguimiento de alumni.</P>
-            </div>
-          }>
-            <Kalio />
-          </ExpandableSection>
+          <ExpandableSection><Kalio /></ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection id="estructura" badge="08" title="Estructura legal del fondo" preview={
-            <div className="space-y-4">
-              <P>El fondo se ha estructurado como una <Hl>Limited Partnership Canadiense</Hl>, constituido el 2 de julio de 2025.</P>
-              <P>Canadá ofrece menores costos, sin límite de inversionistas y menos reportería que EEUU, manteniendo transparencia tributaria.</P>
-            </div>
-          }>
-            <Estructura />
-          </ExpandableSection>
+          <ExpandableSection><Estructura /></ExpandableSection>
         </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>
