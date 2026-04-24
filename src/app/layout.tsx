@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(ubuntuSans.variable, platanusMono.variable, "h-full")}
+      className={cn(ubuntuSans.variable, platanusMono.variable, "h-full scroll-smooth")}
     >
       <body className="min-h-full bg-black text-foreground antialiased">
         <DynamicHead />
