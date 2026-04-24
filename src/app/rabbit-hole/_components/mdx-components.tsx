@@ -493,19 +493,19 @@ export const rabbitHoleComponents: MDXComponents = {
   ),
   h3: (props) => (
     <h3
-      className="font-sans font-medium text-black mb-4"
+      className="font-sans font-medium text-black mt-10 mb-4"
       style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}
       {...props}
     />
   ),
   h4: (props) => (
-    <h4 className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-3" {...props} />
+    <h4 className="font-mono font-medium text-black text-sm uppercase tracking-wider mt-8 mb-3" {...props} />
   ),
   p: (props) => (
-    <p className="font-sans font-medium text-black text-sm leading-relaxed" {...props} />
+    <p className="font-sans font-medium text-black text-sm leading-relaxed mb-4" {...props} />
   ),
-  ul: (props) => <ul className="list-disc list-outside pl-5 space-y-2" {...props} />,
-  ol: (props) => <ol className="list-decimal list-outside pl-5 space-y-2" {...props} />,
+  ul: (props) => <ul className="list-disc list-outside pl-5 space-y-2 mb-4" {...props} />,
+  ol: (props) => <ol className="list-decimal list-outside pl-5 space-y-2 mb-4" {...props} />,
   li: (props) => <li className="font-sans font-medium text-black/60 text-sm leading-relaxed" {...props} />,
   strong: (props) => <span className="bg-[#FFEC40] text-black px-1" {...props} />,
   em: (props) => <span className="italic" {...props} />,
