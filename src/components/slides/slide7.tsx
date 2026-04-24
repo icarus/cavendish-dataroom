@@ -44,7 +44,7 @@ export function Slide7({ active }: P) {
             className="scale-150 opacity-70 -mt-72 -ml-24 object-contain"
           />
 
-          <div className="absolute flex items-center" style={{ top: "12%", left: "10%" }}>
+          <div className="absolute flex items-center" style={{ top: "0%", left: "9%" }}>
             <div className="pt-8 flex flex-col justify-center items-center gap-1.5">
               <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
                 MEXICO CITY
@@ -57,7 +57,7 @@ export function Slide7({ active }: P) {
             <PulsingDot color="white" delay={0} />
           </div>
 
-          <div className="absolute flex items-center" style={{ bottom: "15%", right: "10%" }}>
+          <div className="absolute flex items-center" style={{ bottom: "10%", right: "8%" }}>
             <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
               SANTIAGO
             </div>

@@ -13,7 +13,7 @@ export function SlideRiskAverse({ active }: P) {
             text="Risk-averse mentality is a curse for startups."
             on={on}
             baseDelay={0}
-            interval={45}
+            interval={60}
             className="font-sans font-medium text-white"
           />
         </div>
@@ -22,8 +22,8 @@ export function SlideRiskAverse({ active }: P) {
           <WordReveal
             text="Funds in LatAm tend to favor safer investments: traction, traditional founder's CVs, proven business model."
             on={on}
-            baseDelay={500}
-            interval={35}
+            baseDelay={600}
+            interval={45}
             className="font-sans font-medium text-white"
           />
         </div>
@@ -32,8 +32,8 @@ export function SlideRiskAverse({ active }: P) {
           <WordReveal
             text="Pre-seed funds should invest in the unknown to maximize economic upside."
             on={on}
-            baseDelay={1200}
-            interval={40}
+            baseDelay={1500}
+            interval={50}
             className="font-sans font-medium"
             highlight
           />

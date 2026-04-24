@@ -1,6 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
 import { MENTORS } from "@/lib/deck-data";
 import { f, P, useAnim, WordReveal } from "./utils";
 
@@ -8,18 +10,32 @@ const HALF = Math.ceil(MENTORS.length / 2);
 const ROW1 = MENTORS.slice(0, HALF);
 const ROW2 = MENTORS.slice(HALF);
 
-function MentorCard({ mentor, index, on }: { mentor: typeof MENTORS[0]; index: number; on: boolean }) {
+function MentorCard({ mentor, index, on, hovered, dimmed, onEnter, onLeave }: {
+  mentor: typeof MENTORS[0];
+  index: number;
+  on: boolean;
+  hovered: boolean;
+  dimmed: boolean;
+  onEnter: () => void;
+  onLeave: () => void;
+}) {
   return (
     <div
-      className="mentor-card relative overflow-hidden border border-white/10 bg-white/15 hover:bg-white/20 transition-all backdrop-blur-xl shrink-0 h-full grayscale blur-[1px] hover:grayscale-0 hover:blur-0"
+      className={cn(
+        "mentor-card relative overflow-hidden border border-white/10 bg-white/15 transition-all backdrop-blur-xl shrink-0 h-full",
+        hovered ? "grayscale-0 blur-0 bg-white/20" : "grayscale blur-[1px]",
+        dimmed && "opacity-40",
+      )}
       style={{ aspectRatio: "1/1", ...f(on, 300 + index * 20) }}
+      onMouseEnter={onEnter}
+      onMouseLeave={onLeave}
     >
       <div className="absolute inset-0">
         <Image
           src={mentor.image}
           alt={mentor.name}
           fill
-          className="object-cover opacity-100 transition-opacity"
+          className="object-cover transition-opacity"
         />
       </div>
       <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
@@ -31,10 +47,13 @@ function MentorCard({ mentor, index, on }: { mentor: typeof MENTORS[0]; index: n
   );
 }
 
-function MarqueeRow({ mentors, direction, on }: {
+function MarqueeRow({ mentors, direction, on, hoveredId, onHover, onLeave }: {
   mentors: typeof MENTORS;
   direction: "left" | "right";
   on: boolean;
+  hoveredId: string | null;
+  onHover: (id: string) => void;
+  onLeave: () => void;
 }) {
   const doubled = [...mentors, ...mentors];
   const animName = direction === "left" ? "marquee-left" : "marquee-right";
@@ -54,6 +73,10 @@ function MarqueeRow({ mentors, direction, on }: {
             mentor={mentor}
             index={i % mentors.length}
             on={on}
+            hovered={hoveredId === mentor.name}
+            dimmed={hoveredId !== null && hoveredId !== mentor.name}
+            onEnter={() => onHover(mentor.name)}
+            onLeave={onLeave}
           />
         ))}
       </div>
@@ -63,6 +86,7 @@ function MarqueeRow({ mentors, direction, on }: {
 
 export function SlideClearingFog({ active }: P) {
   const on = useAnim(active);
+  const [hoveredId, setHoveredId] = useState<string | null>(null);
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
@@ -83,16 +107,16 @@ export function SlideClearingFog({ active }: P) {
         />
       </div>
 
-      <div className="mb-3 max-w-3xl" style={f(on, 150)}>
-        <p className="font-sans font-medium text-white/40 text-base leading-relaxed">
+      <div className="mb-8 max-w-3xl" style={f(on, 150)}>
+        <p className="font-sans font-normal text-white/40 text-base leading-relaxed">
           Being around other ambitious founders raises their ambitions.
           The accountability & advice from this top-tier founders gives them speed, clarity and conviction.
         </p>
       </div>
 
       <div className="flex-1 min-h-0 flex flex-col gap-3" style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}>
-        <MarqueeRow mentors={ROW1} direction="left" on={on} />
-        <MarqueeRow mentors={ROW2} direction="right" on={on} />
+        <MarqueeRow mentors={ROW1} direction="left" on={on} hoveredId={hoveredId} onHover={setHoveredId} onLeave={() => setHoveredId(null)} />
+        <MarqueeRow mentors={ROW2} direction="right" on={on} hoveredId={hoveredId} onHover={setHoveredId} onLeave={() => setHoveredId(null)} />
       </div>
     </div>
   );

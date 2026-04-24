@@ -41,7 +41,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
         setPrevIndex(prev);
         return (prev + 1) % images.length;
       });
-    }, 1500);
+    }, 700);
     return () => clearInterval(interval);
   }, [hovered, images.length]);
 
@@ -83,15 +83,15 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
       <div className="absolute inset-0 flex items-center justify-center z-10 px-4">
         <div className="flex flex-col items-center">
           <motion.h3
-            className="font-mono font-medium text-white text-center leading-tight uppercase tracking-wider"
+            className="text-balance font-mono font-medium text-white text-center leading-tight uppercase tracking-wider drop-shadow-lg"
             style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
-            animate={{ y: hovered ? -10 : 0 }}
+            animate={{ y: hovered ? 0 : 24 }}
             transition={SPRING}
           >
             {title}
           </motion.h3>
           <motion.p
-            className="font-sans font-normal text-white/80 text-lg text-center text-balance leading-snug mt-1"
+            className="font-sans font-normal text-white/80 text-lg text-center text-balance leading-snug drop-shadow-lg"
             animate={{
               opacity: hovered ? 1 : 0,
               y: hovered ? 0 : 8,

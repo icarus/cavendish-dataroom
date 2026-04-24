@@ -13,15 +13,15 @@ export function SlideFounderQuote({ active }: P) {
             text="In LatAm there are thousands of founders with big ideas, solving real problems in massive markets."
             on={on}
             baseDelay={0}
-            interval={40}
+            interval={55}
             className="font-sans font-medium"
           />
           <br />
           <WordReveal
             text="Most never get started because no one gives them that first vote of confidence."
             on={on}
-            baseDelay={700}
-            interval={40}
+            baseDelay={900}
+            interval={55}
             className="font-sans font-medium"
           />
         </blockquote>
@@ -30,8 +30,8 @@ export function SlideFounderQuote({ active }: P) {
           <WordReveal
             text="Platanus solves that."
             on={on}
-            baseDelay={1400}
-            interval={60}
+            baseDelay={1900}
+            interval={80}
             className="font-sans font-medium"
             highlight
           />
@@ -41,7 +41,7 @@ export function SlideFounderQuote({ active }: P) {
           className="flex items-center gap-3 pt-4"
           style={{
             opacity: on ? 1 : 0,
-            transition: "opacity 0.6s ease 1800ms",
+            transition: "opacity 0.6s ease 2400ms",
           }}
         >
           <div className="w-0.5 h-9 bg-white/20" />
