@@ -42,7 +42,7 @@ function AnimatedValue({ value }: { value: string }) {
   }, [value]);
 
   return (
-    <span className="font-mono font-medium text-white text-base">{display}</span>
+    <span className="font-mono font-medium text-white text-2xl">{display}</span>
   );
 }
 
@@ -312,8 +312,8 @@ export function SlideTrackRecord({ active }: P) {
               { label: "TVPI", value: activeMetrics.tvpiMultiple },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col items-center">
-                <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">{label}</span>
-                <span className="font-mono font-medium text-white" style={{ fontSize: "clamp(16px, 1.5vw, 24px)" }}>
+                <span className="font-mono font-medium text-white/40 text-sm uppercase">{label}</span>
+                <span className="font-mono text-xl font-medium text-white">
                   <AnimatedValue value={value} />
                 </span>
               </div>

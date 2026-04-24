@@ -57,26 +57,26 @@ export function SectionComputin() {
   ];
 
   return (
-    <section id="computin" className="py-16 border-b border-[#E5E7EB]">
-      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5 rounded mb-4">03</span>
-      <h2 className="font-sans font-medium text-[#111111] mb-8" style={{ fontSize: "clamp(26px, 3vw, 48px)", lineHeight: 1.15 }}>
+    <section id="computin" className="py-16 border-b border-white/10">
+      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5mb-4">03</span>
+      <h2 className="font-sans font-medium text-white mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         El cofundador técnico es fundamental
       </h2>
 
       <div className="space-y-4 mb-10">
-        <p className="font-sans font-medium text-[#111111] text-base leading-relaxed">
+        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
           Uno de los requisitos para entrar a Platanus es contar con un cofundador que sea el "adicto a la tecnología". Alguien que pueda construir el producto internamente con mentalidad de fundador y atraer talento.
         </p>
-        <p className="font-sans font-medium text-[#111111] text-base leading-relaxed">
+        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
           Confiamos en que la probabilidad de éxito de una startup tecnológica es significativamente mayor si hay un fundador que entienda y pueda desarrollar la tecnología. Además debe tener una participación relevante de la empresa.
         </p>
-        <p className="font-sans font-medium text-[#111111] text-base leading-relaxed">
+        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
           A los equipos sin cofundadores técnicos que postulan a Platanus les recomendamos buscar a un CTO que se sume al proyecto con una participación similar a los demás socios.
         </p>
       </div>
 
       <Callout>
-        <p className="font-sans font-medium text-[#111111] text-base leading-relaxed">
+        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
           Para esta tesis de inversión nos basamos en las siguientes razones.
         </p>
       </Callout>
@@ -86,9 +86,9 @@ export function SectionComputin() {
         <img
           src="https://res-2.cloudinary.com/ha0mfd5dh/image/upload/q_auto/v1/ghost-blog-images/steves-apple.jpg"
           alt="Steve y Steve. CTO y CEO."
-          className="w-full rounded-lg border border-[#E5E7EB] object-cover max-h-72"
+          className="w-full border border-white/10 object-cover max-h-72"
         />
-        <figcaption className="font-sans font-medium text-[#6B7280] text-sm leading-relaxed mt-2">
+        <figcaption className="font-sans font-medium text-white/40 text-sm leading-relaxed mt-2">
           Steve y Steve. CTO y CEO.
         </figcaption>
       </figure>
@@ -96,14 +96,14 @@ export function SectionComputin() {
       <div className="space-y-20">
         {reasons.map((r, i) => (
           <div key={r.title} className="flex gap-6">
-            <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-base w-8 h-7 rounded shrink-0 mt-0.5">
+            <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-8 h-7  shrink-0 mt-0.5">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>
-              <h4 className="font-sans font-medium text-[#6B7280] text-base mb-3">{r.title}</h4>
+              <h4 className="font-sans font-medium text-white/40 text-sm mb-3">{r.title}</h4>
               <div className="space-y-3">
                 {r.paragraphs.map((p, j) => (
-                  <p key={j} className="font-sans font-medium text-[#111111] text-base leading-relaxed">{p}</p>
+                  <p key={j} className="font-sans font-medium text-white/70 text-sm leading-relaxed">{p}</p>
                 ))}
               </div>
             </div>

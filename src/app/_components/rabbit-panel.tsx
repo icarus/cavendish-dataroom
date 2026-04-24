@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowUp, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   active: boolean;
@@ -51,22 +52,21 @@ export function RabbitPanel({ active, onBack }: Props) {
         </p>
 
         <div className="flex flex-col gap-3 w-72">
-          <button
+          <Button
             onClick={() => router.push("/rabbit-hole")}
-            className="flex items-center justify-between px-5 py-3 border border-[#FFEC40] bg-[#FFEC40] text-black font-mono font-medium text-base uppercase tracking-wider cursor-pointer hover:bg-[#FFEC40]/90 transition-colors backdrop-blur-sm"
             style={f(on, 160)}
           >
             Down the Rabbit Hole
             <ArrowRight size={16} />
-          </button>
+          </Button>
 
-          <button
+          <Button
             onClick={() => router.push("/memo")}
-            className="flex items-center justify-center px-5 py-3 border border-white/20 bg-transparent text-white/40 font-mono font-medium text-base uppercase tracking-wider cursor-pointer hover:border-white/40 hover:text-white hover:bg-white/5 transition-colors backdrop-blur-sm"
+            variant="outline"
             style={f(on, 240)}
           >
             Memo
-          </button>
+          </Button>
         </div>
       </div>
     </div>

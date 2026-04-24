@@ -155,7 +155,7 @@ export function SlideFundStrategy({ active }: P) {
           Post-dilution return multiples
         </p>
         <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
-          Earlier = higher returns
+          At $200K for 7%, only Platanus reach +60X returns.
         </p>
       </div>
     </div>

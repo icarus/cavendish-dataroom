@@ -1,6 +1,6 @@
 export function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="border border-[#E5E7EB] bg-white rounded-lg p-5 my-6">
+    <div className="border border-[#FFEC40] bg-[#FFEC40]/10 p-5 my-6">
       {children}
     </div>
   );
