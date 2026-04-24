@@ -69,7 +69,7 @@ export function Section({
   borderBottom?: boolean;
 }) {
   return (
-    <section id={id} className={cn("py-16 scroll-mt-8", borderBottom && "border-b border-black/10")}>
+    <section id={id} className="py-16 scroll-mt-8">
       <Badge variant="solid" className="mb-4">{badge}</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         {title}
@@ -216,13 +216,13 @@ export function TimelineStep({
   return (
     <div className="flex gap-6 pb-8">
       <div className="flex flex-col items-center">
-        <div className="w-8 h-8 bg-[#FFEC40] flex items-center justify-center shrink-0">
+        <div className="w-6 h-6 bg-[#FFEC40] flex items-center justify-center shrink-0">
           <span className="font-mono font-medium text-black text-sm">{n}</span>
         </div>
         {!last && <div className="w-px bg-black/10 flex-1 mt-2" />}
       </div>
       <div className="pb-4 flex-1">
-        <h4 className="font-sans font-medium text-black/40 text-sm mb-3">
+        <h4 className="font-sans font-medium text-black text-base mb-3">
           {title}
           {badgeText && <Badge variant="solid" className="text-xs ml-1">{badgeText}</Badge>}
         </h4>

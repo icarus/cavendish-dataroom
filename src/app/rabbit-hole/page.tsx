@@ -68,7 +68,9 @@ export default function RabbitHolePage() {
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 32;
+    window.scrollTo({ top, behavior: "smooth" });
   };
 
   const activeIndex = NAV_ITEMS.findIndex((item) => item.id === activeId);
