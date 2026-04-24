@@ -161,7 +161,7 @@ export function SlideSocialProof({ active }: P) {
 
       {isActive && displayedItem && (
         <div
-          className="absolute inset-0 flex items-center justify-center pointer-events-none z-60 bg-black/40 animate-in fade-in duration-300"
+          className="absolute inset-0 flex items-center justify-center pointer-events-none z-60 bg-black/60 animate-in fade-in duration-300"
         >
           <QuoteDisplay key={displayedItem.idx} item={displayedItem} />
         </div>
