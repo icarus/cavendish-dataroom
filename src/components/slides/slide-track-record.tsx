@@ -258,7 +258,7 @@ export function SlideTrackRecord({ active }: P) {
                   style={isGenesis && activeFund !== key ? {
                     backgroundImage: "linear-gradient(90deg, transparent 0%, rgba(255,236,64,0.06) 30%, rgba(255,236,64,0.18) 50%, rgba(255,236,64,0.06) 70%, transparent 100%)",
                     backgroundSize: "400% 100%",
-                    animation: "shimmer 6s ease-in-out infinite",
+                    animation: "shimmer 12s ease-in-out infinite",
                   } : undefined}
                 >
                   {label}
@@ -317,7 +317,7 @@ export function SlideTrackRecord({ active }: P) {
             </span>
             <span
               className="absolute top-1.5 right-1.5 font-mono font-medium text-[#FFEC40] leading-none uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5"
-              style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
+              style={{ fontSize: "clamp(9px, 0.9vw, 12px)" }}
             >
               {company.moic}
             </span>
