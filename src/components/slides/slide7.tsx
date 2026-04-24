@@ -59,7 +59,7 @@ export function Slide7({ active }: P) {
   const [hoveredPhoto, setHoveredPhoto] = useState<number | null>(null);
 
   return (
-    <div className="slide aspect-video w-full relative flex flex-col overflow-hidden">
+    <div className="slide aspect-video w-full relative flex flex-col">
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: "radial-gradient(circle, white 1px, transparent 1px)",
         backgroundSize: "24px 24px",
@@ -122,36 +122,29 @@ export function Slide7({ active }: P) {
         </div>
       </div>
 
-      <div className="flex flex-1 -mx-28 min-h-0 relative z-10">
+      <div className="flex flex-1 gap-4 -mx-28 min-h-0 relative z-10" style={f(on, 100)}>
         {PHOTOS.map((photo, i) => (
           <div
             key={i}
-            className={cn(
-              "relative h-full overflow-hidden cursor-pointer transition-all duration-500 ease-out",
-              hoveredPhoto === i ? "flex-[1.6]" : "flex-1",
-            )}
+            className="flex-1 min-w-0 relative h-full w-full overflow-hidden cursor-pointer"
             onMouseEnter={() => setHoveredPhoto(i)}
             onMouseLeave={() => setHoveredPhoto(null)}
-            style={{
-              opacity: on ? 1 : 0,
-              transition: `opacity 0.5s ease ${200 + i * 100}ms, flex 0.5s ease-out`,
-            }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={photo.src}
               alt={photo.label}
               className={cn(
-                "absolute inset-0 w-full h-full object-cover transition-all duration-700",
-                hoveredPhoto === i ? "scale-110 grayscale-0" : "scale-100 grayscale",
+                "absolute inset-0 w-full h-full object-cover transition-all duration-500",
+                hoveredPhoto === i ? "scale-105 grayscale-0" : "grayscale",
               )}
             />
             <div className={cn(
               "absolute inset-0 transition-colors duration-300",
-              hoveredPhoto === i ? "bg-black/30" : hoveredPhoto !== null ? "bg-black/60" : "bg-black/20",
+              hoveredPhoto === i ? "bg-black/20" : hoveredPhoto !== null ? "bg-black/50" : "bg-transparent",
             )} />
             <div className={cn(
-              "absolute bottom-0 left-0 right-0 p-4 transition-all duration-300",
+              "absolute bottom-0 left-0 right-0 p-3 transition-all duration-300",
               hoveredPhoto === i ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4",
             )}>
               <span className="font-mono font-medium text-white text-base uppercase tracking-wider drop-shadow-lg">
