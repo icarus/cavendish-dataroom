@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ArrowUp, ArrowRight } from "lucide-react";
+import { ArrowUp, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface Props {
@@ -57,7 +57,7 @@ export function RabbitPanel({ active, onBack }: Props) {
             style={f(on, 160)}
           >
             Down the Rabbit Hole
-            <ArrowRight size={16} />
+            <ArrowUpRight size={16} />
           </Button>
 
           <Button
