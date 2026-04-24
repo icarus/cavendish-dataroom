@@ -1,0 +1,109 @@
+import { Badge } from '@/components/ui/badge'
+import { Section, Callout, Hl, H3, H4, P, InfoCard, Spacer } from '../_components/mdx-components'
+
+<Section id="estructura" badge="08" title="Estructura legal del fondo">
+
+<div className="space-y-4 mb-10">
+<P>El fondo se ha estructurado como una <Hl>Limited Partnership Canadiense</Hl>.</P>
+<P>Este fondo fue constituido con fecha 2 de julio de 2025 y se encuentra regulado por un Limited Partnership Agreement.</P>
+<P>Al momento de ingresar como inversionista se firma un Subscription Agreement, suscribiéndose intereses de la Limited Partnership.</P>
+<P>En definitiva, como inversionista tendrás participación en una Partnership Canadiense, la que a su vez invertirá en las startups.</P>
+</div>
+
+<InfoCard title="¿Por qué Canadá?">
+<P>Varios preguntan por qué se eligió Canadá en vez de Estados Unidos.</P>
+<P>Actualmente los fondos que invierten en startups de Latam se estructuran en tres países, EEUU, Canadá o Islas Caimán.</P>
+<P>El último lo hemos descartado por temas de reputación.</P>
+<P>A la hora de estructurar un fondo, lo más importa es el tema tributario. Uno espera que la estructura legal que utilice sea transparente tributariamente, es decir, que el fondo mismo no pague impuestos, sino que sean los inversionistas quienes paguen una vez se proceda con las distribuciones.</P>
+<P>En la práctica, este objetivo se cumple tanto en EEUU como en Canadá. ¿Por qué Canadá entonces?</P>
+<ul className="list-disc list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Es más simple constituir y manejar: no hay tanta reportería al Estado como en EEUU.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Límites de aportantes: las Limited Partnership de EEUU tienen un límite de 99 inversionistas, en Canadá no existe tal límite. Además los inversionistas deben ser Inversionistas Acreditados, lo que no es necesario para las Limited Partnerships de Canadá.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Costos: los costos de incorporación y de abogados son mucho menores en Canadá.</li>
+</ul>
+</InfoCard>
+
+<InfoCard title="Tributación de la Limited Partnership">
+<P>Como se mencionó, la LP no paga impuesto en Canadá, de hecho, no es considerada contribuyente en dicho país.</P>
+<P>Esto no significa que el fondo no pagará ningún impuesto. En los momentos de los exits, puede ser que las ventas generen un impuesto en los países de las operaciones de la startup. Este impuesto deberá ser pagado por el fondo.</P>
+<P>Como los inversionistas son aportantes del fondo, las distribuciones se distribuyen bajo concepto de dividendos, que traen aparejados los impuestos que se hayan pagado por el fondo.</P>
+<P>Cada Limited Partner deberá determinar en su país de residencia la posibilidad de utilizar estos créditos por impuestos pagados por el fondo.</P>
+</InfoCard>
+
+<InfoCard title="Estructuras legales comunes de las startups de Latam">
+<P>El fondo invertirá prioritariamente en startups cuyas operaciones estén en Latam. Sin embargo, generalmente la inversión es en USA o Islas Caimán, que es donde las startups tienen sus sociedades holding.</P>
+<P>En los siguientes párrafos se explica el porqué de estas sociedades holdings.</P>
+
+<div className="mt-4">
+<H4>Motivos principales para que startups constituyan holding companies</H4>
+<div className="space-y-2">
+<P>Muchos inversionistas no se sienten cómodos invirtiendo directamente en países Latinoamericanos, prefiriendo jurisdicciones conocidas y de derecho anglosajón (en vez de continental).</P>
+<P>Para acomodarse a los inversionistas, cuando las startups reciben inversión extranjera por lo general arman una estructura societaria de dos o tres capas. Esto significa que la startup tiene una sociedad matriz o holding en alguna jurisdicción donde los inversionistas se sientan cómodos y sociedades operativas en cada país donde operen.</P>
+<P>En la sociedad matriz están los fundadores, inversionistas, colaboradores con stock options y toda la propiedad intelectual. Esta sociedad matriz es dueña del 100% de la propiedad de las sociedades operativas.</P>
+<P>La operación del negocio mismo, como la contratación de proveedores y servicios, contratación de colaboradores y contratos con clientes se realizan en las sociedades operativas de cada país en donde operan.</P>
+</div>
+</div>
+
+<div className="mt-4">
+<H4>Estructuras comunes para Latinoamérica</H4>
+<P>Por el momento existen dos estructuras legales muy utilizadas para startups de Latinoamérica, de dos o tres capas.</P>
+<Spacer size="mb-3" />
+<div className="space-y-3">
+<div className="border border-black/10 p-4 bg-black/5">
+<p className="font-sans font-medium text-black/60 text-sm mb-1">Estructura de 2 capas</p>
+<P>Una sociedad matriz llamada "C-Corporation" en Delaware, USA, de la que cuelgan las sociedades operativas de cada país de LatAm.</P>
+</div>
+<div className="border border-black/10 p-4 bg-black/5">
+<div className="flex items-center gap-2 mb-1">
+<p className="font-sans font-medium text-black/60 text-sm">Estructura de 3 capas</p>
+<Badge variant="solid" className="text-xs">recomendada</Badge>
+</div>
+<P>Sociedad matriz en Islas Caimán, la que es dueña del 100% de participación de una Limited Liability Company ("LLC") en Delaware, USA, la que a su vez es dueña del 100% de la participación de las sociedades operativas.</P>
+</div>
+</div>
+<div className="space-y-2 mt-3">
+<P>La primera estructura solo es recomendable si los fundadores piensan enfocar su negocio en USA o creen que sus inversionistas y futuros compradores serán de USA. El motivo es principalmente tributario.</P>
+<P>Las C-Corporation pagan impuestos corporativos en USA. Cualquier ingreso que reciban, independiente del motivo, debe pagar ese impuesto.</P>
+<P>Al momento de un exit de una startup con negocios en Latam, los compradores tienen dos posibilidades:</P>
+<ol className="list-decimal list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Comprar las acciones de la C-Corp.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Comprarle a la C-Corp cada una de las sociedades operativas de Latam.</li>
+</ol>
+<P>En el primer caso pueden o no haber impuestos en USA por la venta de las acciones de la C-Corp, dependiendo la residencia tributaria de fundadores e inversionistas.</P>
+<P>En el segundo caso hay un problema de doble tributación. Cómo la C-Corp recibe ingresos por la venta de activos (las acciones de las sociedades operativas), deberá pagar impuesto corporativo por esos ingresos. Luego la C-Corp deberá distribuir las ganancias a los accionistas (fundadores, inversionistas y colaboradores), pagándose nuevamente impuesto por esas distribuciones. Estaríamos pagando dos impuestos distintos en USA por una empresa que NO tiene operaciones o negocios en ese país.</P>
+<P>Para evitar esta doble tributación se ideó la estructura de una sociedad en Islas Caimán que actúa como holding, la que es única dueña de una Limited Liability Company de Delaware (una "LLC"), la que a su vez es única dueña de las sociedades operativas.</P>
+<P>Esta estructura permite dar flexibilidad a futuros exits, teniendo los compradores tres opciones para adquirir la startup:</P>
+<ol className="list-decimal list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Comprar las acciones de la holding en Caimán.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Comprarle a la holding de Caimán la LLC (e indirectamente todas las sociedades operativas).</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Comprarle a la LLC cada sociedad operativa.</li>
+</ol>
+<P>La gracias de esta estructura es que ni los fundadores, inversionistas o colaboradores, ni la LLC o la sociedad en Islas Caimán pagarían impuestos en USA o Islas Caimán por cualquiera de las tres opciones de exit. Solo se pagarían impuestos en los países donde el vendedor resida o en los países donde haya impuestos a la venta directa o indirecta de sociedades.</P>
+<P>Con esta estructura los fundadores dan confianza y certeza jurídica a los inversionistas para invertir en startups de Latinoamérica pero sin tener que pagar impuestos en un país que no participa del negocio más que para constituir una sociedad holding.</P>
+</div>
+</div>
+
+<div className="mt-4">
+<H4>Tributación en exits con estructura de tres capas</H4>
+<div className="space-y-2">
+<P>La LLC es tributariamente transparente, lo que significa que no debe pagar impuestos como entidad legal, "subiendo" todas las ganancias o pérdidas a sus accionistas.</P>
+<P>Luego en Islas Caimán tampoco se pagan impuestos por operaciones o activos fuera de Islas Caimán.</P>
+<P>Así, supongamos que la LLC vende todos sus sociedades operativas a un tercero. Esta venta no pagaría impuestos en USA. Al distribuir las utilidades de la venta a Islas Caimán, tampoco se pagarían impuestos. Luego cada accionista de Islas Caimán tendrá que pagar impuestos en sus países de residencia.</P>
+<P>De todas formas, hay que tener presente los impuestos que se pueden pagar en las jurisdicciones donde opera la startup por impuestos por ventas directas o indirectas.</P>
+</div>
+</div>
+
+<div className="mt-4">
+<H4>Estructura intermedia</H4>
+<div className="space-y-2">
+<P>Dado los costos que implica constituir y administrar tres sociedades desde un inicio, una posibilidad al recibir inversión a través de un valor convertible, como el Safe, es que los fundadores constituyan solamente una LLC como sociedad matriz y transformarla en una C-Corporation o constituir una matriz en Islas Caimán, cuando se levante la siguiente ronda que emita acciones y convierta los valores convertibles.</P>
+<P>La LLC da la posibilidad de transformarse en una C-Corporation o constituir una sociedad en Caimán sobre la LLC sin gatillar impuestos, lo que podría ocurrir si quieres transformar una C-Corp en LLC o constituir una sociedad en Islas Caimán sobre una C-Corp.</P>
+</div>
+</div>
+</InfoCard>
+
+<Callout>
+<P>Este proceso de constituir sociedades sobre las sociedades operativas o sobre la LLC es lo que se conoce como un <Hl>"Flip"</Hl>.</P>
+</Callout>
+
+</Section>
