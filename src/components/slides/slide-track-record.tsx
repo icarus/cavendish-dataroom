@@ -107,86 +107,82 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4L14 10L8 16" stroke="currentColor" strokeWidth="1.5" /></svg>
       </button>
       <motion.div
-        className={cn("relative z-10 flex gap-8 max-w-3xl w-full h-[340px] p-8 border overflow-y-auto", detailBg())}
+        className={cn("relative z-10 flex flex-col max-w-md w-full max-h-[80%] p-6 border overflow-y-auto", detailBg())}
         layoutId={`company-${company.name}`}
         transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="shrink-0 flex flex-col items-center gap-3">
-          <div className="relative min-w-24 size-24 overflow-hidden shrink-0 aspect-square">
-            <Image src={company.image} alt={company.name} fill className="object-contain" />
-          </div>
+        <div className="relative size-16 overflow-hidden shrink-0 aspect-square mb-4">
+          <Image src={company.image} alt={company.name} fill className="object-contain" />
         </div>
-        <div className="flex-1 flex flex-col gap-3">
-          <div className="flex items-center gap-2 flex-wrap">
-            <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "clamp(20px, 2vw, 32px)" }}>
-              {company.name}
-            </h3>
-            <span className="font-mono font-medium text-[#FFEC40] text-xs uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5">
-              {company.moic}
+        <div className="flex items-center gap-2 flex-wrap mb-3">
+          <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "clamp(20px, 2vw, 28px)" }}>
+            {company.name}
+          </h3>
+          <span className="font-mono font-medium text-[#FFEC40] text-xs uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5">
+            {company.moic}
+          </span>
+          <span className="font-mono font-medium text-white/60 text-xs uppercase tracking-wider bg-white/10 px-1.5 py-0.5">
+            {company.fundName}
+          </span>
+          {badges.map((b) => (
+            <span
+              key={b}
+              className={cn(
+                "font-mono font-medium text-xs uppercase tracking-wider px-1.5 py-0.5",
+                b === "exited" ? "bg-white text-black" : "bg-[#FFEC40]/20 text-[#FFEC40]",
+              )}
+            >
+              {BADGE_LABELS[b]}
             </span>
-            <span className="font-mono font-medium text-white/60 text-xs uppercase tracking-wider bg-white/10 px-1.5 py-0.5">
-              {company.fundName}
-            </span>
-            {badges.map((b) => (
-              <span
-                key={b}
-                className={cn(
-                  "font-mono font-medium text-xs uppercase tracking-wider px-1.5 py-0.5",
-                  b === "exited" ? "bg-white text-black" : "bg-[#FFEC40]/20 text-[#FFEC40]",
-                )}
-              >
-                {BADGE_LABELS[b]}
-              </span>
+          ))}
+        </div>
+        {company.tagline && (
+          <p className={cn("font-sans font-medium text-base leading-relaxed mb-3", detailText())}>
+            {company.tagline}
+          </p>
+        )}
+        {company.bullets && company.bullets.length > 0 && (
+          <ul className="space-y-1.5 mb-3">
+            {company.bullets.map((b, i) => (
+              <li key={i} className="font-sans font-medium text-base leading-relaxed flex items-start gap-2">
+                <span className={cn("mt-2 size-1 shrink-0", detailBullet())} />
+                <span className="text-white/70">{b}</span>
+              </li>
             ))}
-          </div>
-          {company.tagline && (
-            <p className={cn("font-sans font-normal text-base leading-relaxed", detailText())}>
-              {company.tagline}
-            </p>
-          )}
-          {company.bullets && company.bullets.length > 0 && (
-            <ul className="space-y-1.5">
-              {company.bullets.map((b, i) => (
-                <li key={i} className={cn("font-sans font-normal text-base leading-relaxed flex items-center gap-2", detailText())}>
-                  <span className={cn("size-1 shrink-0", detailBullet())} />
-                  <span className="text-white/70">{b}</span>
-                </li>
-              ))}
-            </ul>
-          )}
-          {company.investorsAfter && company.investorsAfter.length > 0 && (
-            <div className="mt-auto pt-2">
-              <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted())}>
-                Investors after Platanus:
-              </span>
-              <div className="flex flex-wrap items-center gap-3 mt-2">
-                {company.investorsAfter.map((inv) => {
-                  const investor = typeof inv === "string" ? { name: inv } : inv;
-                  const content = investor.logo ? (
-                    <img
-                      src={investor.logo}
-                      alt={investor.name}
-                      title={investor.name}
-                      className="h-6 w-6 shrink-0 aspect-square object-contain bg-white rounded-sm"
-                    />
-                  ) : (
-                    <span className={cn("font-sans font-medium text-base", detailText())}>
-                      {investor.name}
-                    </span>
-                  );
-                  return investor.url ? (
-                    <a key={investor.name} href={investor.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
-                      {content}
-                    </a>
-                  ) : (
-                    <span key={investor.name}>{content}</span>
-                  );
-                })}
-              </div>
+          </ul>
+        )}
+        {company.investorsAfter && company.investorsAfter.length > 0 && (
+          <div className="mt-auto pt-2">
+            <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted())}>
+              Investors after Platanus:
+            </span>
+            <div className="flex flex-wrap items-center gap-3 mt-2">
+              {company.investorsAfter.map((inv) => {
+                const investor = typeof inv === "string" ? { name: inv } : inv;
+                const content = investor.logo ? (
+                  <img
+                    src={investor.logo}
+                    alt={investor.name}
+                    title={investor.name}
+                    className="h-6 w-6 shrink-0 aspect-square object-contain bg-white rounded-sm"
+                  />
+                ) : (
+                  <span className={cn("font-sans font-medium text-base", detailText())}>
+                    {investor.name}
+                  </span>
+                );
+                return investor.url ? (
+                  <a key={investor.name} href={investor.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-70 transition-opacity">
+                    {content}
+                  </a>
+                ) : (
+                  <span key={investor.name}>{content}</span>
+                );
+              })}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );
@@ -201,38 +197,77 @@ export function SlideTrackRecord({ active }: P) {
     ? ALL_COMPANIES
     : ALL_COMPANIES.filter((c) => c.fundName === activeFund);
 
+  const activeMetrics = activeFund === "all"
+    ? { committedAmount: "$16,141,613", moicMultiple: "1.81x", dpiMultiple: "0.07x", tvpiMultiple: "1.4x" }
+    : VISIBLE_FUNDS.find((f) => f.name === activeFund) ?? { committedAmount: "-", moicMultiple: "-", dpiMultiple: "-", tvpiMultiple: "-" };
+
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="flex items-center justify-between mb-4">
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+      `}</style>
+      <div className="flex items-center justify-between mb-2">
         <div style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
             Track{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Record</mark>
           </h2>
         </div>
-        <div className="flex gap-2" style={f(on, 100)}>
+        <div className="flex gap-6" style={f(on, 60)}>
           {[
-            { key: "all", label: "All", year: "", moic: "" },
-            ...VISIBLE_FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year, moic: fund.moicMultiple })),
-          ].map(({ key, label, year, moic }) => (
+            { label: "Committed", value: activeMetrics.committedAmount },
+            { label: "MOIC", value: activeMetrics.moicMultiple },
+            { label: "DPI", value: activeMetrics.dpiMultiple },
+            { label: "TVPI", value: activeMetrics.tvpiMultiple },
+          ].map(({ label, value }) => (
+            <div key={label} className="flex flex-col items-center">
+              <span className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{label}</span>
+              <span className="font-mono font-medium text-white text-base">{value}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex gap-2 mb-4" style={f(on, 100)}>
+        {[
+          { key: "all", label: "All", year: "" },
+          ...VISIBLE_FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year })),
+        ].map(({ key, label, year }) => {
+          const isGenesis = key === "Genesis Fund";
+          return (
             <button
               key={key}
               onClick={() => setActiveFund(key)}
               className={cn(
-                "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap",
+                "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap relative",
                 activeFund === key
                   ? "bg-[#FFEC40] text-black border-[#FFEC40]"
-                  : "bg-transparent text-white/40 border-white/20 hover:border-white/40 hover:bg-white/10",
+                  : isGenesis
+                    ? "bg-transparent text-[#FFEC40] border-[#FFEC40]/60 hover:bg-[#FFEC40]/10"
+                    : "bg-transparent text-white/40 border-white/20 hover:border-white/40 hover:bg-white/10",
               )}
+              style={isGenesis && activeFund !== key ? {
+                backgroundImage: "linear-gradient(90deg, transparent 0%, rgba(255,236,64,0.08) 40%, rgba(255,236,64,0.15) 50%, rgba(255,236,64,0.08) 60%, transparent 100%)",
+                backgroundSize: "200% 100%",
+                animation: "shimmer 3s ease-in-out infinite",
+              } : undefined}
             >
               {label}
               {year && (
-                <span className={cn("font-mono font-medium ml-1", activeFund === key ? "text-black/40" : "text-white/40")}>
-                  {year} {moic}
+                <span className={cn("font-mono font-medium ml-1", activeFund === key ? "text-black/40" : isGenesis ? "text-[#FFEC40]/50" : "text-white/40")}>
+                  {year}
+                </span>
+              )}
+              {isGenesis && activeFund !== key && (
+                <span className="ml-2 text-xs bg-[#FFEC40] text-black px-1 py-0.5 font-mono font-medium uppercase tracking-wider">
+                  DPI 1.41x
                 </span>
               )}
             </button>
-          ))}
+          );
+        })}
         </div>
       </div>
 
@@ -257,7 +292,7 @@ export function SlideTrackRecord({ active }: P) {
               {company.name}
             </span>
             <span
-              className="absolute top-1.5 right-1.5 font-mono font-medium text-[#FFEC40] leading-none bg-[#FFEC40]/10 px-1.5 py-0.5"
+              className="absolute top-1.5 right-1.5 font-mono font-medium text-[#FFEC40] leading-none uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5"
               style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
             >
               {company.moic}

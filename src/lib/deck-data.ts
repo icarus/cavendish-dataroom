@@ -25,10 +25,12 @@ export type Fund = {
   name: string;
   year: string;
   amount: string;
+  committedAmount: string;
   investments: string;
   tupiMultiple: string;
   moicMultiple: string;
   dpiMultiple: string;
+  tvpiMultiple: string;
   companies: PortfolioCompany[];
 };
 
@@ -72,10 +74,12 @@ export const FUNDS: Fund[] = [
     name: "SPV",
     year: "2020",
     amount: "USD $206K",
+    committedAmount: "$206,600",
     investments: "4 STARTUPS",
     tupiMultiple: "4.6X",
-    moicMultiple: "4.49X",
-    dpiMultiple: "0.02X",
+    moicMultiple: "8.03x",
+    dpiMultiple: "0x",
+    tvpiMultiple: "8.2x",
     companies: [
       { name: "Fintoc", tagline: "Direct, fast, and cost-effective transactions.", image: "/avatars/fintoc.png", moic: "12.46x", badge: "potential-fund-returner", investorsAfter: [{ name: "YC", logo: "https://logo.clearbit.com/ycombinator.com", url: "https://www.ycombinator.com" }, { name: "Monashees", logo: "https://logo.clearbit.com/monashees.com", url: "https://www.monashees.com" }, { name: "Propel", logo: "https://logo.clearbit.com/propel.vc", url: "https://www.propel.vc" }], bullets: ["We introduced the founders.", "Seed: 6 months later.", "Series A: $7m at 29m"] },
       { name: "Reversso", tagline: "Simple returns and exchanges.", image: "/avatars/reversso.png", moic: "10.77x", investorsAfter: [{ name: "Blue Express", logo: "https://logo.clearbit.com/bluex.cl", url: "https://www.bluex.cl" }, { name: "Copec", logo: "https://logo.clearbit.com/copec.cl", url: "https://www.copec.cl" }], bullets: ["280 customers with 560 active stores across.", "Operations in Chile, Colombia and Mexico.", "Cash flow positive."] },
@@ -85,10 +89,12 @@ export const FUNDS: Fund[] = [
     name: "Genesis Fund",
     year: "2021",
     amount: "USD $650K",
+    committedAmount: "$650,000",
     investments: "11 STARTUPS",
     tupiMultiple: "6.4X",
-    moicMultiple: "7.78X",
-    dpiMultiple: "1.75X",
+    moicMultiple: "11.21x",
+    dpiMultiple: "1.41x",
+    tvpiMultiple: "8.88x",
     companies: [
       { name: "Toku", tagline: "Platform for enterprise payment collection.", image: "https://media.licdn.com/dms/image/v2/D4E0BAQHOzdxx7n-B1g/company-logo_200_200/B4EZx70IrcIkAI-/0/1771603790870/trytoku_logo?e=1778716800&v=beta&t=j7vqly7IuVRWabOEYkAL_ZD_9YZVLuoEF_LSZ6VlSVI", moic: "93.50x", badge: "fund-returner", investorsAfter: [{ name: "Oak HC/FT", logo: "https://logo.clearbit.com/oakhcft.com", url: "https://www.oakhcft.com" }, { name: "Gradient", logo: "https://logo.clearbit.com/gradient.com", url: "https://www.gradient.com" }, { name: "F-Prime", logo: "https://logo.clearbit.com/fprimecapital.com", url: "https://www.fprimecapital.com" }, { name: "Wollef", logo: "https://logo.clearbit.com/wollefvc.com", url: "https://wollefvc.com" }, { name: "Y Combinator", logo: "https://logo.clearbit.com/ycombinator.com", url: "https://www.ycombinator.com" }, { name: "Clocktower", logo: "https://logo.clearbit.com/clocktowerventures.com", url: "https://www.clocktowerventures.com" }], bullets: ["Growth average of 37% QoQ from inception to date (2021).", "Operations in Chile, Mexico and Brasil.", "Series B of $40m at $250m."] },
       { name: "Plutto", tagline: "Third-party risk assessment and management.", image: "/avatars/plutto.png", moic: "21x", investorsAfter: [{ name: "Y Combinator", logo: "https://logo.clearbit.com/ycombinator.com", url: "https://www.ycombinator.com" }], bullets: ["EBITDA of 20% with +$2.5m in ARR.", "Tremendous capital efficiency. Only one round after Platanus."] },
@@ -98,10 +104,12 @@ export const FUNDS: Fund[] = [
     name: "Fund I",
     year: "2022",
     amount: "USD $15,285,013",
+    committedAmount: "$15,285,013",
     investments: "98 STARTUPS",
     tupiMultiple: "*1.18X",
-    moicMultiple: "*1.53X",
-    dpiMultiple: "0.06X",
+    moicMultiple: "1.34x",
+    dpiMultiple: "0.02x",
+    tvpiMultiple: "0.99x",
     companies: [
       { name: "Grupalia", tagline: "Group loans for micro-entrepreneurs in Latin America.", image: "https://media.licdn.com/dms/image/v2/D4E0BAQFVi20lbceGOQ/company-logo_200_200/B4EZmWWUh7KcAI-/0/1759164058085?e=1778716800&v=beta&t=l9-xEWq_78gpp833PSEoe7kGX5R-6qsw1l7Z-WY622E", moic: "2.46x", badge: "potential-fund-returner", investorsAfter: [{ name: "Tantauco", logo: "https://logo.clearbit.com/tantauco.vc", url: "https://www.tantauco.vc" }, { name: "Semilla Ventures", logo: "https://logo.clearbit.com/semilla.ventures", url: "https://www.semilla.ventures" }, { name: "Innogen", logo: "https://logo.clearbit.com/innogencapital.com", url: "https://innogencapital.com" }], bullets: ["The founders met at Platanus. Ramon was our first employee; Roger was our first Visiting Partner.", "Constant growth since inception. ARR of $4.2m.", "Oversubscribed debt facilities secured."] },
       { name: "Horizon AI", tagline: "AI that makes companies more efficient by talking to their people, mapping current state and uncovering quick wins.", image: "https://media.licdn.com/dms/image/v2/D4D0BAQGDOIe-12517Q/company-logo_200_200/B4DZwAdr4iI8AI-/0/1769534308674/horizonaiprocess_logo?e=1778716800&v=beta&t=znW4UbBb1Wnc4vnWXDF79I8n0xU96-yWLoMm542CiJw", moic: "6.32x", badge: "rising-star", investorsAfter: [{ name: "NXTP", logo: "https://logo.clearbit.com/nxtpventures.com", url: "https://www.nxtpventures.com" }], bullets: ["Big clients: PWC, D-Local, Mercado Libre and Despegar.", "Raised a $4m Seed round.", "Team moved to San Francisco searching US clients."] },
@@ -112,17 +120,19 @@ export const FUNDS: Fund[] = [
       { name: "CuidaPet", tagline: "Full-stack AI veterinary services.", image: "/avatars/cuidapet.png", moic: "1x", investorsAfter: [], bullets: ["Applying a strategy of a software company masquerading as a services firm.", "They have acquired their own surgery facility.", "Cash flow positive."] },
       { name: "Magnar", tagline: "Legal AI platform to understand case law, analyze private cases, and automate legal tasks.", image: "/avatars/magnar.png", moic: "5x", investorsAfter: [{ name: "Carey", logo: "https://logo.clearbit.com/carey.cl", url: "https://www.carey.cl" }], bullets: ["$2.2m of ARR after 10 months.", "Rapid expansion in Chile and Peru."] },
       { name: "Sento", tagline: "Analyzes all AI conversations of a company to detect sales opportunities, churn risks, and friction points.", image: "/avatars/sento.png", moic: "4.2x", investorsAfter: [{ name: "Caricaco", logo: "https://logo.clearbit.com/caricaco.vc", url: "https://caricaco.vc" }], bullets: ["62 clients, $1.5m ARR, all from Central America.", "Opening operations in Mexico."] },
-      { name: "Bemmbo", tagline: "Payments and collections management.", image: "/avatars/bemmbo.webp", moic: "3.9x", badge: ["exited", "fund-returner"], investorsAfter: [], bullets: ["Acquired by Buk. Jaime Arrieta (Buk) was Bemmbo's Platanus mentor.", "Platanus was the only investor with a MOIC above 1x; thanks to our early investing approach."] },
+      { name: "Bemmbo", tagline: "Payments and collections management.", image: "/avatars/bemmbo.webp", moic: "3.9x", badge: "exited", investorsAfter: [], bullets: ["Acquired by Buk. Jaime Arrieta (Buk) was Bemmbo's Platanus mentor.", "Platanus was the only investor with a MOIC above 1x; thanks to our early investing approach."] },
     ],
   },
   {
     name: "Cavendish",
     year: "2024",
     amount: "USD $TBD",
+    committedAmount: "TBD",
     investments: "3 STARTUPS",
     tupiMultiple: "*1.0X",
     moicMultiple: "*1.0X",
     dpiMultiple: "0.0X",
+    tvpiMultiple: "1.0x",
     companies: [
       { name: "Stealth #1", tagline: "", image: "/placeholder-avatar.svg", moic: "1.0x", investorsAfter: [{ name: "Y Combinator", logo: "https://logo.clearbit.com/ycombinator.com", url: "https://www.ycombinator.com" }] },
       { name: "Stealth #2", tagline: "", image: "/placeholder-avatar.svg", moic: "1.0x", investorsAfter: [{ name: "TBD" }] },
