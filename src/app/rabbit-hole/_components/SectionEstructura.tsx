@@ -3,7 +3,7 @@ import { Callout } from "./Callout";
 export function SectionEstructura() {
   return (
     <section id="estructura" className="py-16 border-b border-white/10">
-      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5mb-4">10</span>
+      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5mb-4">11</span>
       <h2 className="font-sans font-medium text-white mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Estructura legal del fondo
       </h2>

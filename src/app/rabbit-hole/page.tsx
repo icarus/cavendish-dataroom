@@ -15,6 +15,7 @@ import { SectionEquipo } from "./_components/SectionEquipo";
 import { SectionEstructura } from "./_components/SectionEstructura";
 import { SectionTerminos } from "./_components/SectionTerminos";
 import { SectionTrackRecord } from "./_components/SectionTrackRecord";
+import { SectionCasosDeEstudio } from "./_components/SectionCasosDeEstudio";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -26,6 +27,7 @@ const NAV_ITEMS = [
   { id: "kalio", label: "Kalio" },
   { id: "equipo", label: "Equipo" },
   { id: "track-record", label: "Track Record" },
+  { id: "casos-de-estudio", label: "Casos de estudio" },
   { id: "estructura", label: "Estructura legal del fondo" },
   { id: "terminos", label: "Términos Cavendish LP" },
 ];
@@ -124,6 +126,7 @@ export default function RabbitHolePage() {
           <SectionKalio />
           <SectionEquipo />
           <SectionTrackRecord />
+          <SectionCasosDeEstudio />
           <SectionEstructura />
           <SectionTerminos />
         </main>
