@@ -131,7 +131,7 @@ export function SectionEstructura() {
               <div className="border border-white/10 p-4 bg-white/5">
                 <div className="flex items-center gap-2 mb-1">
                   <p className="font-sans font-medium text-white/70 text-sm">Estructura de 3 capas</p>
-                  <span className="bg-[#FFEC40] text-black font-mono font-medium text-xs px-1.5 py-0.5>recomendada</span>
+                  <span className="bg-[#FFEC40] text-black font-mono font-medium text-xs px-1.5 py-0.5">recomendada</span>
                 </div>
                 <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
                   Sociedad matriz en Islas Caimán, la que es dueña del 100% de participación de una Limited Liability Company ("LLC") en Delaware, USA, la que a su vez es dueña del 100% de la participación de las sociedades operativas.
