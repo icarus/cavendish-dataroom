@@ -16,7 +16,7 @@ export function ExpandableSection({
   return (
     <div className="relative">
       <div
-        className={cn("overflow-hidden transition-all duration-500", !open && "relative")}
+        className={cn("transition-all duration-500", open ? "overflow-visible" : "overflow-hidden relative")}
         style={!open ? { maxHeight: collapsedHeight } : undefined}
       >
         {children}
