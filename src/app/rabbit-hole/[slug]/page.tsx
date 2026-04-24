@@ -34,7 +34,7 @@ export default function SectionPage() {
   return (
     <div className="min-h-screen bg-white relative">
       <Link
-        href="/rabbit-hole"
+        href={`/rabbit-hole#${slug}`}
         className="fixed top-8 left-8 flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider hover:text-black transition-colors z-10"
       >
         <ArrowLeft size={14} />
