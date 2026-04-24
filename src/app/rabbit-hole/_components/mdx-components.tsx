@@ -2,6 +2,7 @@ import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
 import { ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { VideoPlayer } from "./video-player";
 
 const COMPANIES: Record<string, { avatar: string; url?: string; bg: string }> = {
   toku: { avatar: "/avatars/toku.png", url: "https://toku.cl", bg: "#1a1a2e" },
@@ -123,16 +124,7 @@ export function VideoFigure({
   src: string;
   caption?: string;
 }) {
-  return (
-    <figure className="my-4">
-      <video src={src} controls className="w-full border border-black/10" />
-      {caption && (
-        <figcaption className="font-sans font-medium text-black/40 text-sm leading-relaxed mt-2">
-          {caption}
-        </figcaption>
-      )}
-    </figure>
-  );
+  return <VideoPlayer src={src} caption={caption} />;
 }
 
 export function FigureGrid({
@@ -286,7 +278,7 @@ export function TermGrid({
       {items.map((t) => (
         <div key={t.label} className="border border-black/10 p-5 bg-black/5">
           <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-1">{t.label}</p>
-          <p className="font-sans font-medium text-black/60 text-sm">{t.value}</p>
+          <p className="font-mono font-medium text-[#FF] text-sm">{t.value}</p>
           {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-0.5">{t.sub}</p>}
         </div>
       ))}
