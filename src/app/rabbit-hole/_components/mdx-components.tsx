@@ -1,25 +1,43 @@
 import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
+import { ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-const COMPANY_AVATARS: Record<string, string> = {
-  toku: "/avatars/toku.png",
-  bemmbo: "/avatars/bemmbo.webp",
-  fintoc: "/avatars/fintoc.png",
-  horizon: "/avatars/horizon-ai.png",
-  grupalia: "/avatars/grupalia.png",
-  shinkansen: "/avatars/shinkansen.png",
+const COMPANIES: Record<string, { avatar: string; url?: string; bg: string }> = {
+  toku: { avatar: "/avatars/toku.png", url: "https://toku.cl", bg: "#1a1a2e" },
+  bemmbo: { avatar: "/avatars/bemmbo.webp", url: "https://bemmbo.com", bg: "#4f46e5" },
+  fintoc: { avatar: "/avatars/fintoc.png", url: "https://fintoc.com", bg: "#0f172a" },
+  horizon: { avatar: "/avatars/horizon-ai.png", url: "https://horizon.ai", bg: "#1e293b" },
+  grupalia: { avatar: "/avatars/grupalia.png", url: "https://grupalia.com", bg: "#7c3aed" },
+  shinkansen: { avatar: "/avatars/shinkansen.png", url: "https://shinkansen.finance", bg: "#0ea5e9" },
 };
 
 export function Co({ name, label }: { name: string; label?: string }) {
-  const src = COMPANY_AVATARS[name];
-  if (!src) return <span className="font-sans font-medium text-black">{label ?? name}</span>;
-  return (
-    <>
-      <Image src={src} alt={label ?? name} width={16} height={16} className="inline-block align-text-bottom" />{" "}
-      {label ?? name.charAt(0).toUpperCase() + name.slice(1)}
-    </>
+  const co = COMPANIES[name];
+  const displayName = label ?? name.charAt(0).toUpperCase() + name.slice(1);
+  if (!co) return <span className="font-sans font-medium text-black">{displayName}</span>;
+
+  const inner = (
+    <span className="inline-flex items-center gap-1.5 align-baseline">
+      <span
+        className="inline-flex items-center justify-center shrink-0 size-5 overflow-hidden"
+        style={{ backgroundColor: co.bg }}
+      >
+        <Image src={co.avatar} alt={displayName} width={20} height={20} className="object-cover size-5" />
+      </span>
+      <span className="font-sans font-medium text-black underline decoration-black/20 underline-offset-2">{displayName}</span>
+    </span>
   );
+
+  if (co.url) {
+    return (
+      <a href={co.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+        {inner}
+      </a>
+    );
+  }
+
+  return inner;
 }
 
 export function Callout({ children }: { children: React.ReactNode }) {
@@ -31,7 +49,7 @@ export function Callout({ children }: { children: React.ReactNode }) {
 }
 
 export function Hl({ children }: { children: React.ReactNode }) {
-  return <span className="bg-[#FFEC40] text-black px-1">{children}</span>;
+  return <span className="bg-[#FFEC40] uppercase font-mono text-black px-0.5">{children}</span>;
 }
 
 export function Section({
@@ -282,10 +300,10 @@ export function InvestmentType({
   items: { title: string; body: string }[];
 }) {
   return (
-    <div className="space-y-3 mb-10">
+    <div className="space-y-3 -mt-10 mb-10">
       {items.map((item) => (
         <div key={item.title} className="flex gap-4 py-3 border-b border-black/10 last:border-0">
-          <span className="text-[#FFEC40] bg-black/5 w-5 h-5 flex items-center justify-center shrink-0 mt-0.5 text-xs">&rarr;</span>
+          <span className="bg-muted-foreground mt-2.5 shrink-0 aspect-square size-1" />
           <div>
             <span className="font-sans font-medium text-black/60 text-sm">{item.title}: </span>
             <span className="font-sans font-medium text-black/60 text-sm leading-relaxed">{item.body}</span>
@@ -308,13 +326,13 @@ export function DataTable({
   fixed?: boolean;
 }) {
   return (
-    <div className="overflow-x-auto mb-4">
+    <div className="overflow-x-auto -mx-1 mb-4">
       <table className={`w-full border-collapse ${fixed ? "table-fixed" : ""}`}>
         {headers.length > 0 && (
           <thead>
             <tr className="border-b border-black/10">
               {headers.map((h) => (
-                <th key={h} className="text-left font-mono font-medium text-black text-xs uppercase tracking-wider pb-3 pr-3">{h}</th>
+                <th key={h} className="text-left font-mono px-1 font-medium text-black text-xs uppercase tracking-wider pb-3 pr-3">{h}</th>
               ))}
             </tr>
           </thead>
@@ -323,9 +341,9 @@ export function DataTable({
           {rows.map((row, ri) => {
             const isHighlight = highlightLast && ri === rows.length - 1;
             return (
-              <tr key={ri} className={`border-b ${isHighlight ? "bg-[#FFEC40]" : "border-black/10"}`}>
+              <tr key={ri} className={`border-b ${isHighlight ? "bg-neutral-200/80 *:!text-black" : "border-black/10"}`}>
                 {row.map((cell, ci) => (
-                  <td key={ci} className={`font-${ci === 0 ? "sans" : "mono"} font-medium text-black/60 text-sm py-2.5 pr-3 ${ci === headers.length - 1 ? "" : ""}`}>
+                  <td key={ci} className={`font-mono uppercase px-1 font-medium text-black/60 text-sm py-2.5 pr-3 ${ci === headers.length - 1 ? "" : ""}`}>
                     {cell}
                   </td>
                 ))}
@@ -389,11 +407,12 @@ export function Collapsible({
   children: React.ReactNode;
 }) {
   return (
-    <details className="border border-black/10 bg-black/5">
-      <summary className="font-sans font-medium text-black text-sm px-5 py-3 cursor-pointer select-none hover:bg-black/5 transition-colors">
+    <details className="group border border-black/10 bg-black/5 [&>summary]:list-none [&>summary::-webkit-details-marker]:hidden">
+      <summary className="flex items-center gap-2 font-sans font-medium text-black text-sm px-5 py-3 cursor-pointer select-none hover:bg-black/5 transition-colors">
+        <ChevronRight size={14} className="shrink-0 transition-transform group-open:rotate-90" />
         {summary}
       </summary>
-      <div className="px-5 pb-5 pt-2 space-y-4 border-t border-black/10">
+      <div className="px-5 pb-5 pt-6 space-y-4 border-t border-black/10">
         {children}
       </div>
     </details>
