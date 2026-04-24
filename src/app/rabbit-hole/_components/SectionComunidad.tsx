@@ -103,7 +103,7 @@ export function SectionComunidad() {
       </p>
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          El valor agregado que aporta una buena comunidad permite invertir a <span className="bg-[#FFEC40] px-1>menores valorizaciones que el mercado</span>.
+          El valor agregado que aporta una buena comunidad permite invertir a <span className="bg-[#FFEC40] px-1">menores valorizaciones que el mercado</span>.
         </p>
       </Callout>
 
@@ -160,7 +160,7 @@ export function SectionComunidad() {
       </p>
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          Cada startup comienza a definirse como <span className="bg-[#FFEC40] px-1>"soy parte de la generación X de Platanus"</span>, en vez de "me invirtió tal y tal fondo." Esta es una lealtad que no vemos hacia otros fondos.
+          Cada startup comienza a definirse como <span className="bg-[#FFEC40] px-1">"soy parte de la generación X de Platanus"</span>, en vez de "me invirtió tal y tal fondo." Esta es una lealtad que no vemos hacia otros fondos.
         </p>
       </Callout>
 
@@ -265,7 +265,7 @@ export function SectionComunidad() {
       </p>
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          Tres años y medio después, <span className="bg-[#FFEC40] px-1>Buk adquirió Bemmbo</span>, generando un retorno para Platanus. Un caso perfecto de cómo funciona la comunidad.
+          Tres años y medio después, <span className="bg-[#FFEC40] px-1">Buk adquirió Bemmbo</span>, generando un retorno para Platanus. Un caso perfecto de cómo funciona la comunidad.
         </p>
       </Callout>
     </section>

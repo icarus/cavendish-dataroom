@@ -10,7 +10,7 @@ export function SectionEstructura() {
 
       <div className="space-y-4 mb-10">
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          El fondo se ha estructurado como una <span className="bg-[#FFEC40] px-1>Limited Partnership Canadiense</span>.
+          El fondo se ha estructurado como una <span className="bg-[#FFEC40] px-1">Limited Partnership Canadiense</span>.
         </p>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
           Este fondo fue constituido con fecha 2 de julio de 2025 y se encuentra regulado por un Limited Partnership Agreement.
@@ -218,7 +218,7 @@ export function SectionEstructura() {
 
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          Este proceso de constituir sociedades sobre las sociedades operativas o sobre la LLC es lo que se conoce como un <span className="bg-[#FFEC40] px-1>"Flip"</span>.
+          Este proceso de constituir sociedades sobre las sociedades operativas o sobre la LLC es lo que se conoce como un <span className="bg-[#FFEC40] px-1">"Flip"</span>.
         </p>
       </Callout>
     </section>

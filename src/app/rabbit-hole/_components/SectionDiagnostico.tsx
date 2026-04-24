@@ -121,7 +121,7 @@ export function SectionDiagnostico() {
 
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-3">
-          Invertimos <span className="bg-[#FFEC40] px-1>US$200,000</span> en las primeras etapas de equipos excepcionales, priorizando los intereses de los fundadores y el éxito de la startup.
+          Invertimos <span className="bg-[#FFEC40] px-1">US$200,000</span> en las primeras etapas de equipos excepcionales, priorizando los intereses de los fundadores y el éxito de la startup.
         </p>
         <ul className="list-disc list-outside pl-5 space-y-2">
           {[

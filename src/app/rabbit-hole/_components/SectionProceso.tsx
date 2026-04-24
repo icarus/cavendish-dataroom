@@ -145,7 +145,7 @@ export function SectionProceso() {
 
               <Callout>
                 <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-                  Desde Q3 2023, además del formulario les pedimos a las startups que realicen una <span className="bg-[#FFEC40] px-1>entrevista automatizada</span> como paso previo.
+                  Desde Q3 2023, además del formulario les pedimos a las startups que realicen una <span className="bg-[#FFEC40] px-1">entrevista automatizada</span> como paso previo.
                 </p>
               </Callout>
 
@@ -241,7 +241,7 @@ export function SectionProceso() {
               </figure>
               <Callout>
                 <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-                  Utilizamos un modelo de <span className="bg-[#FFEC40] px-1>convicción fuerte</span>: al menos uno de los partners debe votar "Sí fuerte" para que continúen en el proceso. Históricamente hemos entrevistado en esta primera etapa a alrededor del <span className="bg-[#FFEC40] px-1>14%</span> de las startups que aplican.
+                  Utilizamos un modelo de <span className="bg-[#FFEC40] px-1">convicción fuerte</span>: al menos uno de los partners debe votar "Sí fuerte" para que continúen en el proceso. Históricamente hemos entrevistado en esta primera etapa a alrededor del <span className="bg-[#FFEC40] px-1">14%</span> de las startups que aplican.
                 </p>
               </Callout>
             </div>
@@ -267,7 +267,7 @@ export function SectionProceso() {
               </p>
               <Callout>
                 <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-                  Al igual que en la primera entrevista, al menos uno de los partners debe votar "sí fuerte" para pasar a la siguiente etapa. Históricamente hemos entrevistado en esta segunda etapa a alrededor del <span className="bg-[#FFEC40] px-1>4%</span> de las startups que aplican.
+                  Al igual que en la primera entrevista, al menos uno de los partners debe votar "sí fuerte" para pasar a la siguiente etapa. Históricamente hemos entrevistado en esta segunda etapa a alrededor del <span className="bg-[#FFEC40] px-1">4%</span> de las startups que aplican.
                 </p>
               </Callout>
             </div>

@@ -202,10 +202,10 @@ export function SectionEstrategia() {
             ].map((row) => (
               <tr key={row.range} className="border-b border-white/10">
                 <td className="font-sans font-medium text-sm py-3 pr-8">
-                  {row.highlight ? <span className="bg-[#FFEC40] px-1>{row.range}</span> : <span className="text-white">{row.range}</span>}
+                  {row.highlight ? <span className="bg-[#FFEC40] px-1">{row.range}</span> : <span className="text-white">{row.range}</span>}
                 </td>
                 <td className="font-sans font-medium text-sm py-3">
-                  {row.highlight ? <span className="bg-[#FFEC40] px-1>{row.pct}</span> : <span className="text-white">{row.pct}</span>}
+                  {row.highlight ? <span className="bg-[#FFEC40] px-1">{row.pct}</span> : <span className="text-white">{row.pct}</span>}
                 </td>
               </tr>
             ))}
@@ -215,7 +215,7 @@ export function SectionEstrategia() {
 
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          En los mejores fondos casi un <span className="bg-[#FFEC40] px-1>95% de los retornos</span> se compone de ese <span className="bg-[#FFEC40] px-1>10% del portafolio</span> que retorna en promedio <span className="bg-[#FFEC40] px-1>60x</span>. Sin esas startups ganadoras no se llega al 3x tan anhelado.
+          En los mejores fondos casi un <span className="bg-[#FFEC40] px-1">95% de los retornos</span> se compone de ese <span className="bg-[#FFEC40] px-1">10% del portafolio</span> que retorna en promedio <span className="bg-[#FFEC40] px-1">60x</span>. Sin esas startups ganadoras no se llega al 3x tan anhelado.
         </p>
       </Callout>
 
@@ -275,7 +275,7 @@ export function SectionEstrategia() {
 
       <Callout>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-          Salvo nuestra valorización estándar de <span className="bg-[#FFEC40] px-1>$200k por un 7%</span>, ninguna otra inversión logra llegar a un múltiplo de retorno de 60x.
+          Salvo nuestra valorización estándar de <span className="bg-[#FFEC40] px-1">$200k por un 7%</span>, ninguna otra inversión logra llegar a un múltiplo de retorno de 60x.
         </p>
       </Callout>
 
@@ -328,7 +328,7 @@ export function SectionEstrategia() {
           ))}
         </ul>
         <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mt-3">
-          Si suponemos que en 3–4 años levantará una ronda a 2.5x de valorización y consideramos una dilución de 25%, el potencial exit sería de <span className="bg-[#FFEC40] px-1>$17,226,562 — un fund returner de 86x</span>.
+          Si suponemos que en 3–4 años levantará una ronda a 2.5x de valorización y consideramos una dilución de 25%, el potencial exit sería de <span className="bg-[#FFEC40] px-1">$17,226,562 — un fund returner de 86x</span>.
         </p>
       </Callout>
 
@@ -412,7 +412,7 @@ export function SectionEstrategia() {
                 Esta experiencia debe contemplar poder analizar equipos con un fuerte componente técnico. ¿Cómo saber si el fundador es o no buen desarrollador o si será capaz de construir el producto? ¿Tenemos cómo asegurarnos que la startup logrará atraer al mejor talento tech necesario para escalar?
               </p>
               <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-                Desde el 2020 hemos revisado <span className="bg-[#FFEC40] px-1>9.549 postulaciones</span>, conducido <span className="bg-[#FFEC40] px-1>1.697 entrevistas</span> e invertido en <span className="bg-[#FFEC40] px-1>121 startups</span>. Semestre a semestre hemos ido desarrollando el músculo de ir identificando características que aumentan las posibilidades de que un equipo logre armar una startup exitosa.
+                Desde el 2020 hemos revisado <span className="bg-[#FFEC40] px-1">9.549 postulaciones</span>, conducido <span className="bg-[#FFEC40] px-1">1.697 entrevistas</span> e invertido en <span className="bg-[#FFEC40] px-1">121 startups</span>. Semestre a semestre hemos ido desarrollando el músculo de ir identificando características que aumentan las posibilidades de que un equipo logre armar una startup exitosa.
               </p>
             </div>
           </div>
@@ -434,7 +434,7 @@ export function SectionEstrategia() {
                 En nuestro caso, dado que invertimos tan temprano y no hay métricas que podamos analizar, debemos aceptar que la tasa de fracaso va a ser mayor y construir un portafolio con eso en mente.
               </p>
               <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
-                Tenemos más posibilidades de estar en 2 o 3 startups excepcionales entre <span className="bg-[#FFEC40] px-1>40–45 inversiones</span> que entre 10.
+                Tenemos más posibilidades de estar en 2 o 3 startups excepcionales entre <span className="bg-[#FFEC40] px-1">40–45 inversiones</span> que entre 10.
               </p>
               <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
                 En fondos Pre Seed, la norma son portafolios grandes.

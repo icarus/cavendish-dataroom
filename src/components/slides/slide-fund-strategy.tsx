@@ -66,6 +66,7 @@ export function SlideFundStrategy({ active }: P) {
         <p className="font-sans font-medium text-white text-base">
           In top VC funds, ~10% of investments generate{" "}
           <span className="text-[#FFEC40]">60x cash on cash return.</span>
+          {" "}With LatAm exit prices, our tickets can get us there.
         </p>
       </div>
 
@@ -98,7 +99,7 @@ export function SlideFundStrategy({ active }: P) {
           <div key={entry.valuation} style={{ display: "contents" }}>
             <div
               className={cn(
-                "flex w-full h-full items-center px-3 transition-colors",
+                "flex flex-col w-full h-full justify-center px-3 transition-colors",
                 entry.highlight ? "bg-[#FFEC40]" : "",
                 !entry.highlight && hover?.row === ri && "bg-white/5",
               )}
@@ -107,6 +108,9 @@ export function SlideFundStrategy({ active }: P) {
               <span className={cn("font-mono font-medium text-base whitespace-nowrap", entry.highlight ? "text-black" : "text-white/40")}>
                 {entry.label}
               </span>
+              {entry.highlight && (
+                <span className="font-mono font-medium text-black/60 text-[10px] uppercase tracking-wider">Platanus ticket</span>
+              )}
             </div>
             {EXIT_VALUATIONS.map((exitM, ci) => {
               const ret = calcReturn(entry.valuation, exitM);

@@ -305,8 +305,8 @@ export function SlideTrackRecord({ active }: P) {
           </div>
           <div className="flex gap-8" style={f(on, 60)}>
             {[
-              { label: "Startups", value: STARTUP_COUNTS[activeFund] ?? "-" },
               { label: "Committed", value: activeMetrics.committedAmount },
+              { label: "Startups", value: STARTUP_COUNTS[activeFund] ?? "-" },
               { label: "MOIC", value: activeMetrics.moicMultiple },
               { label: "DPI", value: activeMetrics.dpiMultiple },
               { label: "TVPI", value: activeMetrics.tvpiMultiple },
