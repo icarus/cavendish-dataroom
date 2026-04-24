@@ -268,7 +268,6 @@ export function SlideTrackRecord({ active }: P) {
             </button>
           );
         })}
-        </div>
       </div>
 
       <div className="flex-1 min-h-0 grid gap-2 content-start overflow-hidden" style={{ gridTemplateColumns: `repeat(${Math.min(Math.ceil(ALL_COMPANIES.length / 3), 7)}, 1fr)`, gridTemplateRows: "repeat(3, 1fr)" }}>
