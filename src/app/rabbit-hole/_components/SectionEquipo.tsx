@@ -13,7 +13,7 @@ const integrantes = [
     name: "Joaquín Stephens",
     role: "Co-founder & General Partner",
     country: "Chile",
-    photo: null,
+    photo: "/team/joaquin.png",
     linkedin: "https://www.linkedin.com/in/joaquin-stephens-baa016154/",
     bio: null,
   },
