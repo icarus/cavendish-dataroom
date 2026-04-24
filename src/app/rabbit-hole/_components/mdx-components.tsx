@@ -43,14 +43,14 @@ export function Co({ name, label }: { name: string; label?: string }) {
 
 export function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="border border-[#FFEC40] bg-[#FFEC40]/10 p-5 my-6">
+    <div className="-mx-5 border border-[#FFEC40] bg-[#FFEC40]/10 p-5 my-6">
       {children}
     </div>
   );
 }
 
 export function Hl({ children }: { children: React.ReactNode }) {
-  return <span className="bg-[#FFEC40] uppercase font-mono text-black px-0.5">{children}</span>;
+  return <span className="bg-[#FFEC40] uppercase font-mono text-black px-0.5 align-baseline">{children}</span>;
 }
 
 export function Section({
@@ -277,9 +277,9 @@ export function TermGrid({
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
       {items.map((t) => (
         <div key={t.label} className="border border-black/10 p-5 bg-black/5">
-          <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-1">{t.label}</p>
-          <p className="font-mono font-medium text-[#FF] text-sm">{t.value}</p>
-          {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-0.5">{t.sub}</p>}
+          <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-0">{t.label}</p>
+          <p className="font-mono font-medium  bg-[#FFEC40] text-black uppercase w-fit px-0.5 -mx-0.5 mt-4 text-sm">({t.value})</p>
+          {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-1">{t.sub}</p>}
         </div>
       ))}
     </div>
