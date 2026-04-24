@@ -62,17 +62,10 @@ export function SlideFundStrategy({ active }: P) {
         </div>
       </div>
 
-      <div className="flex items-end justify-between mb-6" style={f(on, 80)}>
-        <div className="flex items-center gap-2">
-          <span className="font-mono font-medium text-[#FFEC40]" style={{ fontSize: "clamp(36px, 5vw, 72px)", lineHeight: 1 }}>
-            25x
-          </span>
-          <span className="mt-5 font-sans font-normal text-white text-balance text-base leading-tight max-w-[220px]">
-            cash-on-cash returned by top 10% of successful VCs
-          </span>
-        </div>
-        <p className="font-sans font-medium text-white/40 text-base">
-          At <span className="text-[#FFEC40]">$200K for 7%</span>, only Platanus reach 60x+ returns.
+      <div className="mb-6" style={f(on, 80)}>
+        <p className="font-sans font-medium text-white text-base">
+          In top VC funds, ~10% of investments generate{" "}
+          <span className="text-[#FFEC40]">60x cash on cash return.</span>
         </p>
       </div>
 
