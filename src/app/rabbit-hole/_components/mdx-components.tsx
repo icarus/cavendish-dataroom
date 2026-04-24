@@ -307,9 +307,9 @@ export function TermGrid({
   items: { label: string; value: string; sub?: string }[];
 }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
+    <div className="grid grid-cols-2 mb-10">
       {items.map((t) => (
-        <div key={t.label} className="border border-black/10 p-5 bg-black/5">
+        <div key={t.label} className="border-b border-black/10 py-5">
           <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-0">{t.label}</p>
           <p className="font-mono font-medium  bg-[#FFEC40] text-black uppercase w-fit px-0.5 -mx-0.5 mt-4 text-sm">({t.value})</p>
           {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-1">{t.sub}</p>}
