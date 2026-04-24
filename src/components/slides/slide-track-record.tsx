@@ -146,9 +146,9 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
       </button>
       <motion.div
         className={cn("relative z-10 flex flex-col max-w-md w-full max-h-[80%] p-6 overflow-y-auto")}
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        initial={{ opacity: 0, scale: 0.97, y: 4 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        exit={{ opacity: 0, scale: 0.97, y: 4 }}
         transition={{ duration: 0.2, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
       >
@@ -206,7 +206,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
                     src={investor.logo}
                     alt={investor.name}
                     title={investor.name}
-                    className={cn("shrink-0 object-contain brightness-0 invert opacity-100", isSquareLogo ? "h-8" : "h-4 max-w-[100px]")}
+                    className={cn("shrink-0 object-contain opacity-100", isSquareLogo ? "h-8" : "h-4 max-w-[100px]")}
                   />
                 ) : (
                   <span className="font-mono font-medium text-sm text-white/60 uppercase tracking-wider">

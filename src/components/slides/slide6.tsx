@@ -37,7 +37,7 @@ export function Slide6({ active }: P) {
         {items.slice(3).map(({ Icon, title, desc }, i) => (
           <div key={title} className="justify-start items-center text-center p-6 pt-4 flex flex-col gap-2.5" style={f(on, 300 + i * 60)}>
             <Icon size={18} className="text-[#FFEC40]" />
-            <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
+          <div className="font-mono text-white text-base font-medium uppercase">{title}</div>
             <p className="font-sans font-normal text-white/40 text-lg leading-relaxed">{desc}</p>
           </div>
         ))}

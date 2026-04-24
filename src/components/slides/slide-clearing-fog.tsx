@@ -24,7 +24,7 @@ function MentorCard({ mentor, index, on, hovered, dimmed, onEnter, onLeave }: {
       style={{
         aspectRatio: "1/1",
         filter: hovered ? "grayscale(0) brightness(1.1)" : "grayscale(1)",
-        opacity: on ? (hovered ? 1 : dimmed ? 0.15 : 0.55) : 0,
+        opacity: on ? (hovered ? 1 : dimmed ? 0.25 : 1) : 0,
         transform: on ? "translateY(0)" : "translateY(14px)",
         transition: `filter 0.3s ease, opacity 0.3s ease ${on ? "0ms" : `${300 + index * 20}ms`}, transform 0.6s ease ${300 + index * 20}ms`,
       }}
@@ -110,7 +110,7 @@ export function SlideClearingFog({ active }: P) {
 
       <div className="mb-8 max-w-3xl" style={f(on, 150)}>
         <p className="font-sans font-normal text-white/40 text-base leading-relaxed">
-          Being around other ambitious founders raises their ambitions.
+          Being around other ambitious founders raises their ambitions. <br/>
           The accountability & advice from this top-tier founders gives them speed, clarity and conviction.
         </p>
       </div>

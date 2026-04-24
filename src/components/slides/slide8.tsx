@@ -54,9 +54,9 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
         hovered ? "z-10 shadow-2xl shadow-black/50" : "grayscale",
       )}
       style={{
-        opacity: on ? (dimmed ? 0.5 : 1) : 0,
+        opacity: on ? (dimmed ? 0.65 : 1) : 0,
         transform: on ? "translateY(0)" : "translateY(0px)",
-        filter: hovered ? "grayscale(0) blur(0px)" : dimmed ? "grayscale(1) blur(2px)" : "grayscale(1) blur(0px)",
+        filter: hovered ? "grayscale(0) blur(0px)" : dimmed ? "grayscale(1) blur(0px)" : "grayscale(1) blur(0px)",
         transition: on
           ? `opacity 0.2s ease-out, transform 0.2s ease-out, filter 0.2s ease-out`
           : `opacity 0.2s ease-out ${delay}ms, transform 0.2s ease-out ${delay}ms, filter 0.2s ease-out`,

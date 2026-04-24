@@ -64,7 +64,7 @@ export function SlideFundStrategy({ active }: P) {
 
       <div className="mb-10" style={f(on, 80)}>
         <p className="font-sans font-normal text-white/40 text-base">
-          At <span className="text-[#FFEC40]">$200K for 7%</span>, only we reach 60x+ returns. Invest early, win big.
+          At <span className="text-[#FFEC40]">$200K for 7%</span>, only Platanus reach 60x+ returns. Invest early, win big.
         </p>
       </div>
 
@@ -73,10 +73,10 @@ export function SlideFundStrategy({ active }: P) {
           <div className="absolute inset-0" style={{
             background: "linear-gradient(to bottom left, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 50%)",
           }} />
-          <span className="absolute bottom-2 left-2 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
+          <span className="absolute bottom-2 left-2 font-mono font-medium text-white/40 text-[11px] uppercase leading-none">
             Entry Val.
           </span>
-          <span className="absolute top-2 right-2 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
+          <span className="absolute top-2 right-2 font-mono font-medium text-white/40 text-[11px] uppercase leading-none">
             Exit Price
           </span>
         </div>

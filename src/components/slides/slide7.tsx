@@ -70,14 +70,14 @@ export function Slide7({ active }: P) {
           <h2 className="font-sans font-medium text-white mb-4" style={{ fontSize: "clamp(22px, 3vw, 44px)", ...f(on, 0) }}>
             The <mark className="bg-[#FFEC40] text-black px-2 not-italic">Banana</mark> House
           </h2>
-          <p className="font-sans font-medium text-white/40 text-base leading-relaxed mb-3" style={f(on, 100)}>
+          <p className="font-sans font-normal text-white/40 text-base leading-relaxed mb-3" style={f(on, 100)}>
             Office, residence, and launchpad in one. Founders live and build together through hackathons, fireside chats, and social events.
           </p>
-          <p className="font-sans font-medium text-white/40 text-base leading-relaxed mb-6" style={f(on, 180)}>
-            Beds on-site enable regional expansion and fast access to local networks.
+          <p className="font-sans font-normal text-white/40 text-base leading-relaxed mb-6" style={f(on, 180)}>
+            On-site beds enable regional expansion and fast access to local networks.
           </p>
 
-          <div className="flex gap-6" style={f(on, 280)}>
+          <div className="sr-only flex gap-6" style={f(on, 280)}>
             {STATS.map((stat, i) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="font-mono font-medium text-[#FFEC40] tracking-wider" style={{ fontSize: "clamp(20px, 2.2vw, 34px)" }}>

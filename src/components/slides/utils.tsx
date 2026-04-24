@@ -44,7 +44,7 @@ export function WordReveal({ text, on, baseDelay = 0, interval = 60, className, 
       {words.map((word, i) => (
         <span
           key={i}
-          className={cn("inline-block text-balance", highlight && "bg-[#FFEC40] px-0.5 py-0.5 -mx-0.5")}
+          className={cn("inline-block -mt-px text-balance", highlight && "bg-[#FFEC40] px-0.5 py-0.5 -mx-0.5")}
           style={{
             opacity: on ? 1 : 0,
             transform: on ? "translateY(0)" : "translateY(8px)",
