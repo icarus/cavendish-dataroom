@@ -30,6 +30,7 @@ const NAV_ITEMS = [
 
 export default function RabbitHolePage() {
   const [activeId, setActiveId] = useState("");
+  const [indicatorStyle, setIndicatorStyle] = useState({ top: 0, height: 0 });
   const observerRef = useRef<IntersectionObserver | null>(null);
   const navRefs = useRef<Map<string, HTMLButtonElement>>(new Map());
 
@@ -56,15 +57,19 @@ export default function RabbitHolePage() {
     return () => observerRef.current?.disconnect();
   }, [setupObserver]);
 
+  useEffect(() => {
+    const btn = navRefs.current.get(activeId);
+    if (btn) {
+      setIndicatorStyle({ top: btn.offsetTop, height: btn.offsetHeight });
+    }
+  }, [activeId]);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   const activeIndex = NAV_ITEMS.findIndex((item) => item.id === activeId);
-  const activeButton = activeId ? navRefs.current.get(activeId) : null;
-  const indicatorTop = activeButton ? activeButton.offsetTop : 0;
-  const indicatorHeight = activeButton ? activeButton.offsetHeight : 0;
 
   return (
     <div className="min-h-screen bg-white relative">
@@ -122,8 +127,8 @@ export default function RabbitHolePage() {
                 initial={{ opacity: 0 }}
                 animate={{
                   opacity: 1,
-                  top: indicatorTop,
-                  height: indicatorHeight,
+                  top: indicatorStyle.top,
+                  height: indicatorStyle.height,
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
