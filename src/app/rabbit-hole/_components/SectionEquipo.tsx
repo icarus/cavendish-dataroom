@@ -87,7 +87,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
       onClick={onClose}
     >
       <div
-        className="border border-white/10 bg-black w-full max-w-sm"
+        className="border border-black/10 bg-white w-full max-w-sm"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Photo */}
@@ -95,23 +95,23 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
           {member.photo ? (
             <Image src={member.photo} alt={member.name} fill className="object-cover object-top" />
           ) : (
-            <div className="w-full h-full bg-white/5 flex items-center justify-center">
-              <span className="font-mono font-medium text-white/20 text-6xl">{member.name[0]}</span>
+            <div className="w-full h-full bg-black/5 flex items-center justify-center">
+              <span className="font-mono font-medium text-black/20 text-6xl">{member.name[0]}</span>
             </div>
           )}
         </div>
 
         {/* Content */}
-        <div className="p-6 border-t border-white/10">
+        <div className="p-6 border-t border-black/10">
           <div className="flex items-start justify-between gap-4 mb-5">
             <div>
-              <p className="font-sans font-medium text-white text-sm mb-0.5">{member.name}</p>
-              <p className="font-sans font-medium text-white/40 text-xs mb-1">{member.role}</p>
-              <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{member.country}</p>
+              <p className="font-sans font-medium text-blacktext-sm mb-0.5">{member.name}</p>
+              <p className="font-sans font-medium text-black/40 text-xs mb-1">{member.role}</p>
+              <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider">{member.country}</p>
             </div>
             <button
               onClick={onClose}
-              className="font-mono font-medium text-white/30 text-sm hover:text-white transition-colors shrink-0 mt-0.5"
+              className="font-mono font-medium text-black/30 text-sm hover:text-blacktransition-colors shrink-0 mt-0.5"
               aria-label="Cerrar"
             >
               ✕
@@ -121,18 +121,18 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
           {member.bio ? (
             <div className="space-y-3 mb-5">
               {member.bio.split("\n\n").map((para, i) => (
-                <p key={i} className="font-sans font-medium text-white/70 text-xs leading-relaxed">{para}</p>
+                <p key={i} className="font-sans font-medium text-black/60 text-xs leading-relaxed">{para}</p>
               ))}
             </div>
           ) : (
-            <p className="font-sans font-medium text-white/30 text-xs leading-relaxed mb-5 italic">Sin bio disponible.</p>
+            <p className="font-sans font-medium text-black/30 text-xs leading-relaxed mb-5 italic">Sin bio disponible.</p>
           )}
 
           <a
             href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider hover:text-white transition-colors"
+            className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider hover:text-blacktransition-colors"
           >
             LinkedIn →
           </a>
@@ -145,23 +145,23 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
 function MemberCard({ member, onClick }: { member: Member; onClick: () => void }) {
   return (
     <div
-      className="border border-white/10 bg-white/5 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-colors group"
+      className="border border-black/10 bg-black/5 cursor-pointer hover:bg-black/10 hover:border-black/20 transition-colors group"
       onClick={onClick}
     >
       {member.photo ? (
-        <div className="relative w-full aspect-square overflow-hidden border-b border-white/10">
+        <div className="relative w-full aspect-square overflow-hidden border-b border-black/10">
           <Image src={member.photo} alt={member.name} fill className="object-cover object-top" />
         </div>
       ) : (
-        <div className="w-full aspect-square border-b border-white/10 bg-white/5 flex items-center justify-center">
-          <span className="font-mono font-medium text-white/20 text-4xl">{member.name[0]}</span>
+        <div className="w-full aspect-square border-b border-black/10 bg-black/5 flex items-center justify-center">
+          <span className="font-mono font-medium text-black/20 text-4xl">{member.name[0]}</span>
         </div>
       )}
       <div className="p-5">
-        <p className="font-sans font-medium text-white text-sm mb-0.5">{member.name}</p>
-        <p className="font-sans font-medium text-white/40 text-xs mb-1">{member.role}</p>
-        <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-3">{member.country}</p>
-        <span className="font-mono font-medium text-white/20 text-xs uppercase tracking-wider group-hover:text-white/40 transition-colors">
+        <p className="font-sans font-medium text-blacktext-sm mb-0.5">{member.name}</p>
+        <p className="font-sans font-medium text-black/40 text-xs mb-1">{member.role}</p>
+        <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-3">{member.country}</p>
+        <span className="font-mono font-medium text-black/20 text-xs uppercase tracking-wider group-hover:text-black/40 transition-colors">
           Ver bio →
         </span>
       </div>
@@ -174,26 +174,26 @@ export function SectionEquipo() {
   const close = useCallback(() => setSelected(null), []);
 
   return (
-    <section id="equipo" className="py-16 border-b border-white/10">
+    <section id="equipo" className="py-16 border-b border-black/10">
       <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5 mb-4">08</span>
-      <h2 className="font-sans font-medium text-white mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
+      <h2 className="font-sans font-medium text-blackmb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Equipo
       </h2>
 
       <div className="space-y-4 mb-10">
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           La máxima de Platanus es crecer mediante tecnología, manteniendo el equipo lo más pequeño posible y con foco en apoyo a los fundadores.
         </p>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Entre el equipo hay tres General Partners, un Visiting Partner y un Software Engineer.{" "}
           <span className="bg-[#FFEC40] px-1 text-black">El 50% del equipo permanente programa.</span>
         </p>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Los "strategic partners" son parte del equipo fundador de Platanus y sirven de advisors, pero no están en el día a día de la empresa.
         </p>
       </div>
 
-      <h3 className="font-sans font-medium text-white/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Integrantes
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
@@ -202,7 +202,7 @@ export function SectionEquipo() {
         ))}
       </div>
 
-      <h3 className="font-sans font-medium text-white/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Strategic Partners
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
