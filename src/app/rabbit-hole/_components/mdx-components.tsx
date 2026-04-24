@@ -69,7 +69,7 @@ export function Section({
   borderBottom?: boolean;
 }) {
   return (
-    <section id={id} className={cn("py-16", borderBottom && "border-b border-black/10")}>
+    <section id={id} className={cn("py-16 scroll-mt-8", borderBottom && "border-b border-black/10")}>
       <Badge variant="solid" className="mb-4">{badge}</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         {title}
