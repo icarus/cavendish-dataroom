@@ -104,7 +104,7 @@ export function Slide7({ active }: P) {
               <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
                 MEXICO CITY
               </div>
-              <div className="font-mono bg-[#FFEC40]/5 text-[#FFEC40] text-base font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
+              <div className="font-mono bg-[#FFEC40]/5 text-[#FFEC40] text-xs font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
                 COMING SOON
               </div>
             </div>
@@ -122,7 +122,7 @@ export function Slide7({ active }: P) {
         </div>
       </div>
 
-      <div className="flex flex-1 gap-4 -mx-28 min-h-0 relative z-10" style={f(on, 100)}>
+      <div className="flex flex-1 gap-4 -mx-14 min-h-0 relative z-10" style={f(on, 100)}>
         {PHOTOS.map((photo, i) => (
           <div
             key={i}
@@ -140,8 +140,10 @@ export function Slide7({ active }: P) {
               )}
             />
             <div className={cn(
-              "absolute inset-0 transition-colors duration-300",
-              hoveredPhoto === i ? "bg-black/20" : hoveredPhoto !== null ? "bg-black/50" : "bg-transparent",
+              "absolute inset-0 transition-all duration-500",
+              hoveredPhoto === i
+                ? "bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                : hoveredPhoto !== null ? "bg-black/50" : "bg-gradient-to-t from-black/30 to-transparent",
             )} />
             <div className={cn(
               "absolute bottom-0 left-0 right-0 p-3 transition-all duration-300",
