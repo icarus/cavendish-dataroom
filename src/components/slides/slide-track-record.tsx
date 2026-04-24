@@ -205,7 +205,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
                     src={investor.logo}
                     alt={investor.name}
                     title={investor.name}
-                    className="h-6 w-6 shrink-0 aspect-square object-contain bg-white rounded-sm"
+                    className="h-5 shrink-0 object-contain"
                   />
                 ) : (
                   <span className={cn("font-sans font-medium text-base", detailText())}>
