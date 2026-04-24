@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { f, P, useAnim } from "./utils";
 
@@ -48,6 +49,7 @@ function heatFontSize(value: number): string {
 
 export function SlideFundStrategy({ active }: P) {
   const on = useAnim(active);
+  const [hover, setHover] = useState<{ row: number; col: number } | null>(null);
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
@@ -60,12 +62,9 @@ export function SlideFundStrategy({ active }: P) {
         </div>
       </div>
 
-      <div className="flex items-baseline justify-between mb-4" style={f(on, 80)}>
+      <div className="mb-4" style={f(on, 80)}>
         <p className="font-sans font-normal text-white/40 text-base">
-          Only our standard valuation of <span className="text-[#FFEC40]">$200K for 7%</span> reaches a return multiple of 60x.
-        </p>
-        <p className="font-mono font-medium text-white/40 text-base uppercase tracking-wider shrink-0 ml-4">
-          10% of a VC portfolio returns 25x
+          At <span className="text-[#FFEC40]">$200K for 7%</span>, only we reach 60x+ returns. Invest early, win big.
         </p>
       </div>
 
@@ -81,8 +80,15 @@ export function SlideFundStrategy({ active }: P) {
             <line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
           </svg>
         </div>
-        {EXIT_VALUATIONS.map((v, i) => (
-          <div key={v} className="flex items-center justify-center p-2 border-b border-white/10" style={f(on, 150 + i * 30)}>
+        {EXIT_VALUATIONS.map((v, ci) => (
+          <div
+            key={v}
+            className={cn(
+              "flex items-center justify-center p-2 border-b border-white/10 transition-colors",
+              hover?.col === ci && "bg-white/5",
+            )}
+            style={f(on, 150 + ci * 30)}
+          >
             <span className="font-mono font-medium text-white text-base">${v}M</span>
           </div>
         ))}
@@ -90,10 +96,10 @@ export function SlideFundStrategy({ active }: P) {
         {ENTRIES.map((entry, ri) => (
           <div key={entry.valuation} style={{ display: "contents" }}>
             <div
-              key={`label-${entry.valuation}`}
               className={cn(
-                "flex w-full h-full items-center px-3",
+                "flex w-full h-full items-center px-3 transition-colors",
                 entry.highlight ? "bg-[#FFEC40]" : "",
+                !entry.highlight && hover?.row === ri && "bg-white/5",
               )}
               style={f(on, 200 + ri * 40)}
             >
@@ -104,28 +110,38 @@ export function SlideFundStrategy({ active }: P) {
             {EXIT_VALUATIONS.map((exitM, ci) => {
               const ret = calcReturn(entry.valuation, exitM);
               const isAbove60 = ret >= 60;
+              const isCrosshair = hover !== null && (hover.row === ri || hover.col === ci);
+              const isExact = hover?.row === ri && hover?.col === ci;
 
               return (
                 <div
                   key={`${entry.valuation}-${exitM}`}
                   className={cn(
-                    "flex items-center justify-center relative",
+                    "flex items-center justify-center relative cursor-crosshair transition-all",
                     entry.highlight ? "bg-[#FFEC40]" : "",
                   )}
                   style={{
                     ...f(on, 220 + ri * 40 + ci * 20),
                     backgroundColor: entry.highlight ? undefined : heatColor(ret),
+                    outline: isExact ? "1px solid rgba(255,236,64,0.6)" : "none",
+                    outlineOffset: "-1px",
                   }}
+                  onMouseEnter={() => setHover({ row: ri, col: ci })}
+                  onMouseLeave={() => setHover(null)}
                 >
                   <span
                     className={cn(
-                      "font-mono font-medium relative z-10",
+                      "font-mono font-medium relative z-10 transition-transform",
                       entry.highlight ? "text-black" : isAbove60 ? "text-[#FFEC40]" : "text-white",
+                      isExact && !entry.highlight && "scale-125",
                     )}
                     style={{ fontSize: entry.highlight ? "clamp(18px, 2vw, 28px)" : heatFontSize(ret) }}
                   >
                     {ret}x
                   </span>
+                  {!entry.highlight && isCrosshair && !isExact && (
+                    <div className="absolute inset-0 bg-white/5" />
+                  )}
                 </div>
               );
             })}
@@ -134,11 +150,11 @@ export function SlideFundStrategy({ active }: P) {
       </div>
 
       <div className="mt-2 flex items-center justify-between" style={f(on, 500)}>
-        <p className="font-sans font-normal text-white/40 text-base">
-          Return multiples depending on entry valuation and exit valuation, considering standard dilution rounds.
+        <p className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">
+          Post-dilution return multiples
         </p>
-        <p className="font-sans font-normal text-white/40 text-base shrink-0 ml-4">
-          A good VC strategy is investing as early as possible.
+        <p className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider">
+          Earlier = higher returns
         </p>
       </div>
     </div>
