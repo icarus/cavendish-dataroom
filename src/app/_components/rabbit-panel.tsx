@@ -39,13 +39,12 @@ export function RabbitPanel({ active, onBack }: Props) {
           transition: "opacity 0.6s ease 0ms, transform 0.6s ease 0ms",
         }}
       >
-        <Button onClick={() => router.push("/memo")}>
-          Memo
-          <ArrowRight />
-        </Button>
         <Button onClick={() => router.push("/rabbit-hole")}>
           Down the Rabbit Hole
           <ArrowRight />
+        </Button>
+        <Button variant="outline" onClick={() => router.push("/memo")}>
+          Memo
         </Button>
       </div>
     </div>
