@@ -20,17 +20,38 @@ const FAVICON_FRAMES = Array.from(
 export function DynamicHead() {
   useEffect(() => {
     let frameIndex = 0;
-    let link = document.querySelector<HTMLLinkElement>("link[rel~='icon']");
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "icon";
-      document.head.appendChild(link);
-    }
+    let lastFaviconTime = 0;
+    let faviconRaf: number;
 
-    const faviconInterval = setInterval(() => {
-      link!.href = FAVICON_FRAMES[frameIndex % FAVICON_FRAMES.length];
-      frameIndex++;
-    }, 150);
+    const getOrCreateFaviconLink = () => {
+      let link = document.querySelector<HTMLLinkElement>("link[rel~='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.head.appendChild(link);
+      }
+      return link;
+    };
+
+    const animateFavicon = (now: number) => {
+      if (now - lastFaviconTime >= 150) {
+        const link = getOrCreateFaviconLink();
+        link.href = FAVICON_FRAMES[frameIndex % FAVICON_FRAMES.length];
+        frameIndex++;
+        lastFaviconTime = now;
+      }
+      faviconRaf = requestAnimationFrame(animateFavicon);
+    };
+    faviconRaf = requestAnimationFrame(animateFavicon);
+
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        cancelAnimationFrame(faviconRaf);
+        lastFaviconTime = 0;
+        faviconRaf = requestAnimationFrame(animateFavicon);
+      }
+    };
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     let phraseIndex = 0;
     let charIndex = 0;
@@ -65,8 +86,9 @@ export function DynamicHead() {
     timeout = setTimeout(tick, PAUSE_AFTER_DELETE);
 
     return () => {
-      clearInterval(faviconInterval);
+      cancelAnimationFrame(faviconRaf);
       clearTimeout(timeout);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 
