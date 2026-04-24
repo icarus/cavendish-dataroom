@@ -7,9 +7,9 @@ export function Slide6({ active }: P) {
   const on = useAnim(active);
 
   const items = [
-    { Icon: Code2, title: "TECHNICAL FOUNDER THESIS", desc: "A technical founder from day one means the company moves faster and ships more." },
+    { Icon: Code2, title: "TECHNICAL FOUNDER THESIS", desc: "A technical founder means the company moves faster and ships more." },
     { Icon: Zap, title: "ELITE DEVELOPER COMMUNITY", desc: "12 years building a developer community that funds top tech startups." },
-    { Icon: Globe, title: "COMMUNITY-DRIVEN MODEL", desc: "Founders meet & build at Banana Houses. Trust drives deal flow, community is our moat." },
+    { Icon: Globe, title: "COMMUNITY-DRIVEN MODEL", desc: "Founders build at Banana Houses. Trust drives deal flow, community is our moat." },
     { Icon: RefreshCw, title: "CONSISTENT PRESENCE", desc: "Early capital keeps us top-of-mind as LATAM's most active investor." },
     { Icon: Lightbulb, title: "EARLY, SMART INVESTING", desc: "Our value-add lets us invest at better terms than typical pre-seed funds." },
     { Icon: TrendingUp, title: "CLEAR EXIT PATH", desc: "Strong VC ecosystem up to Series B. We exit via secondaries and M&As." },
