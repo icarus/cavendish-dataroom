@@ -720,6 +720,22 @@ export function SectionTrackRecord() {
             </div>
           ))}
         </div>
+        <h4 className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-3 mt-6">Crecimiento</h4>
+        <div className="grid grid-cols-5 gap-2 mb-3">
+          {[
+            { label: "Interesting", value: 2, color: "#FFEC40" },
+            { label: "Slow growth", value: 1, color: "rgba(255,236,64,0.4)" },
+            { label: "Stalled", value: 1, color: "rgba(255,255,255,0.25)" },
+            { label: "Closed", value: 1, color: "rgba(255,255,255,0.08)" },
+            { label: "Exited", value: 0, color: "#F9BC12" },
+          ].map((cat) => (
+            <div key={cat.label} className="border border-white/10 p-3 bg-white/5">
+              <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
+              <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
+              <p className="font-mono font-medium text-white text-lg">{cat.value}</p>
+            </div>
+          ))}
+        </div>
         <div className="mb-2">
           <GrowthBar label="SPV" interesting={2} slowGrowth={1} stalled={1} closed={1} exited={0} total={5} />
         </div>
@@ -801,6 +817,22 @@ export function SectionTrackRecord() {
               <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
               <p className="font-mono font-medium text-white text-lg">{s.value}</p>
               <p className="font-sans font-medium text-white/40 text-xs">{s.pct}</p>
+            </div>
+          ))}
+        </div>
+        <h4 className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-3 mt-6">Crecimiento</h4>
+        <div className="grid grid-cols-5 gap-2 mb-3">
+          {[
+            { label: "Interesting", value: 3, color: "#FFEC40" },
+            { label: "Slow growth", value: 2, color: "rgba(255,236,64,0.4)" },
+            { label: "Stalled", value: 2, color: "rgba(255,255,255,0.25)" },
+            { label: "Closed", value: 4, color: "rgba(255,255,255,0.08)" },
+            { label: "Exited", value: 0, color: "#F9BC12" },
+          ].map((cat) => (
+            <div key={cat.label} className="border border-white/10 p-3 bg-white/5">
+              <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
+              <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
+              <p className="font-mono font-medium text-white text-lg">{cat.value}</p>
             </div>
           ))}
         </div>
@@ -907,6 +939,22 @@ export function SectionTrackRecord() {
               <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
               <p className="font-mono font-medium text-white text-lg">{s.value}</p>
               <p className="font-sans font-medium text-white/40 text-xs">{s.pct}</p>
+            </div>
+          ))}
+        </div>
+        <h4 className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-3 mt-6">Crecimiento</h4>
+        <div className="grid grid-cols-5 gap-2 mb-3">
+          {[
+            { label: "Interesting", value: 19, color: "#FFEC40" },
+            { label: "Slow growth", value: 26, color: "rgba(255,236,64,0.4)" },
+            { label: "Stalled", value: 22, color: "rgba(255,255,255,0.25)" },
+            { label: "Closed", value: 29, color: "rgba(255,255,255,0.08)" },
+            { label: "Exited", value: 3, color: "#F9BC12" },
+          ].map((cat) => (
+            <div key={cat.label} className="border border-white/10 p-3 bg-white/5">
+              <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
+              <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
+              <p className="font-mono font-medium text-white text-lg">{cat.value}</p>
             </div>
           ))}
         </div>
