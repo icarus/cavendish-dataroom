@@ -23,10 +23,9 @@ export function Co({ name, label }: { name: string; label?: string }) {
   const inner = (
     <span>
       <span
-        className="inline-block size-4 overflow-hidden rounded-xs align-text-bottom"
-        style={{ backgroundColor: co.bg }}
+        className="inline-block size-4 overflow-hidden rounded-[4px] align-text-bottom"
       >
-        <Image src={co.avatar} alt={displayName} width={16} height={16} className="object-cover size-4 rounded-md overflow-hidden" />
+        <Image src={co.avatar} alt={displayName} width={16} height={16} className="object-cover size-4 overflow-hidden" />
       </span>{" "}
       <span className="font-sans font-medium text-black underline decoration-current/10 underline-offset-4">{displayName}</span>
     </span>
@@ -112,7 +111,7 @@ export function ReadMoreSection({
 
 export function H3({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-mono font-medium text-black mt-16 mb-2" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+    <h3 className="font-sans font-medium text-black mt-16 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
       {children}
     </h3>
   );
@@ -185,7 +184,7 @@ export function Step({
 }) {
   return (
     <div className="flex gap-6">
-      <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-6 h-fit shrink-0 mt-0.5">
+      <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm uppercase w-6 h-fit shrink-0 mt-0.5">
         {n}
       </span>
       <div className="mt-0.5">
@@ -217,7 +216,7 @@ export function TimelineStep({
     <div className="flex gap-6 pb-8">
       <div className="flex flex-col items-center">
         <div className="w-6 h-6 bg-[#FFEC40] flex items-center justify-center shrink-0">
-          <span className="font-mono font-medium text-black text-sm">{n}</span>
+          <span className="font-mono font-medium text-black text-sm uppercase">{n}</span>
         </div>
       </div>
       <div className="pb-4 flex-1">
@@ -248,7 +247,7 @@ export function StatGrid({
     <div className={cn("grid gap-3", colClass)}>
       {items.map((item) => (
         <div key={item.label} className="border border-black/10 p-4 bg-black/5 text-center">
-          <p className="font-mono font-medium text-black text-2xl mb-1">{item.value}</p>
+          <p className="font-mono font-medium text-black text-2xl uppercase mb-1">{item.value}</p>
           <p className="font-sans font-medium text-black/60 text-sm leading-snug">{item.label}</p>
         </div>
       ))}
@@ -265,7 +264,7 @@ export function GenGrid({
     <div className="grid grid-cols-3 sm:grid-cols-6 gap-3">
       {items.map((g) => (
         <div key={g.gen} className="border border-black/10 p-3 bg-black/5 text-center">
-          <p className="font-mono font-medium text-black text-xl mb-0.5">{g.n}</p>
+          <p className="font-mono font-medium text-black text-xl uppercase mb-0.5">{g.n}</p>
           <p className="font-mono font-medium text-black text-xs uppercase tracking-wider">Gen {g.gen}</p>
         </div>
       ))}
