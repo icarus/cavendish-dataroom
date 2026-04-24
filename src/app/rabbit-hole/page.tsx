@@ -10,10 +10,9 @@ import Diagnostico from "./content/diagnostico.mdx";
 import Comunidad from "./content/comunidad.mdx";
 import Computin from "./content/computin.mdx";
 import Estrategia from "./content/estrategia.mdx";
-import Kalio from "./content/kalio.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
-import { ReadMoreSection } from "./_components/mdx-components";
+import { ReadMoreSection, P, H3, StatGrid, Hl } from "./_components/mdx-components";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -111,32 +110,40 @@ export default function RabbitHolePage() {
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
-          <ReadMoreSection
-            id="portafolio"
-            badge="05"
-            title="Construcción del portafolio"
-            summary="Supuestos del portafolio, tipos de inversión, distribución por generación, follow ons y retorno total esperado del fondo."
-            slug="portafolio"
-          />
+          <ReadMoreSection id="portafolio" badge="05" title="Construcción del portafolio" slug="portafolio">
+            <div className="space-y-4">
+              <P>Al planear una construcción de portafolio tenemos que comprobar como se logra llegar a un retorno de 3x en base a un portafolio exitoso.</P>
+              <P>Destinaremos <Hl>$6,400,000</Hl> para inversiones del programa de aceleración en <Hl>32 nuevas startups</Hl>, <Hl>$1,800,000</Hl> para inversiones oportunísticas y <Hl>$3,600,000</Hl> para follow ons.</P>
+            </div>
+          </ReadMoreSection>
         </SectionReveal>
         <SectionReveal>
-          <ReadMoreSection
-            id="proceso"
-            badge="06"
-            title="Proceso de selección"
-            summary="Las 8 etapas de nuestro proceso de selección, desde el formulario inicial hasta el due diligence, con una tasa de aceptación de ~1%."
-            slug="proceso"
-          />
+          <ReadMoreSection id="proceso" badge="06" title="Proceso de selección" slug="proceso">
+            <div className="space-y-4">
+              <P>Diseñamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones. Desde el 2020 hemos recibido más de <Hl>9.549 aplicaciones</Hl> y seleccionado <Hl>121 startups</Hl>.</P>
+              <StatGrid items={[
+                { label: "Postulaciones revisadas", value: "+9.549" },
+                { label: "Entrevistas realizadas", value: "+1.600" },
+                { label: "Tasa de aceptación", value: "~1%" },
+              ]} />
+            </div>
+          </ReadMoreSection>
         </SectionReveal>
-        <SectionReveal><Kalio /></SectionReveal>
         <SectionReveal>
-          <ReadMoreSection
-            id="estructura"
-            badge="08"
-            title="Estructura legal del fondo"
-            summary="Por qué elegimos una Limited Partnership Canadiense, tributación del fondo y estructuras legales comunes de startups de Latam."
-            slug="estructura"
-          />
+          <ReadMoreSection id="kalio" badge="07" title="Kalio" slug="kalio">
+            <div className="space-y-4">
+              <P>Kalio es el <Hl>centro de la operación de Platanus</Hl>. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos.</P>
+              <P>Kalio gestiona todo: postulaciones, proceso de selección, programa de aceleración, Demo Days y seguimiento de alumni.</P>
+            </div>
+          </ReadMoreSection>
+        </SectionReveal>
+        <SectionReveal>
+          <ReadMoreSection id="estructura" badge="08" title="Estructura legal del fondo" slug="estructura">
+            <div className="space-y-4">
+              <P>El fondo se ha estructurado como una <Hl>Limited Partnership Canadiense</Hl>, constituido el 2 de julio de 2025.</P>
+              <P>Canadá ofrece menores costos, sin límite de inversionistas y menos reportería que EEUU, manteniendo transparencia tributaria.</P>
+            </div>
+          </ReadMoreSection>
         </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>

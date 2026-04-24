@@ -7,11 +7,13 @@ import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import Portafolio from "../content/portafolio.mdx";
 import Proceso from "../content/proceso.mdx";
+import Kalio from "../content/kalio.mdx";
 import Estructura from "../content/estructura.mdx";
 
 const SECTIONS: Record<string, { badge: string; title: string; component: React.ComponentType }> = {
   portafolio: { badge: "05", title: "Construcción del portafolio", component: Portafolio },
   proceso: { badge: "06", title: "Proceso de selección", component: Proceso },
+  kalio: { badge: "07", title: "Kalio", component: Kalio },
   estructura: { badge: "08", title: "Estructura legal del fondo", component: Estructura },
 };
 

@@ -21,13 +21,13 @@ export function Co({ name, label }: { name: string; label?: string }) {
   if (!co) return <span className="font-sans font-medium text-black">{displayName}</span>;
 
   const inner = (
-    <span className="inline-flex items-center gap-1.5 align-baseline">
+    <span>
       <span
-        className="inline-flex items-center justify-center shrink-0 size-5 overflow-hidden"
+        className="inline-block size-4 overflow-hidden rounded-md align-text-bottom"
         style={{ backgroundColor: co.bg }}
       >
-        <Image src={co.avatar} alt={displayName} width={20} height={20} className="object-cover size-5" />
-      </span>
+        <Image src={co.avatar} alt={displayName} width={16} height={16} className="object-cover size-4 rounded-md overflow-hidden" />
+      </span>{" "}
       <span className="font-sans font-medium text-black underline decoration-black/20 underline-offset-2">{displayName}</span>
     </span>
   );
@@ -83,25 +83,25 @@ export function ReadMoreSection({
   id,
   badge,
   title,
-  summary,
+  children,
   slug,
 }: {
   id: string;
   badge: string;
   title: string;
-  summary: string;
+  children: React.ReactNode;
   slug: string;
 }) {
   return (
     <section id={id} className="py-16 border-b border-black/10">
       <Badge variant="solid" className="mb-4">{badge}</Badge>
-      <h2 className="font-sans font-medium text-black mb-4" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
+      <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         {title}
       </h2>
-      <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-6">{summary}</p>
+      {children}
       <Link
         href={`/rabbit-hole/${slug}`}
-        className="inline-flex items-center gap-2 font-mono font-medium text-sm uppercase tracking-wider bg-black text-white px-4 py-2 hover:bg-black/80 transition-colors"
+        className="inline-flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors mt-6"
       >
         Leer completo
         <ArrowRight size={14} />
