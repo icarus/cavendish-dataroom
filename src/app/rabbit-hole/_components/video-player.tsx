@@ -46,7 +46,7 @@ export function VideoPlayer({
           type="button"
           onClick={toggle}
           className={cn(
-            "absolute left-4 bottom-4 rounded-full size-14 flex items-center justify-center bg-white/20 hover:bg-white/30 backdrop-blur-md cursor-pointer transition-opacity",
+            "absolute left-4 bottom-4 rounded-full size-14 flex items-center justify-center cursor-pointer transition-opacity mix-blend-difference",
             playing && started ? "opacity-0 group-hover:opacity-100" : "opacity-100"
           )}
         >
