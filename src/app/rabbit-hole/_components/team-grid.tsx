@@ -173,7 +173,7 @@ export function TeamGrid() {
       <h3 className="font-sans font-medium text-black mt-10 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Integrantes
       </h3>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-12">
         {integrantes.map((m) => (
           <MemberCard key={m.name} member={m} onClick={() => setSelected(m)} />
         ))}
