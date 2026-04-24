@@ -23,18 +23,18 @@ export function Co({ name, label }: { name: string; label?: string }) {
   const inner = (
     <span>
       <span
-        className="inline-block size-4 overflow-hidden rounded-md align-text-bottom"
+        className="inline-block size-4 overflow-hidden rounded-xs align-text-bottom"
         style={{ backgroundColor: co.bg }}
       >
         <Image src={co.avatar} alt={displayName} width={16} height={16} className="object-cover size-4 rounded-md overflow-hidden" />
       </span>{" "}
-      <span className="font-sans font-medium text-black">{displayName}</span>
+      <span className="font-sans font-medium text-black underline decoration-current/10 underline-offset-4">{displayName}</span>
     </span>
   );
 
   if (co.url) {
     return (
-      <a href={co.url} target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity">
+      <a href={co.url} target="_blank" rel="noopener noreferrer" className="ml-0.5 hover:opacity-80 transition-opacity">
         {inner}
       </a>
     );
