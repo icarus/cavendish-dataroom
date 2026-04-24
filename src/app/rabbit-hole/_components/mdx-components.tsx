@@ -311,7 +311,7 @@ export function TermGrid({
       {items.map((t) => (
         <div key={t.label} className="border-b border-black/10 py-5">
           <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-0">{t.label}</p>
-          <p className="font-mono font-medium  bg-[#FFEC40] text-black uppercase w-fit px-0.5 -mx-0.5 mt-4 text-sm">({t.value})</p>
+          <p className="font-mono font-medium  bg-[#FFEC40] text-black uppercase w-fit px-0.5 -mx-0.5 mt-1 text-sm">({t.value})</p>
           {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-1">{t.sub}</p>}
         </div>
       ))}
@@ -392,7 +392,7 @@ export function FinancialTable({
         <tbody>
           {rows.map((row) => (
             <tr key={row.label} className={row.bold ? "bg-[#FFEC40]" : "border-b border-black/10"}>
-              <td className={cn("font-sans font-medium text-sm py-3 pr-8", row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60")}>
+              <td className={cn("font-mono font-medium text-sm py-3 pr-8", row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60")}>
                 {row.label}
               </td>
               <td className={cn("font-mono font-medium text-sm py-3 text-right", row.bold ? "text-black" : row.sub ? "text-black/40" : "text-black")}>
