@@ -146,7 +146,7 @@ export default function RabbitHolePage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
               className={cn(
-                "uppercase block w-full text-left font-mono font-medium text-xs leading-snug py-1.5 px-2 transition-colors cursor-pointer",
+                "uppercase block w-full text-left font-mono font-medium text-xs leading-snug py-1 px-2 transition-colors cursor-pointer",
                 activeId === item.id ? "text-black" : "text-black/30 hover:text-black/60"
               )}
             >
