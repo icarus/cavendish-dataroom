@@ -128,8 +128,9 @@ export function Slide8({ active }: P) {
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
-          Building the tech scene of{" "}
-          <mark className="bg-[#FFEC40] text-black px-1 not-italic">LatAm</mark>
+          Building the{" "}
+          <mark className="bg-[#FFEC40] text-black px-1 not-italic">tech scene</mark>
+          {" "}of LatAm
         </h2>
       </div>
       <div className="flex-1 grid grid-cols-3 grid-rows-2 gap-3 min-h-0">
