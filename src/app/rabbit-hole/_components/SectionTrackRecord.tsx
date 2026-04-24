@@ -131,7 +131,7 @@ function MetricCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="border border-black/10 p-4 bg-black/5">
       <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{label}</p>
-      <p className="font-sans font-medium text-blacktext-sm">{value}</p>
+      <p className="font-sans font-medium text-black text-sm">{value}</p>
     </div>
   );
 }
@@ -274,7 +274,7 @@ export function TrackRecordContent() {
               <th className="text-right font-mono font-medium text-black/40 text-xs uppercase tracking-wider pb-3 pr-6">SPV</th>
               <th className="text-right font-mono font-medium text-black/40 text-xs uppercase tracking-wider pb-3 pr-6">Genesis</th>
               <th className="text-right font-mono font-medium text-black/40 text-xs uppercase tracking-wider pb-3 pr-6">Fund I</th>
-              <th className="text-right font-mono font-medium text-blacktext-xs uppercase tracking-wider pb-3">Total</th>
+              <th className="text-right font-mono font-medium text-black text-xs uppercase tracking-wider pb-3">Total</th>
             </tr>
           </thead>
           <tbody>
@@ -339,7 +339,7 @@ export function TrackRecordContent() {
         ].map((f) => (
           <div key={f.fund} className="border border-black/10 p-4 bg-black/5">
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-2">{f.fund}</p>
-            <p className="font-sans font-medium text-blacktext-2xl font-mono mb-1">{f.startups}</p>
+            <p className="font-medium text-black text-4xl font-mono mb-1">{f.startups}</p>
             <p className="font-sans font-medium text-black/60 text-xs">{f.amount}</p>
             <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{f.type}</p>
           </div>
@@ -466,13 +466,13 @@ export function TrackRecordContent() {
       <div className="grid grid-cols-3 gap-3 mb-6">
         {[
           { label: "Activas", value: 78, pct: "67.83%", color: "#FFEC40" },
-          { label: "Cerradas", value: 34, pct: "29.57%", color: "rgba(255,255,255,0.2)" },
+          { label: "Cerradas", value: 34, pct: "29.57%", color: "rgba(9,9,9,0.10)" },
           { label: "Exit", value: 3, pct: "2.61%", color: "#F9BC12" },
         ].map((s) => (
           <div key={s.label} className="border border-black/10 p-4 bg-black/5">
             <div className="w-full h-0.5 mb-3" style={{ backgroundColor: s.color }} />
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-            <p className="font-mono font-medium text-blacktext-xl">{s.value}</p>
+            <p className="font-mono font-medium text-black text-4xl">{s.value}</p>
             <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{s.pct}</p>
           </div>
         ))}
@@ -656,7 +656,7 @@ export function TrackRecordContent() {
         <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
           Primer vehículo — SPV
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
           <MetricCard label="Nombre" value="Platanus Ventures SpA GEN 1 C.p.A." />
           <MetricCard label="Vintage" value="2020" />
           <MetricCard label="Jurisdicción" value="Chile" />
@@ -673,7 +673,7 @@ export function TrackRecordContent() {
           ].map((m) => (
             <div key={m.label} className="border border-black/10 p-4 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{m.label}</p>
-              <p className="font-mono font-medium text-blacktext-xl">{m.value}</p>
+              <p className="font-mono font-medium text-black text-3xl">{m.value}</p>
             </div>
           ))}
         </div>
@@ -711,7 +711,7 @@ export function TrackRecordContent() {
           ].map((s) => (
             <div key={s.label} className="border border-black/10 p-3 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-              <p className="font-mono font-medium text-blacktext-lg">{s.value}</p>
+              <p className="font-mono font-medium text-black text-4xl">{s.value}</p>
               <p className="font-sans font-medium text-black/40 text-xs">{s.pct}</p>
             </div>
           ))}
@@ -728,7 +728,7 @@ export function TrackRecordContent() {
             <div key={cat.label} className="border border-black/10 p-3 bg-black/5">
               <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
-              <p className="font-mono font-medium text-blacktext-lg">{cat.value}</p>
+              <p className="font-mono font-medium text-black text-4xl">{cat.value}</p>
             </div>
           ))}
         </div>
@@ -742,7 +742,7 @@ export function TrackRecordContent() {
         <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
           Segundo vehículo — Genesis Fund
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
           <MetricCard label="Nombre" value="PV2021 SpA" />
           <MetricCard label="Vintage" value="2021" />
           <MetricCard label="Jurisdicción" value="Chile" />
@@ -759,7 +759,7 @@ export function TrackRecordContent() {
           ].map((m) => (
             <div key={m.label} className="border border-black/10 p-4 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{m.label}</p>
-              <p className="font-mono font-medium text-blacktext-xl">{m.value}</p>
+              <p className="font-mono font-medium text-black text-xl">{m.value}</p>
             </div>
           ))}
         </div>
@@ -811,7 +811,7 @@ export function TrackRecordContent() {
           ].map((s) => (
             <div key={s.label} className="border border-black/10 p-3 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-              <p className="font-mono font-medium text-blacktext-lg">{s.value}</p>
+              <p className="font-mono font-medium text-black text-lg">{s.value}</p>
               <p className="font-sans font-medium text-black/40 text-xs">{s.pct}</p>
             </div>
           ))}
@@ -828,7 +828,7 @@ export function TrackRecordContent() {
             <div key={cat.label} className="border border-black/10 p-3 bg-black/5">
               <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
-              <p className="font-mono font-medium text-blacktext-lg">{cat.value}</p>
+              <p className="font-mono font-medium text-black text-lg">{cat.value}</p>
             </div>
           ))}
         </div>
@@ -842,7 +842,7 @@ export function TrackRecordContent() {
         <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
           Tercer vehículo — Fund I
         </h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
           <MetricCard label="Nombre" value="Platanus Ventures Fund II LP*" />
           <MetricCard label="Inicio" value="27 de abril de 2022" />
           <MetricCard label="Jurisdicción" value="Ontario, Canadá" />
@@ -862,7 +862,7 @@ export function TrackRecordContent() {
           ].map((m) => (
             <div key={m.label} className="border border-black/10 p-4 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{m.label}</p>
-              <p className="font-mono font-medium text-blacktext-xl">{m.value}</p>
+              <p className="font-mono font-medium text-black text-4xl">{m.value}</p>
             </div>
           ))}
         </div>
@@ -933,7 +933,7 @@ export function TrackRecordContent() {
           ].map((s) => (
             <div key={s.label} className="border border-black/10 p-3 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-              <p className="font-mono font-medium text-blacktext-lg">{s.value}</p>
+              <p className="font-mono font-medium text-black text-4xl">{s.value}</p>
               <p className="font-sans font-medium text-black/40 text-xs">{s.pct}</p>
             </div>
           ))}
@@ -950,7 +950,7 @@ export function TrackRecordContent() {
             <div key={cat.label} className="border border-black/10 p-3 bg-black/5">
               <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
-              <p className="font-mono font-medium text-blacktext-lg">{cat.value}</p>
+              <p className="font-mono font-medium text-black text-4xl">{cat.value}</p>
             </div>
           ))}
         </div>
