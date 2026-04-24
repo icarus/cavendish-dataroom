@@ -1,17 +1,17 @@
 import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, GenGrid, InvestmentType, RoundTypeCard, Spacer, Co } from '../_components/mdx-components'
 
-<Section id="portafolio" badge="05" title="Construccion del portafolio">
+<Section id="portafolio" badge="05" title="Construcción del portafolio">
 
 <div className="space-y-4 mb-10">
-<P>Al planear una construccion de portafolio tenemos que comprobar como se logra llegar a un retorno de 3x en base a un portafolio exitoso.</P>
+<P>Al planear una construcción de portafolio tenemos que comprobar como se logra llegar a un retorno de 3x en base a un portafolio exitoso.</P>
 <P>Para esto, hay que fijar algunos supuestos:</P>
 <ul className="list-disc list-outside pl-5 space-y-2">
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Monto que invertira el fondo.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Monto que invertirá el fondo.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Startups target.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Ticket de inversion y valorizacion de las startups en que invertiremos.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Ticket de inversión y valorización de las startups en que invertiremos.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Monto destinado para follow ons.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">La dilucion esperada.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Porcentaje de exito.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">La dilución esperada.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Porcentaje de éxito.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Valor de la startup al momento del exit.</li>
 </ul>
 </div>
@@ -27,38 +27,38 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
   { label: "Mgmt Fees", value: "\u2212$3,000,000" },
   { label: "Monto a reinvertir", value: "$750,000" },
   { label: "Monto para inversiones", value: "$11,850,400", bold: true },
-  { label: "Primeras inversiones \u2014 Aceleracion", value: "\u2212$6,399,216", sub: true },
+  { label: "Primeras inversiones \u2014 Aceleración", value: "\u2212$6,399,216", sub: true },
   { label: "Primeras inversiones \u2014 Oportunidades", value: "\u2212$1,896,064", sub: true },
   { label: "Follow ons", value: "\u2212$3,555,120", sub: true },
 ]} />
 
 <H3>Startups target</H3>
 
-<P>Lo primero es definir en que startups invertiremos en base a distintos tipos de fundadores y las caracteristicas de las rondas que suelen levantar.</P>
+<P>Lo primero es definir en que startups invertiremos en base a distintos tipos de fundadores y las características de las rondas que suelen levantar.</P>
 <P className="mb-6">Hemos identificado tres tipos de rondas iniciales, las que llamaremos Low Pre Seed, High Pre Seed y Seed.</P>
 
 <div className="space-y-4 mb-6">
 
-<RoundTypeCard name="Low Pre Seed" desc="Fundadores con poca o nada de experiencia en el mundo startup y venture capital que acaban de partir. Deben ser excepcionales, pero no tienen los conocimientos, contactos o redes para levantar una ronda inicial rapido. Estos fundadores suelen pivotear y son los que mas tiempo necesitan previo a encontrar algo interesante.">
+<RoundTypeCard name="Low Pre Seed" desc="Fundadores con poca o nada de experiencia en el mundo startup y venture capital que acaban de partir. Deben ser excepcionales, pero no tienen los conocimientos, contactos o redes para levantar una ronda inicial rápido. Estos fundadores suelen pivotear y son los que más tiempo necesitan previo a encontrar algo interesante.">
 <ul className="list-disc list-outside pl-5 space-y-2">
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Rondas de entre $50k y $300k con valorizaciones bajas de $1M a $4M.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tasa de graduacion a una serie Seed: 30-35%.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tasa de graduación a una serie Seed: 30-35%.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Ejemplos en Platanus: <Co name="toku" />, <Co name="fintoc" />, <Co name="horizon" label="Horizon" />.</li>
 </ul>
 </RoundTypeCard>
 
-<RoundTypeCard name="High Pre Seed" desc="Fundadores que tienen mas experiencia en startups y venture capital; con conocimientos y conexiones para levantar una ronda inicial. Tienen mas claridad respecto a lo que quieren hacer y el mercado donde se estan metiendo.">
+<RoundTypeCard name="High Pre Seed" desc="Fundadores que tienen más experiencia en startups y venture capital; con conocimientos y conexiones para levantar una ronda inicial. Tienen más claridad respecto a lo que quieren hacer y el mercado donde se están metiendo.">
 <ul className="list-disc list-outside pl-5 space-y-2">
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tasa de graduacion a una serie Seed: 35-45%.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tasa de graduación a una serie Seed: 35-45%.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Ejemplos en Platanus: <Co name="grupalia" />, <Co name="shinkansen" />, Tax Flow.</li>
 </ul>
 </RoundTypeCard>
 
-<RoundTypeCard name="Seed" desc="Startups que ya cuentan con un producto, clientes y traccion. Todavia no necesitan el capital de una Serie A, pero la traccion inicial hace que quieran levantar mas capital, o tal vez una primera ronda si son bootstrapped.">
+<RoundTypeCard name="Seed" desc="Startups que ya cuentan con un producto, clientes y tracción. Todavía no necesitan el capital de una Serie A, pero la tracción inicial hace que quieran levantar más capital, o tal vez una primera ronda si son bootstrapped.">
 <ul className="list-disc list-outside pl-5 space-y-2">
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Rondas de entre $500k y $5M a una valorizacion entre $5M y $25M.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tienden a ser las menos riesgosas de las tres, pero la valorizacion es mayor.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tasa de graduacion hacia una Serie A: 45%-50%.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Rondas de entre $500k y $5M a una valorización entre $5M y $25M.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tienden a ser las menos riesgosas de las tres, pero la valorización es mayor.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tasa de graduación hacia una Serie A: 45%-50%.</li>
 </ul>
 </RoundTypeCard>
 
@@ -68,19 +68,19 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 <P>No estaremos invirtiendo en fundadores que busquen una ronda High Pre Seed con valorizaciones de USA (por ejemplo, en Boom post YC).</P>
 </Callout>
 
-<H3>Tamano de ticket y valorizaciones de entrada</H3>
+<H3>Tamaño de ticket y valorizaciones de entrada</H3>
 
 <P className="mb-4">Realizaremos tres tipos de inversiones:</P>
 
 <InvestmentType items={[
-  { title: "Nueva inversion \u2014 Programa de Aceleracion", body: "Inversion estandar de $200,000 por un 7% de participacion en etapa Pre Seed." },
-  { title: "Nueva inversion \u2014 Oportunidad", body: "Inversion de $200,000 por un 3%-7% de participacion en Pre Seed o Seed. Estos tickets buscan rebajar el riesgo general." },
-  { title: "Follow ons", body: "Inversion promedio de $300,000 en las rondas Seed o Series A en startups de las inversiones anteriores." },
+  { title: "Nueva inversión \u2014 Programa de Aceleración", body: "Inversión estándar de $200,000 por un 7% de participación en etapa Pre Seed." },
+  { title: "Nueva inversión \u2014 Oportunidad", body: "Inversión de $200,000 por un 3%-7% de participación en Pre Seed o Seed. Estos tickets buscan rebajar el riesgo general." },
+  { title: "Follow ons", body: "Inversión promedio de $300,000 en las rondas Seed o Series A en startups de las inversiones anteriores." },
 ]} />
 
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
 <div>
-<H3>Tasa de exito</H3>
+<H3>Tasa de éxito</H3>
 <DataTable headers={[]} rows={[
   ["Pre Seed \u2192 Seed", "40%"],
   ["Seed \u2192 Serie A", "45%"],
@@ -88,7 +88,7 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 ]} />
 </div>
 <div>
-<H3>Dilucion esperada</H3>
+<H3>Dilución esperada</H3>
 <DataTable headers={[]} rows={[
   ["Serie A", "25%"],
   ["Serie B", "20%"],
@@ -99,17 +99,17 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 
 <H3>Valorizaciones al momento del exit</H3>
 
-<P className="mb-10">Nuestra estrategia es vender nuestra participacion en las rondas de financiamiento de nuestras startups. Para los calculos, utilizamos un rango de valorizaciones al momento del exit de entre <Hl>$250M a $500M</Hl>. Cualquier exit con un valor superior mejorara las metricas del fondo sustancialmente.</P>
+<P className="mb-10">Nuestra estrategia es vender nuestra participación en las rondas de financiamiento de nuestras startups. Para los cálculos, utilizamos un rango de valorizaciones al momento del exit de entre <Hl>$250M a $500M</Hl>. Cualquier exit con un valor superior mejorará las métricas del fondo sustancialmente.</P>
 
 ## Portafolio esperado y resultados
 
-<H3>Inversiones del programa de aceleracion</H3>
+<H3>Inversiones del programa de aceleración</H3>
 
 <div className="space-y-4 mb-6">
-<P>El ticket estandar del programa de aceleracion busca atraer y seleccionar a los mejores de las rondas Low Pre Seed y alguno que otro High Pre Seed. Es este ticket con este porcentaje de participacion el que nos permitira obtener startups fund returners que retornen 75x la inversion inicial.</P>
-<P>Destinaremos <Hl>$6,400,000</Hl> para estas inversiones, <Hl>32 nuevas startups</Hl> bajo los terminos fijos de $200.000 por un 7% de participacion.</P>
-<P>Estas inversiones se distribuyen en generaciones del programa, una generacion cada semestre.</P>
-<P>Este seria el avance del portafolio segun las tasas de exito:</P>
+<P>El ticket estándar del programa de aceleración busca atraer y seleccionar a los mejores de las rondas Low Pre Seed y alguno que otro High Pre Seed. Es este ticket con este porcentaje de participación el que nos permitirá obtener startups fund returners que retornen 75x la inversión inicial.</P>
+<P>Destinaremos <Hl>$6,400,000</Hl> para estas inversiones, <Hl>32 nuevas startups</Hl> bajo los términos fijos de $200.000 por un 7% de participación.</P>
+<P>Estas inversiones se distribuyen en generaciones del programa, una generación cada semestre.</P>
+<P>Este sería el avance del portafolio según las tasas de éxito:</P>
 
 <StatGrid items={[
   { label: "Startups iniciales", value: "32" },
@@ -120,7 +120,7 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 
 </div>
 
-<P className="mb-4">Para lograr un portafolio ideal, la distribucion de estas 32 startups en base a su MOIC debiese ser:</P>
+<P className="mb-4">Para lograr un portafolio ideal, la distribución de estas 32 startups en base a su MOIC debiese ser:</P>
 
 <DataTable
   headers={["MOIC", "% startups", "# startups", "Val. exit", "Exit value", "Total"]}
@@ -138,13 +138,13 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 <div className="space-y-4 mt-6 mb-10">
 
 <H4>Generaciones a la fecha</H4>
-<P>A la fecha el fondo ya ha realizado 4 inversiones a traves de dos generaciones:</P>
+<P>A la fecha el fondo ya ha realizado 4 inversiones a través de dos generaciones:</P>
 <ul className="list-disc list-outside pl-5 space-y-2">
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Generacion 25: 4 startups.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Generación 25: 4 startups.</li>
 </ul>
-<P>Estamos en proceso de seleccion de la generacion 26-I, donde ya hemos seleccionado 4 startups.</P>
+<P>Estamos en proceso de selección de la generación 26-I, donde ya hemos seleccionado 4 startups.</P>
 
-<H4>Proyeccion de startups por generacion</H4>
+<H4>Proyección de startups por generación</H4>
 <P>Para llegar a las 32 startups, invertiremos en 6 generaciones:</P>
 
 <GenGrid items={[
@@ -158,14 +158,14 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 
 </div>
 
-<H3>Inversiones oportunisticas</H3>
+<H3>Inversiones oportunísticas</H3>
 
 <div className="space-y-4 mb-6">
 <P>Destinaremos <Hl>$1,800,000</Hl> para estas inversiones, 9 nuevas startups si pensamos en tickets de $200k.</P>
-<P>Las inversiones oportunisticas estan destinadas a:</P>
+<P>Las inversiones oportunísticas están destinadas a:</P>
 <ul className="list-disc list-outside pl-5 space-y-2">
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">High Pre Seed que esten levantando a una valorizacion que haga dificil aceptar el ticket estandar (por ejemplo estan levantando una ronda de $750k a una valorizacion de $5M y ya llevan $300k levantados). Como son inversiones en teoria con mayor tasa de exito, sacrificamos un porcentaje de participacion para bajar el riesgo al portafolio.</li>
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Fundadores Low Pre Seed que nos gustaria invertirles menos que los $200k del deal fijo del programa de aceleracion.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">High Pre Seed que estén levantando a una valorización que haga difícil aceptar el ticket estándar (por ejemplo están levantando una ronda de $750k a una valorización de $5M y ya llevan $300k levantados). Como son inversiones en teoría con mayor tasa de éxito, sacrificamos un porcentaje de participación para bajar el riesgo al portafolio.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Fundadores Low Pre Seed que nos gustaría invertirles menos que los $200k del deal fijo del programa de aceleración.</li>
 </ul>
 <P>A la fecha ya hemos realizado dos: <span className="text-black">Boom</span> y <span className="text-black">Utanix</span>.</P>
 
@@ -176,7 +176,7 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
   { label: "Llegan a Serie B", value: "1" },
 ]} cols={4} />
 
-<P>Dado que teoricamente son startups menos riesgosas y que nos quedaremos con menos porcentaje, hemos considerado MOICs mas bajos.</P>
+<P>Dado que teóricamente son startups menos riesgosas y que nos quedaremos con menos porcentaje, hemos considerado MOICs más bajos.</P>
 </div>
 
 <DataTable
@@ -195,11 +195,11 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 <H3>Follow on</H3>
 
 <div className="space-y-4 mb-6">
-<P>Destinaremos <Hl>$3,600,000</Hl> para follow on en startups del portafolio que esten levantando su Serie Seed.</P>
-<P>Dado que las startups en una etapa Seed siguen en etapas muy iniciales y el analisis de si invertir o no sigue pasando mas por el equipo que por la traccion de la empresa, podemos invertir en estas rondas si conocemos muy bien a los fundadores, algo que logramos si ya son parte de nuestra comunidad.</P>
-<P>Asi, la estrategia de follow ons seria por ejemplo invertir en Low o High Pre Seed y luego en Seed.</P>
-<P>De acuerdo al comportamiento esperado del portafolio, habran 12 startups que retornaran 3x o mas. Son en esas 12 startups en las que debemos hacer el follow on.</P>
-<P>De darse los resultados de mas arriba, solo las cuatro startups mas importantes daran los siguientes retornos de follow on:</P>
+<P>Destinaremos <Hl>$3,600,000</Hl> para follow on en startups del portafolio que estén levantando su Serie Seed.</P>
+<P>Dado que las startups en una etapa Seed siguen en etapas muy iniciales y el análisis de si invertir o no sigue pasando más por el equipo que por la tracción de la empresa, podemos invertir en estas rondas si conocemos muy bien a los fundadores, algo que logramos si ya son parte de nuestra comunidad.</P>
+<P>Así, la estrategia de follow ons sería por ejemplo invertir en Low o High Pre Seed y luego en Seed.</P>
+<P>De acuerdo al comportamiento esperado del portafolio, habrán 12 startups que retornarán 3x o más. Son en esas 12 startups en las que debemos hacer el follow on.</P>
+<P>De darse los resultados de más arriba, solo las cuatro startups más importantes darán los siguientes retornos de follow on:</P>
 </div>
 
 <DataTable
@@ -217,8 +217,8 @@ import { Section, Callout, Hl, H3, H4, P, DataTable, FinancialTable, StatGrid, G
 <DataTable
   headers={["Tipo de ticket", "Total exit value"]}
   rows={[
-    ["Nueva inversion \u2014 Programa de Aceleracion", "$38,520,000"],
-    ["Nueva inversion \u2014 Oportunidad", "$47,360,000"],
+    ["Nueva inversión \u2014 Programa de Aceleración", "$38,520,000"],
+    ["Nueva inversión \u2014 Oportunidad", "$47,360,000"],
     ["Follow ons", "$16,354,286"],
     ["Total", "$63,714,286"],
   ]}

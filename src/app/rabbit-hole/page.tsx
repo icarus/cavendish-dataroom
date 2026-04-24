@@ -6,15 +6,15 @@ import { ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
-import { SectionDiagnostico } from "./_components/section-diagnostico";
-import { SectionComunidad } from "./_components/section-comunidad";
-import { SectionComputin } from "./_components/section-computin";
-import { SectionEstrategia } from "./_components/section-estrategia";
-import { SectionPortafolio } from "./_components/section-portafolio";
-import { SectionProceso } from "./_components/section-proceso";
-import { SectionKalio } from "./_components/section-kalio";
-import { SectionEstructura } from "./_components/section-estructura";
-import { SectionTerminos } from "./_components/section-terminos";
+import Diagnostico from "./content/diagnostico.mdx";
+import Comunidad from "./content/comunidad.mdx";
+import Computin from "./content/computin.mdx";
+import Estrategia from "./content/estrategia.mdx";
+import Portafolio from "./content/portafolio.mdx";
+import Proceso from "./content/proceso.mdx";
+import Kalio from "./content/kalio.mdx";
+import Estructura from "./content/estructura.mdx";
+import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
 
 const NAV_ITEMS = [
@@ -22,10 +22,10 @@ const NAV_ITEMS = [
   { id: "comunidad", label: "Comunidad" },
   { id: "computin", label: "El cofundador técnico" },
   { id: "estrategia", label: "Estrategia de inversión" },
-  { id: "portafolio", label: "Construcción del portafolio" },
+  { id: "portafolio", label: "Construcc. del portaf." },
   { id: "proceso", label: "Proceso de selección" },
   { id: "kalio", label: "Kalio" },
-  { id: "estructura", label: "Estructura legal del fondo" },
+  { id: "estructura", label: "Estructura legal" },
   { id: "terminos", label: "Términos Cavendish LP" },
 ];
 
@@ -108,15 +108,15 @@ export default function RabbitHolePage() {
           Volver
         </Link>
 
-        <SectionReveal><SectionDiagnostico /></SectionReveal>
-        <SectionReveal><SectionComunidad /></SectionReveal>
-        <SectionReveal><SectionComputin /></SectionReveal>
-        <SectionReveal><SectionEstrategia /></SectionReveal>
-        <SectionReveal><SectionPortafolio /></SectionReveal>
-        <SectionReveal><SectionProceso /></SectionReveal>
-        <SectionReveal><SectionKalio /></SectionReveal>
-        <SectionReveal><SectionEstructura /></SectionReveal>
-        <SectionReveal><SectionTerminos /></SectionReveal>
+        <SectionReveal><Diagnostico /></SectionReveal>
+        <SectionReveal><Comunidad /></SectionReveal>
+        <SectionReveal><Computin /></SectionReveal>
+        <SectionReveal><Estrategia /></SectionReveal>
+        <SectionReveal><Portafolio /></SectionReveal>
+        <SectionReveal><Proceso /></SectionReveal>
+        <SectionReveal><Kalio /></SectionReveal>
+        <SectionReveal><Estructura /></SectionReveal>
+        <SectionReveal><Terminos /></SectionReveal>
       </main>
 
       <aside className="hidden lg:block fixed top-8 right-[max(0px,calc((100vw-768px)/2-280px))] w-52 px-4">

@@ -1,14 +1,14 @@
 import { Section, Callout, Hl, H3, P, Figure, TimelineStep, StatGrid, Collapsible, QuestionGroup, DealSourceItem, Spacer } from '../_components/mdx-components'
 import { Badge } from '@/components/ui/badge'
 
-<Section id="proceso" badge="06" title="Proceso de seleccion">
+<Section id="proceso" badge="06" title="Proceso de selección">
 
-<H3>Resumen y espiritu</H3>
+<H3>Resumen y espíritu</H3>
 
 <div className="space-y-4 mb-10">
-<P>Disenamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones.</P>
-<P>Como invertimos tan temprano, nos enfocamos mayoritariamente en encontrar caracteristicas del equipo que creemos que son necesarias para llevar adelante su idea y convertir su negocio en algo gigante.</P>
-<P>Este proceso es una parte clave de nuestra operacion. Desde el 2020 hemos recibido mas de <Hl>9.549 aplicaciones</Hl> y seleccionado <Hl>121 startups</Hl> a traves de este proceso.</P>
+<P>Diseñamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones.</P>
+<P>Como invertimos tan temprano, nos enfocamos mayoritariamente en encontrar características del equipo que creemos que son necesarias para llevar adelante su idea y convertir su negocio en algo gigante.</P>
+<P>Este proceso es una parte clave de nuestra operación. Desde el 2020 hemos recibido más de <Hl>9.549 aplicaciones</Hl> y seleccionado <Hl>121 startups</Hl> a través de este proceso.</P>
 </div>
 
 <H3>Etapas</H3>
@@ -16,124 +16,124 @@ import { Badge } from '@/components/ui/badge'
 <StatGrid items={[
   { label: "Postulaciones revisadas", value: "+9.549" },
   { label: "Entrevistas realizadas", value: "+1.600" },
-  { label: "Tasa de aceptacion", value: "~1%" },
+  { label: "Tasa de aceptación", value: "~1%" },
 ]} />
 
 <div className="space-y-4 mt-8 mb-10">
-<P>Hemos revisado todas esas aplicaciones y tenido mas de 1.600 entrevistas con startups en las distintas fases. Esto ha decantado en que nuestra tasa de aceptacion es de alrededor del 1%.</P>
-<P>Desde que una startup es llamada a entrevista, apuntamos a que reciba una respuesta en <Hl>15 dias</Hl>, manteniendo flexibilidad en caso de necesitar mas informacion para mantener la calidad de la seleccion.</P>
-<P>Nuestro proceso consta de algunas etapas asincronas y sincronas, online y presenciales. En cada una de ellas filtramos el funnel para llegar a la seleccion final.</P>
+<P>Hemos revisado todas esas aplicaciones y tenido más de 1.600 entrevistas con startups en las distintas fases. Esto ha decantado en que nuestra tasa de aceptación es de alrededor del 1%.</P>
+<P>Desde que una startup es llamada a entrevista, apuntamos a que reciba una respuesta en <Hl>15 días</Hl>, manteniendo flexibilidad en caso de necesitar más información para mantener la calidad de la selección.</P>
+<P>Nuestro proceso consta de algunas etapas asíncronas y síncronas, online y presenciales. En cada una de ellas filtramos el funnel para llegar a la selección final.</P>
 </div>
 
 <div className="space-y-0">
 
 <TimelineStep n={1} title="Formulario">
-<P>Lo primero que tiene que hacer una startup que aplica a Platanus es llenar un formulario en Kalio que busca obtener informacion del equipo fundador y de su idea.</P>
+<P>Lo primero que tiene que hacer una startup que aplica a Platanus es llenar un formulario en Kalio que busca obtener información del equipo fundador y de su idea.</P>
 
 <Collapsible summary="Ver las preguntas en detalle">
 
-<QuestionGroup title="Informacion Basica" items={[
+<QuestionGroup title="Información Básica" items={[
   "Nombre de startup",
-  "Pagina web",
-  "Geografia",
+  "Página web",
+  "Geografía",
   "Industria",
-  "Descripcion corta (50 caracteres)",
+  "Descripción corta (50 caracteres)",
   "Que hace o va a hacer tu startup?",
 ]} />
 
 <QuestionGroup title="Fundadores" items={[
   "Cuales son sus roles y cual es la historia de cada uno?",
-  "Quien escribe el codigo o hace el trabajo tecnico en el producto? Es fundador?",
-  "Por cada founder: RRSS, experiencia, historial en startups, nivel tecnico, compromisos pendientes, y cuentanos de algun proyecto interesante o algo que hayas hackeado a tu favor.",
+  "Quién escribe el código o hace el trabajo técnico en el producto? Es fundador?",
+  "Por cada founder: RRSS, experiencia, historial en startups, nivel técnico, compromisos pendientes, y cuéntanos de algún proyecto interesante o algo que hayas hackeado a tu favor.",
 ]} />
 
 <QuestionGroup title="Progreso" items={[
   "Estado actual de la startup.",
-  "Tamano del equipo, demo/URL del producto.",
+  "Tamaño del equipo, demo/URL del producto.",
   "Meses trabajando en la idea, usuarios e ingresos si los tienen.",
   "Han participado en otro programa de startups?",
 ]} />
 
 <QuestionGroup title="Idea" items={[
   "Por que eligieron esta idea? Son expertos en el tema?",
-  "Quienes son sus competidores? A quien le tienen mas miedo?",
-  "Que saben o tienen que hara su producto exitoso y unico?",
+  "Quiénes son sus competidores? A quién le tienen más miedo?",
+  "Que saben o tienen que hará su producto exitoso y único?",
   "Por que nadie lo ha hecho hasta ahora?",
-  "Como generan o generaran ingresos y a que nivel podrian llegar?",
+  "Como generan o generarán ingresos y a que nivel podrían llegar?",
 ]} />
 
 <QuestionGroup title="Legal" items={[
   "Tienen empresa constituida?",
-  "Han aceptado inversion? Cuanto porcentaje han cedido?",
+  "Han aceptado inversión? Cuánto porcentaje han cedido?",
   "Cap table detallado, runway/burn.",
-  "Hay algo mas que debamos saber de la empresa?",
+  "Hay algo más que debamos saber de la empresa?",
 ]} />
 
 <QuestionGroup title="Otros & Curiosidad" items={[
-  "Que stack tecnologico utilizas o planeas utilizar?",
-  "Pensaron en postular con otra idea? Explicala.",
+  "Que stack tecnológico utilizas o planeas utilizar?",
+  "Pensaron en postular con otra idea? Explícala.",
   "Por que decidiste postular a Platanus? Como supiste de nosotros?",
 ]} />
 
-<P className="pt-2 border-t border-black/10">Lo anterior es un compendio de las preguntas que hemos realizado en los ultimos procesos de seleccion. Estamos iterando constantemente segun los enfoques del fondo y los aprendizajes que hemos tenido.</P>
+<P className="pt-2 border-t border-black/10">Lo anterior es un compendio de las preguntas que hemos realizado en los últimos procesos de selección. Estamos iterando constantemente según los enfoques del fondo y los aprendizajes que hemos tenido.</P>
 
 </Collapsible>
 
 <Callout>
-<P>Desde Q3 2023, ademas del formulario les pedimos a las startups que realicen una <Hl>entrevista automatizada</Hl> como paso previo.</P>
+<P>Desde Q3 2023, además del formulario les pedimos a las startups que realicen una <Hl>entrevista automatizada</Hl> como paso previo.</P>
 </Callout>
 
-<Figure src="/entrevistaautomatizada.png" alt="Entrevista automatizada de Kalio" caption="Esta es la entrevista automatizada a la que se enfrentan los fundadores. Junto con entender mas en profundidad lo que estan resolviendo, nos ayuda a evaluar la relacion del equipo, su capacidad de comunicar bien y su compromiso." className="mt-4" />
+<Figure src="/entrevistaautomatizada.png" alt="Entrevista automatizada de Kalio" caption="Esta es la entrevista automatizada a la que se enfrentan los fundadores. Junto con entender más en profundidad lo que están resolviendo, nos ayuda a evaluar la relación del equipo, su capacidad de comunicar bien y su compromiso." className="mt-4" />
 </TimelineStep>
 
 <TimelineStep n={2} title="Primer filtro">
-<P>Una vez que recibimos una postulacion, nuestro software la asigna automaticamente a cada uno de los partners. La primera revision busca ver que se cumplan algunos requisitos basicos:</P>
+<P>Una vez que recibimos una postulación, nuestro software la asigna automáticamente a cada uno de los partners. La primera revisión busca ver que se cumplan algunos requisitos básicos:</P>
 <ol className="list-decimal list-outside pl-5 space-y-2">
-<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Que esten construyendo una startup tecnologica.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Que estén construyendo una startup tecnológica.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Que uno de los fundadores pueda construir el producto.</li>
 <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Que el equipo este o pueda estar full time.</li>
 </ol>
-<P>Y revisamos cualquier otro indicador evidente de que son un fit para Platanus por calzar con nuestra tesis de inversion.</P>
-<Figure src="/primerfiltro.png" alt="Vista general de revision de startups en Kalio" caption="Asi es la vista general de revision de startups en Kalio, con el video de la entrevista automatizada, insights generados por IA y toda la informacion del formulario de postulacion." className="mt-4" />
+<P>Y revisamos cualquier otro indicador evidente de que son un fit para Platanus por calzar con nuestra tesis de inversión.</P>
+<Figure src="/primerfiltro.png" alt="Vista general de revisión de startups en Kalio" caption="Así es la vista general de revisión de startups en Kalio, con el video de la entrevista automatizada, insights generados por IA y toda la información del formulario de postulación." className="mt-4" />
 </TimelineStep>
 
 <TimelineStep n={3} title="Primera entrevista">
 <P>Cada partner revisa sus aplicaciones asignadas y las puede marcar como prometedoras o interesantes. A ellas se les invita a una entrevista con Platanus.</P>
-<P>Como requisito para agendar se les solicita ingresar referencias, que son automaticamente contactadas por nuestro software.</P>
-<P>A la entrevista van 2 partners de Platanus y deben ir todos los fundadores de la compania postulante. El objetivo es analizar la capacidad y experiencia del equipo, asi como su conocimiento del ambiente y mercado en el que se enmarca su producto. La entrevista dura alrededor de 25 minutos.</P>
+<P>Como requisito para agendar se les solicita ingresar referencias, que son automáticamente contactadas por nuestro software.</P>
+<P>A la entrevista van 2 partners de Platanus y deben ir todos los fundadores de la compañía postulante. El objetivo es analizar la capacidad y experiencia del equipo, así como su conocimiento del ambiente y mercado en el que se enmarca su producto. La entrevista dura alrededor de 25 minutos.</P>
 <P>Tras la entrevista los partners se juntan, llenan preguntas que les hace Kalio y votan para decidir si nos parece un buen fit con Platanus y si pasa a una segunda entrevista.</P>
-<Figure src="/primeraentrevista.png" alt="Vista de votos y decision de entrevista en Kalio" caption="Los partners votan simultaneamente y dejan la decision registrada en Kalio." className="mt-4" />
+<Figure src="/primeraentrevista.png" alt="Vista de votos y decisión de entrevista en Kalio" caption="Los partners votan simultáneamente y dejan la decisión registrada en Kalio." className="mt-4" />
 <Callout>
-<P>Utilizamos un modelo de <Hl>conviccion fuerte</Hl>: al menos uno de los partners debe votar "Si fuerte" para que continuen en el proceso. Historicamente hemos entrevistado en esta primera etapa a alrededor del <Hl>14%</Hl> de las startups que aplican.</P>
+<P>Utilizamos un modelo de <Hl>convicción fuerte</Hl>: al menos uno de los partners debe votar "Si fuerte" para que continúen en el proceso. Históricamente hemos entrevistado en esta primera etapa a alrededor del <Hl>14%</Hl> de las startups que aplican.</P>
 </Callout>
 </TimelineStep>
 
 <TimelineStep n={4} title="Segunda entrevista">
 <P>Si llegaron a esta etapa, se les solicita agendar una segunda entrevista, esta vez con al menos 3 partners de Platanus.</P>
-<P>El objetivo aqui es estresar las convicciones del equipo fundador, con preguntas mas detalladas tanto de su producto y mercado como del equipo, para revelar sus planes de escalamiento rapido, estrategia de ejecucion y su vision de futuro.</P>
+<P>El objetivo aquí es estresar las convicciones del equipo fundador, con preguntas más detalladas tanto de su producto y mercado como del equipo, para revelar sus planes de escalamiento rápido, estrategia de ejecución y su visión de futuro.</P>
 <Callout>
-<P>Al igual que en la primera entrevista, al menos uno de los partners debe votar "si fuerte" para pasar a la siguiente etapa. Historicamente hemos entrevistado en esta segunda etapa a alrededor del <Hl>4%</Hl> de las startups que aplican.</P>
+<P>Al igual que en la primera entrevista, al menos uno de los partners debe votar "si fuerte" para pasar a la siguiente etapa. Históricamente hemos entrevistado en esta segunda etapa a alrededor del <Hl>4%</Hl> de las startups que aplican.</P>
 </Callout>
 </TimelineStep>
 
 <TimelineStep n={5} title="Chequeo de referencias">
-<P>A pesar de que a esta altura ya hicimos un chequeo de referencias preliminar, en esta etapa mas selectiva contactamos a las referencias de los fundadores para poder profundizar mas. En ciertos casos contactamos personas relacionadas, distintas a las ingresadas por ellos.</P>
-<P>Ademas de ayudarnos a descartar posibles red flags de los fundadores, cada chequeo queda respaldado en nuestro software.</P>
+<P>A pesar de que a esta altura ya hicimos un chequeo de referencias preliminar, en esta etapa más selectiva contactamos a las referencias de los fundadores para poder profundizar más. En ciertos casos contactamos personas relacionadas, distintas a las ingresadas por ellos.</P>
+<P>Además de ayudarnos a descartar posibles red flags de los fundadores, cada chequeo queda respaldado en nuestro software.</P>
 <P>Si las referencias no levantan ninguna alerta, procedemos con la entrevista presencial.</P>
 </TimelineStep>
 
 <TimelineStep n={6} title="Entrevista en persona" badge="nuevo">
-<P>Como ultima instancia con los founders, los invitamos a alguna de nuestras oficinas para una reunion en persona con al menos 2 partners.</P>
-<P>El objetivo de esta ultima etapa es obtener informacion que creemos que es dificil de obtener a traves de videollamadas. Buscamos crear un entorno distinto al de una entrevista y nos enfocamos en detectar senales fuertes de su ambicion, de su autentico interes por construir una startup gigante, de su nivel de involucramiento con el producto y de su dominio de todo lo relacionado.</P>
-<P>La conviccion adquirida durante las etapas anteriores debe mantenerse y si vemos red flags o se diluye la certeza, no seleccionaremos al equipo.</P>
+<P>Como última instancia con los founders, los invitamos a alguna de nuestras oficinas para una reunión en persona con al menos 2 partners.</P>
+<P>El objetivo de esta última etapa es obtener información que creemos que es difícil de obtener a través de videollamadas. Buscamos crear un entorno distinto al de una entrevista y nos enfocamos en detectar señales fuertes de su ambición, de su auténtico interés por construir una startup gigante, de su nivel de involucramiento con el producto y de su dominio de todo lo relacionado.</P>
+<P>La convicción adquirida durante las etapas anteriores debe mantenerse y si vemos red flags o se diluye la certeza, no seleccionaremos al equipo.</P>
 </TimelineStep>
 
-<TimelineStep n={7} title="Seleccion">
+<TimelineStep n={7} title="Selección">
 <P>Si la startup pasa exitosamente la entrevista en persona, es seleccionada. Nuestro software realiza un onboarding a los founders y los agrega a nuestras bases de datos.</P>
 </TimelineStep>
 
 <TimelineStep n={8} title="Due diligence" last={true}>
-<P>Tras la seleccion, pero previo al inicio del programa, se realiza un due diligence general. Si bien el proceso avanza en paralelo, la inversion esta sujeta al resultado de esta etapa.</P>
+<P>Tras la selección, pero previo al inicio del programa, se realiza un due diligence general. Si bien el proceso avanza en paralelo, la inversión esta sujeta al resultado de esta etapa.</P>
 </TimelineStep>
 
 </div>
@@ -141,17 +141,17 @@ import { Badge } from '@/components/ui/badge'
 <H3>Deal sourcing</H3>
 
 <div className="space-y-4">
-<P>En un inicio las startups que postularon llegaron absolutamente de forma organica. Debido a la comunidad de fundadores tecnologicos que rodea a Platanus y el apoyo de startups chilenas exitosas, los nuevos fundadores de startups digitales sienten un gran interes por participar del programa de aceleracion.</P>
-<P>Desde el 2022 comenzamos una busqueda activa de fundadores tecnicos de startups en etapas iniciales que pudieran ser buenos postulantes al programa.</P>
-<P>Dentro de nuestro esfuerzo por mejorar el contexto en el que se desenvuelven las startups, hemos creado una serie de actividades complementarias al programa de aceleracion para dar visibilidad a Platanus, generar comunidad de desarrolladores e incentivar a que estudiantes armen startups.</P>
+<P>En un inicio las startups que postularon llegaron absolutamente de forma orgánica. Debido a la comunidad de fundadores tecnológicos que rodea a Platanus y el apoyo de startups chilenas exitosas, los nuevos fundadores de startups digitales sienten un gran interés por participar del programa de aceleración.</P>
+<P>Desde el 2022 comenzamos una búsqueda activa de fundadores técnicos de startups en etapas iniciales que pudieran ser buenos postulantes al programa.</P>
+<P>Dentro de nuestro esfuerzo por mejorar el contexto en el que se desenvuelven las startups, hemos creado una serie de actividades complementarias al programa de aceleración para dar visibilidad a Platanus, generar comunidad de desarrolladores e incentivar a que estudiantes armen startups.</P>
 <Callout>
 <ul className="list-disc list-outside pl-5 space-y-2">
 <DealSourceItem title="Visibilidad" body="Charlas, Ask Me Anythings, Live Office Hours, Platanus Forum." />
-<DealSourceItem title="Comunidad tecnica" body="Demo Dev, Build Night, Platanus Hack - para generar comunidad de desarrolladores y gente tecnica." />
-<DealSourceItem title="Nuevos fundadores" body="Clases de startups en las universidades mas importantes de Latam para incentivar a que estudiantes armen startups." />
+<DealSourceItem title="Comunidad técnica" body="Demo Dev, Build Night, Platanus Hack - para generar comunidad de desarrolladores y gente técnica." />
+<DealSourceItem title="Nuevos fundadores" body="Clases de startups en las universidades más importantes de Latam para incentivar a que estudiantes armen startups." />
 </ul>
 </Callout>
-<P>Esas actividades no solo buscan mantener a Platanus en el *top of mind* de buenos fundadores, sino que generar un entorno cada vez mejor para que aparezcan mas fundadores latinoamericanos con agencia. Queremos incentivar el espiritu de creacion, de iniciativa, de ownership. Con ese entorno, naturalmente se genera el camino para que apliquen a Platanus cuando armen startups que se puedan convertir en negocios gigantes.</P>
+<P>Esas actividades no solo buscan mantener a Platanus en el *top of mind* de buenos fundadores, sino que generar un entorno cada vez mejor para que aparezcan más fundadores latinoamericanos con agencia. Queremos incentivar el espíritu de creación, de iniciativa, de ownership. Con ese entorno, naturalmente se genera el camino para que apliquen a Platanus cuando armen startups que se puedan convertir en negocios gigantes.</P>
 </div>
 
 </Section>
