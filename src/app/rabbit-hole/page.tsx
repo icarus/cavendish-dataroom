@@ -123,12 +123,12 @@ export default function RabbitHolePage() {
           className="pt-16 mb-0"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
         >
           <Badge variant="solid" className="mb-6">
             Platanus Cavendish
           </Badge>
-          <h1 className="font-sans font-medium text-black text-2xl mb-4">
+          <h1 className="font-sans font-medium text-black text-4xl mb-4">
             Down the Rabbit Hole
           </h1>
           <p className="font-sans font-medium text-black/60 text-sm leading-relaxed max-w-xl">
@@ -149,16 +149,16 @@ export default function RabbitHolePage() {
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
-          <ExpandableSection><Portafolio /></ExpandableSection>
+          <ExpandableSection slug="portafolio"><Portafolio /></ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection><Proceso /></ExpandableSection>
+          <ExpandableSection slug="proceso"><Proceso /></ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection><Kalio /></ExpandableSection>
+          <ExpandableSection slug="kalio"><Kalio /></ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection><Estructura /></ExpandableSection>
+          <ExpandableSection slug="estructura"><Estructura /></ExpandableSection>
         </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>
