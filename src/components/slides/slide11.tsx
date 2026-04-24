@@ -11,9 +11,9 @@ export function Slide11({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative p-[4%_6%] flex flex-col overflow-hidden">
       <div style={f(on, 0)} className="mb-16">
-        <div className="font-sans font-medium text-white leading-tight" style={{ fontSize: "clamp(26px, 3.5vw, 54px)" }}>Built for</div>
+        <div className="font-sans font-medium text-white leading-tight" style={{ fontSize: "clamp(26px, 3.5vw, 54px)" }}>Raising a new fund</div>
         <mark className="font-sans font-medium bg-[#FFEC40] text-black px-2 not-italic inline-block" style={{ fontSize: "clamp(26px, 3.5vw, 54px)" }}>
-          speed and adaptability
+          Platanus Cavendish
         </mark>
       </div>
       <div className="flex gap-16 flex-1 relative z-10">
