@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 import { MENTORS } from "@/lib/deck-data";
 import { f, P, useAnim, WordReveal } from "./utils";
 
