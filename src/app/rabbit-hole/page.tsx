@@ -83,7 +83,7 @@ export default function RabbitHolePage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-sm px-2 py-0.5 mb-6 hover:bg-[#FFEC40]/90 border-transparent">
+          <Badge variant="solid" className="mb-6">
             Platanus Cavendish
           </Badge>
           <h1 className="font-sans font-medium text-black text-2xl mb-4">
@@ -113,7 +113,7 @@ export default function RabbitHolePage() {
         <SectionReveal><SectionTerminos /></SectionReveal>
       </main>
 
-      <aside className="hidden lg:flex fixed top-0 right-[max(0px,calc((100vw-768px)/2-280px))] h-screen w-52 items-center px-4">
+      <aside className="hidden lg:block fixed top-8 right-[max(0px,calc((100vw-768px)/2-280px))] w-52 px-4">
         <nav className="relative">
           <AnimatePresence>
             {activeIndex >= 0 && (
@@ -139,7 +139,7 @@ export default function RabbitHolePage() {
               initial={{ opacity: 0, x: 6 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
-              className={`block w-full text-left font-sans font-medium text-[13px] leading-snug py-1.5 px-2 transition-colors cursor-pointer ${
+              className={`block w-full text-left font-mono font-medium text-[13px] leading-snug py-1.5 px-2 transition-colors cursor-pointer ${
                 activeId === item.id
                   ? "text-black"
                   : "text-black/30 hover:text-black/60"

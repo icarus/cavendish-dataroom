@@ -134,7 +134,7 @@ function RetornosTable() {
 export function SectionEstrategia() {
   return (
     <section id="estrategia" className="py-16 border-b border-black/10">
-      <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-base hover:bg-[#FFEC40]/90 border-transparent mb-4">04</Badge>
+      <Badge variant="solid" className="mb-4">04</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Estrategia de inversión
       </h2>

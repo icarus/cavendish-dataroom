@@ -4,7 +4,7 @@ import { Callout } from "./callout";
 export function SectionEstructura() {
   return (
     <section id="estructura" className="py-16 border-b border-black/10">
-      <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-base hover:bg-[#FFEC40]/90 border-transparent mb-4">08</Badge>
+      <Badge variant="solid" className="mb-4">08</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Estructura legal del fondo
       </h2>
@@ -132,7 +132,7 @@ export function SectionEstructura() {
               <div className="border border-black/10 p-4 bg-black/5">
                 <div className="flex items-center gap-2 mb-1">
                   <p className="font-sans font-medium text-black/60 text-sm">Estructura de 3 capas</p>
-                  <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-xs hover:bg-[#FFEC40]/90 border-transparent">recomendada</Badge>
+                  <Badge variant="solid" className="text-xs">recomendada</Badge>
                 </div>
                 <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
                   Sociedad matriz en Islas Caimán, la que es dueña del 100% de participación de una Limited Liability Company ("LLC") en Delaware, USA, la que a su vez es dueña del 100% de la participación de las sociedades operativas.

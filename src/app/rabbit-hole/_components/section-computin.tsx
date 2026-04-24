@@ -59,7 +59,7 @@ export function SectionComputin() {
 
   return (
     <section id="computin" className="py-16 border-b border-black/10">
-      <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-base hover:bg-[#FFEC40]/90 border-transparent mb-4">03</Badge>
+      <Badge variant="solid" className="mb-4">03</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         El cofundador técnico es fundamental
       </h2>

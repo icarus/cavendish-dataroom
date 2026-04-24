@@ -55,7 +55,7 @@ const formQuestions = [
 export function SectionProceso() {
   return (
     <section id="proceso" className="py-16 border-b border-black/10">
-      <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-base hover:bg-[#FFEC40]/90 border-transparent mb-4">06</Badge>
+      <Badge variant="solid" className="mb-4">06</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Proceso de selección
       </h2>
@@ -309,7 +309,7 @@ export function SectionProceso() {
           </div>
           <div className="pb-4 flex-1">
             <h4 className="font-sans font-medium text-black/40 text-sm mb-3">
-              Entrevista en persona <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-xs hover:bg-[#FFEC40]/90 border-transparent ml-1">nuevo</Badge>
+              Entrevista en persona <Badge variant="solid" className="text-xs ml-1">nuevo</Badge>
             </h4>
             <div className="space-y-3">
               <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
