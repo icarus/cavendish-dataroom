@@ -23,7 +23,7 @@ export function RabbitPanel({ active, onBack }: Props) {
   }, [active]);
 
   return (
-    <div className="absolute top-[50%] left-0 w-screen h-screen flex items-center justify-center">
+    <div className="absolute top-[50%] left-0 w-screen h-screen flex items-center justify-center bg-black/60">
       <div className="absolute top-6 left-1/2 -translate-x-1/2">
         <Button variant="ghost" onClick={onBack} className="-mt-1">
           <ArrowUp />

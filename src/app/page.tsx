@@ -79,7 +79,7 @@ export default function LandingPage() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (showAlert) return;
-      if (rabbitOpen) { if (e.key === "Escape") closeRabbit(); return; }
+      if (rabbitOpen) { if (e.key === "Escape" || e.key === "ArrowUp") closeRabbit(); return; }
       if (!deckOpen) {
         if (e.key === "Enter" || e.key === "ArrowRight") openDeck();
         else if (e.key === "ArrowDown") openRabbit();
