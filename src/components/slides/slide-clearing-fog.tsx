@@ -24,9 +24,9 @@ function MentorCard({ mentor, index, on, hovered, dimmed, onEnter, onLeave }: {
       style={{
         aspectRatio: "1/1",
         filter: hovered ? "grayscale(0) brightness(1.1)" : "grayscale(1)",
-        opacity: hovered ? 1 : dimmed ? 0.15 : 0.55,
-        transition: "filter 0.3s ease, opacity 0.3s ease",
-        ...f(on, 300 + index * 20),
+        opacity: on ? (hovered ? 1 : dimmed ? 0.15 : 0.55) : 0,
+        transform: on ? "translateY(0)" : "translateY(14px)",
+        transition: `filter 0.3s ease, opacity 0.3s ease ${on ? "0ms" : `${300 + index * 20}ms`}, transform 0.6s ease ${300 + index * 20}ms`,
       }}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
