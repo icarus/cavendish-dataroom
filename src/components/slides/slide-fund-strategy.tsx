@@ -62,18 +62,18 @@ export function SlideFundStrategy({ active }: P) {
         </div>
       </div>
 
-      <div className="mb-4" style={f(on, 80)}>
+      <div className="mb-10" style={f(on, 80)}>
         <p className="font-sans font-normal text-white/40 text-base">
           At <span className="text-[#FFEC40]">$200K for 7%</span>, only we reach 60x+ returns. Invest early, win big.
         </p>
       </div>
 
       <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
-        <div className="relative overflow-hidden border-b border-white/10" style={f(on, 120)}>
-          <span className="absolute bottom-1 left-1 font-mono font-medium text-white/40 text-base uppercase tracking-wider leading-none">
+        <div className="bg-white/10 relative overflow-hidden border-b border-white/10 min-h-[56px]" style={f(on, 120)}>
+          <span className="absolute bottom-1 left-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
             Entry Val.
           </span>
-          <span className="absolute top-1 right-1 font-mono font-medium text-white/40 text-base uppercase tracking-wider leading-none">
+          <span className="absolute top-1 right-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
             Exit Price
           </span>
           <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
@@ -84,7 +84,7 @@ export function SlideFundStrategy({ active }: P) {
           <div
             key={v}
             className={cn(
-              "flex items-center justify-center p-2 border-b border-white/10 transition-colors",
+              "flex items-center justify-center p-2 border-b border-white/10 transition-colors min-h-[56px]",
               hover?.col === ci && "bg-white/5",
             )}
             style={f(on, 150 + ci * 30)}
