@@ -9,27 +9,46 @@ import { AnimatePresence, motion } from "motion/react";
 import { f, P, useAnim } from "./utils";
 
 function AnimatedValue({ value }: { value: string }) {
+  const [display, setDisplay] = useState(value);
+  const rafRef = useRef<number>(0);
+
+  useEffect(() => {
+    const numMatch = value.match(/[\d,.]+/);
+    const prevMatch = display.match(/[\d,.]+/);
+    if (!numMatch) { setDisplay(value); return; }
+
+    const target = parseFloat(numMatch[0].replace(/,/g, ""));
+    const start = prevMatch ? parseFloat(prevMatch[0].replace(/,/g, "")) : 0;
+    const prefix = value.slice(0, value.indexOf(numMatch[0]));
+    const suffix = value.slice(value.indexOf(numMatch[0]) + numMatch[0].length);
+    const hasCommas = numMatch[0].includes(",");
+    const decimals = numMatch[0].includes(".") ? numMatch[0].split(".")[1].length : 0;
+
+    const duration = 1200;
+    const startTime = performance.now();
+
+    const step = (now: number) => {
+      const progress = Math.min((now - startTime) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = start + (target - start) * eased;
+      const formatted = decimals > 0 ? current.toFixed(decimals) : Math.round(current).toString();
+      const withCommas = hasCommas ? formatted.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : formatted;
+      setDisplay(`${prefix}${withCommas}${suffix}`);
+      if (progress < 1) rafRef.current = requestAnimationFrame(step);
+    };
+
+    rafRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [value]);
+
   return (
-    <div className="relative overflow-hidden h-[1.4em]">
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={value}
-          className="font-mono font-medium text-white text-base block"
-          initial={{ y: 16, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -16, opacity: 0 }}
-          transition={{ duration: 0.25, ease: "easeOut" }}
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
-    </div>
+    <span className="font-mono font-medium text-white text-base">{display}</span>
   );
 }
 
 const BADGE_LABELS: Record<string, string> = {
   "fund-returner": "Fund Returner",
-  "potential-fund-returner": "Potential Fund Returner",
+  "potential-fund-returner": "Pot. Fund Returner",
   "rising-star": "Rising Star",
   exited: "Exited",
 };
@@ -126,7 +145,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M8 4L14 10L8 16" stroke="currentColor" strokeWidth="1.5" /></svg>
       </button>
       <motion.div
-        className={cn("relative z-10 flex flex-col max-w-md w-full max-h-[80%] p-6 border overflow-y-auto", detailBg())}
+        className={cn("relative z-10 flex flex-col max-w-md w-full max-h-[80%] p-6 overflow-y-auto")}
         layoutId={`company-${company.name}`}
         transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
         onClick={(e) => e.stopPropagation()}
@@ -134,7 +153,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
         <div className="relative size-16 overflow-hidden shrink-0 aspect-square mb-4">
           <Image src={company.image} alt={company.name} fill className="object-contain" />
         </div>
-        <div className="flex items-center gap-2 flex-wrap mb-3">
+        <div className="flex items-center gap-2 flex-wrap mb-2">
           <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "clamp(20px, 2vw, 28px)" }}>
             {company.name}
           </h3>
@@ -157,15 +176,15 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
           ))}
         </div>
         {company.tagline && (
-          <p className={cn("font-sans font-medium text-base leading-relaxed mb-3", detailText())}>
+          <p className={cn("font-sans font-normal text-base leading-relaxed mb-6", detailText())}>
             {company.tagline}
           </p>
         )}
         {company.bullets && company.bullets.length > 0 && (
           <ul className="space-y-1.5 mb-3">
             {company.bullets.map((b, i) => (
-              <li key={i} className="font-sans font-medium text-base leading-relaxed flex items-start gap-2">
-                <span className={cn("mt-2 size-1 shrink-0", detailBullet())} />
+              <li key={i} className="font-sans font-normal text-base leading-relaxed flex items-start gap-2">
+                <span className={cn("mt-2.5 size-1 shrink-0", detailBullet())} />
                 <span className="text-white/70">{b}</span>
               </li>
             ))}
@@ -173,7 +192,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
         )}
         {company.investorsAfter && company.investorsAfter.length > 0 && (
           <div className="mt-auto pt-2">
-            <span className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted())}>
+            <span className={cn("font-mono font-normal text-xs uppercase tracking-wider", detailMuted())}>
               Investors after Platanus:
             </span>
             <div className="flex flex-wrap items-center gap-3 mt-2">
