@@ -122,7 +122,7 @@ export function SectionDiagnostico() {
 
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-3">
-          Invertimos <span className="bg-[#FFEC40] px-1">US$200,000</span> en las primeras etapas de equipos excepcionales, priorizando los intereses de los fundadores y el éxito de la startup.
+          Invertimos <span className="bg-[#3d3a00] text-[#FFEC40] px-1">US$200,000</span> en las primeras etapas de equipos excepcionales, priorizando los intereses de los fundadores y el éxito de la startup.
         </p>
         <ul className="list-disc list-outside pl-5 space-y-2">
           {[
@@ -152,7 +152,7 @@ export function SectionDiagnostico() {
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-2">Dos cosas nos distinguen de otras aceleradoras:</p>
         <ul className="list-disc list-outside pl-5 space-y-2">
           <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-            <span className="bg-[#FFEC40] px-1  text-black">"Quod natura non dat, Platanus non praestat"</span>. Este no es un programa educativo. Lo que busca es que los fundadores se potencien entre ellos y construyan sus negocios recibiendo consejos y accountability.
+            <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">"Quod natura non dat, Platanus non praestat"</span>. Este no es un programa educativo. Lo que busca es que los fundadores se potencien entre ellos y construyan sus negocios recibiendo consejos y accountability.
           </li>
           <li className="font-sans font-medium text-black/60 text-sm leading-relaxed">
             No cobramos. Esto es parte del valor agregado a nuestra inversión.
@@ -164,7 +164,7 @@ export function SectionDiagnostico() {
         Invertimos en varias startups para construir una comunidad de los mejores fundadores latinoamericanos, bien curada y con un fuerte componente técnico.
       </p>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-8">
-        Hoy contamos con <span className="bg-[#FFEC40] px-1  text-black">+120 startups</span> en el portafolio, <span className="bg-[#FFEC40] px-1  text-black">+350 fundadores</span> repartidos en <span className="bg-[#FFEC40] px-1  text-black">+10 países</span> y una amplia red de mentores.
+        Hoy contamos con <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">+120 startups</span> en el portafolio, <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">+350 fundadores</span> repartidos en <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">+10 países</span> y una amplia red de mentores.
       </p>
 
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">

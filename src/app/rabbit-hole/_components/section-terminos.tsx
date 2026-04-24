@@ -87,7 +87,7 @@ export function SectionTerminos() {
         Capital Calls
       </h3>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
-        Al firmar el Subscription Agreement se paga el <span className="bg-[#FFEC40] px-1  text-black">30%</span> del capital comprometido. El resto sigue este calendario tentativo:
+        Al firmar el Subscription Agreement se paga el <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">30%</span> del capital comprometido. El resto sigue este calendario tentativo:
       </p>
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">

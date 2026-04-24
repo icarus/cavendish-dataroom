@@ -97,7 +97,7 @@ export function SectionComputin() {
       <div className="space-y-20">
         {reasons.map((r, i) => (
           <div key={r.title} className="flex gap-6">
-            <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-8 h-7  shrink-0 mt-0.5">
+            <span className="inline-flex items-start justify-center bg-[#3d3a00] text-[#FFEC40] font-mono font-medium text-sm w-8 h-fit shrink-0 mt-0.5">
               {String(i + 1).padStart(2, "0")}
             </span>
             <div>

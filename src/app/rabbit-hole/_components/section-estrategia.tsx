@@ -86,8 +86,8 @@ const retornosData: number[][] = [
 ];
 
 function cellColor(val: number): string {
-  if (val >= 60) return "bg-[#FFEC40] text-black font-medium";
-  if (val >= 30) return "bg-[#FFEC40]/20 text-black";
+  if (val >= 60) return "bg-[#3d3a00] text-[#FFEC40] font-medium";
+  if (val >= 30) return "bg-[#3d3a00]/20 text-black";
   if (val >= 10) return "bg-black/10 text-black";
   return "bg-red-900/30 text-red-400";
 }
@@ -203,10 +203,10 @@ export function SectionEstrategia() {
             ].map((row) => (
               <tr key={row.range} className="border-b border-black/10">
                 <td className="font-sans font-medium text-sm py-3 pr-8">
-                  {row.highlight ? <span className="bg-[#FFEC40] px-1">{row.range}</span> : <span className="text-black">{row.range}</span>}
+                  {row.highlight ? <Badge>{row.range}</Badge> : <span className="text-black">{row.range}</span>}
                 </td>
                 <td className="font-sans font-medium text-sm py-3">
-                  {row.highlight ? <span className="bg-[#FFEC40] px-1">{row.pct}</span> : <span className="text-black">{row.pct}</span>}
+                  {row.highlight ? <Badge>{row.pct}</Badge> : <span className="text-black">{row.pct}</span>}
                 </td>
               </tr>
             ))}
@@ -216,7 +216,7 @@ export function SectionEstrategia() {
 
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          En los mejores fondos casi un <span className="bg-[#FFEC40] px-1">95% de los retornos</span> se compone de ese <span className="bg-[#FFEC40] px-1">10% del portafolio</span> que retorna en promedio <span className="bg-[#FFEC40] px-1">60x</span>. Sin esas startups ganadoras no se llega al 3x tan anhelado.
+          En los mejores fondos casi un <span className="bg-[#3d3a00] text-[#FFEC40] px-1">95% de los retornos</span> se compone de ese <span className="bg-[#3d3a00] text-[#FFEC40] px-1">10% del portafolio</span> que retorna en promedio <span className="bg-[#3d3a00] text-[#FFEC40] px-1">60x</span>. Sin esas startups ganadoras no se llega al 3x tan anhelado.
         </p>
       </Callout>
 
@@ -251,7 +251,7 @@ export function SectionEstrategia() {
           Ante esta situación, la única forma de llegar a esos 60x es entrar a la valorización más baja de una startup, lo más cercana a sus inicios.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Ejemplo. Para Platanus Cavendish, con una inversión de $200k, un fund returner debe retornar <span className="bg-[#FFEC40] px-1  text-black">75x</span> la inversión inicial.
+          Ejemplo. Para Platanus Cavendish, con una inversión de $200k, un fund returner debe retornar <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">75x</span> la inversión inicial.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Para saber si podemos llegar a ese múltiplo debemos saber el precio de entrada y de salida, además de las potenciales diluciones que existirán en el camino.
@@ -276,7 +276,7 @@ export function SectionEstrategia() {
 
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Salvo nuestra valorización estándar de <span className="bg-[#FFEC40] px-1">$200k por un 7%</span>, ninguna otra inversión logra llegar a un múltiplo de retorno de 60x.
+          Salvo nuestra valorización estándar de <span className="bg-[#3d3a00] text-[#FFEC40] px-1">$200k por un 7%</span>, ninguna otra inversión logra llegar a un múltiplo de retorno de 60x.
         </p>
       </Callout>
 
@@ -329,7 +329,7 @@ export function SectionEstrategia() {
           ))}
         </ul>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mt-3">
-          Si suponemos que en 3–4 años levantará una ronda a 2.5x de valorización y consideramos una dilución de 25%, el potencial exit sería de <span className="bg-[#FFEC40] px-1">$17,226,562 — un fund returner de 86x</span>.
+          Si suponemos que en 3–4 años levantará una ronda a 2.5x de valorización y consideramos una dilución de 25%, el potencial exit sería de <span className="bg-[#3d3a00] text-[#FFEC40] px-1">$17,226,562 — un fund returner de 86x</span>.
         </p>
       </Callout>
 
@@ -373,7 +373,7 @@ export function SectionEstrategia() {
       <div className="space-y-20">
         {/* Mitigación 1 */}
         <div className="flex gap-6">
-          <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-8 h-7  shrink-0 mt-0.5">01</span>
+          <span className="inline-flex items-start justify-center bg-[#3d3a00] text-[#FFEC40] font-mono font-medium text-sm w-8 h-7 shrink-0 mt-0.5">01</span>
           <div>
             <h4 className="font-sans font-medium text-black/40 text-sm mb-3">Nos aseguramos que haya un tech en el equipo</h4>
             <div className="space-y-3">
@@ -399,7 +399,7 @@ export function SectionEstrategia() {
 
         {/* Mitigación 2 */}
         <div className="flex gap-6">
-          <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-8 h-7  shrink-0 mt-0.5">02</span>
+          <span className="inline-flex items-start justify-center bg-[#3d3a00] text-[#FFEC40] font-mono font-medium text-sm w-8 h-7 shrink-0 mt-0.5">02</span>
           <div>
             <h4 className="font-sans font-medium text-black/40 text-sm mb-3">Somos buenos identificando equipos</h4>
             <div className="space-y-3">
@@ -413,7 +413,7 @@ export function SectionEstrategia() {
                 Esta experiencia debe contemplar poder analizar equipos con un fuerte componente técnico. ¿Cómo saber si el fundador es o no buen desarrollador o si será capaz de construir el producto? ¿Tenemos cómo asegurarnos que la startup logrará atraer al mejor talento tech necesario para escalar?
               </p>
               <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-                Desde el 2020 hemos revisado <span className="bg-[#FFEC40] px-1">9.549 postulaciones</span>, conducido <span className="bg-[#FFEC40] px-1">1.697 entrevistas</span> e invertido en <span className="bg-[#FFEC40] px-1">121 startups</span>. Semestre a semestre hemos ido desarrollando el músculo de ir identificando características que aumentan las posibilidades de que un equipo logre armar una startup exitosa.
+                Desde el 2020 hemos revisado <span className="bg-[#3d3a00] text-[#FFEC40] px-1">9.549 postulaciones</span>, conducido <span className="bg-[#3d3a00] text-[#FFEC40] px-1">1.697 entrevistas</span> e invertido en <span className="bg-[#3d3a00] text-[#FFEC40] px-1">121 startups</span>. Semestre a semestre hemos ido desarrollando el músculo de ir identificando características que aumentan las posibilidades de que un equipo logre armar una startup exitosa.
               </p>
             </div>
           </div>
@@ -421,7 +421,7 @@ export function SectionEstrategia() {
 
         {/* Mitigación 3 */}
         <div className="flex gap-6">
-          <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-8 h-7  shrink-0 mt-0.5">03</span>
+          <span className="inline-flex items-start justify-center bg-[#3d3a00] text-[#FFEC40] font-mono font-medium text-sm w-8 h-7 shrink-0 mt-0.5">03</span>
           <div>
             <h4 className="font-sans font-medium text-black/40 text-sm mb-3">Portafolios más grandes</h4>
             <div className="space-y-3">
@@ -435,7 +435,7 @@ export function SectionEstrategia() {
                 En nuestro caso, dado que invertimos tan temprano y no hay métricas que podamos analizar, debemos aceptar que la tasa de fracaso va a ser mayor y construir un portafolio con eso en mente.
               </p>
               <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-                Tenemos más posibilidades de estar en 2 o 3 startups excepcionales entre <span className="bg-[#FFEC40] px-1">40–45 inversiones</span> que entre 10.
+                Tenemos más posibilidades de estar en 2 o 3 startups excepcionales entre <span className="bg-[#3d3a00] text-[#FFEC40] px-1">40–45 inversiones</span> que entre 10.
               </p>
               <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
                 En fondos Pre Seed, la norma son portafolios grandes.
@@ -446,7 +446,7 @@ export function SectionEstrategia() {
 
         {/* Mitigación 4 */}
         <div className="flex gap-6">
-          <span className="inline-flex items-start justify-center bg-[#FFEC40] text-black font-mono font-medium text-sm w-8 h-7  shrink-0 mt-0.5">04</span>
+          <span className="inline-flex items-start justify-center bg-[#3d3a00] text-[#FFEC40] font-mono font-medium text-sm w-8 h-7 shrink-0 mt-0.5">04</span>
           <div>
             <h4 className="font-sans font-medium text-black/40 text-sm mb-3">Aumentar las posibilidades de éxito</h4>
             <div className="space-y-3">

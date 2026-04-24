@@ -11,7 +11,7 @@ export function SectionKalio() {
 
       <div className="space-y-4 mb-10">
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Kalio es el <span className="bg-[#FFEC40] px-1">centro de la operación de Platanus</span>. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos.
+          Kalio es el <span className="bg-[#3d3a00] text-[#FFEC40] px-1">centro de la operación de Platanus</span>. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Así como creemos que un cofundador técnico es esencial para que las startups puedan construir su software y escalar, nuestra operación funciona de la misma manera: gracias al software podemos escalar.
@@ -79,7 +79,7 @@ export function SectionKalio() {
           </figure>
           <Callout>
             <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-              Como parte de Kalio tenemos a <span className="bg-[#FFEC40] px-1">Frank</span>, un bot conectado a Slack que nos permite realizar seguimiento detallado y nos notifica los cambios de cada aplicación. Evita que olvidemos postulaciones y mantiene al equipo al tanto de las etapas.
+              Como parte de Kalio tenemos a <span className="bg-[#3d3a00] text-[#FFEC40] px-1">Frank</span>, un bot conectado a Slack que nos permite realizar seguimiento detallado y nos notifica los cambios de cada aplicación. Evita que olvidemos postulaciones y mantiene al equipo al tanto de las etapas.
             </p>
           </Callout>
         </div>
