@@ -97,11 +97,11 @@ export function SectionComputin() {
       <div className="space-y-20">
         {reasons.map((r, i) => (
           <div key={r.title} className="flex gap-6">
-            <span className="inline-flex items-start justify-center bg-[#3d3a00] text-[#FFEC40] font-mono font-medium text-sm w-8 h-fit shrink-0 mt-0.5">
+            <span className="inline-flex items-center justify-center bg-[#474402] text-[#FFEC40] font-mono font-medium text-sm w-8 h-fit shrink-0 mt-0.5">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <div>
-              <h4 className="font-sans font-medium text-black/40 text-sm mb-3">{r.title}</h4>
+            <div className="mt-0.5">
+              <h4 className="font-mono uppercase font-medium text-black text-sm mb-3">{r.title}</h4>
               <div className="space-y-3">
                 {r.paragraphs.map((p, j) => (
                   <p key={j} className="font-sans font-medium text-black/60 text-sm leading-relaxed">{p}</p>

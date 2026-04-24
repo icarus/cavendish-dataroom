@@ -72,7 +72,7 @@ export function SectionProceso() {
           Como invertimos tan temprano, nos enfocamos mayoritariamente en encontrar características del equipo que creemos que son necesarias para llevar adelante su idea y convertir su negocio en algo gigante.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Este proceso es una parte clave de nuestra operación. Desde el 2020 hemos recibido más de <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">9.549 aplicaciones</span> y seleccionado <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">121 startups</span> a través de este proceso.
+          Este proceso es una parte clave de nuestra operación. Desde el 2020 hemos recibido más de <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">9.549 aplicaciones</span> y seleccionado <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">121 startups</span> a través de este proceso.
         </p>
       </div>
 
@@ -97,7 +97,7 @@ export function SectionProceso() {
           Hemos revisado todas esas aplicaciones y tenido más de 1.600 entrevistas con startups en las distintas fases. Esto ha decantado en que nuestra tasa de aceptación es de alrededor del 1%.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Desde que una startup es llamada a entrevista, apuntamos a que reciba una respuesta en <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">15 días</span>, manteniendo flexibilidad en caso de necesitar más información para mantener la calidad de la selección.
+          Desde que una startup es llamada a entrevista, apuntamos a que reciba una respuesta en <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">15 días</span>, manteniendo flexibilidad en caso de necesitar más información para mantener la calidad de la selección.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Nuestro proceso consta de algunas etapas asíncronas y síncronas, online y presenciales. En cada una de ellas filtramos el funnel para llegar a la selección final.
@@ -146,7 +146,7 @@ export function SectionProceso() {
 
               <Callout>
                 <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-                  Desde Q3 2023, además del formulario les pedimos a las startups que realicen una <span className="bg-[#3d3a00] text-[#FFEC40] px-1">entrevista automatizada</span> como paso previo.
+                  Desde Q3 2023, además del formulario les pedimos a las startups que realicen una <span className="bg-[#474402] text-[#FFEC40] px-1">entrevista automatizada</span> como paso previo.
                 </p>
               </Callout>
 
@@ -242,7 +242,7 @@ export function SectionProceso() {
               </figure>
               <Callout>
                 <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-                  Utilizamos un modelo de <span className="bg-[#3d3a00] text-[#FFEC40] px-1">convicción fuerte</span>: al menos uno de los partners debe votar "Sí fuerte" para que continúen en el proceso. Históricamente hemos entrevistado en esta primera etapa a alrededor del <span className="bg-[#3d3a00] text-[#FFEC40] px-1">14%</span> de las startups que aplican.
+                  Utilizamos un modelo de <span className="bg-[#474402] text-[#FFEC40] px-1">convicción fuerte</span>: al menos uno de los partners debe votar "Sí fuerte" para que continúen en el proceso. Históricamente hemos entrevistado en esta primera etapa a alrededor del <span className="bg-[#474402] text-[#FFEC40] px-1">14%</span> de las startups que aplican.
                 </p>
               </Callout>
             </div>
@@ -268,7 +268,7 @@ export function SectionProceso() {
               </p>
               <Callout>
                 <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-                  Al igual que en la primera entrevista, al menos uno de los partners debe votar "sí fuerte" para pasar a la siguiente etapa. Históricamente hemos entrevistado en esta segunda etapa a alrededor del <span className="bg-[#3d3a00] text-[#FFEC40] px-1">4%</span> de las startups que aplican.
+                  Al igual que en la primera entrevista, al menos uno de los partners debe votar "sí fuerte" para pasar a la siguiente etapa. Históricamente hemos entrevistado en esta segunda etapa a alrededor del <span className="bg-[#474402] text-[#FFEC40] px-1">4%</span> de las startups que aplican.
                 </p>
               </Callout>
             </div>

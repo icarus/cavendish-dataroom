@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "./callout";
 
@@ -82,7 +83,7 @@ export function SectionPortafolio() {
             details: [
               "Rondas de entre $50k y $300k con valorizaciones bajas de $1M a $4M.",
               "Tasa de graduación a una serie Seed: 30–35%.",
-              "Ejemplos en Platanus: Toku, Fintoc, Horizon.",
+              <>Ejemplos en Platanus: <Image src="/avatars/toku.png" alt="Toku" width={16} height={16} className="inline-block align-text-bottom" /> Toku, <Image src="/avatars/fintoc.png" alt="Fintoc" width={16} height={16} className="inline-block align-text-bottom" /> Fintoc, <Image src="/avatars/horizon-ai.png" alt="Horizon" width={16} height={16} className="inline-block align-text-bottom" /> Horizon.</>,
             ],
           },
           {
@@ -90,7 +91,7 @@ export function SectionPortafolio() {
             desc: "Fundadores que tienen más experiencia en startups y venture capital; con conocimientos y conexiones para levantar una ronda inicial. Tienen más claridad respecto a lo que quieren hacer y el mercado donde se están metiendo.",
             details: [
               "Tasa de graduación a una serie Seed: 35–45%.",
-              "Ejemplos en Platanus: Grupalia, Shinkansen, Tax Flow.",
+              <>Ejemplos en Platanus: <Image src="/avatars/grupalia.png" alt="Grupalia" width={16} height={16} className="inline-block align-text-bottom" /> Grupalia, <Image src="/avatars/shinkansen.png" alt="Shinkansen" width={16} height={16} className="inline-block align-text-bottom" /> Shinkansen, Tax Flow.</>,
             ],
           },
           {
@@ -107,8 +108,8 @@ export function SectionPortafolio() {
             <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-2">{type.name}</h4>
             <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-3">{type.desc}</p>
             <ul className="list-disc list-outside pl-5 space-y-2">
-              {type.details.map((d) => (
-                <li key={d} className="font-sans font-medium text-black/60 text-sm leading-relaxed">{d}</li>
+              {type.details.map((d, i) => (
+                <li key={i} className="font-sans font-medium text-black/60 text-sm leading-relaxed">{d}</li>
               ))}
             </ul>
           </div>
@@ -189,7 +190,7 @@ export function SectionPortafolio() {
         Valorizaciones al momento del exit
       </h3>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-10">
-        Nuestra estrategia es vender nuestra participación en las rondas de financiamiento de nuestras startups. Para los cálculos, utilizamos un rango de valorizaciones al momento del exit de entre <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">$250M a $500M</span>. Cualquier exit con un valor superior mejorará las métricas del fondo sustancialmente.
+        Nuestra estrategia es vender nuestra participación en las rondas de financiamiento de nuestras startups. Para los cálculos, utilizamos un rango de valorizaciones al momento del exit de entre <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">$250M a $500M</span>. Cualquier exit con un valor superior mejorará las métricas del fondo sustancialmente.
       </p>
 
       {/* Portafolio esperado */}
@@ -206,7 +207,7 @@ export function SectionPortafolio() {
           El ticket estándar del programa de aceleración busca atraer y seleccionar a los mejores de las rondas Low Pre Seed y alguno que otro High Pre Seed. Es este ticket con este porcentaje de participación el que nos permitirá obtener startups fund returners que retornen 75x la inversión inicial.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Destinaremos <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">$6,400,000</span> para estas inversiones, <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">32 nuevas startups</span> bajo los términos fijos de $200.000 por un 7% de participación.
+          Destinaremos <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">$6,400,000</span> para estas inversiones, <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">32 nuevas startups</span> bajo los términos fijos de $200.000 por un 7% de participación.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Estas inversiones se distribuyen en generaciones del programa, una generación cada semestre.
@@ -298,7 +299,7 @@ export function SectionPortafolio() {
       </h3>
       <div className="space-y-4 mb-6">
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Destinaremos <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">$1,800,000</span> para estas inversiones, 9 nuevas startups si pensamos en tickets de $200k.
+          Destinaremos <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">$1,800,000</span> para estas inversiones, 9 nuevas startups si pensamos en tickets de $200k.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">Las inversiones oportunísticas están destinadas a:</p>
         <ul className="list-disc list-outside pl-5 space-y-2">
@@ -363,7 +364,7 @@ export function SectionPortafolio() {
       </h3>
       <div className="space-y-4 mb-6">
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Destinaremos <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">$3,600,000</span> para follow on en startups del portafolio que estén levantando su Serie Seed.
+          Destinaremos <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">$3,600,000</span> para follow on en startups del portafolio que estén levantando su Serie Seed.
         </p>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Dado que las startups en una etapa Seed siguen en etapas muy iniciales y el análisis de si invertir o no sigue pasando más por el equipo que por la tracción de la empresa, podemos invertir en estas rondas si conocemos muy bien a los fundadores, algo que logramos si ya son parte de nuestra comunidad.

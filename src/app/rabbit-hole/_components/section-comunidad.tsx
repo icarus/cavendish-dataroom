@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Badge } from "@/components/ui/badge";
 import { Callout } from "./callout";
 
@@ -104,7 +105,7 @@ export function SectionComunidad() {
       </p>
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          El valor agregado que aporta una buena comunidad permite invertir a <span className="bg-[#3d3a00] text-[#FFEC40] px-1">menores valorizaciones que el mercado</span>.
+          El valor agregado que aporta una buena comunidad permite invertir a <span className="bg-[#474402] text-[#FFEC40] px-1">menores valorizaciones que el mercado</span>.
         </p>
       </Callout>
 
@@ -130,7 +131,7 @@ export function SectionComunidad() {
         Desde que partimos el 2020 hemos sido conscientes de que cada inversión eran fundadores sumados a la comunidad. En nuestra decisión tomamos en cuenta que sean excepcionales y un aporte para Platanus.
       </p>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
-        A lo largo de estos años hemos invertido en <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">121 startups</span> con más de <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">350 fundadores</span> repartidos en <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">+10 países</span> de América.
+        A lo largo de estos años hemos invertido en <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">121 startups</span> con más de <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">350 fundadores</span> repartidos en <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">+10 países</span> de América.
       </p>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-10">
         Desde el 2024 la comunidad comienza a tomar una inercia propia y el efecto flywheel se hace presente. Los fundadores comparten constantemente datos, ideas, experiencias con inversionistas y clientes. Los trabajadores de startups del portfolio han comenzado a formar otras startups a las que les hemos invertido. Fundadores externos comienzan a buscar la inversión de Platanus para acceder a su comunidad, dispuestos a bajar su valorización para que seamos parte de su cap table.
@@ -161,7 +162,7 @@ export function SectionComunidad() {
       </p>
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Cada startup comienza a definirse como <span className="bg-[#3d3a00] text-[#FFEC40] px-1">"soy parte de la generación X de Platanus"</span>, en vez de "me invirtió tal y tal fondo." Esta es una lealtad que no vemos hacia otros fondos.
+          Cada startup comienza a definirse como <span className="bg-[#474402] text-[#FFEC40] px-1">"soy parte de la generación X de Platanus"</span>, en vez de "me invirtió tal y tal fondo." Esta es una lealtad que no vemos hacia otros fondos.
         </p>
       </Callout>
 
@@ -182,7 +183,7 @@ export function SectionComunidad() {
         Las mejores conversaciones se dan en contextos donde las personas pueden interactuar frente a frente.
       </p>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-6">
-        Para fomentar este ambiente, ofrecemos espacios físicos en Santiago y (prontamente) Ciudad de México. En CDMX, teníamos una casa oficina llamada <span className="bg-[#3d3a00] text-[#FFEC40] px-1  text-black">La Banana House</span>, donde los fundadores de otras regiones de Latam pueden alojarse gratuitamente mientras se establecen en México. La idea es volver a abrir esa Banana House a finales del 2026, principios 2027 y explorar abrir Banana Houses en otras ciudades.
+        Para fomentar este ambiente, ofrecemos espacios físicos en Santiago y (prontamente) Ciudad de México. En CDMX, teníamos una casa oficina llamada <span className="bg-[#474402] text-[#FFEC40] px-1  text-black">La Banana House</span>, donde los fundadores de otras regiones de Latam pueden alojarse gratuitamente mientras se establecen en México. La idea es volver a abrir esa Banana House a finales del 2026, principios 2027 y explorar abrir Banana Houses en otras ciudades.
       </p>
 
       <div className="grid grid-cols-2 gap-3 mb-3">
@@ -253,20 +254,20 @@ export function SectionComunidad() {
 
       {/* Ejemplo Bemmbo */}
       <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
-        Ejemplo de Bemmbo
+        Ejemplo de <Image src="/avatars/bemmbo.webp" alt="Bemmbo" width={20} height={20} className="inline-block align-text-bottom" /> Bemmbo
       </h3>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
-        La startup Bemmbo puede ejemplificar lo que se logra con una comunidad.
+        La startup <Image src="/avatars/bemmbo.webp" alt="Bemmbo" width={20} height={20} className="inline-block align-text-bottom" /> Bemmbo puede ejemplificar lo que se logra con una comunidad.
       </p>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
-        Rodrigo y Cristóbal se conocieron en un Build Sprint de Platanus, un programa de pre-aceleración que nos genera buen deal flow. Trabajando juntos en el Build Sprint, decidieron formar Bemmbo.
+        Rodrigo y Cristóbal se conocieron en un Build Sprint de Platanus, un programa de pre-aceleración que nos genera buen deal flow. Trabajando juntos en el Build Sprint, decidieron formar <Image src="/avatars/bemmbo.webp" alt="Bemmbo" width={20} height={20} className="inline-block align-text-bottom" /> Bemmbo.
       </p>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
         Dado que veíamos sus avances en el Build Sprint, decidimos invertirles a principios del 2022 y pasaron por el programa de aceleración. Jaime Arrieta, el CEO de Buk, fue mentor de ellos. Jaime vio algo en los fundadores y decidió seguirles la pista, continuando el apoyo y mentoría aún después de que terminara el programa.
       </p>
       <Callout>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
-          Tres años y medio después, <span className="bg-[#3d3a00] text-[#FFEC40] px-1">Buk adquirió Bemmbo</span>, generando un retorno para Platanus. Un caso perfecto de cómo funciona la comunidad.
+          Tres años y medio después, <span className="bg-[#474402] text-[#FFEC40] px-1">Buk adquirió <Image src="/avatars/bemmbo.webp" alt="Bemmbo" width={16} height={16} className="inline-block align-text-bottom" /> Bemmbo</span>, generando un retorno para Platanus. Un caso perfecto de cómo funciona la comunidad.
         </p>
       </Callout>
     </section>
