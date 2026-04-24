@@ -71,13 +71,49 @@ export default function RabbitHolePage() {
 
   return (
     <div className="min-h-screen bg-white relative">
-      <Link
-        href="/"
-        className="hidden lg:flex fixed top-8 left-8 items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider hover:text-black transition-colors z-10"
-      >
-        <ArrowLeft size={14} />
-        Volver
-      </Link>
+      <aside className="hidden lg:flex flex-col fixed top-8 left-8 z-10">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider hover:text-black transition-colors mb-6"
+        >
+          <ArrowLeft size={14} />
+          Volver
+        </Link>
+        <nav className="relative">
+          <AnimatePresence>
+            {activeIndex >= 0 && (
+              <motion.div
+                className="absolute left-0 w-0.5 bg-black/80 rounded-full"
+                initial={{ opacity: 0 }}
+                animate={{
+                  opacity: 1,
+                  top: indicatorStyle.top,
+                  height: indicatorStyle.height,
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              />
+            )}
+          </AnimatePresence>
+          {NAV_ITEMS.map((item, i) => (
+            <motion.button
+              key={item.id}
+              ref={(el) => {
+                if (el) navRefs.current.set(item.id, el);
+              }}
+              onClick={() => scrollTo(item.id)}
+              initial={{ opacity: 0, x: 6 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
+              className={cn(
+                "block w-full text-left font-mono font-medium text-sm leading-snug py-1 px-3 transition-colors cursor-pointer",
+                activeId === item.id ? "text-black" : "text-black/30 hover:text-black/60"
+              )}
+            >
+              {item.label}
+            </motion.button>
+          ))}
+        </nav>
+      </aside>
 
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pb-32">
         <motion.div
@@ -148,42 +184,6 @@ export default function RabbitHolePage() {
         <SectionReveal><Terminos /></SectionReveal>
       </main>
 
-      <aside className="hidden lg:block fixed top-8 right-[max(0px,calc((100vw-768px)/2-280px))] w-52 px-4">
-        <nav className="relative">
-          <AnimatePresence>
-            {activeIndex >= 0 && (
-              <motion.div
-                className="absolute left-0 w-0.5 bg-black/80 rounded-full"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  top: indicatorStyle.top,
-                  height: indicatorStyle.height,
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              />
-            )}
-          </AnimatePresence>
-          {NAV_ITEMS.map((item, i) => (
-            <motion.button
-              key={item.id}
-              ref={(el) => {
-                if (el) navRefs.current.set(item.id, el);
-              }}
-              onClick={() => scrollTo(item.id)}
-              initial={{ opacity: 0, x: 6 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
-              className={cn(
-                "uppercase block w-full text-left font-mono font-medium text-xs leading-snug py-1 px-2 transition-colors cursor-pointer",
-                activeId === item.id ? "text-black" : "text-black/30 hover:text-black/60"
-              )}
-            >
-              {item.label}
-            </motion.button>
-          ))}
-        </nav>
-      </aside>
     </div>
   );
 }
