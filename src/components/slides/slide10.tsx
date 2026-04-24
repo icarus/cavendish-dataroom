@@ -55,8 +55,8 @@ export function Slide10({ active }: P) {
               }}
               transition={{
                 flex: SPRING,
-                opacity: { duration: 0.2 },
-                y: { duration: 0.3, delay: on ? 0.12 + i * 0.1 : 0 },
+                opacity: { duration: 0.6, delay: on ? 0.08 + i * 0.15 : 0 },
+                y: { duration: 0.6, ease: "easeOut", delay: on ? 0.08 + i * 0.15 : 0 },
               }}
               onMouseEnter={() => setHovered(i)}
               onMouseLeave={() => setHovered(null)}
