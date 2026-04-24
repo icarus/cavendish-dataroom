@@ -68,6 +68,14 @@ export default function RabbitHolePage() {
 
   return (
     <div className="min-h-screen bg-white relative">
+      <Link
+        href="/"
+        className="hidden lg:flex fixed top-8 left-8 items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider hover:text-black transition-colors z-10"
+      >
+        <ArrowLeft size={14} />
+        Volver
+      </Link>
+
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pb-32">
         <motion.div
           className="pt-16 pb-12 border-b border-black/10 mb-4"
@@ -105,15 +113,7 @@ export default function RabbitHolePage() {
         <SectionReveal><SectionTerminos /></SectionReveal>
       </main>
 
-      <aside className="hidden lg:block fixed top-0 right-[max(0px,calc((100vw-768px)/2-280px))] h-screen w-52 overflow-y-auto py-8 px-4">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 px-2 hover:text-black transition-colors"
-        >
-          <ArrowLeft size={14} />
-          Volver
-        </Link>
-        <p className="font-mono font-medium text-black/30 text-xs uppercase tracking-wider mb-4 px-2">Contenido</p>
+      <aside className="hidden lg:flex fixed top-0 right-[max(0px,calc((100vw-768px)/2-280px))] h-screen w-52 items-center px-4">
         <nav className="relative">
           <AnimatePresence>
             {activeIndex >= 0 && (
