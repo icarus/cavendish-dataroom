@@ -1,0 +1,187 @@
+import { Section, Callout, Hl, H3, P, Figure, Step, StepList, DataTable, Spacer, Co } from '../_components/mdx-components'
+import { Badge } from '@/components/ui/badge'
+import { ValorizacionesChart, RetornosTable } from '../_components/estrategia-charts'
+
+<Section id="estrategia" badge="04" title="Estrategia de inversión">
+
+<Callout>
+<P>En Platanus invertimos en las etapas iniciales de startups tecnológicas de Latinoamérica que cuenten con un fundador tech.</P>
+</Callout>
+
+<div className="space-y-4 mt-6 mb-10">
+<P>En la sección diagnóstico inicial hablamos de los esfuerzos de Platanus para incentivar y apoyar la creación de más startups en Latam lideradas por personas excepcionales y adictas a la tecnología.</P>
+<P>Aunque nuestro foco sea ese, no somos una fundación u organismo de beneficencia.</P>
+<P>El objetivo económico detrás de Platanus es simple: obtener de manera consistente retornos extraordinarios que por lo general solo pueden darse en fondos de venture capital.</P>
+<P>La complejidad en esta "simpleza" radica principalmente en la estrategia de inversión y la región donde se enmarca esa estrategia.</P>
+<P>Dos de las grandes críticas que se hacen al Venture Capital en Latinoamérica es la falta de liquidez y, en eventos de exits, las bajas valorizaciones de venta o adquisición. Esto es cierto, pero solo en la medida en como se ha abordado el VC en Latam.</P>
+<P>Casi todos los fondos en Latam quieren tener retornos de VC, tomando riesgos de PE y asumiendo valorizaciones de USA al momento del exit.</P>
+<P>La forma y la etapa en la que incentivamos, invertimos y apoyamos a las startups es justamente lo que nos permite tener retornos de VC. Es una forma que acepta el riesgo que conlleva el *Adventure* Capital y ajusta la estrategia de inversión a la realidad y valorizaciones de Latam.</P>
+</div>
+
+<H3>¿Cómo se compone un fondo exitoso de Venture Capital?</H3>
+
+<div className="space-y-4 mb-6">
+<P>Los fondos de VC buscan dar a sus inversionistas 3x el capital invertido. Ese es el piso. La realidad es que pocos fondos logran ese retorno y eso se debe principalmente al Power Law: dos o tres startups concentran todos los retornos.</P>
+<P>Es más fácil de visualizar si partimos analizando como se compone el portafolio de un VC que logre el 3x.</P>
+<P>Utilizando la data histórica de Stepstone, un fondo excepcional de VC se compone del siguiente portafolio:</P>
+</div>
+
+<div className="overflow-x-auto mb-6">
+<table className="w-full border-collapse">
+<thead>
+<tr className="border-b border-black/10">
+<th className="text-left font-mono font-medium text-black text-sm uppercase tracking-wider pb-3 pr-8">Retorno</th>
+<th className="text-left font-mono font-medium text-black text-sm uppercase tracking-wider pb-3">% del portafolio</th>
+</tr>
+</thead>
+<tbody>
+<tr className="border-b border-black/10">
+<td className="font-sans font-medium text-sm py-3 pr-8 text-black">0x</td>
+<td className="font-sans font-medium text-sm py-3 text-black">22%</td>
+</tr>
+<tr className="border-b border-black/10">
+<td className="font-sans font-medium text-sm py-3 pr-8 text-black">0x - 0.99x</td>
+<td className="font-sans font-medium text-sm py-3 text-black">27%</td>
+</tr>
+<tr className="border-b border-black/10">
+<td className="font-sans font-medium text-sm py-3 pr-8 text-black">1x - 3x</td>
+<td className="font-sans font-medium text-sm py-3 text-black">23%</td>
+</tr>
+<tr className="border-b border-black/10">
+<td className="font-sans font-medium text-sm py-3 pr-8 text-black">3x - 10x</td>
+<td className="font-sans font-medium text-sm py-3 text-black">18%</td>
+</tr>
+<tr className="border-b border-black/10">
+<td className="font-sans font-medium text-sm py-3 pr-8"><Badge>10x+</Badge></td>
+<td className="font-sans font-medium text-sm py-3"><Badge>10%</Badge></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<Callout>
+<P>En los mejores fondos casi un <Hl>95% de los retornos</Hl> se compone de ese <Hl>10% del portafolio</Hl> que retorna en promedio <Hl>60x</Hl>. Sin esas startups ganadoras no se llega al 3x tan anhelado.</P>
+</Callout>
+
+<Figure src="/stepstonedata.png" alt="Stepstone Historical Data - What makes a Top VC fund" caption="Data de Stepstone, gráfico de Altimeter." />
+
+<Spacer />
+
+<H3>Un desafío posible</H3>
+
+<div className="space-y-4 mb-6">
+<P>Teniendo la claridad de como debería ser un portafolio exitoso surgen dos preguntas:</P>
+<ol className="list-decimal list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Es posible en general Latam que las startups retornen múltiplos de 20x, 50x o 100x?</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Pueden nuestros fondos llegar a las características mostradas por los portafolios de fondos exitosos?</li>
+</ol>
+<P>No es ningún secreto que las valorizaciones en la región se quedan más en los cientos que en los miles de millones. Además, las adquisiciones y salidas a bolsa son una fracción de lo que pasa en USA.</P>
+<P>Ante esta situación, la única forma de llegar a esos 60x es entrar a la valorización más baja de una startup, lo más cercana a sus inicios.</P>
+<P>Ejemplo. Para Platanus Cavendish, con una inversión de $200k, un fund returner debe retornar <Hl>75x</Hl> la inversión inicial.</P>
+<P>Para saber si podemos llegar a ese múltiplo debemos saber el precio de entrada y de salida, además de las potenciales diluciones que existirán en el camino.</P>
+
+<ValorizacionesChart />
+
+<P>Las diluciones estándar para los inversionistas serían de:</P>
+<ul className="list-disc list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">25% en la Serie A.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">20% en la Serie B.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">13% en la Serie C.</li>
+</ul>
+<P>Estos serían los retornos de una inversión de $200k dependiendo del precio de entrada y el de exit, considerando las tres diluciones anteriores.</P>
+</div>
+
+<RetornosTable />
+
+<Callout>
+<P>Salvo nuestra valorización estándar de <Hl>$200k por un 7%</Hl>, ninguna otra inversión logra llegar a un múltiplo de retorno de 60x.</P>
+</Callout>
+
+<div className="space-y-4 mt-6 mb-10">
+<P>El análisis debe partir de la base que en Latam una startup exitosa se va a vender en esos precios. Si después termina siendo un unicornio, excelente, pero la estrategia debe funcionar con montos menores.</P>
+<P>A valorizaciones de entrada de $2-5 millones la estrategia de inversión tiene sentido. Es la única forma de llegar a 75x con precios aterrizados.</P>
+<P>Actualmente, las únicas startups con excelentes fundadores que rondan esas valorizaciones son las que están partiendo y levantando sus primeros tickets de inversión, la comúnmente llamada ronda Pre Seed.</P>
+<P>Para invertir tan temprano hay que tomar el riesgo asociado. De ahí viene que para obtener en Latam retornos de VC, hay que actuar realmente como un VC y no como PE. Se debe apostar en equipos lo antes posible y asumir que un alto porcentaje va a fracasar, pero que este fracaso se verá compensado con el retorno espectacular de un par de startups.</P>
+<P>En la región, los fondos de VC tienden a ser más conservadores. Prefieren esperar antes de invertir, ver que la startup tenga tracción y que sea una apuesta más segura. Cuando pasa eso, las mejores startups ya están levantando a valorizaciones de entre $10-25 millones.</P>
+<P>Bajo esas valorizaciones de entrada podrían lograr retornos de 27x siempre y cuando el exit sea de $500 millones o más. De ahí que su estrategia se basa en valorizaciones de USA.</P>
+<P>Otra alternativa para lograr buenos retornos entrando más tarde (asumiendo valorizaciones de exit de Latam) es compensar los retornos por inversión más bajos con una menor tasa de fracaso del portafolio. Apostar de forma más segura por los 2x-5x. Es válido, pero eso obliga que las decisiones sean más conservadoras, que el pensamiento se vuelva más de Private Equity y se entra en un loop donde el capital de riesgo deja de ser riesgoso y los retornos dejan de ser de Venture Capital.</P>
+</div>
+
+<H3>Buscando el fund returner</H3>
+
+<div className="space-y-4 mb-6">
+<P>Podemos en Platanus llegar a esos 75x? Veamos un caso real:</P>
+<P>Tomemos como ejemplo <Co name="toku" /> , startup invertida por Platanus el primer semestre del 2021 que a la fecha ya ha levantado su Serie A y B.</P>
+</div>
+
+<Callout>
+<ul className="list-disc list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Si entrará en este nuevo fondo, recibiría una inversión inicial de $200k por un 7% de participación.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tendríamos una dilución en la Serie A de 25% y en la Serie B de 30%.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Tras la Serie B, nos quedaríamos con un 3,675%.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">De acuerdo a su última valorización, el valor actual de la inversión sería de $9,187,500 (45.9x el monto inicial invertido).</li>
+</ul>
+<P className="mt-3">Si suponemos que en 3-4 años levantará una ronda a 2.5x de valorización y consideramos una dilución de 25%, el potencial exit sería de <Hl>$17,226,562 - un fund returner de 86x</Hl>.</P>
+</Callout>
+
+<div className="space-y-4 mt-6 mb-10">
+<P>Para el resto de las startups que formarían ese 10% de 10x+, al invertir en Pre Seed, con la inversión estándar de este fondo y considerando diluciones estándar, toda startup que levante una ronda a una valorización de al menos $40 millones post money es un 10x de la inversión inicial.</P>
+<P>Y el resto del portafolio?</P>
+<P>Dejando de lado las que fracasan o retornan menos de 1x, en un fondo exitoso el 41% de las startups deben retornar entre 1x-10x.</P>
+<P>Nuevamente, al entrar tan temprano, somos de los únicos que podemos sacar un beneficio interesante en startups que se vendan a relativamente bajos montos.</P>
+<P><Co name="bemmbo" /> , por ejemplo, se vendió el 2025 a Buk por $6 millones.</P>
+<P>En esta venta, los únicos inversionistas que lograron retornos fueron los ángeles que entraron primero y nosotros, que obtuvimos 3.9x. Los demás obtuvieron retornos cercanos a 1x o directamente menores si consideramos la inflación.</P>
+<P>Todo gracias a haber entrado antes que el resto de los fondos de Latam.</P>
+</div>
+
+<H3>Mitigar el riesgo asociado a invertir en Pre Seed</H3>
+
+<div className="space-y-4 mb-8">
+<P>Los fondos tradicionales de Latam sacrifican mayores retornos al evitar el riesgo de invertir en Pre Seed.</P>
+<P>En Platanus preferimos buscar los mayores retornos, utilizando otras estrategias para mitigar lo que conlleva invertir tan temprano.</P>
+</div>
+
+<StepList>
+
+<Step n="01" title="Nos aseguramos que haya un tech en el equipo">
+<P>Como vimos antes, nuestra tesis es invertir en equipos que incluyan al menos un cofundador técnico. Creemos que esto da a las startups una ventaja competitiva, especialmente en sus primeras etapas, reduciendo el riesgo de nuestra inversión.</P>
+<P>Ventajas de tener un cofundador técnico:</P>
+<ol className="list-decimal list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed"><span className="text-black">Expertise interno:</span> En una empresa de tecnología, es crucial contar con un experto que pueda crear y adaptar rápidamente el producto sin depender de externos, asegurando el avance continuo y aprovechando los últimos avances tecnológicos.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed"><span className="text-black">Desarrollo continuo:</span> Aunque un producto pueda parecer terminado externamente, el desarrollo técnico es constante en una startup, con nuevas funcionalidades y optimizaciones necesarias que un cofundador técnico puede anticipar y gestionar.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed"><span className="text-black">Atracción de talento:</span> A medida que las startups crecen, necesitan más talento técnico. Tener un cofundador bien valorado en el mercado facilita la atracción y retención de este talento, escaso y competitivo.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed"><span className="text-black">Motivación y compromiso:</span> Un cofundador técnico esta profundamente comprometido con el éxito del negocio, dedicando tiempo y esfuerzo a la tecnología, el producto y el crecimiento de la empresa, lo que impulsa el avance y la innovación más que un empleado común.</li>
+</ol>
+</Step>
+
+<Step n="02" title="Somos buenos identificando equipos">
+<P>En etapas iniciales hay poca o nada de tracción del negocio. Las startups justamente están levantando capital para echar a andar sus productos y probarlos con clientes. Están muy lejos de tener PMF.</P>
+<P>Por lo tanto lo que más debe analizarse son los fundadores. Invertir en etapas iniciales es invertir principalmente en equipos y eso requiere un análisis y experiencia de selección distinto a un fondo de Series A o B.</P>
+<P>Esta experiencia debe contemplar poder analizar equipos con un fuerte componente técnico. Como saber si el fundador es o no buen desarrollador o si será capaz de construir el producto? Tenemos como asegurarnos que la startup logrará atraer al mejor talento tech necesario para escalar?</P>
+<P>Desde el 2020 hemos revisado <Hl>9.549 postulaciones</Hl>, conducido <Hl>1.697 entrevistas</Hl> e invertido en <Hl>121 startups</Hl>. Semestre a semestre hemos ido desarrollando el músculo de ir identificando características que aumentan las posibilidades de que un equipo logre armar una startup exitosa.</P>
+</Step>
+
+<Step n="03" title="Portafolios más grandes">
+<P>La estrategia tradicional de los fondos es tener portafolios acotados, de entre 10-20 startups, y luego hacen follow on en las startups más exitosas para mantener una participación relevante al momento del exit.</P>
+<P>En un fondo Pre Seed un portafolio de ese tamaño es peligroso. En estos casos, un 10% sería 1 o 2 startups. Si no logras invertir en ellas, tu fondo no tiene la posibilidad de ser exitoso. Nuevamente esto lleva a que el fondo sea más conservador en sus decisiones y evite los fracasos. Necesitan ver tracción del negocio para dar el paso de invertir.</P>
+<P>En nuestro caso, dado que invertimos tan temprano y no hay métricas que podamos analizar, debemos aceptar que la tasa de fracaso va a ser mayor y construir un portafolio con eso en mente.</P>
+<P>Tenemos más posibilidades de estar en 2 o 3 startups excepcionales entre <Hl>40-45 inversiones</Hl> que entre 10.</P>
+<P>En fondos Pre Seed, la norma son portafolios grandes.</P>
+</Step>
+
+<Step n="04" title="Aumentar las posibilidades de éxito">
+<P>Por último, atendiendo a que estamos invirtiendo en la primera etapa de las empresas, todo nuestro apoyo debe estar enfocado en que logren armar un negocio que se mantenga en el tiempo y que eventualmente escale a ritmo acelerado.</P>
+<P>El ticket estándar de $200k esta diseñado para darles la oportunidad de encontrar algo interesante. En nuestra experiencia, las startups suelen demorarse entre 12 y 24 meses en encontrar PMF. Este ticket les permite mantenerse por ese tiempo sin necesidad de buscar más capital, dándoles tiempo para lograr un producto con tracción.</P>
+<P>Para aquellas que van bien, queremos que sigan acelerando y para eso las ayudamos en levantar más capital, ya sea a través de Demo Days o con introducciones directas a fondos.</P>
+<P>Todo lo demás que hacemos, como el programa de aceleración y los esfuerzos de armar una buena comunidad, repercuten en que nuestra inversión entrará en un ambiente que potenciará su mejor versión.</P>
+<P>Lo principal para dar ese valor agregado es:</P>
+<ul className="list-disc list-outside pl-5 space-y-2">
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Una buena curatoía de fundadores. Actualmente tenemos una tasa de aceptación de un 0,7% de las postulaciones.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Impregnarle a los fundadores la importancia del sentido de urgencia y de tener foco en sus productos y usuarios en las primeras semanas.</li>
+<li className="font-sans font-medium text-black/60 text-sm leading-relaxed">Generar una buena red y comunidad que se apoye entre si.</li>
+</ul>
+</Step>
+
+</StepList>
+
+</Section>

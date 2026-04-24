@@ -1,0 +1,68 @@
+import { Section, Callout, Hl, H3, P, TermGrid, DataTable, Spacer } from '../_components/mdx-components'
+
+<Section id="terminos" badge="09" title="Términos Platanus Cavendish LP" borderBottom={false}>
+
+<TermGrid items={[
+  { label: "Tamaño", value: "USD $15.000.000", sub: "CAP de USD $20.000.000" },
+  { label: "Portafolio objetivo", value: "35 – 45 startups" },
+  { label: "Etapa de inversión", value: "Pre Seed y Seed" },
+  { label: "Ticket por startup", value: "$50.000 – $500.000", sub: "Promedio 5–7% de participación" },
+  { label: "Mecanismo de invers.", value: "SAFE", sub: "Valor convertible con límite post-money" },
+  { label: "Tiempo del fondo", value: "10 años", sub: "Con dos extensiones de 1 año cada una" },
+  { label: "Geografía", value: "Latinoamérica" },
+  { label: "Jurisdicción", value: "Ontario, Canadá" },
+  { label: "Carry", value: "20%", sub: "Sobre utilidades" },
+]} />
+
+<H3>Management Fee</H3>
+<P>Promedio de 2% anual sobre capital comprometido durante 10 años. Distribución:</P>
+<Spacer size="mb-4" />
+
+<DataTable
+  headers={["Período", "Fee anual"]}
+  rows={[
+    ["Años 1 a 3", "3,75%"],
+    ["Año 4", "3,00%"],
+    ["Años 5 a 9", "1,00%"],
+    ["Año 10", "0,75%"],
+  ]}
+/>
+
+<Spacer />
+
+<H3>Capital Calls</H3>
+<P>Al firmar el Subscription Agreement se paga el <Hl>30%</Hl> del capital comprometido. El resto sigue este calendario tentativo:</P>
+<Spacer size="mb-4" />
+
+<Callout>
+<P>Pueden adelantar uno o más capital calls si resulta más conveniente.</P>
+</Callout>
+
+<Spacer size="mb-6" />
+
+<DataTable
+  headers={["Call", "Fecha", "% del call", "% acumulado"]}
+  rows={[
+    ["1 — Firma", "Al firmar", "30%", "30%"],
+    ["2", "1 Jul 2026", "5%", "35%"],
+    ["3", "1 Abr 2027", "3%", "38%"],
+    ["4", "1 Jul 2027", "7%", "45%"],
+    ["5", "1 Ene 2028", "15%", "60%"],
+    ["6", "1 Jul 2028", "10%", "70%"],
+    ["7", "1 Ene 2029", "5%", "75%"],
+    ["8", "1 Jul 2029", "5%", "80%"],
+    ["9", "1 Ene 2030", "3%", "83%"],
+    ["10", "1 Jul 2030", "3%", "86%"],
+    ["11", "1 Ene 2031", "3%", "89%"],
+    ["12", "1 Jul 2031", "2%", "91%"],
+    ["13", "1 Ene 2032", "2%", "93%"],
+    ["14", "1 Jul 2032", "2%", "95%"],
+    ["15", "1 Ene 2033", "1%", "96%"],
+    ["16", "1 Jul 2033", "1%", "97%"],
+    ["17", "1 Ene 2034", "1%", "98%"],
+    ["18", "1 Jul 2034", "1%", "99%"],
+    ["19", "1 Ene 2035", "1%", "100%"],
+  ]}
+/>
+
+</Section>
