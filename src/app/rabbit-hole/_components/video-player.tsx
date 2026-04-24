@@ -46,11 +46,11 @@ export function VideoPlayer({
           type="button"
           onClick={toggle}
           className={cn(
-            "absolute left-4 bottom-4 rounded-full size-14 flex items-center justify-center cursor-pointer transition-opacity mix-blend-difference",
+            "bg-white/100 absolute left-4 bottom-4 rounded-full size-14 flex items-center justify-center cursor-pointer transition-opacity",
             playing && started ? "opacity-0 group-hover:opacity-100" : "opacity-100"
           )}
         >
-          {playing ? <Pause size={22} className="fill-white stroke-0" /> : <Play size={22} className="fill-white stroke-0" />}
+          {playing ? <Pause size={22} className="fill-black stroke-0" /> : <Play size={22} className="fill-black stroke-0" />}
         </button>
       </div>
       {caption && (
