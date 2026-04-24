@@ -2,19 +2,19 @@ import React from "react";
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="border border-white/10 p-4 bg-white/5">
-      <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">{label}</p>
-      <p className="font-sans font-medium text-white text-sm">{value}</p>
+    <div className="border border-black/10 p-4 bg-black/5">
+      <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{label}</p>
+      <p className="font-sans font-medium text-blacktext-sm">{value}</p>
     </div>
   );
 }
 
 function CaseSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <details className="group border-t border-white/10">
+    <details className="group border-t border-black/10">
       <summary className="flex items-center justify-between cursor-pointer py-4 list-none">
-        <span className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{title}</span>
-        <span className="font-mono font-medium text-white/40 text-xs group-open:rotate-180 transition-transform">↓</span>
+        <span className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider">{title}</span>
+        <span className="font-mono font-medium text-black/40 text-xs group-open:rotate-180 transition-transform">↓</span>
       </summary>
       <div className="pb-6 space-y-3">{children}</div>
     </details>
@@ -22,15 +22,15 @@ function CaseSection({ title, children }: { title: string; children: React.React
 }
 
 function Body({ children }: { children: React.ReactNode }) {
-  return <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">{children}</p>;
+  return <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">{children}</p>;
 }
 
 function PersonCard({ name, role, bio }: { name: string; role: string; bio: string }) {
   return (
-    <div className="border border-white/10 p-4 bg-white/5">
-      <p className="font-sans font-medium text-white text-sm">{name}</p>
-      <p className="font-sans font-medium text-white/40 text-xs mb-2">{role}</p>
-      <p className="font-sans font-medium text-white/70 text-xs leading-relaxed">{bio}</p>
+    <div className="border border-black/10 p-4 bg-black/5">
+      <p className="font-sans font-medium text-blacktext-sm">{name}</p>
+      <p className="font-sans font-medium text-black/40 text-xs mb-2">{role}</p>
+      <p className="font-sans font-medium text-black/60 text-xs leading-relaxed">{bio}</p>
     </div>
   );
 }
@@ -40,20 +40,20 @@ function FundraisingTable({ rows }: { rows: { ronda: string; fecha: string; mont
     <div className="overflow-x-auto">
       <table className="w-full border-collapse text-xs">
         <thead>
-          <tr className="border-b border-white/10">
+          <tr className="border-b border-black/10">
             {["Ronda", "Fecha", "Monto", "Valoración", "Inversionistas"].map((h) => (
-              <th key={h} className="text-left font-mono font-medium text-white/40 uppercase tracking-wider pb-2 pr-4">{h}</th>
+              <th key={h} className="text-left font-mono font-medium text-black/40 uppercase tracking-wider pb-2 pr-4">{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((r) => (
-            <tr key={r.ronda} className="border-b border-white/10">
-              <td className="font-sans font-medium text-white/70 py-2 pr-4">{r.ronda}</td>
-              <td className="font-mono font-medium text-white/70 py-2 pr-4">{r.fecha}</td>
-              <td className="font-mono font-medium text-white/70 py-2 pr-4">{r.monto}</td>
-              <td className="font-mono font-medium text-white/70 py-2 pr-4">{r.valoracion}</td>
-              <td className="font-sans font-medium text-white/70 py-2">{r.investors}</td>
+            <tr key={r.ronda} className="border-b border-black/10">
+              <td className="font-sans font-medium text-black/60 py-2 pr-4">{r.ronda}</td>
+              <td className="font-mono font-medium text-black/60 py-2 pr-4">{r.fecha}</td>
+              <td className="font-mono font-medium text-black/60 py-2 pr-4">{r.monto}</td>
+              <td className="font-mono font-medium text-black/60 py-2 pr-4">{r.valoracion}</td>
+              <td className="font-sans font-medium text-black/60 py-2">{r.investors}</td>
             </tr>
           ))}
         </tbody>
@@ -66,16 +66,16 @@ function FundraisingTable({ rows }: { rows: { ronda: string; fecha: string; mont
 
 function CaseFintoc() {
   return (
-    <div className="border border-white/10 bg-white/5 mb-4">
-      <div className="p-6 border-b border-white/10">
+    <div className="border border-black/10 bg-black/5 mb-4">
+      <div className="p-6 border-b border-black/10">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">SPV · 2020</p>
+            <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">SPV · 2020</p>
             <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Fintoc</h3>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Prueba de concepto</span>
         </div>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-5">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Fintoc funciona como un intermediario de pagos y conexión bancaria a través de una API, permitiendo a otras empresas (fintechs, e-commerce, etc.) conectar sus aplicaciones directamente con las cuentas bancarias de sus usuarios de forma segura, simplificando pagos, conciliación y acceso a información financiera.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -145,16 +145,16 @@ function CaseFintoc() {
 
 function CaseToku() {
   return (
-    <div className="border border-white/10 bg-white/5 mb-4">
-      <div className="p-6 border-b border-white/10">
+    <div className="border border-black/10 bg-black/5 mb-4">
+      <div className="p-6 border-b border-black/10">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">Génesis · 2021</p>
+            <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Génesis · 2021</p>
             <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Toku</h3>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El caso que valida la tesis</span>
         </div>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-5">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Toku automatiza todo el proceso de cobranza y gestión de pagos recurrentes, ayudando a empresas con alto volumen a cobrar mejor y más rápido.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -229,16 +229,16 @@ function CaseToku() {
 
 function CaseBemmbo() {
   return (
-    <div className="border border-white/10 bg-white/5 mb-4">
-      <div className="p-6 border-b border-white/10">
+    <div className="border border-black/10 bg-black/5 mb-4">
+      <div className="p-6 border-b border-black/10">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">Fondo I · 2022</p>
+            <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Fondo I · 2022</p>
             <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Bemmbo</h3>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Primer exit Fondo I</span>
         </div>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-5">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Bemmbo automatiza rendiciones, conciliaciones bancarias y la gestión de cuentas por pagar y por cobrar, ayudando a empresas a eliminar procesos manuales y reducir errores contables.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -291,16 +291,16 @@ function CaseBemmbo() {
 
 function CaseGrupalia() {
   return (
-    <div className="border border-white/10 bg-white/5 mb-4">
-      <div className="p-6 border-b border-white/10">
+    <div className="border border-black/10 bg-black/5 mb-4">
+      <div className="p-6 border-b border-black/10">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">Fondo I · 2022</p>
+            <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Fondo I · 2022</p>
             <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Grupalia</h3>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Potencial fund returner</span>
         </div>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-5">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Grupalia es el primer neobanco para micronegocios en América Latina. Digitalizan préstamos grupales, ofreciendo a microemprendedores en México créditos 4x más rápidos y más económicos que las alternativas tradicionales.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -375,16 +375,16 @@ function CaseGrupalia() {
 
 function CaseBoom() {
   return (
-    <div className="border border-white/10 bg-white/5 mb-4">
-      <div className="p-6 border-b border-white/10">
+    <div className="border border-black/10 bg-black/5 mb-4">
+      <div className="p-6 border-b border-black/10">
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
-            <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-1">Cavendish · 2025</p>
+            <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Cavendish · 2025</p>
             <h3 className="font-sans font-medium text-white" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Boom</h3>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El valor de la comunidad</span>
         </div>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-5">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Boom construye equipos de growth impulsados por IA para e-commerce. Ofrecen a cada marca agentes autónomos de ventas, soporte y marketing que trabajan 24/7, recuperan carritos abandonados y ejecutan campañas de marketing personalizadas en redes sociales.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -443,13 +443,13 @@ function CaseBoom() {
 
 export function SectionCasosDeEstudio() {
   return (
-    <section id="casos-de-estudio" className="py-16 border-b border-white/10">
+    <section id="casos-de-estudio" className="py-16 border-b border-black/10">
       <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5 mb-4">10</span>
-      <h2 className="font-sans font-medium text-white mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
+      <h2 className="font-sans font-medium text-blackmb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Casos de estudio
       </h2>
       <div className="space-y-4 mb-10">
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Cinco casos que muestran nuestra tesis: el rol de la comunidad, la ventaja de entrar en pre-semilla y el programa.
         </p>
       </div>
