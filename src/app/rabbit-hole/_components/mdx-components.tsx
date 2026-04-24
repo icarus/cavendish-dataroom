@@ -348,11 +348,11 @@ export function FinancialTable({
       <table className="w-full border-collapse">
         <tbody>
           {rows.map((row) => (
-            <tr key={row.label} className={`border-b ${row.bold ? "border-black/10 bg-[#FFEC40]" : "border-black/10"}`}>
-              <td className={`font-sans font-medium text-sm py-2.5 pr-8 ${row.sub ? "text-black pl-4" : "text-black"}`}>
+            <tr key={row.label} className={row.bold ? "bg-[#FFEC40]" : "border-b border-black/10"}>
+              <td className={`font-sans font-medium text-sm py-3 pr-8 ${row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60"}`}>
                 {row.label}
               </td>
-              <td className="font-mono font-medium text-sm py-2.5 text-right text-black">
+              <td className={`font-mono font-medium text-sm py-3 text-right ${row.bold ? "text-black" : row.sub ? "text-black/40" : "text-black"}`}>
                 {row.value}
               </td>
             </tr>
