@@ -1,12 +1,31 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { FUNDS } from "@/lib/deck-data";
 import type { PortfolioCompany } from "@/lib/deck-data";
 import { AnimatePresence, motion } from "motion/react";
 import { f, P, useAnim } from "./utils";
+
+function AnimatedValue({ value }: { value: string }) {
+  return (
+    <div className="relative overflow-hidden h-[1.4em]">
+      <AnimatePresence mode="popLayout" initial={false}>
+        <motion.span
+          key={value}
+          className="font-mono font-medium text-white text-base block"
+          initial={{ y: 16, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -16, opacity: 0 }}
+          transition={{ duration: 0.25, ease: "easeOut" }}
+        >
+          {value}
+        </motion.span>
+      </AnimatePresence>
+    </div>
+  );
+}
 
 const BADGE_LABELS: Record<string, string> = {
   "fund-returner": "Fund Returner",
@@ -209,12 +228,15 @@ export function SlideTrackRecord({ active }: P) {
           100% { background-position: 400% 0; }
         }
       `}</style>
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex flex-col gap-8 justify-between mb-8">
         <div className="flex items-center gap-3" style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
             Track{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Record</mark>
           </h2>
+        </div>
+
+        <div className="flex justify-between w-full">
           <div className="flex gap-2 items-center">
             {[
               { key: "all", label: "All", year: "" },
@@ -226,7 +248,7 @@ export function SlideTrackRecord({ active }: P) {
                   key={key}
                   onClick={() => setActiveFund(key)}
                   className={cn(
-                    "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap relative overflow-hidden",
+                    "flex items-center font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap relative overflow-hidden",
                     activeFund === key
                       ? "bg-[#FFEC40] text-black border-[#FFEC40]"
                       : isGenesis
@@ -245,8 +267,11 @@ export function SlideTrackRecord({ active }: P) {
                       {year}
                     </span>
                   )}
-                  {isGenesis && activeFund !== key && (
-                    <span className="ml-2 text-xs bg-[#FFEC40] text-black px-1 py-0.5 font-mono font-medium uppercase tracking-wider">
+                  {isGenesis && (
+                    <span className={cn(
+                      "ml-2 text-xs px-1 py-0.5 font-mono font-medium uppercase tracking-wider",
+                      activeFund !== key ? "bg-[#FFEC40] text-black " : "bg-white text-black"
+                    )}>
                       100% Returned
                     </span>
                   )}
@@ -254,19 +279,19 @@ export function SlideTrackRecord({ active }: P) {
               );
             })}
           </div>
-        </div>
-        <div className="flex gap-6" style={f(on, 60)}>
-          {[
-            { label: "Committed", value: activeMetrics.committedAmount },
-            { label: "MOIC", value: activeMetrics.moicMultiple },
-            { label: "DPI", value: activeMetrics.dpiMultiple },
-            { label: "TVPI", value: activeMetrics.tvpiMultiple },
-          ].map(({ label, value }) => (
-            <div key={label} className="flex flex-col items-center">
-              <span className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{label}</span>
-              <span className="font-mono font-medium text-white text-base">{value}</span>
-            </div>
-          ))}
+          <div className="flex gap-6" style={f(on, 60)}>
+            {[
+              { label: "Committed", value: activeMetrics.committedAmount },
+              { label: "MOIC", value: activeMetrics.moicMultiple },
+              { label: "DPI", value: activeMetrics.dpiMultiple },
+              { label: "TVPI", value: activeMetrics.tvpiMultiple },
+            ].map(({ label, value }) => (
+              <div key={label} className="flex flex-col items-center">
+                <span className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{label}</span>
+                <AnimatedValue value={value} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
