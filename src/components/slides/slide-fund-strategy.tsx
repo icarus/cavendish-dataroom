@@ -69,16 +69,16 @@ export function SlideFundStrategy({ active }: P) {
       </div>
 
       <div className="flex-1 min-h-0 grid" style={{ gridTemplateColumns: `minmax(100px, auto) repeat(${EXIT_VALUATIONS.length}, 1fr)`, gridTemplateRows: `auto repeat(${ENTRIES.length}, 1fr)` }}>
-        <div className="bg-white/10 relative overflow-hidden border-b border-white/10 min-h-[56px]" style={f(on, 120)}>
-          <span className="absolute bottom-1 left-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
+        <div className="relative overflow-hidden border-b border-white/10 min-h-[56px]" style={f(on, 120)}>
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(to bottom left, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.04) 50%)",
+          }} />
+          <span className="absolute bottom-2 left-2 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
             Entry Val.
           </span>
-          <span className="absolute top-1 right-1 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
+          <span className="absolute top-2 right-2 font-mono font-medium text-white/40 text-xs uppercase tracking-wider leading-none">
             Exit Price
           </span>
-          <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none">
-            <line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.2)" strokeWidth="1" />
-          </svg>
         </div>
         {EXIT_VALUATIONS.map((v, ci) => (
           <div
