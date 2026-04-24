@@ -1,13 +1,25 @@
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 
-const integrantes = [
+type Member = {
+  name: string;
+  role: string;
+  country: string;
+  photo: string | null;
+  linkedin: string;
+  bio: string | null;
+};
+
+const integrantes: Member[] = [
   {
     name: "Paula Enei",
     role: "Co-founder & Managing Partner",
     country: "Chile",
     photo: "/team/paula.png",
     linkedin: "https://www.linkedin.com/in/paulaenei/",
-    bio: "Psicóloga de formación, toda su carrera se ha dedicado a la industria del emprendimiento. Co-fundó \"El Vaso Medio Lleno\", plataforma de contenidos positivos que llegó a 24 millones de vistas mensuales y fue parte de Start-Up Chile Gen 15. Luego se unió al equipo de Start-Up Chile, donde lideró las áreas de comunidad, scouting, estrategia internacional y negocios, trabajando con 500+ emprendedores.",
+    bio: "Psicóloga de formación, toda su carrera se ha dedicado a la industria del emprendimiento.\n\nCo-fundó \"El Vaso Medio Lleno\", plataforma de contenidos positivos que llegó a 24 millones de vistas mensuales y fue parte de Start-Up Chile Gen 15.\n\nLuego se unió al equipo de Start-Up Chile, donde lideró las áreas de comunidad, scouting, estrategia internacional y negocios, trabajando con 500+ emprendedores.",
   },
   {
     name: "Joaquín Stephens",
@@ -15,7 +27,7 @@ const integrantes = [
     country: "Chile",
     photo: "/team/joaquin.png",
     linkedin: "https://www.linkedin.com/in/joaquin-stephens-baa016154/",
-    bio: null,
+    bio: "Derecho, Pontificia Universidad Católica de Chile.\n\nTrabajó como abogado y analista de cumplimiento en Buda.com.\n\nLuego entró a trabajar para CMS Carey & Allende en el área corporativa, impulsando la creación del área de Venture Capital, emprendimiento e innovación.\n\nHace trail running, con ATH de 110km.",
   },
   {
     name: "Raimundo Herrera",
@@ -23,7 +35,7 @@ const integrantes = [
     country: "Chile",
     photo: "/team/raimundo.png",
     linkedin: "https://www.linkedin.com/in/raimundo-herrera-s/",
-    bio: "Ingeniero Civil en Computación con Magíster en Criptografía por la PUC. Profesor de cátedra en la PUC y la Universidad de Chile. Lideró el área de desarrollo de Platanus Software Factory como CEO, con más de 20 desarrolladores. Hoy está a cargo de todo el software que sustenta la selección de startups y la operación del programa.",
+    bio: "Ingeniero Civil en Computación con Magíster en Criptografía por la PUC.\n\nProfesor de cátedra en la PUC y la Universidad de Chile.\n\nLideró el área de desarrollo de Platanus Software Factory como CEO, con más de 20 desarrolladores. Hoy está a cargo de todo el software que sustenta la selección de startups y la operación del programa.",
   },
   {
     name: "Aldo",
@@ -31,7 +43,7 @@ const integrantes = [
     country: "México",
     photo: "/team/aldo.png",
     linkedin: "https://www.linkedin.com/in/aldojaja/",
-    bio: "Emprendedor desde los 17 años. Fundador de Apprecio, solución todo en uno para tiendas de abarrotes en Latam con más de 30k tiendas en México, apoyada por Y Combinator. Antes fundó Lytica, empresa de IA que automatizaba la investigación de mercado con cámaras. Como Visiting Partner apoya a los nuevos fundadores en estrategia y crecimiento.",
+    bio: "Emprendedor desde los 17 años.\n\nFundador de Apprecio, solución todo en uno para tiendas de abarrotes en Latam con más de 30k tiendas en México, apoyada por Y Combinator.\n\nAntes fundó Lytica, empresa de IA que automatizaba la investigación de mercado con cámaras.\n\nComo Visiting Partner apoya a los nuevos fundadores en estrategia y crecimiento.",
   },
   {
     name: "Rafael Fernandez",
@@ -43,14 +55,14 @@ const integrantes = [
   },
 ];
 
-const strategicPartners = [
+const strategicPartners: Member[] = [
   {
     name: "Agustín Feuerhake",
     role: "Strategic Partner",
     country: "Chile",
-    photo: null,
+    photo: "/team/agustin.jpg",
     linkedin: "https://www.linkedin.com/in/agustinfeuerhake/",
-    bio: "Junto a Jaime lleva más de 14 años emprendiendo. Co-crearon QueHambre!, el primer portal para pedir comida online en Chile, que fue vendido a PedidosYa. Co-fundador de Buda.com, exchange de criptomonedas. Como strategic partner participa de la estrategia general de Platanus y las decisiones de inversión.",
+    bio: "Junto a Jaime lleva más de 14 años emprendiendo.\n\nCo-crearon QueHambre!, el primer portal para pedir comida online en Chile, que fue vendido a PedidosYa.\n\nCo-fundador de Buda.com, exchange de criptomonedas.\n\nComo strategic partner participa de la estrategia general de Platanus y las decisiones de inversión.",
   },
   {
     name: "Jaime Bünzli",
@@ -58,57 +70,109 @@ const strategicPartners = [
     country: "Chile",
     photo: "/team/jaime.png",
     linkedin: "https://www.linkedin.com/in/jaime-b%C3%BCnzli-81a33920/",
-    bio: "Ingeniero de software, PUC. Junto a Agustín lleva más de 14 años emprendiendo. Co-crearon Voxound (reproductor de música) y QueHambre!, primer portal para pedir comida online en Chile, vendido a PedidosYa. Co-fundador de Buda.com, exchange de criptomonedas. Participa en la estrategia general y en las decisiones de inversión.",
+    bio: "Ingeniero de software, PUC.\n\nJunto a Agustín lleva más de 14 años emprendiendo. Co-crearon Voxound (reproductor de música) y QueHambre!, primer portal para pedir comida online en Chile, vendido a PedidosYa.\n\nCo-fundador de Buda.com, exchange de criptomonedas.\n\nParticipa en la estrategia general y en las decisiones de inversión.",
   },
 ];
 
-function MemberCard({
-  name,
-  role,
-  country,
-  photo,
-  linkedin,
-  bio,
-}: {
-  name: string;
-  role: string;
-  country: string;
-  photo: string | null;
-  linkedin: string;
-  bio: string | null;
-}) {
+function MemberModal({ member, onClose }: { member: Member; onClose: () => void }) {
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [onClose]);
+
   return (
-    <div className="border border-white/10 bg-white/5">
-      {photo ? (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="border border-white/10 bg-black w-full max-w-sm"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Photo */}
+        <div className="relative w-full" style={{ aspectRatio: "1 / 1", maxHeight: 260 }}>
+          {member.photo ? (
+            <Image src={member.photo} alt={member.name} fill className="object-cover object-top" />
+          ) : (
+            <div className="w-full h-full bg-white/5 flex items-center justify-center">
+              <span className="font-mono font-medium text-white/20 text-6xl">{member.name[0]}</span>
+            </div>
+          )}
+        </div>
+
+        {/* Content */}
+        <div className="p-6 border-t border-white/10">
+          <div className="flex items-start justify-between gap-4 mb-5">
+            <div>
+              <p className="font-sans font-medium text-white text-sm mb-0.5">{member.name}</p>
+              <p className="font-sans font-medium text-white/40 text-xs mb-1">{member.role}</p>
+              <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{member.country}</p>
+            </div>
+            <button
+              onClick={onClose}
+              className="font-mono font-medium text-white/30 text-sm hover:text-white transition-colors shrink-0 mt-0.5"
+              aria-label="Cerrar"
+            >
+              ✕
+            </button>
+          </div>
+
+          {member.bio ? (
+            <div className="space-y-3 mb-5">
+              {member.bio.split("\n\n").map((para, i) => (
+                <p key={i} className="font-sans font-medium text-white/70 text-xs leading-relaxed">{para}</p>
+              ))}
+            </div>
+          ) : (
+            <p className="font-sans font-medium text-white/30 text-xs leading-relaxed mb-5 italic">Sin bio disponible.</p>
+          )}
+
+          <a
+            href={member.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider hover:text-white transition-colors"
+          >
+            LinkedIn →
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function MemberCard({ member, onClick }: { member: Member; onClick: () => void }) {
+  return (
+    <div
+      className="border border-white/10 bg-white/5 cursor-pointer hover:bg-white/10 hover:border-white/20 transition-colors group"
+      onClick={onClick}
+    >
+      {member.photo ? (
         <div className="relative w-full aspect-square overflow-hidden border-b border-white/10">
-          <Image src={photo} alt={name} fill className="object-cover object-top" />
+          <Image src={member.photo} alt={member.name} fill className="object-cover object-top" />
         </div>
       ) : (
         <div className="w-full aspect-square border-b border-white/10 bg-white/5 flex items-center justify-center">
-          <span className="font-mono font-medium text-white/20 text-4xl">{name[0]}</span>
+          <span className="font-mono font-medium text-white/20 text-4xl">{member.name[0]}</span>
         </div>
       )}
       <div className="p-5">
-        <p className="font-sans font-medium text-white text-sm mb-0.5">{name}</p>
-        <p className="font-sans font-medium text-white/40 text-xs mb-1">{role}</p>
-        <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-4">{country}</p>
-        {bio && (
-          <p className="font-sans font-medium text-white/70 text-xs leading-relaxed mb-4">{bio}</p>
-        )}
-        <a
-          href={linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider hover:text-white transition-colors"
-        >
-          LinkedIn →
-        </a>
+        <p className="font-sans font-medium text-white text-sm mb-0.5">{member.name}</p>
+        <p className="font-sans font-medium text-white/40 text-xs mb-1">{member.role}</p>
+        <p className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider mb-3">{member.country}</p>
+        <span className="font-mono font-medium text-white/20 text-xs uppercase tracking-wider group-hover:text-white/40 transition-colors">
+          Ver bio →
+        </span>
       </div>
     </div>
   );
 }
 
 export function SectionEquipo() {
+  const [selected, setSelected] = useState<Member | null>(null);
+  const close = useCallback(() => setSelected(null), []);
+
   return (
     <section id="equipo" className="py-16 border-b border-white/10">
       <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5 mb-4">08</span>
@@ -134,7 +198,7 @@ export function SectionEquipo() {
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-12">
         {integrantes.map((m) => (
-          <MemberCard key={m.name} {...m} />
+          <MemberCard key={m.name} member={m} onClick={() => setSelected(m)} />
         ))}
       </div>
 
@@ -143,9 +207,11 @@ export function SectionEquipo() {
       </h3>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {strategicPartners.map((m) => (
-          <MemberCard key={m.name} {...m} />
+          <MemberCard key={m.name} member={m} onClick={() => setSelected(m)} />
         ))}
       </div>
+
+      {selected && <MemberModal member={selected} onClose={close} />}
     </section>
   );
 }
