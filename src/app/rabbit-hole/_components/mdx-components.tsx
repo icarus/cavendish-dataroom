@@ -325,7 +325,7 @@ export function InvestmentType({
   items: { title: string; body: string }[];
 }) {
   return (
-    <div className="space-y-3 -mt-10 mb-10">
+    <div className="space-y-3 mb-10">
       {items.map((item) => (
         <div key={item.title} className="flex gap-4 py-3 border-b border-black/10 last:border-0">
           <span className="bg-muted-foreground mt-2.5 shrink-0 aspect-square size-1" />
