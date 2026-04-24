@@ -1,6 +1,7 @@
 import type { MDXComponents } from "mdx/types";
 import Image from "next/image";
-import { ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { ChevronRight, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { VideoPlayer } from "./video-player";
 
@@ -73,6 +74,37 @@ export function Section({
         {title}
       </h2>
       {children}
+    </section>
+  );
+}
+
+export function ReadMoreSection({
+  id,
+  badge,
+  title,
+  summary,
+  slug,
+}: {
+  id: string;
+  badge: string;
+  title: string;
+  summary: string;
+  slug: string;
+}) {
+  return (
+    <section id={id} className="py-16 border-b border-black/10">
+      <Badge variant="solid" className="mb-4">{badge}</Badge>
+      <h2 className="font-sans font-medium text-black mb-4" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
+        {title}
+      </h2>
+      <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-6">{summary}</p>
+      <Link
+        href={`/rabbit-hole/${slug}`}
+        className="inline-flex items-center gap-2 font-mono font-medium text-sm uppercase tracking-wider bg-black text-white px-4 py-2 hover:bg-black/80 transition-colors"
+      >
+        Leer completo
+        <ArrowRight size={14} />
+      </Link>
     </section>
   );
 }

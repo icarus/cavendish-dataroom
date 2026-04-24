@@ -10,12 +10,10 @@ import Diagnostico from "./content/diagnostico.mdx";
 import Comunidad from "./content/comunidad.mdx";
 import Computin from "./content/computin.mdx";
 import Estrategia from "./content/estrategia.mdx";
-import Portafolio from "./content/portafolio.mdx";
-import Proceso from "./content/proceso.mdx";
 import Kalio from "./content/kalio.mdx";
-import Estructura from "./content/estructura.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
+import { ReadMoreSection } from "./_components/mdx-components";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -84,7 +82,7 @@ export default function RabbitHolePage() {
 
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pb-32">
         <motion.div
-          className="pt-16 pb-12 border-b border-black/10 mb-4"
+          className="pt-16 mb-0"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
@@ -112,10 +110,34 @@ export default function RabbitHolePage() {
         <SectionReveal><Comunidad /></SectionReveal>
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
-        <SectionReveal><Portafolio /></SectionReveal>
-        <SectionReveal><Proceso /></SectionReveal>
+        <SectionReveal>
+          <ReadMoreSection
+            id="portafolio"
+            badge="05"
+            title="Construcción del portafolio"
+            summary="Supuestos del portafolio, tipos de inversión, distribución por generación, follow ons y retorno total esperado del fondo."
+            slug="portafolio"
+          />
+        </SectionReveal>
+        <SectionReveal>
+          <ReadMoreSection
+            id="proceso"
+            badge="06"
+            title="Proceso de selección"
+            summary="Las 8 etapas de nuestro proceso de selección, desde el formulario inicial hasta el due diligence, con una tasa de aceptación de ~1%."
+            slug="proceso"
+          />
+        </SectionReveal>
         <SectionReveal><Kalio /></SectionReveal>
-        <SectionReveal><Estructura /></SectionReveal>
+        <SectionReveal>
+          <ReadMoreSection
+            id="estructura"
+            badge="08"
+            title="Estructura legal del fondo"
+            summary="Por qué elegimos una Limited Partnership Canadiense, tributación del fondo y estructuras legales comunes de startups de Latam."
+            slug="estructura"
+          />
+        </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>
 
