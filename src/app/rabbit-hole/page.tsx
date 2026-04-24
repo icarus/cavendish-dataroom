@@ -3,17 +3,18 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { SectionDiagnostico } from "./_components/SectionDiagnostico";
-import { SectionComunidad } from "./_components/SectionComunidad";
-import { SectionComputin } from "./_components/SectionComputin";
-import { SectionEstrategia } from "./_components/SectionEstrategia";
-import { SectionPortafolio } from "./_components/SectionPortafolio";
-import { SectionProceso } from "./_components/SectionProceso";
-import { SectionKalio } from "./_components/SectionKalio";
-import { SectionEstructura } from "./_components/SectionEstructura";
-import { SectionTerminos } from "./_components/SectionTerminos";
+import { SectionDiagnostico } from "./_components/section-diagnostico";
+import { SectionComunidad } from "./_components/section-comunidad";
+import { SectionComputin } from "./_components/section-computin";
+import { SectionEstrategia } from "./_components/section-estrategia";
+import { SectionPortafolio } from "./_components/section-portafolio";
+import { SectionProceso } from "./_components/section-proceso";
+import { SectionKalio } from "./_components/section-kalio";
+import { SectionEstructura } from "./_components/section-estructura";
+import { SectionTerminos } from "./_components/section-terminos";
+import { SectionReveal } from "./_components/section-reveal";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -67,79 +68,88 @@ export default function RabbitHolePage() {
 
   return (
     <div className="min-h-screen bg-white relative">
-      <div className="flex">
-        <aside className="hidden lg:block sticky top-0 self-start h-screen w-60 shrink-0 border-r border-black/10 overflow-y-auto py-8 px-5">
-          <Link
-            href="/"
-            className="flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 px-3 hover:text-black transition-colors"
-          >
-            <ArrowLeft size={14} />
-            Volver
-          </Link>
-          <p className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-4 px-3">Contenido</p>
-          <nav className="relative space-y-0.5">
+      <main className="max-w-3xl mx-auto px-6 lg:px-12 pb-32">
+        <motion.div
+          className="pt-16 pb-12 border-b border-black/10 mb-4"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+        >
+          <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-sm px-2 py-0.5 mb-6 hover:bg-[#FFEC40]/90 border-transparent">
+            Platanus Cavendish
+          </Badge>
+          <h1 className="font-sans font-medium text-black text-2xl mb-4">
+            Down the Rabbit Hole
+          </h1>
+          <p className="font-sans font-medium text-black/60 text-sm leading-relaxed max-w-xl">
+            Todo lo que necesitas saber sobre el fondo: nuestra tesis, estrategia, comunidad, estructura legal y términos.
+          </p>
+        </motion.div>
+
+        <Link
+          href="/"
+          className="lg:hidden flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 hover:text-black transition-colors"
+        >
+          <ArrowLeft size={14} />
+          Volver
+        </Link>
+
+        <SectionReveal><SectionDiagnostico /></SectionReveal>
+        <SectionReveal><SectionComunidad /></SectionReveal>
+        <SectionReveal><SectionComputin /></SectionReveal>
+        <SectionReveal><SectionEstrategia /></SectionReveal>
+        <SectionReveal><SectionPortafolio /></SectionReveal>
+        <SectionReveal><SectionProceso /></SectionReveal>
+        <SectionReveal><SectionKalio /></SectionReveal>
+        <SectionReveal><SectionEstructura /></SectionReveal>
+        <SectionReveal><SectionTerminos /></SectionReveal>
+      </main>
+
+      <aside className="hidden lg:block fixed top-0 right-[max(0px,calc((100vw-768px)/2-280px))] h-screen w-52 overflow-y-auto py-8 px-4">
+        <Link
+          href="/"
+          className="flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 px-2 hover:text-black transition-colors"
+        >
+          <ArrowLeft size={14} />
+          Volver
+        </Link>
+        <p className="font-mono font-medium text-black/30 text-xs uppercase tracking-wider mb-4 px-2">Contenido</p>
+        <nav className="relative">
+          <AnimatePresence>
             {activeIndex >= 0 && (
               <motion.div
-                className="absolute left-0 w-0.5 bg-[#FFEC40]"
-                initial={false}
+                className="absolute left-0 w-0.5 bg-black/80 rounded-full"
+                initial={{ opacity: 0 }}
                 animate={{
+                  opacity: 1,
                   top: indicatorTop,
                   height: indicatorHeight,
                 }}
-                transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
               />
             )}
-            {NAV_ITEMS.map((item) => (
-              <button
-                key={item.id}
-                ref={(el) => {
-                  if (el) navRefs.current.set(item.id, el);
-                }}
-                onClick={() => scrollTo(item.id)}
-                className={`block w-full text-left font-sans font-medium text-sm leading-snug py-2 px-3 transition-colors cursor-pointer ${
-                  activeId === item.id
-                    ? "text-black"
-                    : "text-black/40 hover:text-black"
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-        </aside>
-
-        <main className="flex-1 max-w-3xl mx-auto px-6 lg:px-12 pb-32">
-          <div className="pt-16 pb-12 border-b border-black/10 mb-4">
-            <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-sm px-2 py-0.5 mb-6 hover:bg-[#FFEC40]/90 border-transparent">
-              Platanus Cavendish
-            </Badge>
-            <h1 className="font-sans font-medium text-black text-2xl mb-4">
-              Down the Rabbit Hole
-            </h1>
-            <p className="font-sans font-medium text-black/60 text-sm leading-relaxed max-w-xl">
-              Todo lo que necesitas saber sobre el fondo: nuestra tesis, estrategia, comunidad, estructura legal y términos.
-            </p>
-          </div>
-
-          <Link
-            href="/"
-            className="lg:hidden flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 hover:text-black transition-colors"
-          >
-            <ArrowLeft size={14} />
-            Volver
-          </Link>
-
-          <SectionDiagnostico />
-          <SectionComunidad />
-          <SectionComputin />
-          <SectionEstrategia />
-          <SectionPortafolio />
-          <SectionProceso />
-          <SectionKalio />
-          <SectionEstructura />
-          <SectionTerminos />
-        </main>
-      </div>
+          </AnimatePresence>
+          {NAV_ITEMS.map((item, i) => (
+            <motion.button
+              key={item.id}
+              ref={(el) => {
+                if (el) navRefs.current.set(item.id, el);
+              }}
+              onClick={() => scrollTo(item.id)}
+              initial={{ opacity: 0, x: 6 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
+              className={`block w-full text-left font-sans font-medium text-[13px] leading-snug py-1.5 px-2 transition-colors cursor-pointer ${
+                activeId === item.id
+                  ? "text-black"
+                  : "text-black/30 hover:text-black/60"
+              }`}
+            >
+              {item.label}
+            </motion.button>
+          ))}
+        </nav>
+      </aside>
     </div>
   );
 }

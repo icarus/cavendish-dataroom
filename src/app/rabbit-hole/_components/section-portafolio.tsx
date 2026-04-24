@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Callout } from "./Callout";
+import { Callout } from "./callout";
 
 export function SectionPortafolio() {
   return (

@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Callout } from "./Callout";
+import { Callout } from "./callout";
 
 const bars = [
   { label: "Platanus", display: "$2,857,142", value: 2857142, platanus: true },
