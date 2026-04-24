@@ -32,7 +32,7 @@ export function Slide10({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="mb-4" style={f(on, 0)}>
+      <div className="mb-8" style={f(on, 0)}>
         <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
           The{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">Team</mark>
@@ -94,9 +94,9 @@ export function Slide10({ active }: P) {
                 </motion.div>
 
                 <motion.ul
-                  className="mt-3 space-y-1 overflow-hidden"
+                  className="space-y-1 overflow-hidden"
                   animate={{
-                    height: isHovered ? gp.bullets.length * 26 : 0,
+                    height: isHovered ? gp.bullets.length * 30 : 0,
                     opacity: isHovered ? 1 : 0,
                   }}
                   transition={{ height: SPRING_SOFT, opacity: { duration: 0.1 } }}
@@ -105,7 +105,7 @@ export function Slide10({ active }: P) {
                     {isHovered && gp.bullets.map((b, j) => (
                       <motion.li
                         key={j}
-                        className="font-sans font-medium text-white text-sm leading-relaxed flex items-center gap-2"
+                        className="first:mt-3 font-sans font-medium text-white text-sm leading-relaxed flex items-center gap-2"
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 12 }}
                         exit={{ opacity: 0, x: 0 }}
