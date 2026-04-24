@@ -10,9 +10,14 @@ import Diagnostico from "./content/diagnostico.mdx";
 import Comunidad from "./content/comunidad.mdx";
 import Computin from "./content/computin.mdx";
 import Estrategia from "./content/estrategia.mdx";
+import Portafolio from "./content/portafolio.mdx";
+import Proceso from "./content/proceso.mdx";
+import Kalio from "./content/kalio.mdx";
+import Estructura from "./content/estructura.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
-import { ReadMoreSection, P, H3, StatGrid, Hl } from "./_components/mdx-components";
+import { ExpandableSection } from "./_components/expandable-section";
+import { P, StatGrid, Hl } from "./_components/mdx-components";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -94,24 +99,20 @@ export default function RabbitHolePage() {
               />
             )}
           </AnimatePresence>
-          {NAV_ITEMS.map((item, i) => (
-            <motion.button
+          {NAV_ITEMS.map((item) => (
+            <button
               key={item.id}
               ref={(el) => {
                 if (el) navRefs.current.set(item.id, el);
               }}
               onClick={() => scrollTo(item.id)}
-              initial={{ opacity: 0, x: 6 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
               className={cn(
                 "uppercase block w-full text-left font-mono font-medium text-sm leading-snug py-1 px-3 transition-colors cursor-pointer",
                 activeId === item.id ? "text-black" : "text-black/30 hover:text-black/60"
               )}
             >
               {item.label}
-            </motion.button>
+            </button>
           ))}
         </nav>
       </aside>
@@ -147,15 +148,17 @@ export default function RabbitHolePage() {
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
-          <ReadMoreSection id="portafolio" badge="05" title="Construcción del portafolio" slug="portafolio">
+          <ExpandableSection id="portafolio" badge="05" title="Construcción del portafolio" preview={
             <div className="space-y-4">
               <P>Al planear una construcción de portafolio tenemos que comprobar como se logra llegar a un retorno de 3x en base a un portafolio exitoso.</P>
               <P>Destinaremos <Hl>$6,400,000</Hl> para inversiones del programa de aceleración en <Hl>32 nuevas startups</Hl>, <Hl>$1,800,000</Hl> para inversiones oportunísticas y <Hl>$3,600,000</Hl> para follow ons.</P>
             </div>
-          </ReadMoreSection>
+          }>
+            <Portafolio />
+          </ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ReadMoreSection id="proceso" badge="06" title="Proceso de selección" slug="proceso">
+          <ExpandableSection id="proceso" badge="06" title="Proceso de selección" preview={
             <div className="space-y-4">
               <P>Diseñamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones. Desde el 2020 hemos recibido más de <Hl>9.549 aplicaciones</Hl> y seleccionado <Hl>121 startups</Hl>.</P>
               <StatGrid items={[
@@ -164,23 +167,29 @@ export default function RabbitHolePage() {
                 { label: "Tasa de aceptación", value: "~1%" },
               ]} />
             </div>
-          </ReadMoreSection>
+          }>
+            <Proceso />
+          </ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ReadMoreSection id="kalio" badge="07" title="Kalio" slug="kalio">
+          <ExpandableSection id="kalio" badge="07" title="Kalio" preview={
             <div className="space-y-4">
               <P>Kalio es el <Hl>centro de la operación de Platanus</Hl>. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos.</P>
               <P>Kalio gestiona todo: postulaciones, proceso de selección, programa de aceleración, Demo Days y seguimiento de alumni.</P>
             </div>
-          </ReadMoreSection>
+          }>
+            <Kalio />
+          </ExpandableSection>
         </SectionReveal>
         <SectionReveal>
-          <ReadMoreSection id="estructura" badge="08" title="Estructura legal del fondo" slug="estructura">
+          <ExpandableSection id="estructura" badge="08" title="Estructura legal del fondo" preview={
             <div className="space-y-4">
               <P>El fondo se ha estructurado como una <Hl>Limited Partnership Canadiense</Hl>, constituido el 2 de julio de 2025.</P>
               <P>Canadá ofrece menores costos, sin límite de inversionistas y menos reportería que EEUU, manteniendo transparencia tributaria.</P>
             </div>
-          </ReadMoreSection>
+          }>
+            <Estructura />
+          </ExpandableSection>
         </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>
