@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import { Play, Pause } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export function VideoPlayer({
   src,
@@ -46,9 +47,12 @@ export function VideoPlayer({
           variant="ghost"
           size="icon"
           onClick={toggle}
-          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full size-14 bg-black/60 backdrop-blur-sm text-white hover:bg-black/80 hover:text-white transition-opacity ${playing && started ? "opacity-0 group-hover:opacity-100" : "opacity-100"}`}
+          className={cn(
+            "absolute left-4 bottom-4 rounded-full size-14 bg-black/50 hover:bg-black/70 backdrop-blur-sm transition-opacity",
+            playing && started ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+          )}
         >
-          {playing ? <Pause size={22} /> : <Play size={22} className="translate-x-0.5" />}
+          {playing ? <Pause size={22} className="fill-white stroke-0" /> : <Play size={22} className="fill-white stroke-0" />}
         </Button>
       </div>
       {caption && (
