@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { Callout } from "./Callout";
 
 export function SectionTerminos() {
@@ -37,33 +38,33 @@ export function SectionTerminos() {
 
   return (
     <section id="terminos" className="py-16">
-      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5mb-4">09</span>
-      <h2 className="font-sans font-medium text-white mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
+      <Badge className="bg-[#FFEC40] text-black font-mono font-medium text-base hover:bg-[#FFEC40]/90 border-transparent mb-4">09</Badge>
+      <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         Términos Platanus Cavendish LP
       </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
         {terms.map((t) => (
-          <div key={t.label} className="border border-white/10 p-5 bg-white/5">
-            <p className="font-mono font-medium text-white text-sm uppercase tracking-wider mb-1">{t.label}</p>
-            <p className="font-sans font-medium text-white/70 text-sm">{t.value}</p>
-            {t.sub && <p className="font-sans font-medium text-white/40 text-sm mt-0.5">{t.sub}</p>}
+          <div key={t.label} className="border border-black/10 p-5 bg-black/5">
+            <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-1">{t.label}</p>
+            <p className="font-sans font-medium text-black/60 text-sm">{t.value}</p>
+            {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-0.5">{t.sub}</p>}
           </div>
         ))}
       </div>
 
-      <h3 className="font-sans font-medium text-white/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Management Fee
       </h3>
-      <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-4">
+      <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
         Promedio de 2% anual sobre capital comprometido durante 10 años. Distribución:
       </p>
       <div className="overflow-x-auto mb-10">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="border-b border-white/10">
-              <th className="text-left font-mono font-medium text-white text-sm uppercase tracking-wider pb-3 pr-8">Período</th>
-              <th className="text-left font-mono font-medium text-white text-sm uppercase tracking-wider pb-3">Fee anual</th>
+            <tr className="border-b border-black/10">
+              <th className="text-left font-mono font-medium text-black text-sm uppercase tracking-wider pb-3 pr-8">Período</th>
+              <th className="text-left font-mono font-medium text-black text-sm uppercase tracking-wider pb-3">Fee anual</th>
             </tr>
           </thead>
           <tbody>
@@ -73,23 +74,23 @@ export function SectionTerminos() {
               { period: "Años 5 a 9", fee: "1,00%" },
               { period: "Año 10", fee: "0,75%" },
             ].map((row) => (
-              <tr key={row.period} className="border-b border-white/10">
-                <td className="font-sans font-medium text-white/70 text-sm py-3 pr-8">{row.period}</td>
-                <td className="font-mono font-medium text-white/70 text-sm py-3">{row.fee}</td>
+              <tr key={row.period} className="border-b border-black/10">
+                <td className="font-sans font-medium text-black/60 text-sm py-3 pr-8">{row.period}</td>
+                <td className="font-mono font-medium text-black/60 text-sm py-3">{row.fee}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
 
-      <h3 className="font-sans font-medium text-white/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Capital Calls
       </h3>
-      <p className="font-sans font-medium text-white/70 text-sm leading-relaxed mb-4">
+      <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
         Al firmar el Subscription Agreement se paga el <span className="bg-[#FFEC40] px-1  text-black">30%</span> del capital comprometido. El resto sigue este calendario tentativo:
       </p>
       <Callout>
-        <p className="font-sans font-medium text-white/70 text-sm leading-relaxed">
+        <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Pueden adelantar uno o más capital calls si resulta más conveniente.
         </p>
       </Callout>
@@ -97,19 +98,19 @@ export function SectionTerminos() {
       <div className="overflow-x-auto mt-6">
         <table className="w-full border-collapse">
           <thead>
-            <tr className="border-b border-white/10">
+            <tr className="border-b border-black/10">
               {["Call", "Fecha", "% del call", "% acumulado"].map((h) => (
-                <th key={h} className="text-left font-mono font-medium text-white text-sm uppercase tracking-wider pb-3 pr-8">{h}</th>
+                <th key={h} className="text-left font-mono font-medium text-black text-sm uppercase tracking-wider pb-3 pr-8">{h}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {capitalCalls.map((row) => (
-              <tr key={row.call} className="border-b border-white/10">
-                <td className="font-mono font-medium text-white/70 text-sm py-2 pr-8">{row.call}</td>
-                <td className="font-sans font-medium text-white/70 text-sm py-2 pr-8">{row.date}</td>
-                <td className="font-mono font-medium text-white/70 text-sm py-2 pr-8">{row.pct}</td>
-                <td className="font-mono font-medium text-white/70 text-sm py-2">{row.total}</td>
+              <tr key={row.call} className="border-b border-black/10">
+                <td className="font-mono font-medium text-black/60 text-sm py-2 pr-8">{row.call}</td>
+                <td className="font-sans font-medium text-black/60 text-sm py-2 pr-8">{row.date}</td>
+                <td className="font-mono font-medium text-black/60 text-sm py-2 pr-8">{row.pct}</td>
+                <td className="font-mono font-medium text-black/60 text-sm py-2">{row.total}</td>
               </tr>
             ))}
           </tbody>
