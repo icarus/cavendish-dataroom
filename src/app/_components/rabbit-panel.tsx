@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { ArrowUp } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { ArrowUp, ArrowRight } from "lucide-react";
 
 interface Props {
   active: boolean;
@@ -11,65 +11,42 @@ interface Props {
 }
 
 export function RabbitPanel({ active, onBack }: Props) {
-  const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [show, setShow] = useState(false);
+  const router = useRouter();
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!password.trim()) return;
-    setLoading(true);
-    setError("");
-    setTimeout(() => {
-      setError("Invalid access code");
-      setLoading(false);
-    }, 800);
-  }
+  useEffect(() => {
+    if (active) {
+      const t = setTimeout(() => setShow(true), 350);
+      return () => clearTimeout(t);
+    }
+    setShow(false);
+  }, [active]);
 
   return (
     <div className="absolute top-[50%] left-0 w-screen h-screen bg-black flex items-center justify-center">
-      <div className="w-full max-w-sm px-8 space-y-8">
-        <div className="flex flex-col items-center gap-4">
-          <div className="text-center space-y-0">
-            <h2 className="text-white text-lg font-mono uppercase">
-              Restricted access
-            </h2>
-            <p className="text-white/40 text-sm font-mono uppercase">
-              Enter the access code to continue
-            </p>
-          </div>
-        </div>
+      <div
+        className="flex gap-4"
+        style={{
+          opacity: show ? 1 : 0,
+          transform: show ? "translateY(0)" : "translateY(28px)",
+          transition: "opacity 0.6s ease 0ms, transform 0.6s ease 0ms",
+        }}
+      >
+        <Button onClick={() => router.push("/memo")}>
+          Memo
+          <ArrowRight />
+        </Button>
+        <Button onClick={() => router.push("/rabbit-hole")}>
+          Down the Rabbit Hole
+          <ArrowRight />
+        </Button>
+      </div>
 
-        {error && (
-          <p className="rounded-lg bg-red-500/10 px-4 py-2 text-center text-sm text-red-400 font-mono">
-            {error}
-          </p>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            type="password"
-            placeholder="Access code"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoFocus={active}
-          />
-          <Button
-            type="submit"
-            disabled={loading}
-            className="w-full"
-          >
-            {loading ? "Verifying..." : "Enter"}
-          </Button>
-          <Button
-            variant="ghost"
-            onClick={onBack}
-            className="w-full -mt-1"
-          >
-            <ArrowUp />
-            Back
-          </Button>
-        </form>
+      <div className="absolute top-6 left-6">
+        <Button variant="ghost" onClick={onBack} className="w-full -mt-1">
+          <ArrowUp />
+          Back
+        </Button>
       </div>
     </div>
   );
