@@ -200,12 +200,13 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
             <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-3">
               {company.investorsAfter.map((inv) => {
                 const investor = typeof inv === "string" ? { name: inv } : inv;
+                const isSquareLogo = investor.logo?.includes("yc.png");
                 const content = investor.logo ? (
                   <img
                     src={investor.logo}
                     alt={investor.name}
                     title={investor.name}
-                    className="h-4 max-w-[100px] shrink-0 object-contain brightness-0 invert opacity-60"
+                    className={cn("shrink-0 object-contain brightness-0 invert opacity-100", isSquareLogo ? "h-8" : "h-4 max-w-[100px]")}
                   />
                 ) : (
                   <span className="font-mono font-medium text-sm text-white/60 uppercase tracking-wider">
