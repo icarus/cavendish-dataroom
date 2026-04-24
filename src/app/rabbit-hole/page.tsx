@@ -4,6 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { SectionDiagnostico } from "./_components/section-diagnostico";
 import { SectionComunidad } from "./_components/section-comunidad";
@@ -144,11 +145,10 @@ export default function RabbitHolePage() {
               initial={{ opacity: 0, x: 6 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: 0.1 + i * 0.03, ease: "easeOut" }}
-              className={`block w-full text-left font-mono font-medium text-[13px] leading-snug py-1.5 px-2 transition-colors cursor-pointer ${
-                activeId === item.id
-                  ? "text-black"
-                  : "text-black/30 hover:text-black/60"
-              }`}
+              className={cn(
+                "uppercase block w-full text-left font-mono font-medium text-xs leading-snug py-1.5 px-2 transition-colors cursor-pointer",
+                activeId === item.id ? "text-black" : "text-black/30 hover:text-black/60"
+              )}
             >
               {item.label}
             </motion.button>
