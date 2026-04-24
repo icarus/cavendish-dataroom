@@ -122,7 +122,7 @@ export function Slide8({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
-      <div className="mb-4 text-center" style={{
+      <div className="mb-8 text-center" style={{
         opacity: on ? 1 : 0,
         transform: on ? "translateY(0)" : "translateY(12px)",
         transition: "opacity 0.6s ease, transform 0.6s ease",

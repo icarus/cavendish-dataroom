@@ -21,12 +21,14 @@ function MentorCard({ mentor, index, on, hovered, dimmed, onEnter, onLeave }: {
 }) {
   return (
     <div
-      className={cn(
-        "mentor-card relative overflow-hidden border border-white/10 bg-white/15 transition-all backdrop-blur-xl shrink-0 h-full",
-        hovered ? "grayscale-0 blur-0 bg-white/20" : "grayscale blur-[1px]",
-        dimmed && "opacity-40",
-      )}
-      style={{ aspectRatio: "1/1", ...f(on, 300 + index * 20) }}
+      className="mentor-card relative overflow-hidden backdrop-blur-xl shrink-0 h-full"
+      style={{
+        aspectRatio: "1/1",
+        filter: hovered ? "grayscale(0) blur(0px) brightness(1.1)" : dimmed ? "grayscale(1) blur(4px)" : "grayscale(1) blur(3px)",
+        opacity: hovered ? 1 : dimmed ? 0.15 : 0.55,
+        transition: "filter 0.3s ease, opacity 0.3s ease",
+        ...f(on, 300 + index * 20),
+      }}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
