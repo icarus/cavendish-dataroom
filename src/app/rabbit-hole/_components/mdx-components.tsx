@@ -387,15 +387,15 @@ export function FinancialTable({
   rows: { label: string; value: string; bold?: boolean; sub?: boolean }[];
 }) {
   return (
-    <div className="overflow-x-auto mb-10">
+    <div className="overflow-x-auto mb-10 -mx-0.5">
       <table className="w-full border-collapse">
         <tbody>
           {rows.map((row) => (
             <tr key={row.label} className={row.bold ? "bg-[#FFEC40]" : "border-b border-black/10"}>
-              <td className={cn("font-mono font-medium text-sm py-3 pr-8", row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60")}>
+              <td className={cn("font-mono font-medium uppercase text-sm py-3 pr-8 px-0.5", row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60")}>
                 {row.label}
               </td>
-              <td className={cn("font-mono font-medium text-sm py-3 text-right", row.bold ? "text-black" : row.sub ? "text-black/40" : "text-black")}>
+              <td className={cn("font-mono font-medium uppercase text-sm py-3 text-right px-0.5", row.bold ? "text-black" : row.sub ? "text-black/40" : "text-black")}>
                 {row.value}
               </td>
             </tr>
