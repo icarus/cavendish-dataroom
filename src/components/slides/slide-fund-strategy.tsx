@@ -62,9 +62,17 @@ export function SlideFundStrategy({ active }: P) {
         </div>
       </div>
 
-      <div className="mb-10" style={f(on, 80)}>
-        <p className="font-sans font-normal text-white/40 text-base">
-          At <span className="text-[#FFEC40]">$200K for 7%</span>, only Platanus reach 60x+ returns. Invest early, win big.
+      <div className="flex items-end justify-between mb-6" style={f(on, 80)}>
+        <div className="flex items-baseline gap-4">
+          <span className="font-mono font-medium text-[#FFEC40]" style={{ fontSize: "clamp(36px, 5vw, 72px)", lineHeight: 1 }}>
+            25x
+          </span>
+          <span className="font-sans font-medium text-white/40 text-base leading-tight max-w-[220px]">
+            cash-on-cash returned by top 10% of successful VCs
+          </span>
+        </div>
+        <p className="font-sans font-medium text-white/40 text-base">
+          At <span className="text-[#FFEC40]">$200K for 7%</span>, only Platanus reach 60x+ returns.
         </p>
       </div>
 
