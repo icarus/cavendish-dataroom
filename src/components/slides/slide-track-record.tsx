@@ -152,10 +152,10 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
         transition={{ duration: 0.2, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative size-16 overflow-hidden shrink-0 aspect-square mb-4">
-          <Image src={company.image} alt={company.name} fill className="object-contain" />
+        <div className="relative size-16 overflow-hidden shrink-0 aspect-square mb-5 rounded-md">
+          <Image src={company.image} alt={company.name} fill className="object-cover" />
         </div>
-        <div className="flex items-center gap-2 flex-wrap mb-2">
+        <div className="flex items-center gap-2 flex-wrap mb-1">
           <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "clamp(20px, 2vw, 28px)" }}>
             {company.name}
           </h3>
@@ -193,11 +193,11 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
           </ul>
         )}
         {company.investorsAfter && company.investorsAfter.length > 0 && (
-          <div className="mt-auto pt-2">
+          <div className="mt-auto pt-4">
             <span className={cn("font-mono font-normal text-xs uppercase tracking-wider", detailMuted())}>
               Investors after Platanus:
             </span>
-            <div className="flex flex-wrap items-center gap-3 mt-2">
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 mt-3">
               {company.investorsAfter.map((inv) => {
                 const investor = typeof inv === "string" ? { name: inv } : inv;
                 const content = investor.logo ? (
@@ -205,10 +205,10 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
                     src={investor.logo}
                     alt={investor.name}
                     title={investor.name}
-                    className="h-5 shrink-0 object-contain"
+                    className="h-4 max-w-[100px] shrink-0 object-contain brightness-0 invert opacity-60"
                   />
                 ) : (
-                  <span className={cn("font-sans font-medium text-base", detailText())}>
+                  <span className="font-mono font-medium text-sm text-white/60 uppercase tracking-wider">
                     {investor.name}
                   </span>
                 );
