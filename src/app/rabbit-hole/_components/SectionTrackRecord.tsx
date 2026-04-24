@@ -1,4 +1,4 @@
-import { Callout } from "./Callout";
+import { Callout } from "./mdx-components";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
