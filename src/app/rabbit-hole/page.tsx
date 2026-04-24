@@ -23,9 +23,9 @@ const NAV_ITEMS = [
   { id: "portafolio", label: "Construcción del portafolio" },
   { id: "proceso", label: "Proceso de selección" },
   { id: "kalio", label: "Kalio" },
+  { id: "track-record", label: "Track Record" },
   { id: "estructura", label: "Estructura legal del fondo" },
   { id: "terminos", label: "Términos Cavendish LP" },
-  { id: "track-record", label: "Track Record" },
 ];
 
 export default function RabbitHolePage() {
@@ -120,9 +120,9 @@ export default function RabbitHolePage() {
           <SectionPortafolio />
           <SectionProceso />
           <SectionKalio />
+          <SectionTrackRecord />
           <SectionEstructura />
           <SectionTerminos />
-          <SectionTrackRecord />
         </main>
       </div>
     </div>
