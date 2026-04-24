@@ -19,39 +19,48 @@ export function ValorizacionesChart() {
       <p className="font-sans font-medium text-black/60 text-sm mb-6">
         Valorizaciones post money segun rondas
       </p>
-      <div className="flex items-end gap-3" style={{ height: CHART_H }}>
-        {bars.map((bar) => {
-          const rawH = Math.round((bar.value / MAX) * CHART_H);
-          const barH = Math.max(rawH, 6);
-          return (
-            <div key={bar.label} className="flex flex-col items-center justify-end flex-1 h-full">
-              <span
-                className="font-mono font-medium text-black mb-1 leading-tight text-center"
-                style={{ fontSize: "clamp(8px, 1vw, 11px)" }}
-              >
-                {bar.display}
+
+      <div className="hidden sm:block">
+        <div className="flex items-end gap-3" style={{ height: CHART_H }}>
+          {bars.map((bar) => {
+            const barH = Math.max(Math.round((bar.value / MAX) * CHART_H), 6);
+            return (
+              <div key={bar.label} className="flex flex-col items-center justify-end flex-1 h-full">
+                <span className="font-mono font-medium text-black mb-1 leading-tight text-center" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
+                  {bar.display}
+                </span>
+                <div className={`w-full ${bar.platanus ? "bg-[#FFEC40]" : "bg-black/5"}`} style={{ height: barH }} />
+              </div>
+            );
+          })}
+        </div>
+        <div className="border-t border-black/40 mt-0" />
+        <div className="flex gap-3 mt-2">
+          {bars.map((bar) => (
+            <div key={bar.label} className="flex-1 text-center">
+              <span className="font-mono font-medium text-black leading-tight text-center block" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
+                {bar.label}
               </span>
-              <div
-                className={`w-full ${bar.platanus ? "bg-[#FFEC40]" : "bg-black/5"}`}
-                style={{ height: barH }}
-              />
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="sm:hidden flex flex-col gap-2">
+        {bars.map((bar) => {
+          const barW = Math.max(Math.round((bar.value / MAX) * 100), 2);
+          return (
+            <div key={bar.label} className="flex items-center gap-3">
+              <span className="font-mono font-medium text-black text-xs shrink-0 w-20">{bar.label}</span>
+              <div className="flex-1 flex items-center gap-2">
+                <div className={`h-5 ${bar.platanus ? "bg-[#FFEC40]" : "bg-black/10"}`} style={{ width: `${barW}%` }} />
+                <span className="font-mono font-medium text-black text-xs shrink-0">{bar.display}</span>
+              </div>
             </div>
           );
         })}
       </div>
-      <div className="border-t border-black/40 mt-0" />
-      <div className="flex gap-3 mt-2">
-        {bars.map((bar) => (
-          <div key={bar.label} className="flex-1 text-center">
-            <span
-              className="font-mono font-medium text-black leading-tight text-center block"
-              style={{ fontSize: "clamp(8px, 1vw, 11px)" }}
-            >
-              {bar.label}
-            </span>
-          </div>
-        ))}
-      </div>
+
       <figcaption className="font-sans font-medium text-black/40 text-sm leading-relaxed mt-4">
         Carta y data propia.
       </figcaption>
