@@ -71,10 +71,10 @@ export function Slide7({ active }: P) {
             The <mark className="bg-[#FFEC40] text-black px-2 not-italic">Banana</mark> House
           </h2>
           <p className="font-sans font-medium text-white/40 text-base leading-relaxed mb-3" style={f(on, 100)}>
-            Banana Houses are both offices and residences, fostering real in-person connections beyond Slack. Founders gather here for hackathons, launches, fireside chats, and social events.
+            Office, residence, and launchpad in one. Founders live and build together through hackathons, fireside chats, and social events.
           </p>
           <p className="font-sans font-medium text-white/40 text-base leading-relaxed mb-6" style={f(on, 180)}>
-            Each house has beds, promoting early regional expansion, reducing travel costs, and enabling quick access to local networks.
+            Beds on-site enable regional expansion and fast access to local networks.
           </p>
 
           <div className="flex gap-6" style={f(on, 280)}>
@@ -104,7 +104,7 @@ export function Slide7({ active }: P) {
               <div className="font-mono text-white text-base font-medium tracking-wider uppercase border border-white/40 px-3 py-1.5 bg-black/60 w-fit">
                 MEXICO CITY
               </div>
-              <div className="font-mono bg-[#FFEC40]/5 text-[#FFEC40] text-xs font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
+              <div className="font-mono bg-[#FFEC40]/15 text-[#FFEC40] text-xs font-medium tracking-wider uppercase border border-[#FFEC40] px-2 py-0.5 w-fit">
                 COMING SOON
               </div>
             </div>
