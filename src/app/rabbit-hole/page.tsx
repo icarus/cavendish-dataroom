@@ -11,6 +11,7 @@ import { SectionEstrategia } from "./_components/SectionEstrategia";
 import { SectionPortafolio } from "./_components/SectionPortafolio";
 import { SectionProceso } from "./_components/SectionProceso";
 import { SectionKalio } from "./_components/SectionKalio";
+import { SectionEquipo } from "./_components/SectionEquipo";
 import { SectionEstructura } from "./_components/SectionEstructura";
 import { SectionTerminos } from "./_components/SectionTerminos";
 import { SectionTrackRecord } from "./_components/SectionTrackRecord";
@@ -23,6 +24,7 @@ const NAV_ITEMS = [
   { id: "portafolio", label: "Construcción del portafolio" },
   { id: "proceso", label: "Proceso de selección" },
   { id: "kalio", label: "Kalio" },
+  { id: "equipo", label: "Equipo" },
   { id: "track-record", label: "Track Record" },
   { id: "estructura", label: "Estructura legal del fondo" },
   { id: "terminos", label: "Términos Cavendish LP" },
@@ -120,6 +122,7 @@ export default function RabbitHolePage() {
           <SectionPortafolio />
           <SectionProceso />
           <SectionKalio />
+          <SectionEquipo />
           <SectionTrackRecord />
           <SectionEstructura />
           <SectionTerminos />
