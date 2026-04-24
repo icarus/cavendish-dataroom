@@ -109,7 +109,7 @@ export function SlideClearingFog({ active }: P) {
       </div>
 
       <div className="mb-8 max-w-3xl" style={f(on, 150)}>
-        <p className="font-sans font-normal text-white/40 text-base leading-relaxed">
+        <p className="font-sans font-medium text-white text-base leading-relaxed">
           Being around other ambitious founders raises their ambitions. <br/>
           The accountability & advice from this top-tier founders gives them speed, clarity and conviction.
         </p>

@@ -238,6 +238,8 @@ export function SlideTrackRecord({ active }: P) {
     ? ALL_COMPANIES
     : ALL_COMPANIES.filter((c) => c.fundName === activeFund);
 
+  const STARTUP_COUNTS: Record<string, string> = { all: "121", SPV: "4", "Genesis Fund": "11", "Fund I": "101" };
+
   const activeMetrics = activeFund === "all"
     ? { committedAmount: "$16,141,613", moicMultiple: "1.81x", dpiMultiple: "0.07x", tvpiMultiple: "1.4x" }
     : VISIBLE_FUNDS.find((f) => f.name === activeFund) ?? { committedAmount: "-", moicMultiple: "-", dpiMultiple: "-", tvpiMultiple: "-" };
@@ -301,20 +303,27 @@ export function SlideTrackRecord({ active }: P) {
               );
             })}
           </div>
-          <div className="flex gap-6" style={f(on, 60)}>
+          <div className="flex gap-8" style={f(on, 60)}>
             {[
+              { label: "Startups", value: STARTUP_COUNTS[activeFund] ?? "-" },
               { label: "Committed", value: activeMetrics.committedAmount },
               { label: "MOIC", value: activeMetrics.moicMultiple },
               { label: "DPI", value: activeMetrics.dpiMultiple },
               { label: "TVPI", value: activeMetrics.tvpiMultiple },
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col items-center">
-                <span className="font-mono font-medium text-white/40 text-xs uppercase tracking-wider">{label}</span>
-                <AnimatedValue value={value} />
+                <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">{label}</span>
+                <span className="font-mono font-medium text-white" style={{ fontSize: "clamp(16px, 1.5vw, 24px)" }}>
+                  <AnimatedValue value={value} />
+                </span>
               </div>
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="mb-2" style={f(on, 100)}>
+        <span className="font-mono font-medium text-white/40 text-base uppercase tracking-wider">Selected portfolio</span>
       </div>
 
       <div className="flex-1 min-h-0 grid gap-2 content-start overflow-hidden" style={{ gridTemplateColumns: `repeat(${Math.min(Math.ceil(ALL_COMPANIES.length / 3), 7)}, 1fr)`, gridTemplateRows: "repeat(3, 1fr)" }}>
