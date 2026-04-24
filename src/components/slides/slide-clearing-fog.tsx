@@ -20,10 +20,10 @@ function MentorCard({ mentor, index, on, hovered, dimmed, onEnter, onLeave }: {
 }) {
   return (
     <div
-      className="mentor-card relative overflow-hidden backdrop-blur-xl shrink-0 h-full"
+      className="mentor-card bg-black relative overflow-hidden backdrop-blur-xl shrink-0 h-full"
       style={{
         aspectRatio: "1/1",
-        filter: hovered ? "grayscale(0) blur(0px) brightness(1.1)" : dimmed ? "grayscale(1) blur(4px)" : "grayscale(1) blur(3px)",
+        filter: hovered ? "grayscale(0) brightness(1.1)" : "grayscale(1)",
         opacity: hovered ? 1 : dimmed ? 0.15 : 0.55,
         transition: "filter 0.3s ease, opacity 0.3s ease",
         ...f(on, 300 + index * 20),
@@ -60,7 +60,7 @@ function MarqueeRow({ mentors, direction, on, hoveredId, onHover, onLeave }: {
   const animName = direction === "left" ? "marquee-left" : "marquee-right";
 
   return (
-    <div className="overflow-hidden flex-1 min-h-0">
+    <div className="overflow-hidden flex-1 py-1.5 min-h-0">
       <div
         className="marquee-track flex gap-3 h-full"
         style={{
@@ -115,7 +115,7 @@ export function SlideClearingFog({ active }: P) {
         </p>
       </div>
 
-      <div className="flex-1 min-h-0 flex flex-col gap-3" style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}>
+      <div className="flex-1 min-h-0 flex flex-col" style={{ maskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)", WebkitMaskImage: "linear-gradient(to right, transparent, black 6%, black 94%, transparent)" }}>
         <MarqueeRow mentors={ROW1} direction="left" on={on} hoveredId={hoveredId} onHover={setHoveredId} onLeave={() => setHoveredId(null)} />
         <MarqueeRow mentors={ROW2} direction="right" on={on} hoveredId={hoveredId} onHover={setHoveredId} onLeave={() => setHoveredId(null)} />
       </div>
