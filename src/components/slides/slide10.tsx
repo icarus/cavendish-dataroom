@@ -51,7 +51,7 @@ export function Slide10({ active }: P) {
               animate={{
                 flex: isHovered ? 2 : 1,
                 opacity: on ? (isDimmed ? 0.4 : 1) : 0,
-                y: on ? 0 : 14,
+                y: on ? 0 : 16,
               }}
               transition={{
                 flex: SPRING,
@@ -86,7 +86,7 @@ export function Slide10({ active }: P) {
                   {gp.name}
                 </motion.div>
                 <motion.div
-                  className="font-mono font-medium text-[#FFEC40] text-base uppercase tracking-wider mt-1"
+                  className="font-mono font-medium text-[#FFEC40] text-sm uppercase tracking-wider"
                   animate={{ x: isHovered ? 12 : 0 }}
                   transition={{ ...SPRING, delay: 0.02 }}
                 >
@@ -105,7 +105,7 @@ export function Slide10({ active }: P) {
                     {isHovered && gp.bullets.map((b, j) => (
                       <motion.li
                         key={j}
-                        className="font-sans font-medium text-white text-base leading-relaxed flex items-center gap-2"
+                        className="font-sans font-medium text-white text-sm leading-relaxed flex items-center gap-2"
                         initial={{ opacity: 0, x: 0 }}
                         animate={{ opacity: 1, x: 12 }}
                         exit={{ opacity: 0, x: 0 }}
