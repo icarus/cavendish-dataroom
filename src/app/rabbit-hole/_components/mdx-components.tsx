@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ChevronRight, ArrowRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { VideoPlayer } from "./video-player";
+import { cn } from "@/lib/utils";
 
 const COMPANIES: Record<string, { avatar: string; url?: string; bg: string }> = {
   toku: { avatar: "/avatars/toku.png", url: "https://toku.cl", bg: "#1a1a2e" },
@@ -68,7 +69,7 @@ export function Section({
   borderBottom?: boolean;
 }) {
   return (
-    <section id={id} className={`py-16 ${borderBottom ? "border-b border-black/10" : ""}`}>
+    <section id={id} className={cn("py-16", borderBottom && "border-b border-black/10")}>
       <Badge variant="solid" className="mb-4">{badge}</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         {title}
@@ -111,7 +112,7 @@ export function ReadMoreSection({
 
 export function H3({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+    <h3 className="font-sans font-medium text-black mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
       {children}
     </h3>
   );
@@ -119,7 +120,7 @@ export function H3({ children }: { children: React.ReactNode }) {
 
 export function H4({ children }: { children: React.ReactNode }) {
   return (
-    <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3">
+    <h4 className="font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
       {children}
     </h4>
   );
@@ -245,7 +246,7 @@ export function StatGrid({
     gridCols === 6 ? "grid-cols-3 sm:grid-cols-6" :
     `grid-cols-${gridCols}`;
   return (
-    <div className={`grid ${colClass} gap-3`}>
+    <div className={cn("grid gap-3", colClass)}>
       {items.map((item) => (
         <div key={item.label} className="border border-black/10 p-4 bg-black/5 text-center">
           <p className="font-mono font-medium text-black text-2xl mb-1">{item.value}</p>
@@ -351,7 +352,7 @@ export function DataTable({
 }) {
   return (
     <div className="overflow-x-auto -mx-1 mb-4">
-      <table className={`w-full border-collapse ${fixed ? "table-fixed" : ""}`}>
+      <table className={cn("w-full border-collapse", fixed && "table-fixed")}>
         {headers.length > 0 && (
           <thead>
             <tr className="border-b border-black/10">
@@ -365,9 +366,9 @@ export function DataTable({
           {rows.map((row, ri) => {
             const isHighlight = highlightLast && ri === rows.length - 1;
             return (
-              <tr key={ri} className={`border-b ${isHighlight ? "bg-neutral-200/80 *:!text-black" : "border-black/10"}`}>
+              <tr key={ri} className={cn("border-b", isHighlight ? "bg-neutral-200/80 *:!text-black" : "border-black/10")}>
                 {row.map((cell, ci) => (
-                  <td key={ci} className={`font-mono uppercase px-1 font-medium text-black/60 text-sm py-2.5 pr-3 ${ci === headers.length - 1 ? "" : ""}`}>
+                  <td key={ci} className="font-mono uppercase px-1 font-medium text-black/60 text-sm py-2.5 pr-3">
                     {cell}
                   </td>
                 ))}
@@ -391,10 +392,10 @@ export function FinancialTable({
         <tbody>
           {rows.map((row) => (
             <tr key={row.label} className={row.bold ? "bg-[#FFEC40]" : "border-b border-black/10"}>
-              <td className={`font-sans font-medium text-sm py-3 pr-8 ${row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60"}`}>
+              <td className={cn("font-sans font-medium text-sm py-3 pr-8", row.bold ? "text-black" : row.sub ? "text-black/40 pl-6" : "text-black/60")}>
                 {row.label}
               </td>
-              <td className={`font-mono font-medium text-sm py-3 text-right ${row.bold ? "text-black" : row.sub ? "text-black/40" : "text-black"}`}>
+              <td className={cn("font-mono font-medium text-sm py-3 text-right", row.bold ? "text-black" : row.sub ? "text-black/40" : "text-black")}>
                 {row.value}
               </td>
             </tr>
@@ -494,16 +495,16 @@ export const rabbitHoleComponents: MDXComponents = {
   ),
   h3: (props) => (
     <h3
-      className="font-sans font-medium text-black/40 mb-4"
+      className="font-sans font-medium text-black mb-4"
       style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}
       {...props}
     />
   ),
   h4: (props) => (
-    <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3" {...props} />
+    <h4 className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-3" {...props} />
   ),
   p: (props) => (
-    <p className="font-sans font-medium text-black/60 text-sm leading-relaxed" {...props} />
+    <p className="font-sans font-medium text-black text-sm leading-relaxed" {...props} />
   ),
   ul: (props) => <ul className="list-disc list-outside pl-5 space-y-2" {...props} />,
   ol: (props) => <ol className="list-decimal list-outside pl-5 space-y-2" {...props} />,
