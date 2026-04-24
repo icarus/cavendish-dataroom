@@ -205,16 +205,55 @@ export function SlideTrackRecord({ active }: P) {
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <style>{`
         @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
+          0% { background-position: -400% 0; }
+          100% { background-position: 400% 0; }
         }
       `}</style>
-      <div className="flex items-center justify-between mb-2">
-        <div style={f(on, 0)}>
+      <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center gap-3" style={f(on, 0)}>
           <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
             Track{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Record</mark>
           </h2>
+          <div className="flex gap-2 items-center">
+            {[
+              { key: "all", label: "All", year: "" },
+              ...VISIBLE_FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year })),
+            ].map(({ key, label, year }) => {
+              const isGenesis = key === "Genesis Fund";
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveFund(key)}
+                  className={cn(
+                    "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap relative overflow-hidden",
+                    activeFund === key
+                      ? "bg-[#FFEC40] text-black border-[#FFEC40]"
+                      : isGenesis
+                        ? "bg-transparent text-[#FFEC40] border-[#FFEC40]/60 hover:bg-[#FFEC40]/10"
+                        : "bg-transparent text-white/40 border-white/20 hover:border-white/40 hover:bg-white/10",
+                  )}
+                  style={isGenesis && activeFund !== key ? {
+                    backgroundImage: "linear-gradient(90deg, transparent 0%, rgba(255,236,64,0.06) 30%, rgba(255,236,64,0.18) 50%, rgba(255,236,64,0.06) 70%, transparent 100%)",
+                    backgroundSize: "400% 100%",
+                    animation: "shimmer 6s ease-in-out infinite",
+                  } : undefined}
+                >
+                  {label}
+                  {year && (
+                    <span className={cn("font-mono font-medium ml-1", activeFund === key ? "text-black/40" : isGenesis ? "text-[#FFEC40]/50" : "text-white/40")}>
+                      {year}
+                    </span>
+                  )}
+                  {isGenesis && activeFund !== key && (
+                    <span className="ml-2 text-xs bg-[#FFEC40] text-black px-1 py-0.5 font-mono font-medium uppercase tracking-wider">
+                      100% Returned
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
         </div>
         <div className="flex gap-6" style={f(on, 60)}>
           {[
@@ -229,45 +268,6 @@ export function SlideTrackRecord({ active }: P) {
             </div>
           ))}
         </div>
-      </div>
-      <div className="flex gap-2 mb-4" style={f(on, 100)}>
-        {[
-          { key: "all", label: "All", year: "" },
-          ...VISIBLE_FUNDS.map((fund) => ({ key: fund.name, label: fund.name, year: fund.year })),
-        ].map(({ key, label, year }) => {
-          const isGenesis = key === "Genesis Fund";
-          return (
-            <button
-              key={key}
-              onClick={() => setActiveFund(key)}
-              className={cn(
-                "font-mono font-medium text-base uppercase tracking-wider px-3 py-1 border transition-colors cursor-pointer backdrop-blur-sm whitespace-nowrap relative",
-                activeFund === key
-                  ? "bg-[#FFEC40] text-black border-[#FFEC40]"
-                  : isGenesis
-                    ? "bg-transparent text-[#FFEC40] border-[#FFEC40]/60 hover:bg-[#FFEC40]/10"
-                    : "bg-transparent text-white/40 border-white/20 hover:border-white/40 hover:bg-white/10",
-              )}
-              style={isGenesis && activeFund !== key ? {
-                backgroundImage: "linear-gradient(90deg, transparent 0%, rgba(255,236,64,0.08) 40%, rgba(255,236,64,0.15) 50%, rgba(255,236,64,0.08) 60%, transparent 100%)",
-                backgroundSize: "200% 100%",
-                animation: "shimmer 3s ease-in-out infinite",
-              } : undefined}
-            >
-              {label}
-              {year && (
-                <span className={cn("font-mono font-medium ml-1", activeFund === key ? "text-black/40" : isGenesis ? "text-[#FFEC40]/50" : "text-white/40")}>
-                  {year}
-                </span>
-              )}
-              {isGenesis && activeFund !== key && (
-                <span className="ml-2 text-xs bg-[#FFEC40] text-black px-1 py-0.5 font-mono font-medium uppercase tracking-wider">
-                  DPI 1.41x
-                </span>
-              )}
-            </button>
-          );
-        })}
       </div>
 
       <div className="flex-1 min-h-0 grid gap-2 content-start overflow-hidden" style={{ gridTemplateColumns: `repeat(${Math.min(Math.ceil(ALL_COMPANIES.length / 3), 7)}, 1fr)`, gridTemplateRows: "repeat(3, 1fr)" }}>
