@@ -70,13 +70,13 @@ export function ValorizacionesChart() {
 
 const exits = [250, 300, 350, 400, 450, 500];
 const entries = [
-  { label: "$2,857,143", value: 2857143, platanus: true },
-  { label: "$5,000,000", value: 5000000 },
-  { label: "$10,000,000", value: 10000000 },
-  { label: "$15,000,000", value: 15000000 },
-  { label: "$20,000,000", value: 20000000 },
-  { label: "$25,000,000", value: 25000000 },
-  { label: "$30,000,000", value: 30000000 },
+  { label: "$2,857,143", short: "$2.8M", value: 2857143, platanus: true },
+  { label: "$5,000,000", short: "$5M", value: 5000000 },
+  { label: "$10,000,000", short: "$10M", value: 10000000 },
+  { label: "$15,000,000", short: "$15M", value: 15000000 },
+  { label: "$20,000,000", short: "$20M", value: 20000000 },
+  { label: "$25,000,000", short: "$25M", value: 25000000 },
+  { label: "$30,000,000", short: "$30M", value: 30000000 },
 ];
 
 const retornosData: number[][] = [
@@ -116,7 +116,8 @@ export function RetornosTable() {
           {entries.map((entry, ri) => (
             <tr key={entry.label}>
               <td className={`font-mono font-medium text-xs p-1.5 border border-black/10 ${entry.platanus ? "text-black bg-[#FFEC40] uppercase" : "bg-black/5 text-black"}`}>
-                {entry.label}
+                <span className="hidden sm:inline">{entry.label}</span>
+                <span className="sm:hidden">{entry.short}</span>
                 {entry.platanus && <span className="block text-black bg-[#FFEC40] uppercase w-fit" style={{ fontSize: "10px" }}>Platanus</span>}
               </td>
               {retornosData[ri].map((val, ci) => (
