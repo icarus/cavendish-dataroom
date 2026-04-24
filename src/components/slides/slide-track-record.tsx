@@ -116,22 +116,30 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
           <div className="relative min-w-24 size-24 overflow-hidden shrink-0 aspect-square">
             <Image src={company.image} alt={company.name} fill className="object-contain" />
           </div>
-          <div className={cn("font-mono font-medium text-[#FFEC40]")} style={{ fontSize: "clamp(22px, 2.5vw, 36px)" }}>
-            {company.moic}
-          </div>
         </div>
         <div className="flex-1 flex flex-col gap-3">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 flex-wrap">
             <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "clamp(20px, 2vw, 32px)" }}>
               {company.name}
             </h3>
-            {badges.length > 0 && badges.map((b) => (
-              <span key={b} className={cn("font-mono font-medium text-base uppercase tracking-wider", detailMuted())}>
+            <span className="font-mono font-medium text-[#FFEC40] text-xs uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5">
+              {company.moic}
+            </span>
+            <span className="font-mono font-medium text-white/60 text-xs uppercase tracking-wider bg-white/10 px-1.5 py-0.5">
+              {company.fundName}
+            </span>
+            {badges.map((b) => (
+              <span
+                key={b}
+                className={cn(
+                  "font-mono font-medium text-xs uppercase tracking-wider px-1.5 py-0.5",
+                  b === "exited" ? "bg-white text-black" : "bg-[#FFEC40]/20 text-[#FFEC40]",
+                )}
+              >
                 {BADGE_LABELS[b]}
               </span>
             ))}
           </div>
-          <span className={cn("font-mono font-normal text-base uppercase tracking-wider", detailMuted())}>{company.fundName}</span>
           {company.tagline && (
             <p className={cn("font-sans font-normal text-base leading-relaxed", detailText())}>
               {company.tagline}
@@ -275,17 +283,6 @@ export function SlideTrackRecord({ active }: P) {
               ))}
             </div>
           </motion.div>
-        ))}
-      </div>
-
-      <div className="flex items-center justify-end gap-6 mt-6" style={f(on, 200)}>
-        {LEGEND.map(({ badge, dot }) => (
-          <div key={badge} className="flex items-center gap-2">
-            <span className={cn("size-2.5 shrink-0", dot)} />
-            <span className="font-mono font-medium text-white text-base uppercase tracking-wider">
-              {BADGE_LABELS[badge]}
-            </span>
-          </div>
         ))}
       </div>
 
