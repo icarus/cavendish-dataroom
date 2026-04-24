@@ -44,7 +44,7 @@ export function Co({ name, label }: { name: string; label?: string }) {
 
 export function Callout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="md:-mx-5 border border-[#FFEC40] bg-[#FFEC40]/10 p-5 my-6">
+    <div className="border border-[#FFEC40] bg-[#FFEC40]/10 p-5 my-6">
       {children}
     </div>
   );
@@ -119,7 +119,7 @@ export function H3({ children }: { children: React.ReactNode }) {
 
 export function H4({ children }: { children: React.ReactNode }) {
   return (
-    <h4 className="font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
+    <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
       {children}
     </h4>
   );
@@ -364,7 +364,7 @@ export function DataTable({
           {rows.map((row, ri) => {
             const isHighlight = highlightLast && ri === rows.length - 1;
             return (
-              <tr key={ri} className={cn("border-b", isHighlight ? "bg-neutral-200/80 *:!text-black" : "border-black/10")}>
+              <tr key={ri} className={cn("border-b", isHighlight ? "bg-[#FFEC40] *:!text-black" : "border-black/10")}>
                 {row.map((cell, ci) => (
                   <td key={ci} className="font-mono uppercase px-1 font-medium text-black/60 text-sm py-2.5 pr-3">
                     {cell}
