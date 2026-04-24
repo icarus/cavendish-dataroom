@@ -1,4 +1,5 @@
 import React from "react";
+import { Section } from "./mdx-components";
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
@@ -441,13 +442,9 @@ function CaseBoom() {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export function SectionCasosDeEstudio() {
+export function CasosDeEstudioContent() {
   return (
-    <section id="casos-de-estudio" className="py-16 border-b border-black/10">
-      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5 mb-4">10</span>
-      <h2 className="font-sans font-medium text-blackmb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
-        Casos de estudio
-      </h2>
+    <Section id="casos-de-estudio" badge="10" title="Casos de estudio">
       <div className="space-y-4 mb-10">
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed">
           Cinco casos que muestran nuestra tesis: el rol de la comunidad, la ventaja de entrar en pre-semilla y el programa.
@@ -458,6 +455,6 @@ export function SectionCasosDeEstudio() {
       <CaseBemmbo />
       <CaseGrupalia />
       <CaseBoom />
-    </section>
+    </Section>
   );
 }

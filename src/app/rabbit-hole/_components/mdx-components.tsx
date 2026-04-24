@@ -100,7 +100,7 @@ export function ReadMoreSection({
       {children}
       <Link
         href={`/rabbit-hole/${slug}`}
-        className="inline-flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors mt-6"
+        className="inline-flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors mt-8"
       >
         Leer completo
         <ArrowRight size={14} />

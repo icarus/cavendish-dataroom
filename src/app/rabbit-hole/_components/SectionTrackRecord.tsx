@@ -1,4 +1,4 @@
-import { Callout } from "./mdx-components";
+import { Callout, Section } from "./mdx-components";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -138,7 +138,7 @@ function MetricCard({ label, value }: { label: string; value: string }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export function SectionTrackRecord() {
+export function TrackRecordContent() {
   const lpTypes = [
     { label: "FFOO", count: 13, amount: 9_730_000 },
     { label: "HNWI", count: 26, amount: 2_662_867 },
@@ -241,11 +241,7 @@ export function SectionTrackRecord() {
   const batchLabels = ["20", "21-I", "21-II", "22-I", "22-II", "23-I", "23-II", "24-I", "24-II"];
 
   return (
-    <section id="track-record" className="py-16 border-b border-black/10">
-      <span className="inline-block bg-[#FFEC40] text-black font-mono font-medium text-base px-2 py-0.5 mb-4">09</span>
-      <h2 className="font-sans font-medium text-blackmb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
-        Track Record
-      </h2>
+    <Section id="track-record" badge="09" title="Track Record">
 
       {/* ── Intro ── */}
       <div className="space-y-4 mb-10">
@@ -962,6 +958,6 @@ export function SectionTrackRecord() {
           <GrowthBar label="Fund I" interesting={19} slowGrowth={26} stalled={22} closed={29} exited={3} total={99} />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

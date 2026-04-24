@@ -10,16 +10,12 @@ import Diagnostico from "./content/diagnostico.mdx";
 import Comunidad from "./content/comunidad.mdx";
 import Computin from "./content/computin.mdx";
 import Estrategia from "./content/estrategia.mdx";
-import Portafolio from "./content/portafolio.mdx";
-import Proceso from "./content/proceso.mdx";
-import Kalio from "./content/kalio.mdx";
-import Estructura from "./content/estructura.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
 import { ExpandableSection } from "./_components/expandable-section";
-import { SectionEquipo } from "./_components/SectionEquipo";
-import { SectionTrackRecord } from "./_components/SectionTrackRecord";
-import { SectionCasosDeEstudio } from "./_components/SectionCasosDeEstudio";
+import Equipo from "./content/equipo.mdx";
+import TrackRecord from "./content/track-record.mdx";
+import CasosDeEstudio from "./content/casos-de-estudio.mdx";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -155,19 +151,19 @@ export default function RabbitHolePage() {
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="portafolio"><Portafolio /></ExpandableSection>
+          <ExpandableSection slug="portafolio" badge="05" title="Construcción del portafolio" description="Cómo planificamos la construcción del portafolio para lograr un retorno de 3x, los supuestos clave y la distribución de inversiones." />
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="proceso"><Proceso /></ExpandableSection>
+          <ExpandableSection slug="proceso" badge="06" title="Proceso de selección" description="Diseñamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones. Desde el 2020 hemos recibido más de 9.549 aplicaciones y seleccionado 121 startups." />
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="kalio"><Kalio /></ExpandableSection>
+          <ExpandableSection slug="kalio" badge="07" title="Kalio" description="Kalio es el centro de la operación de Platanus. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos." />
         </SectionReveal>
-        <SectionReveal><SectionEquipo /></SectionReveal>
-        <SectionReveal><SectionTrackRecord /></SectionReveal>
-        <SectionReveal><SectionCasosDeEstudio /></SectionReveal>
+        <SectionReveal><Equipo /></SectionReveal>
+        <SectionReveal><TrackRecord /></SectionReveal>
+        <SectionReveal><CasosDeEstudio /></SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="estructura"><Estructura /></ExpandableSection>
+          <ExpandableSection slug="estructura" badge="11" title="Estructura legal del fondo" description="El fondo se ha estructurado como una Limited Partnership Canadiense, regulado por un Limited Partnership Agreement." />
         </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>
