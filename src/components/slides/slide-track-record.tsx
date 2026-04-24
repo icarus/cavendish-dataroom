@@ -24,7 +24,7 @@ function AnimatedValue({ value }: { value: string }) {
     const hasCommas = numMatch[0].includes(",");
     const decimals = numMatch[0].includes(".") ? numMatch[0].split(".")[1].length : 0;
 
-    const duration = 1200;
+    const duration = 600;
     const startTime = performance.now();
 
     const step = (now: number) => {
@@ -146,8 +146,10 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
       </button>
       <motion.div
         className={cn("relative z-10 flex flex-col max-w-md w-full max-h-[80%] p-6 overflow-y-auto")}
-        layoutId={`company-${company.name}`}
-        transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.2, ease: "easeOut" }}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="relative size-16 overflow-hidden shrink-0 aspect-square mb-4">
@@ -318,8 +320,6 @@ export function SlideTrackRecord({ active }: P) {
         {filtered.map((company, i) => (
           <motion.div
             key={company.name}
-            layoutId={`company-${company.name}`}
-            transition={{ layout: { duration: 0.12, ease: "easeOut" } }}
             className={cn(
               "relative cursor-pointer overflow-hidden border flex flex-col items-center justify-center gap-2 p-2 backdrop-blur-sm",
               cardStyle(primaryBadge(company.badge)),
