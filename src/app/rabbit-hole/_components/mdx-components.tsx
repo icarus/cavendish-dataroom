@@ -112,7 +112,7 @@ export function ReadMoreSection({
 
 export function H3({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-sans font-medium text-black mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+    <h3 className="font-mono font-medium text-black mt-16 mb-2" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
       {children}
     </h3>
   );
@@ -219,7 +219,6 @@ export function TimelineStep({
         <div className="w-6 h-6 bg-[#FFEC40] flex items-center justify-center shrink-0">
           <span className="font-mono font-medium text-black text-sm">{n}</span>
         </div>
-        {!last && <div className="w-px bg-black/10 flex-1 mt-2" />}
       </div>
       <div className="pb-4 flex-1">
         <h4 className="font-sans font-medium text-black text-base mb-3">
