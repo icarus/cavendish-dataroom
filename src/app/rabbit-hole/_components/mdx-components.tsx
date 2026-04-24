@@ -28,7 +28,7 @@ export function Co({ name, label }: { name: string; label?: string }) {
       >
         <Image src={co.avatar} alt={displayName} width={16} height={16} className="object-cover size-4 rounded-md overflow-hidden" />
       </span>{" "}
-      <span className="font-sans font-medium text-black underline decoration-black/20 underline-offset-2">{displayName}</span>
+      <span className="font-sans font-medium text-black">{displayName}</span>
     </span>
   );
 
@@ -276,10 +276,10 @@ export function GenGrid({
 
 export function EventGrid({ items }: { items: string[] }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6">
       {items.map((event) => (
         <div key={event} className="border border-black/10 px-4 py-2.5 bg-black/5">
-          <span className="font-mono font-medium text-black/60 text-sm">{event}</span>
+          <span className="font-mono font-medium uppercase text-black/60 text-sm">{event}</span>
         </div>
       ))}
     </div>
