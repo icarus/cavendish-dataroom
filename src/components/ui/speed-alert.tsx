@@ -62,7 +62,7 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
         </div>
 
         <div
-          className="font-mono font-medium leading-none"
+          className="font-mono uppercase font-medium leading-none"
           style={{
             fontSize: "clamp(48px, 8vw, 120px)",
             color: DISCO_COLORS[colorIndex],

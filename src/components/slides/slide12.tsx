@@ -25,7 +25,7 @@ export function Slide12({ active }: P) {
         </button>
         <div className="w-full flex justify-center absolute -top-8">
           <span
-            className="font-mono text-base text-black bg-[#FFEC40] px-3 py-1 whitespace-nowrap transition-all duration-300"
+            className="font-mono uppercase text-base text-black bg-[#FFEC40] px-3 py-1 whitespace-nowrap transition-all duration-300"
             style={{
               opacity: copied ? 1 : 0,
               transform: copied ? "translateY(0)" : "translateY(4px)",

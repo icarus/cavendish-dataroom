@@ -101,7 +101,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDism
       ))}
 
       {!portrait && (
-        <div className={`absolute top-6 right-6 text-sm font-mono tabular-nums z-10 transition-colors ${isYellow ? "text-black/30" : "text-white/30"}`}>
+        <div className={`absolute top-6 right-6 text-sm font-mono uppercase tabular-nums z-10 transition-colors ${isYellow ? "text-black/30" : "text-white/30"}`}>
           {current + 1} / {SLIDES.length}
         </div>
       )}

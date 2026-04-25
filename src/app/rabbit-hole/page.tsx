@@ -10,13 +10,12 @@ import Diagnostico from "./content/diagnostico.mdx";
 import Comunidad from "./content/comunidad.mdx";
 import Computin from "./content/computin.mdx";
 import Estrategia from "./content/estrategia.mdx";
-import Portafolio from "./content/portafolio.mdx";
-import Proceso from "./content/proceso.mdx";
-import Kalio from "./content/kalio.mdx";
-import Estructura from "./content/estructura.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
 import { ExpandableSection } from "./_components/expandable-section";
+import Equipo from "./content/equipo.mdx";
+import TrackRecord from "./content/track-record.mdx";
+import CasosDeEstudio from "./content/casos-de-estudio.mdx";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
@@ -26,6 +25,9 @@ const NAV_ITEMS = [
   { id: "portafolio", label: "Construcc. del portaf." },
   { id: "proceso", label: "Proceso de selección" },
   { id: "kalio", label: "Kalio" },
+  { id: "equipo", label: "Equipo" },
+  { id: "track-record", label: "Track Record" },
+  { id: "casos-de-estudio", label: "Casos de estudio" },
   { id: "estructura", label: "Estructura legal" },
   { id: "terminos", label: "Términos Cavendish LP" },
 ];
@@ -119,8 +121,16 @@ export default function RabbitHolePage() {
       </aside>
 
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pb-32">
+        <Link
+          href="/"
+          className="lg:hidden flex items-center gap-2 mt-8 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 hover:text-black transition-colors"
+        >
+          <ArrowLeft size={14} />
+          Volver
+        </Link>
+
         <motion.div
-          className="pt-16 mb-0"
+          className="md:pt-16 mb-0"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
@@ -136,29 +146,25 @@ export default function RabbitHolePage() {
           </p>
         </motion.div>
 
-        <Link
-          href="/"
-          className="lg:hidden flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 hover:text-black transition-colors"
-        >
-          <ArrowLeft size={14} />
-          Volver
-        </Link>
 
         <SectionReveal><Diagnostico /></SectionReveal>
         <SectionReveal><Comunidad /></SectionReveal>
         <SectionReveal><Computin /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="portafolio"><Portafolio /></ExpandableSection>
+          <ExpandableSection slug="portafolio" badge="05" title="Construcción del portafolio" description="Cómo planificamos la construcción del portafolio para lograr un retorno de 3x, los supuestos clave y la distribución de inversiones." />
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="proceso"><Proceso /></ExpandableSection>
+          <ExpandableSection slug="proceso" badge="06" title="Proceso de selección" description="Diseñamos nuestro proceso para seleccionar a los mejores equipos dentro de un gran volumen de postulaciones. Desde el 2020 hemos recibido más de 9.549 aplicaciones y seleccionado 121 startups." />
         </SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="kalio"><Kalio /></ExpandableSection>
+          <ExpandableSection slug="kalio" badge="07" title="Kalio" description="Kalio es el centro de la operación de Platanus. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos." />
         </SectionReveal>
+        <SectionReveal><Equipo /></SectionReveal>
+        <SectionReveal><TrackRecord /></SectionReveal>
+        <SectionReveal><CasosDeEstudio /></SectionReveal>
         <SectionReveal>
-          <ExpandableSection slug="estructura"><Estructura /></ExpandableSection>
+          <ExpandableSection slug="estructura" badge="11" title="Estructura legal del fondo" description="El fondo se ha estructurado como una Limited Partnership Canadiense, regulado por un Limited Partnership Agreement." />
         </SectionReveal>
         <SectionReveal><Terminos /></SectionReveal>
       </main>

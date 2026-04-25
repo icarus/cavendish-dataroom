@@ -14,7 +14,7 @@ const SECTIONS: Record<string, { badge: string; title: string; component: React.
   portafolio: { badge: "05", title: "Construcción del portafolio", component: Portafolio },
   proceso: { badge: "06", title: "Proceso de selección", component: Proceso },
   kalio: { badge: "07", title: "Kalio", component: Kalio },
-  estructura: { badge: "08", title: "Estructura legal del fondo", component: Estructura },
+  estructura: { badge: "11", title: "Estructura legal del fondo", component: Estructura },
 };
 
 export default function SectionPage() {
@@ -34,7 +34,7 @@ export default function SectionPage() {
   return (
     <div className="min-h-screen bg-white relative">
       <Link
-        href="/rabbit-hole"
+        href={`/rabbit-hole#${slug}`}
         className="fixed top-8 left-8 flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider hover:text-black transition-colors z-10"
       >
         <ArrowLeft size={14} />

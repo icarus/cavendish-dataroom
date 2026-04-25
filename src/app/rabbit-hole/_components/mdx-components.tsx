@@ -100,7 +100,7 @@ export function ReadMoreSection({
       {children}
       <Link
         href={`/rabbit-hole/${slug}`}
-        className="inline-flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors mt-6"
+        className="inline-flex items-center gap-1 font-mono font-medium text-sm uppercase tracking-wider text-black/40 hover:text-black transition-colors mt-8"
       >
         Leer completo
         <ArrowRight size={14} />
@@ -166,8 +166,9 @@ export function FigureGrid({
   children: React.ReactNode;
   cols?: number;
 }) {
+  const colClass = cols === 3 ? "sm:grid-cols-3" : cols === 4 ? "sm:grid-cols-4" : "sm:grid-cols-2";
   return (
-    <div className={`grid grid-cols-1 sm:grid-cols-${cols} gap-3 mt-4`}>
+    <div className={cn("grid grid-cols-1 gap-3 mt-4", colClass)}>
       {children}
     </div>
   );
@@ -309,7 +310,7 @@ export function TermGrid({
       {items.map((t) => (
         <div key={t.label} className="border-b border-black/10 py-5">
           <p className="font-mono font-medium text-black text-sm uppercase tracking-wider mb-0">{t.label}</p>
-          <p className="font-mono font-medium  bg-[#FFEC40] text-black uppercase w-fit px-0.5 -mx-0.5 mt-1 text-sm">({t.value})</p>
+          <p className="font-mono font-medium bg-[#FFEC40] text-black uppercase w-fit px-0.5 -mx-0.5 mt-1 text-sm">({t.value})</p>
           {t.sub && <p className="font-sans font-medium text-black/40 text-sm mt-1">{t.sub}</p>}
         </div>
       ))}
@@ -502,7 +503,7 @@ export const rabbitHoleComponents: MDXComponents = {
     <h4 className="font-mono font-medium text-black text-sm uppercase tracking-wider mt-8 mb-3" {...props} />
   ),
   p: (props) => (
-    <p className="font-sans font-medium text-black text-sm leading-relaxed mb-4" {...props} />
+    <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4" {...props} />
   ),
   ul: (props) => <ul className="list-disc list-outside pl-5 space-y-2 mb-4" {...props} />,
   ol: (props) => <ol className="list-decimal list-outside pl-5 space-y-2 mb-4" {...props} />,

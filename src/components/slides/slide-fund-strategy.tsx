@@ -91,7 +91,7 @@ export function SlideFundStrategy({ active }: P) {
             )}
             style={f(on, 150 + ci * 30)}
           >
-            <span className="font-mono font-medium text-white text-base">${v}M</span>
+            <span className="font-mono uppercase font-medium text-white text-base">${v}M</span>
           </div>
         ))}
 
@@ -105,7 +105,7 @@ export function SlideFundStrategy({ active }: P) {
               )}
               style={f(on, 200 + ri * 40)}
             >
-              <span className={cn("font-mono font-medium text-base whitespace-nowrap", entry.highlight ? "text-black" : "text-white/40")}>
+              <span className={cn("font-mono uppercase font-medium text-base whitespace-nowrap", entry.highlight ? "text-black" : "text-white/40")}>
                 {entry.label}
               </span>
               {entry.highlight && (
@@ -136,7 +136,7 @@ export function SlideFundStrategy({ active }: P) {
                 >
                   <span
                     className={cn(
-                      "font-mono font-medium relative z-10 transition-transform",
+                      "font-mono uppercase font-medium relative z-10 transition-transform",
                       entry.highlight ? "text-black" : isAbove60 ? "text-[#FFEC40]" : "text-white",
                       isExact && !entry.highlight && "scale-125",
                     )}

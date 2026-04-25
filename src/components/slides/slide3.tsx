@@ -46,7 +46,7 @@ export function Slide3({ active }: P) {
             {fund.rows.map(([label, value], ri) => (
               <div key={label} className="flex justify-between items-center px-8 py-2 border-b border-white/5 last:border-b-0 flex-1" style={f(on, 160 + ri * 50 + fi * 20)}>
                 <span className="font-mono font-medium text-white/40 text-base tracking-wider uppercase">{label}</span>
-                <span className="font-mono font-medium text-white text-base">{value}</span>
+                <span className="font-mono uppercase font-medium text-white text-base">{value}</span>
               </div>
             ))}
           </div>
@@ -60,7 +60,7 @@ export function Slide3({ active }: P) {
             className={cn("flex-1 flex flex-col justify-center px-5 py-4", stat.yellow ? "bg-[#FFEC40]" : "bg-[#1a1a1a]")}
             style={grow(on, 300 + i * 70)}
           >
-            <span className={cn("font-mono leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
+            <span className={cn("font-mono uppercase leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
               {stat.value}
             </span>
             <span className={cn("font-mono text-base tracking-wider uppercase mt-1.5", stat.yellow ? "text-black/60" : "text-white/40")}>
