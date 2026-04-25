@@ -86,6 +86,9 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
     <motion.div
       className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-black/40 backdrop-blur-xl"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label={member.name}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -148,8 +151,9 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
 
 function MemberCard({ member, onClick }: { member: Member; onClick: () => void }) {
   return (
-    <div
-      className="border border-black/10 bg-black/5 cursor-pointer hover:bg-black/10 hover:border-black/20 transition-colors group"
+    <button
+      type="button"
+      className="border border-black/10 bg-black/5 cursor-pointer hover:bg-black/10 hover:border-black/20 transition-colors group text-left w-full"
       onClick={onClick}
     >
       {member.photo ? (
@@ -163,13 +167,13 @@ function MemberCard({ member, onClick }: { member: Member; onClick: () => void }
       )}
       <div className="p-5">
         <p className="font-sans font-medium text-black text-sm mb-0.5">{member.name}</p>
-        <p className="font-sans font-medium text-black/40 text-sm mb- text-balance min-h-[2lh]">{member.role}</p>
+        <p className="font-sans font-medium text-black/40 text-sm mb-1 text-balance min-h-[2lh]">{member.role}</p>
         <p className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider my-3">{member.country}</p>
         <span className="font-mono font-medium text-black/20 text-sm uppercase tracking-wider group-hover:text-black/40 transition-colors">
           Ver bio →
         </span>
       </div>
-    </div>
+    </button>
   );
 }
 

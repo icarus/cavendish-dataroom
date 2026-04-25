@@ -26,7 +26,7 @@ export function ValorizacionesChart() {
             const barH = Math.max(Math.round((bar.value / MAX) * CHART_H), 6);
             return (
               <div key={bar.label} className="flex flex-col items-center justify-end flex-1 h-full">
-                <span className="font-mono uppercase font-medium text-black mb-1 leading-tight text-center" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
+                <span className="font-mono uppercase font-medium text-black mb-1 leading-tight text-center" style={{ fontSize: "clamp(10px, 1vw, 11px)" }}>
                   {bar.display}
                 </span>
                 <div className={`w-full ${bar.platanus ? "bg-[#FFEC40]" : "bg-black/5"}`} style={{ height: barH }} />
@@ -38,7 +38,7 @@ export function ValorizacionesChart() {
         <div className="flex gap-3 mt-2">
           {bars.map((bar) => (
             <div key={bar.label} className="flex-1 text-center">
-              <span className="font-mono uppercase font-medium text-black leading-tight text-center block" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
+              <span className="font-mono uppercase font-medium text-black leading-tight text-center block" style={{ fontSize: "clamp(10px, 1vw, 11px)" }}>
                 {bar.label}
               </span>
             </div>

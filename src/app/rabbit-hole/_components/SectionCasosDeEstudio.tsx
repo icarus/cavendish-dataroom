@@ -22,8 +22,8 @@ function StatCard({ label, value }: { label: string; value: string }) {
 
 function CaseSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <details className="group border-b border-black/10">
-      <summary className="flex items-center justify-between cursor-pointer py-4 list-none">
+    <details className="group border-b border-black/10 [&>summary]:list-none [&>summary::-webkit-details-marker]:hidden">
+      <summary className="flex items-center justify-between cursor-pointer py-4">
         <span className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider">{title}</span>
         <span className="font-mono uppercase font-medium text-black/40 text-xs group-open:rotate-90 transition-transform"><ChevronRight className="size-3.5" /></span>
       </summary>
@@ -60,11 +60,11 @@ function FundraisingTable({ rows }: { rows: { ronda: string; fecha: string; mont
         <tbody>
           {rows.map((r) => (
             <tr key={r.ronda} className="border-b border-black/10">
-              <td className="font-sans font-medium text-black/60 py-2 pr-4">{r.ronda}</td>
+              <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.ronda}</td>
               <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.fecha}</td>
               <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.monto}</td>
               <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.valoracion}</td>
-              <td className="font-sans font-medium text-black/60 py-2">{r.investors}</td>
+              <td className="font-mono uppercase font-medium text-black/60 py-2">{r.investors}</td>
             </tr>
           ))}
         </tbody>
