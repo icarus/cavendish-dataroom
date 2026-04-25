@@ -14,7 +14,7 @@ const ubuntuSans = Ubuntu_Sans({
 
 const platanusMono = localFont({
   src: "../fonts/PlatanusMono.ttf",
-  variable: "--font-mono uppercase",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
