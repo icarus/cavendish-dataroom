@@ -92,7 +92,7 @@ export function SlideClearingFog({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <div className="mb-2" style={f(on, 0)}>
-        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "38px" }}>
           The right{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">room</mark>
         </h2>

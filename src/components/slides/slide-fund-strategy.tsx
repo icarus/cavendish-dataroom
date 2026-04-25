@@ -39,12 +39,9 @@ function heatColor(value: number): string {
 
 function heatFontSize(value: number): string {
   const t = heatT(value);
-  const minVw = 1;
-  const maxVw = 2;
-  const vw = minVw + t * (maxVw - minVw);
   const minPx = 12;
   const maxPx = 28;
-  return `clamp(${Math.round(minPx + t * (maxPx - minPx))}px, ${vw.toFixed(1)}vw, ${maxPx}px)`;
+  return `${Math.round(minPx + t * (maxPx - minPx))}px`;
 }
 
 export function SlideFundStrategy({ active }: P) {
@@ -55,7 +52,7 @@ export function SlideFundStrategy({ active }: P) {
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%] overflow-hidden">
       <div className="flex items-start justify-between mb-1">
         <div style={f(on, 0)}>
-          <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+          <h2 className="font-sans font-medium text-white" style={{ fontSize: "38px" }}>
             Fund{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Strategy</mark>
           </h2>
@@ -140,7 +137,7 @@ export function SlideFundStrategy({ active }: P) {
                       entry.highlight ? "text-black" : isAbove60 ? "text-[#FFEC40]" : "text-white",
                       isExact && !entry.highlight && "scale-125",
                     )}
-                    style={{ fontSize: entry.highlight ? "clamp(18px, 2vw, 28px)" : heatFontSize(ret) }}
+                    style={{ fontSize: entry.highlight ? "26px" : heatFontSize(ret) }}
                   >
                     {ret}x
                   </span>

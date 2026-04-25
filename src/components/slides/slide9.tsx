@@ -18,7 +18,7 @@ export function Slide9({ active }: P) {
 
   return (
     <div className="slide aspect-video w-full relative p-[4%_6%]">
-      <h2 className="font-sans font-medium text-white mb-5" style={{ fontSize: "clamp(20px, 2.8vw, 42px)", ...f(on, 0) }}>
+      <h2 className="font-sans font-medium text-white mb-5" style={{ fontSize: "36px", ...f(on, 0) }}>
         Who&apos;s in <mark className="bg-[#FFEC40] text-black px-2 not-italic">our orbit?</mark>
       </h2>
       <div className="flex gap-8 h-[calc(100%-4.5rem)]">

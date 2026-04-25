@@ -28,7 +28,7 @@ function QuoteDisplay({ item }: { item: typeof ORBITS[0] }) {
 
   return (
     <div className="text-center flex flex-col items-center gap-6 max-w-5xl px-8">
-      <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.2vw, 32px)" }}>
+      <div className="leading-[1.4]" style={{ fontSize: "28px" }}>
         <WordReveal
           text={`\u201C${item.text}\u201D`}
           on={reveal}
@@ -118,7 +118,7 @@ export function SlideSocialProof({ active }: P) {
         transform: on ? "translateY(0)" : "translateY(14px)",
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
-        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "38px" }}>
           What founders{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">say</mark>
         </h2>

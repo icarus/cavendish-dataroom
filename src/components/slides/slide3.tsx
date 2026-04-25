@@ -31,7 +31,7 @@ export function Slide3({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative flex flex-col p-[4%_5%]">
       <div className="mb-4" style={f(on, 0)}>
-        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "38px" }}>
           Track <mark className="bg-[#FFEC40] text-black px-1 not-italic">Record</mark>
         </h2>
       </div>
@@ -60,7 +60,7 @@ export function Slide3({ active }: P) {
             className={cn("flex-1 flex flex-col justify-center px-5 py-4", stat.yellow ? "bg-[#FFEC40]" : "bg-[#1a1a1a]")}
             style={grow(on, 300 + i * 70)}
           >
-            <span className={cn("font-mono uppercase leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
+            <span className={cn("font-mono uppercase leading-none", stat.yellow ? "text-black" : "text-white")} style={{ fontSize: "45px" }}>
               {stat.value}
             </span>
             <span className={cn("font-mono text-base tracking-wider uppercase mt-1.5", stat.yellow ? "text-black/60" : "text-white/40")}>

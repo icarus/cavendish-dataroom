@@ -156,7 +156,7 @@ function CompanyDetail({ company, onClose, onPrev, onNext }: { company: Portfoli
           <Image src={company.image} alt={company.name} fill className="object-cover" />
         </div>
         <div className="flex items-center gap-2 flex-wrap mb-1">
-          <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "clamp(20px, 2vw, 28px)" }}>
+          <h3 className={cn("font-sans font-medium", detailText())} style={{ fontSize: "26px" }}>
             {company.name}
           </h3>
           <span className="font-mono font-medium text-[#FFEC40] text-xs uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5">
@@ -254,7 +254,7 @@ export function SlideTrackRecord({ active }: P) {
       `}</style>
       <div className="flex flex-col gap-8 justify-between mb-8">
         <div className="flex items-center gap-3" style={f(on, 0)}>
-          <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+          <h2 className="font-sans font-medium text-white" style={{ fontSize: "38px" }}>
             Track{" "}
             <mark className="bg-[#FFEC40] text-black px-1 not-italic">Record</mark>
           </h2>
@@ -346,13 +346,13 @@ export function SlideTrackRecord({ active }: P) {
             </span>
             <span
               className="absolute top-1.5 right-1.5 font-mono font-medium text-[#FFEC40] leading-none uppercase tracking-wider bg-[#FFEC40]/10 px-1.5 py-0.5"
-              style={{ fontSize: "clamp(9px, 0.9vw, 12px)" }}
+              style={{ fontSize: "12px" }}
             >
               {company.moic}
             </span>
             <div className="absolute bottom-1.5 left-1.5 right-1.5 flex flex-wrap gap-1">
               <span
-                style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
+                style={{ fontSize: "9px" }}
                 className="font-mono font-medium uppercase tracking-wider bg-white/10 text-white/60 px-1.5 py-0.5"
               >
                 {company.fundName}
@@ -360,7 +360,7 @@ export function SlideTrackRecord({ active }: P) {
               {allBadges(company.badge).map((b) => (
                 <span
                   key={b}
-                  style={{ fontSize: "clamp(8px, 0.7vw, 11px)" }}
+                  style={{ fontSize: "9px" }}
                   className={cn(
                     "font-mono font-medium uppercase tracking-wider px-1.5 py-0.5",
                     b === "exited" ? "bg-white text-black" : "bg-[#FFEC40]/20 text-[#FFEC40]",

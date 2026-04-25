@@ -28,7 +28,7 @@ export function Slide6({ active }: P) {
       </div>
 
       <div className="flex items-center justify-center py-5" style={f(on, 0)}>
-        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(24px, 3.5vw, 52px)" }}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "45px" }}>
           How <mark className="bg-[#FFEC40] text-black px-2 not-italic">we win</mark>
         </h2>
       </div>

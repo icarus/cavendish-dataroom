@@ -36,8 +36,8 @@ export function Slide5({ active }: P) {
   return (
     <div className="grid grid-cols-2 gap-12 slide aspect-video w-full relative p-[5%]">
       <div style={f(on, 0)}>
-        <div className="font-sans font-medium text-white leading-relaxed" style={{ fontSize: "clamp(44px, 7vw, 108px)" }}>Early</div>
-        <mark className="font-sans font-medium bg-[#FFEC40] text-black px-2 not-italic inline-block leading-none" style={{ fontSize: "clamp(44px, 7vw, 108px)" }}>
+        <div className="font-sans font-medium text-white leading-relaxed" style={{ fontSize: "90px" }}>Early</div>
+        <mark className="font-sans font-medium bg-[#FFEC40] text-black px-2 not-italic inline-block leading-none" style={{ fontSize: "90px" }}>
           Winners
         </mark>
       </div>
