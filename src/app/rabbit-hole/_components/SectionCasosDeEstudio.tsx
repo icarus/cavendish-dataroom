@@ -22,7 +22,7 @@ function StatCard({ label, value }: { label: string; value: string }) {
 
 function CaseSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <details className="group border-b border-black/10 [&>summary]:list-none [&>summary::-webkit-details-marker]:hidden">
+    <details className="group border-b border-black/10 last:border-b-0 [&>summary]:list-none [&>summary::-webkit-details-marker]:hidden">
       <summary className="flex items-center justify-between cursor-pointer py-4">
         <span className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider">{title}</span>
         <span className="font-mono uppercase font-medium text-black/40 text-xs group-open:rotate-90 transition-transform"><ChevronRight className="size-3.5" /></span>
