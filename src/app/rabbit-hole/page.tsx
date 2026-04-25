@@ -121,8 +121,16 @@ export default function RabbitHolePage() {
       </aside>
 
       <main className="max-w-3xl mx-auto px-6 lg:px-12 pb-32">
+        <Link
+          href="/"
+          className="lg:hidden  flex items-center gap-2 mt-8 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 hover:text-black transition-colors"
+        >
+          <ArrowLeft size={14} />
+          Volver
+        </Link>
+
         <motion.div
-          className="pt-16 mb-0"
+          className="md:pt-16 mb-0"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
@@ -138,13 +146,6 @@ export default function RabbitHolePage() {
           </p>
         </motion.div>
 
-        <Link
-          href="/"
-          className="lg:hidden flex items-center gap-2 font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-6 hover:text-black transition-colors"
-        >
-          <ArrowLeft size={14} />
-          Volver
-        </Link>
 
         <SectionReveal><Diagnostico /></SectionReveal>
         <SectionReveal><Comunidad /></SectionReveal>

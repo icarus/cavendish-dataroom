@@ -1,5 +1,15 @@
 import React from "react";
+import Image from "next/image";
 import { Section } from "./mdx-components";
+import { ChevronRight } from "lucide-react";
+
+const CASE_LOGOS: Record<string, { avatar: string; url: string }> = {
+  fintoc: { avatar: "/avatars/fintoc.png", url: "https://fintoc.com" },
+  toku: { avatar: "/avatars/toku.png", url: "https://toku.cl" },
+  bemmbo: { avatar: "/avatars/bemmbo.webp", url: "https://bemmbo.com" },
+  grupalia: { avatar: "/avatars/grupalia.png", url: "https://grupalia.com" },
+  boom: { avatar: "/avatars/boom.ico", url: "https://useboom.ai" },
+};
 
 function StatCard({ label, value }: { label: string; value: string }) {
   return (
@@ -12,10 +22,10 @@ function StatCard({ label, value }: { label: string; value: string }) {
 
 function CaseSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <details className="group border-t border-black/10">
+    <details className="group border-b border-black/10">
       <summary className="flex items-center justify-between cursor-pointer py-4 list-none">
         <span className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider">{title}</span>
-        <span className="font-mono font-medium text-black/40 text-xs group-open:rotate-180 transition-transform">↓</span>
+        <span className="font-mono font-medium text-black/40 text-xs group-open:rotate-90 transition-transform"><ChevronRight className="size-3.5" /></span>
       </summary>
       <div className="pb-6 space-y-3">{children}</div>
     </details>
@@ -72,7 +82,10 @@ function CaseFintoc() {
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">SPV · 2020</p>
-            <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Fintoc</h3>
+            <a href={CASE_LOGOS.fintoc.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <Image src={CASE_LOGOS.fintoc.avatar} alt="Fintoc" width={24} height={24} className="size-6 object-cover" />
+              <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Fintoc</h3>
+            </a>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Prueba de concepto</span>
         </div>
@@ -151,7 +164,10 @@ function CaseToku() {
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Génesis · 2021</p>
-            <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Toku</h3>
+            <a href={CASE_LOGOS.toku.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <Image src={CASE_LOGOS.toku.avatar} alt="Toku" width={24} height={24} className="size-6 object-cover" />
+              <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Toku</h3>
+            </a>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El caso que valida la tesis</span>
         </div>
@@ -235,7 +251,10 @@ function CaseBemmbo() {
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Fondo I · 2022</p>
-            <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Bemmbo</h3>
+            <a href={CASE_LOGOS.bemmbo.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <Image src={CASE_LOGOS.bemmbo.avatar} alt="Bemmbo" width={24} height={24} className="size-6 object-cover" />
+              <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Bemmbo</h3>
+            </a>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Primer exit Fondo I</span>
         </div>
@@ -297,7 +316,10 @@ function CaseGrupalia() {
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Fondo I · 2022</p>
-            <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Grupalia</h3>
+            <a href={CASE_LOGOS.grupalia.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <Image src={CASE_LOGOS.grupalia.avatar} alt="Grupalia" width={24} height={24} className="size-6 object-cover" />
+              <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Grupalia</h3>
+            </a>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Potencial fund returner</span>
         </div>
@@ -381,7 +403,10 @@ function CaseBoom() {
         <div className="flex items-start justify-between gap-4 mb-4">
           <div>
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">Cavendish · 2025</p>
-            <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Boom</h3>
+            <a href={CASE_LOGOS.boom.url} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+              <Image src={CASE_LOGOS.boom.avatar} alt="Boom" width={24} height={24} className="size-6 object-cover" />
+              <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Boom</h3>
+            </a>
           </div>
           <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El valor de la comunidad</span>
         </div>

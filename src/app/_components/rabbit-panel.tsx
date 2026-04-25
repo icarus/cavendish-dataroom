@@ -60,13 +60,13 @@ export function RabbitPanel({ active, onBack }: Props) {
             <ArrowUpRight size={16} />
           </Button>
 
-          <Button
+          {/* <Button
             onClick={() => router.push("/memo")}
             variant="outline"
             style={f(on, 240)}
           >
             Memo
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
