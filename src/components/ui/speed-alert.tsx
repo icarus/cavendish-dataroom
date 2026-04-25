@@ -12,8 +12,14 @@ const DISCO_COLORS = [
   "rgb(255, 180, 60)",
 ];
 
-export function SpeedAlert({ onDone }: { onDone: () => void }) {
-  const [countdown, setCountdown] = useState(5);
+const MESSAGES = [
+  "Slow down cowboy, enjoy the deck.",
+  "THE DECK IS GOING NOWHERE",
+  "YOU REALLY LIKED THE DANCING BANANAS",
+];
+
+export function SpeedAlert({ onDone, level = 1 }: { onDone: () => void; level?: number }) {
+  const [countdown, setCountdown] = useState(3);
   const [colorIndex, setColorIndex] = useState(0);
 
   useEffect(() => {
@@ -58,7 +64,7 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
         </div>
 
         <div className="font-mono font-medium text-white text-2xl uppercase tracking-wider text-center">
-          Slow down cowboy, enjoy the deck.
+          {MESSAGES[Math.min(level - 1, MESSAGES.length - 1)]}
         </div>
 
         <div
@@ -77,35 +83,48 @@ export function SpeedAlert({ onDone }: { onDone: () => void }) {
 }
 
 const SPEED_THRESHOLD_MS = 800;
-const SPEED_STREAK = 4;
+const SPEED_STREAK = 2;
+const MAX_ALERTS = 3;
 
 export function useSpeedAlert() {
   const [showAlert, setShowAlert] = useState(false);
-  const [timestamps, setTimestamps] = useState<number[]>([]);
-  const hasShownRef = useRef(false);
+  const [alertLevel, setAlertLevel] = useState(1);
+  const timestampsRef = useRef<number[]>([]);
+  const shownCountRef = useRef(0);
+  const showingRef = useRef(false);
 
   const recordNavigation = useCallback(() => {
-    if (showAlert || hasShownRef.current) return;
+    if (showingRef.current || shownCountRef.current >= MAX_ALERTS) return;
     const now = Date.now();
-    setTimestamps((prev) => {
-      const recent = [...prev, now].filter((t) => now - t < 5000);
-      const fastCount = recent.filter((t, i) => {
-        if (i === 0) return false;
-        return t - recent[i - 1] < SPEED_THRESHOLD_MS;
-      }).length;
-      if (fastCount >= SPEED_STREAK) {
-        setShowAlert(true);
-        hasShownRef.current = true;
-        return [];
-      }
-      return recent;
-    });
-  }, [showAlert]);
-
-  const dismissAlert = useCallback(() => {
-    setShowAlert(false);
-    setTimestamps([]);
+    const recent = [...timestampsRef.current, now].filter((t) => now - t < 5000);
+    const fastCount = recent.filter((t, i) => {
+      if (i === 0) return false;
+      return t - recent[i - 1] < SPEED_THRESHOLD_MS;
+    }).length;
+    if (fastCount >= SPEED_STREAK) {
+      shownCountRef.current += 1;
+      showingRef.current = true;
+      timestampsRef.current = [];
+      setAlertLevel(shownCountRef.current);
+      setShowAlert(true);
+    } else {
+      timestampsRef.current = recent;
+    }
   }, []);
 
-  return { showAlert, recordNavigation, dismissAlert };
+  const dismissAlert = useCallback(() => {
+    showingRef.current = false;
+    timestampsRef.current = [];
+    setShowAlert(false);
+  }, []);
+
+  const resetAlert = useCallback(() => {
+    shownCountRef.current = 0;
+    showingRef.current = false;
+    timestampsRef.current = [];
+    setAlertLevel(1);
+    setShowAlert(false);
+  }, []);
+
+  return { showAlert, alertLevel, recordNavigation, dismissAlert, resetAlert };
 }

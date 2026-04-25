@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ChevronLeft, ChevronRight } from "lucide-react";
 import {
@@ -32,7 +32,7 @@ function useSlideLayout() {
   return layout;
 }
 
-const SLIDES: { Comp: React.ComponentType<{ active: boolean }>; bg?: string }[] = [
+const SLIDES: { Comp: React.ComponentType<{ active: boolean; visited: boolean }>; bg?: string }[] = [
   { Comp: Slide2 },
   { Comp: SlideFounderQuote },
   { Comp: SlideRiskAverse },
@@ -55,12 +55,19 @@ interface Props {
   onGoTo: (n: number) => void;
   onBack: () => void;
   showAlert: boolean;
+  alertLevel: number;
   onDismissAlert: () => void;
 }
 
-export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDismissAlert }: Props) {
+export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, alertLevel, onDismissAlert }: Props) {
   const isYellow = SLIDES[current]?.bg === "#FFEC40";
   const { portrait, scale } = useSlideLayout();
+  const visitedRef = useRef<Set<number>>(new Set());
+
+  useEffect(() => {
+    if (!deckOpen) { visitedRef.current.clear(); return; }
+    visitedRef.current.add(current);
+  }, [current, deckOpen]);
 
   return (
     <div
@@ -95,7 +102,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDism
                 transformOrigin: "top left",
               }}
             >
-              <Comp active={i === current && deckOpen} />
+              <Comp active={i === current && deckOpen} visited={visitedRef.current.has(i)} />
             </div>
           </div>
         </div>
@@ -142,7 +149,7 @@ export function DeckPanel({ current, deckOpen, onGoTo, onBack, showAlert, onDism
         </div>
       )}
 
-      {showAlert && <SpeedAlert onDone={onDismissAlert} />}
+      {showAlert && <SpeedAlert onDone={onDismissAlert} level={alertLevel} />}
     </div>
   );
 }

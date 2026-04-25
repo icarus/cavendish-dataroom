@@ -1004,7 +1004,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* ── Métricas generales ── */}
-      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Métricas generales
       </h3>
       <div className="overflow-x-auto mb-10" onMouseLeave={() => setHoveredCol(null)}>
@@ -1087,7 +1087,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* ── Limited Partners ── */}
-      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Limited Partners
       </h3>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-6">
@@ -1098,7 +1098,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* ── Portafolio ── */}
-      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Portafolio
       </h3>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-6">
@@ -1109,7 +1109,7 @@ export function TrackRecordContent() {
       <FundMetrics />
 
       {/* Batches bar chart */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-4">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Startups invertidas en cada Batch del programa de aceleración
       </h4>
       <div className="mb-10">
@@ -1117,7 +1117,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* Countries bar chart */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-4">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Países del portafolio
       </h4>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
@@ -1128,7 +1128,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* Countries by batch */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Países por batch
       </h4>
       <div className="mb-10">
@@ -1136,7 +1136,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* Industries bar chart */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-4">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Industrias de todo el portafolio
       </h4>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
@@ -1147,7 +1147,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* Industries by batch */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Industrias por batch
       </h4>
       <div className="mb-10">
@@ -1155,7 +1155,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* ── Estado del portafolio ── */}
-      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Estado del portafolio
       </h3>
       <div className="space-y-3 mb-6">
@@ -1190,7 +1190,7 @@ export function TrackRecordContent() {
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
         Otra forma interesante de ver el estado es en base a los batches. Destacamos el salto que tuvimos en el Batch 24-II, que fue cuando subimos el ticket de $100k a $200k.
       </p>
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Estado por batch
       </h4>
       <div className="mb-10">
@@ -1208,7 +1208,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* ── Crecimiento ── */}
-      <h3 className="font-sans font-medium text-black/40 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+      <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
         Crecimiento del portafolio
       </h3>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-4">
@@ -1253,7 +1253,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* Growth by fund stacked bars */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-4">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Crecimiento por fondo
       </h4>
       <div className="mb-6">
@@ -1264,7 +1264,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* Growth by batch */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         Crecimiento por batch
       </h4>
       <div className="mb-10">
@@ -1284,7 +1284,7 @@ export function TrackRecordContent() {
       </div>
 
       {/* ARR Range chart */}
-      <h4 className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider mb-3">
+      <h4 className="mt-8 font-mono font-medium text-black/80 text-sm uppercase tracking-wider mb-3">
         ARR del portafolio en el tiempo
       </h4>
       <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-6">
@@ -1303,7 +1303,7 @@ export function TrackRecordContent() {
 
       {/* ── SPV ── */}
       <div className="border-t border-black/10 pt-10 mt-2">
-        <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+        <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
           Primer vehículo — SPV
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
@@ -1374,7 +1374,7 @@ export function TrackRecordContent() {
 
       {/* ── Genesis Fund ── */}
       <div className="border-t border-black/10 pt-10 mt-8">
-        <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+        <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
           Segundo vehículo — Genesis Fund
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">
@@ -1459,7 +1459,7 @@ export function TrackRecordContent() {
 
       {/* ── Fund I ── */}
       <div className="border-t border-black/10 pt-10 mt-8">
-        <h3 className="font-sans font-medium text-black/40 mb-6" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+        <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
           Tercer vehículo — Fund I
         </h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-3">

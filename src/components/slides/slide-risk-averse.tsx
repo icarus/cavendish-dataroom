@@ -2,8 +2,8 @@
 
 import { f, P, useAnim, WordReveal } from "./utils";
 
-export function SlideRiskAverse({ active }: P) {
-  const on = useAnim(active);
+export function SlideRiskAverse({ active, visited = false }: P) {
+  const on = useAnim(active, visited);
 
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-start p-[6%_8%]">
@@ -15,6 +15,7 @@ export function SlideRiskAverse({ active }: P) {
             baseDelay={0}
             interval={60}
             className="font-sans font-medium text-white"
+            instant={visited}
           />
         </div>
 
@@ -25,6 +26,7 @@ export function SlideRiskAverse({ active }: P) {
             baseDelay={600}
             interval={45}
             className="font-sans font-medium text-white"
+            instant={visited}
           />
         </div>
 
@@ -36,6 +38,7 @@ export function SlideRiskAverse({ active }: P) {
             interval={50}
             className="font-sans font-medium"
             highlight
+            instant={visited}
           />
         </div>
       </div>

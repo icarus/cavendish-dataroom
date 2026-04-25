@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { LandingPanel } from "./_components/landing-panel";
 import { DeckPanel } from "./_components/deck-panel";
 import { RabbitPanel } from "./_components/rabbit-panel";
@@ -9,20 +10,28 @@ import { useSpeedAlert } from "@/components/ui/speed-alert";
 const TOTAL_SLIDES = 14;
 
 export default function LandingPage() {
+  const router = useRouter();
   const [deckOpen, setDeckOpen] = useState(false);
   const [rabbitOpen, setRabbitOpen] = useState(false);
   const [current, setCurrent] = useState(0);
   const lastScrollRef = useRef(0);
-  const { showAlert, recordNavigation, dismissAlert } = useSpeedAlert();
+  const { showAlert, alertLevel, recordNavigation, dismissAlert, resetAlert } = useSpeedAlert();
 
-  const openDeck = useCallback(() => { setCurrent(0); setDeckOpen(true); }, []);
+  const openDeck = useCallback(() => { setCurrent(0); setDeckOpen(true); resetAlert(); }, [resetAlert]);
   const closeDeck = useCallback(() => setDeckOpen(false), []);
   const openRabbit = useCallback(() => setRabbitOpen(true), []);
   const closeRabbit = useCallback(() => setRabbitOpen(false), []);
+
+  useEffect(() => {
+    if (sessionStorage.getItem("openRabbit")) {
+      sessionStorage.removeItem("openRabbit");
+      openRabbit();
+    }
+  }, [openRabbit]);
   const goTo = useCallback((n: number) => {
-    recordNavigation();
+    if (n > current) recordNavigation();
     setCurrent(Math.max(0, Math.min(n, TOTAL_SLIDES - 1)));
-  }, [recordNavigation]);
+  }, [recordNavigation, current]);
 
   useEffect(() => {
     const THRESHOLD = 20;
@@ -79,7 +88,11 @@ export default function LandingPage() {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (showAlert) return;
-      if (rabbitOpen) { if (e.key === "Escape" || e.key === "ArrowUp") closeRabbit(); return; }
+      if (rabbitOpen) {
+        if (e.key === "Escape" || e.key === "ArrowUp") closeRabbit();
+        else if (e.key === "ArrowRight") router.push("/rabbit-hole");
+        return;
+      }
       if (!deckOpen) {
         if (e.key === "Enter" || e.key === "ArrowRight") openDeck();
         else if (e.key === "ArrowDown") openRabbit();
@@ -114,7 +127,7 @@ export default function LandingPage() {
         style={{ transform }}
       >
         <LandingPanel onDeck={openDeck} onRabbit={openRabbit} />
-        <DeckPanel current={current} deckOpen={deckOpen} onGoTo={goTo} onBack={closeDeck} showAlert={showAlert} onDismissAlert={dismissAlert} />
+        <DeckPanel current={current} deckOpen={deckOpen} onGoTo={goTo} onBack={closeDeck} showAlert={showAlert} alertLevel={alertLevel} onDismissAlert={dismissAlert} />
         <RabbitPanel active={rabbitOpen} onBack={closeRabbit} />
       </div>
     </div>

@@ -2,8 +2,8 @@
 
 import { P, useAnim, WordReveal } from "./utils";
 
-export function SlideFounderQuote({ active }: P) {
-  const on = useAnim(active);
+export function SlideFounderQuote({ active, visited = false }: P) {
+  const on = useAnim(active, visited);
 
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
@@ -15,6 +15,7 @@ export function SlideFounderQuote({ active }: P) {
             baseDelay={0}
             interval={55}
             className="font-sans font-medium"
+            instant={visited}
           />
           <br />
           <WordReveal
@@ -23,6 +24,7 @@ export function SlideFounderQuote({ active }: P) {
             baseDelay={900}
             interval={55}
             className="font-sans font-medium"
+            instant={visited}
           />
         </blockquote>
 
@@ -34,6 +36,7 @@ export function SlideFounderQuote({ active }: P) {
             interval={80}
             className="font-sans font-medium"
             highlight
+            instant={visited}
           />
         </div>
 
@@ -41,7 +44,7 @@ export function SlideFounderQuote({ active }: P) {
           className="flex items-center gap-3 pt-4"
           style={{
             opacity: on ? 1 : 0,
-            transition: "opacity 0.6s ease 2400ms",
+            transition: visited ? "none" : "opacity 0.6s ease 2400ms",
           }}
         >
           <div className="w-0.5 h-9 bg-white/20" />

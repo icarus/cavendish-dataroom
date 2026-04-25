@@ -2,8 +2,8 @@
 
 import { P, useAnim, WordReveal } from "./utils";
 
-export function SlideLiberation({ active }: P) {
-  const on = useAnim(active);
+export function SlideLiberation({ active, visited = false }: P) {
+  const on = useAnim(active, visited);
 
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-start p-[8%]">
@@ -15,6 +15,7 @@ export function SlideLiberation({ active }: P) {
             baseDelay={0}
             interval={70}
             className="font-sans font-medium text-black"
+            instant={visited}
           />
         </div>
 
@@ -25,6 +26,7 @@ export function SlideLiberation({ active }: P) {
             baseDelay={800}
             interval={80}
             className="font-sans font-medium text-black"
+            instant={visited}
           />
         </div>
 
@@ -35,6 +37,7 @@ export function SlideLiberation({ active }: P) {
             baseDelay={1100}
             interval={60}
             className="font-sans font-medium text-black"
+            instant={visited}
           />
         </div>
       </div>

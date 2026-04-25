@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,9 +14,6 @@ import Estrategia from "./content/estrategia.mdx";
 import Terminos from "./content/terminos.mdx";
 import { SectionReveal } from "./_components/section-reveal";
 import { ExpandableSection } from "./_components/expandable-section";
-import Equipo from "./content/equipo.mdx";
-import TrackRecord from "./content/track-record.mdx";
-import CasosDeEstudio from "./content/casos-de-estudio.mdx";
 import Programa from "./content/programa.mdx";
 
 const NAV_ITEMS = [
@@ -35,6 +33,7 @@ const NAV_ITEMS = [
 ];
 
 export default function RabbitHolePage() {
+  const router = useRouter();
   const [activeId, setActiveId] = useState("");
   const [indicatorStyle, setIndicatorStyle] = useState({ top: 0, height: 0 });
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -62,6 +61,17 @@ export default function RabbitHolePage() {
     setupObserver();
     return () => observerRef.current?.disconnect();
   }, [setupObserver]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        sessionStorage.setItem("openRabbit", "1");
+        router.push("/");
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [router]);
 
   useEffect(() => {
     const btn = navRefs.current.get(activeId);
@@ -163,9 +173,15 @@ export default function RabbitHolePage() {
         <SectionReveal>
           <ExpandableSection slug="kalio" badge="07" title="Kalio" description="Kalio es el centro de la operación de Platanus. Somos un VC con base tecnológica y nuestro equipo puede ser tan pequeño porque delegamos gran parte de nuestros procesos al software que construimos." />
         </SectionReveal>
-        <SectionReveal><Equipo /></SectionReveal>
-        <SectionReveal><TrackRecord /></SectionReveal>
-        <SectionReveal><CasosDeEstudio /></SectionReveal>
+        <SectionReveal>
+          <ExpandableSection slug="equipo" badge="08" title="Equipo" description="La máxima de Platanus es crecer mediante tecnología, manteniendo el equipo lo más pequeño posible y con foco en apoyo a los fundadores. El 50% del equipo permanente programa." />
+        </SectionReveal>
+        <SectionReveal>
+          <ExpandableSection slug="track-record" badge="09" title="Track Record" description="En esta sección mostramos de forma general el estado de los fondos y el portafolio de Platanus, para luego profundizar por cada fondo: métricas, industrias, países, crecimiento y ARR." />
+        </SectionReveal>
+        <SectionReveal>
+          <ExpandableSection slug="casos-de-estudio" badge="10" title="Casos de estudio" description="Cinco casos que muestran nuestra tesis: el rol de la comunidad, la ventaja de entrar en Pre Seed y el programa." />
+        </SectionReveal>
         <SectionReveal>
           <ExpandableSection slug="estructura" badge="11" title="Estructura legal del fondo" description="El fondo se ha estructurado como una Limited Partnership Canadiense, regulado por un Limited Partnership Agreement." />
         </SectionReveal>

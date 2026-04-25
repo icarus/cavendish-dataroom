@@ -1,6 +1,7 @@
 "use client";
 
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,17 +10,36 @@ import Portafolio from "../content/portafolio.mdx";
 import Proceso from "../content/proceso.mdx";
 import Kalio from "../content/kalio.mdx";
 import Estructura from "../content/estructura.mdx";
+import Equipo from "../content/equipo.mdx";
+import { TrackRecordContent } from "../_components/SectionTrackRecord";
+import { CasosDeEstudioContent } from "../_components/SectionCasosDeEstudio";
 
 const SECTIONS: Record<string, { badge: string; title: string; component: React.ComponentType }> = {
   portafolio: { badge: "05", title: "Construcción del portafolio", component: Portafolio },
   proceso: { badge: "06", title: "Proceso de selección", component: Proceso },
   kalio: { badge: "07", title: "Kalio", component: Kalio },
+  equipo: { badge: "08", title: "Equipo", component: Equipo },
+  "track-record": { badge: "09", title: "Track Record", component: TrackRecordContent },
+  "casos-de-estudio": { badge: "10", title: "Casos de estudio", component: CasosDeEstudioContent },
   estructura: { badge: "11", title: "Estructura legal del fondo", component: Estructura },
 };
 
 export default function SectionPage() {
   const { slug } = useParams<{ slug: string }>();
+  const router = useRouter();
   const section = SECTIONS[slug];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") router.push(`/rabbit-hole#${slug}`);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [slug, router]);
 
   if (!section) {
     return (

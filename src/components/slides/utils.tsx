@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
-export type P = { active: boolean };
+export type P = { active: boolean; visited?: boolean };
 
 export const TEXT = {
   title: "font-sans font-medium text-white",
@@ -13,31 +13,32 @@ export const TEXT = {
   muted: "font-sans font-medium text-white/40 text-base leading-relaxed",
 } as const;
 
-export function useAnim(active: boolean) {
+export function useAnim(active: boolean, instant = false) {
   const [on, setOn] = useState(false);
   useEffect(() => {
     if (active) {
+      if (instant) { setOn(true); return; }
       const id = setTimeout(() => setOn(true), 80);
       return () => clearTimeout(id);
     }
     setOn(false);
-  }, [active]);
+  }, [active, instant]);
   return on;
 }
 
-export const f = (on: boolean, d = 0): React.CSSProperties => ({
+export const f = (on: boolean, d = 0, instant = false): React.CSSProperties => ({
   opacity: on ? 1 : 0,
   transform: on ? "translateY(0)" : "translateY(14px)",
-  transition: `opacity 0.6s ease ${d}ms, transform 0.6s ease ${d}ms`,
+  transition: instant ? "none" : `opacity 0.6s ease ${d}ms, transform 0.6s ease ${d}ms`,
 });
 
-export const grow = (on: boolean, d = 0): React.CSSProperties => ({
+export const grow = (on: boolean, d = 0, instant = false): React.CSSProperties => ({
   transform: on ? "scaleY(1)" : "scaleY(0)",
   transformOrigin: "bottom",
-  transition: `transform 0.8s cubic-bezier(0.4,0,0.2,1) ${d}ms`,
+  transition: instant ? "none" : `transform 0.8s cubic-bezier(0.4,0,0.2,1) ${d}ms`,
 });
 
-export function WordReveal({ text, on, baseDelay = 0, interval = 60, className, highlight }: { text: string; on: boolean; baseDelay?: number; interval?: number; className?: string; highlight?: boolean }) {
+export function WordReveal({ text, on, baseDelay = 0, interval = 60, className, highlight, instant = false }: { text: string; on: boolean; baseDelay?: number; interval?: number; className?: string; highlight?: boolean; instant?: boolean }) {
   const words = text.split(" ");
   return (
     <span className={cn("text-balance", highlight && "text-black", className)}>
@@ -48,7 +49,7 @@ export function WordReveal({ text, on, baseDelay = 0, interval = 60, className, 
           style={{
             opacity: on ? 1 : 0,
             transform: on ? "translateY(0)" : "translateY(8px)",
-            transition: `opacity 0.4s ease ${baseDelay + i * interval}ms, transform 0.4s ease ${baseDelay + i * interval}ms`,
+            transition: instant ? "none" : `opacity 0.4s ease ${baseDelay + i * interval}ms, transform 0.4s ease ${baseDelay + i * interval}ms`,
           }}
         >
           {word}{i < words.length - 1 ? "\u00A0" : ""}

@@ -68,7 +68,7 @@ export function Section({
   borderBottom?: boolean;
 }) {
   return (
-    <section id={id} className="py-16 scroll-mt-8">
+    <section id={id} className="py-10 scroll-mt-8">
       <Badge variant="solid" className="mb-4">{badge}</Badge>
       <h2 className="font-sans font-medium text-black mb-8" style={{ fontSize: "clamp(18px, 2vw, 24px)", lineHeight: 1.15 }}>
         {title}
@@ -111,7 +111,7 @@ export function ReadMoreSection({
 
 export function H3({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="font-sans font-medium text-black mt-16 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
+    <h3 className="font-sans font-medium text-black mt-10 mb-4" style={{ fontSize: "clamp(14px, 1.5vw, 20px)" }}>
       {children}
     </h3>
   );
@@ -197,7 +197,7 @@ export function Step({
 }
 
 export function StepList({ children }: { children: React.ReactNode }) {
-  return <div className="space-y-20">{children}</div>;
+  return <div className="space-y-10">{children}</div>;
 }
 
 export function TimelineStep({
