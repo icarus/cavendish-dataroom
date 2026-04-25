@@ -42,7 +42,7 @@ function AnimatedValue({ value }: { value: string }) {
   }, [value]);
 
   return (
-    <span className="font-mono font-medium text-white text-2xl">{display}</span>
+    <span className="font-mono uppercase font-medium text-white text-2xl">{display}</span>
   );
 }
 
@@ -287,7 +287,7 @@ export function SlideTrackRecord({ active }: P) {
                 >
                   {label}
                   {year && (
-                    <span className={cn("font-mono font-medium ml-1", activeFund === key ? "text-black/40" : isGenesis ? "text-[#FFEC40]/50" : "text-white/40")}>
+                    <span className={cn("font-mono uppercase font-medium ml-1", activeFund === key ? "text-black/40" : isGenesis ? "text-[#FFEC40]/50" : "text-white/40")}>
                       {year}
                     </span>
                   )}
@@ -313,7 +313,7 @@ export function SlideTrackRecord({ active }: P) {
             ].map(({ label, value }) => (
               <div key={label} className="flex flex-col items-center">
                 <span className="font-mono font-medium text-white/40 text-sm uppercase">{label}</span>
-                <span className="font-mono text-xl font-medium text-white">
+                <span className="font-mono uppercase text-xl font-medium text-white">
                   <AnimatedValue value={value} />
                 </span>
               </div>

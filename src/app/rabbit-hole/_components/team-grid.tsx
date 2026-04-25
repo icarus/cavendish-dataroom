@@ -104,7 +104,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
             <Image src={member.photo} alt={member.name} fill className="object-cover object-top" />
           ) : (
             <div className="w-full h-full bg-black/5 flex items-center justify-center">
-              <span className="font-mono font-medium text-black/20 text-6xl">{member.name[0]}</span>
+              <span className="font-mono uppercase font-medium text-black/20 text-6xl">{member.name[0]}</span>
             </div>
           )}
         </div>
@@ -117,7 +117,7 @@ function MemberModal({ member, onClose }: { member: Member; onClose: () => void 
             </div>
             <button
               onClick={onClose}
-              className="font-mono font-medium text-black/30 text-sm hover:text-black transition-colors shrink-0 mt-0.5"
+              className="font-mono uppercase font-medium text-black/30 text-sm hover:text-black transition-colors shrink-0 mt-0.5"
               aria-label="Cerrar"
             >
               ✕
@@ -158,12 +158,12 @@ function MemberCard({ member, onClick }: { member: Member; onClick: () => void }
         </div>
       ) : (
         <div className="w-full aspect-square border-b border-black/10 bg-black/5 flex items-center justify-center">
-          <span className="font-mono font-medium text-black/20 text-4xl">{member.name[0]}</span>
+          <span className="font-mono uppercase font-medium text-black/20 text-4xl">{member.name[0]}</span>
         </div>
       )}
       <div className="p-5">
         <p className="font-sans font-medium text-black text-sm mb-0.5">{member.name}</p>
-        <p className="font-sans font-medium text-black/40 text-sm mb- text-balance">{member.role}</p>
+        <p className="font-sans font-medium text-black/40 text-sm mb- text-balance min-h-[2lh]">{member.role}</p>
         <p className="font-mono font-medium text-black/40 text-sm uppercase tracking-wider my-3">{member.country}</p>
         <span className="font-mono font-medium text-black/20 text-sm uppercase tracking-wider group-hover:text-black/40 transition-colors">
           Ver bio →

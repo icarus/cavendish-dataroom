@@ -28,7 +28,7 @@ export function LandingPanel({ onDeck, onRabbit }: Props) {
         </Button>
       </div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 animate-in fade-in duration-600 delay-900 fill-mode-both bg-black/75 w-128 h-48 blur-3xl" />
-      <div className="absolute bottom-3 right-4 opacity-0 hover:opacity-100 transition-opacity font-mono font-medium text-white/40 text-base">
+      <div className="absolute bottom-3 right-4 opacity-0 hover:opacity-100 transition-opacity font-mono uppercase font-medium text-white/40 text-base">
         designed by{" "}
         <a href="https://felipemandiola.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Felipe Mandiola</a>
         {" & "}Joaquin Stephens

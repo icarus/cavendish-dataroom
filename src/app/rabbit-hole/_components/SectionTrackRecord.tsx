@@ -26,7 +26,7 @@ function HBar({
         <div className="flex-1 bg-black/10 h-1.5">
           <div style={{ width: `${pct}%`, backgroundColor: color }} className="h-full" />
         </div>
-        <span className="font-mono font-medium text-black/60 text-sm w-10 text-right shrink-0">{value}</span>
+        <span className="font-mono uppercase font-medium text-black/60 text-sm w-10 text-right shrink-0">{value}</span>
       </div>
     </div>
   );
@@ -57,7 +57,7 @@ function HBarMoney({
         <div className="flex-1 bg-black/10 h-1.5">
           <div style={{ width: `${pct}%` }} className="h-full bg-[#FFEC40]" />
         </div>
-        <span className="font-mono font-medium text-black/60 text-sm w-14 text-right shrink-0">{fmt}</span>
+        <span className="font-mono uppercase font-medium text-black/60 text-sm w-14 text-right shrink-0">{fmt}</span>
       </div>
     </div>
   );
@@ -75,14 +75,14 @@ function VBars({
         const pct = Math.round((d.value / max) * 100);
         return (
           <div key={d.label} className="flex flex-col items-center gap-1 flex-1">
-            <span className="font-mono font-medium text-black/40 text-xs">{d.value}</span>
+            <span className="font-mono uppercase font-medium text-black/40 text-xs">{d.value}</span>
             <div className="w-full bg-black/10 relative" style={{ height: "72px" }}>
               <div
                 className="absolute bottom-0 left-0 right-0 bg-[#FFEC40]"
                 style={{ height: `${pct}%` }}
               />
             </div>
-            <span className="font-mono font-medium text-black/40 text-xs leading-tight text-center">{d.label}</span>
+            <span className="font-mono uppercase font-medium text-black/40 text-xs leading-tight text-center">{d.label}</span>
           </div>
         );
       })}
@@ -111,7 +111,7 @@ function GrowthBar({
   return (
     <div className="mb-4">
       <div className="flex items-center gap-3 mb-1.5">
-        <span className="font-mono font-medium text-black/40 text-xs w-20 shrink-0">{label}</span>
+        <span className="font-mono uppercase font-medium text-black/40 text-xs w-20 shrink-0">{label}</span>
         <div className="flex-1 flex h-5 gap-px overflow-hidden">
           <div style={{ width: seg(interesting), backgroundColor: "#FFEC40" }} title={`Interesting: ${interesting}`} />
           <div style={{ width: seg(slowGrowth), backgroundColor: "rgba(255,236,64,0.4)" }} title={`Slow growth: ${slowGrowth}`} />
@@ -121,7 +121,7 @@ function GrowthBar({
             <div style={{ width: seg(exited), backgroundColor: "#F9BC12" }} title={`Exited: ${exited}`} />
           )}
         </div>
-        <span className="font-mono font-medium text-black/40 text-xs w-6 text-right shrink-0">{total}</span>
+        <span className="font-mono uppercase font-medium text-black/40 text-xs w-6 text-right shrink-0">{total}</span>
       </div>
     </div>
   );
@@ -296,7 +296,7 @@ export function TrackRecordContent() {
                 {row.values.map((v, i) => (
                   <td
                     key={i}
-                    className={`font-mono font-medium text-sm py-2.5 text-right pr-6 last:pr-0 ${
+                    className={`font-mono uppercase font-medium text-sm py-2.5 text-right pr-6 last:pr-0 ${
                       row.highlight ? "text-black" : "text-black/60"
                     }`}
                   >
@@ -339,7 +339,7 @@ export function TrackRecordContent() {
         ].map((f) => (
           <div key={f.fund} className="border border-black/10 p-4 bg-black/5">
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-2">{f.fund}</p>
-            <p className="font-medium text-black text-4xl font-mono mb-1">{f.startups}</p>
+            <p className="font-medium text-black text-4xl font-mono uppercase mb-1">{f.startups}</p>
             <p className="font-sans font-medium text-black/60 text-xs">{f.amount}</p>
             <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{f.type}</p>
           </div>
@@ -375,9 +375,9 @@ export function TrackRecordContent() {
         <table className="w-full border-collapse text-xs">
           <thead>
             <tr className="border-b border-black/10">
-              <th className="text-left font-mono font-medium text-black/40 pb-2 pr-4 min-w-[80px]">País</th>
+              <th className="text-left font-mono uppercase font-medium text-black/40 pb-2 pr-4 min-w-[80px]">País</th>
               {batchLabels.map((b) => (
-                <th key={b} className="font-mono font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
+                <th key={b} className="font-mono uppercase font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
               ))}
             </tr>
           </thead>
@@ -386,7 +386,7 @@ export function TrackRecordContent() {
               <tr key={country} className="border-b border-black/10">
                 <td className="font-sans font-medium text-black/60 py-2 pr-4">{country}</td>
                 {vals.map((v, i) => (
-                  <td key={i} className={`font-mono font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
+                  <td key={i} className={`font-mono uppercase font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
                     {v}
                   </td>
                 ))}
@@ -417,9 +417,9 @@ export function TrackRecordContent() {
         <table className="w-full border-collapse text-xs">
           <thead>
             <tr className="border-b border-black/10">
-              <th className="text-left font-mono font-medium text-black/40 pb-2 pr-4 min-w-[120px]">Industria</th>
+              <th className="text-left font-mono uppercase font-medium text-black/40 pb-2 pr-4 min-w-[120px]">Industria</th>
               {batchLabels.map((b) => (
-                <th key={b} className="font-mono font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
+                <th key={b} className="font-mono uppercase font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
               ))}
             </tr>
           </thead>
@@ -444,7 +444,7 @@ export function TrackRecordContent() {
               <tr key={row.label} className="border-b border-black/10">
                 <td className="font-sans font-medium text-black/60 py-2 pr-4">{row.label}</td>
                 {row.values.map((v, i) => (
-                  <td key={i} className={`font-mono font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
+                  <td key={i} className={`font-mono uppercase font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
                     {v}
                   </td>
                 ))}
@@ -472,7 +472,7 @@ export function TrackRecordContent() {
           <div key={s.label} className="border border-black/10 p-4 bg-black/5">
             <div className="w-full h-0.5 mb-3" style={{ backgroundColor: s.color }} />
             <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-            <p className="font-mono font-medium text-black text-4xl">{s.value}</p>
+            <p className="font-mono uppercase font-medium text-black text-4xl">{s.value}</p>
             <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{s.pct}</p>
           </div>
         ))}
@@ -486,9 +486,9 @@ export function TrackRecordContent() {
         <table className="w-full border-collapse text-xs">
           <thead>
             <tr className="border-b border-black/10">
-              <th className="text-left font-mono font-medium text-black/40 pb-2 pr-4 min-w-[80px]">Estado</th>
+              <th className="text-left font-mono uppercase font-medium text-black/40 pb-2 pr-4 min-w-[80px]">Estado</th>
               {batchLabels.map((b) => (
-                <th key={b} className="font-mono font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
+                <th key={b} className="font-mono uppercase font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
               ))}
             </tr>
           </thead>
@@ -497,7 +497,7 @@ export function TrackRecordContent() {
               <tr key={row.label} className="border-b border-black/10">
                 <td className="font-sans font-medium text-black/60 py-2 pr-4">{row.label}</td>
                 {row.values.map((v, i) => (
-                  <td key={i} className={`font-mono font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
+                  <td key={i} className={`font-mono uppercase font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
                     {Number.isInteger(v) ? v : v.toFixed(2)}
                   </td>
                 ))}
@@ -508,7 +508,7 @@ export function TrackRecordContent() {
               {batchLabels.map((_, i) => {
                 const total = statusByBatch.reduce((sum, row) => sum + row.values[i], 0);
                 return (
-                  <td key={i} className="font-mono font-medium text-black/40 py-2 px-2 text-right">{Math.round(total)}</td>
+                  <td key={i} className="font-mono uppercase font-medium text-black/40 py-2 px-2 text-right">{Math.round(total)}</td>
                 );
               })}
             </tr>
@@ -580,9 +580,9 @@ export function TrackRecordContent() {
         <table className="w-full border-collapse text-xs">
           <thead>
             <tr className="border-b border-black/10">
-              <th className="text-left font-mono font-medium text-black/40 pb-2 pr-4 min-w-[100px]">Categoría</th>
+              <th className="text-left font-mono uppercase font-medium text-black/40 pb-2 pr-4 min-w-[100px]">Categoría</th>
               {batchLabels.map((b) => (
-                <th key={b} className="font-mono font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
+                <th key={b} className="font-mono uppercase font-medium text-black/40 pb-2 px-2 text-right">{b}</th>
               ))}
             </tr>
           </thead>
@@ -591,7 +591,7 @@ export function TrackRecordContent() {
               <tr key={row.label} className="border-b border-black/10">
                 <td className="font-sans font-medium text-black/60 py-2 pr-4">{row.label}</td>
                 {row.values.map((v, i) => (
-                  <td key={i} className={`font-mono font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
+                  <td key={i} className={`font-mono uppercase font-medium py-2 px-2 text-right ${v > 0 ? "text-black/60" : "text-black/20"}`}>
                     {v}
                   </td>
                 ))}
@@ -627,7 +627,7 @@ export function TrackRecordContent() {
                   {row.values.map((v, i) => (
                     <td
                       key={i}
-                      className={`font-mono font-medium text-sm py-2.5 px-3 text-right ${
+                      className={`font-mono uppercase font-medium text-sm py-2.5 px-3 text-right ${
                         v === maxVal && maxVal > 0 ? "text-[#FFEC40]" : v > 0 ? "text-black/60" : "text-black/20"
                       }`}
                     >
@@ -640,7 +640,7 @@ export function TrackRecordContent() {
             <tr className="bg-black/5">
               <td className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider py-2.5 pr-6">Total</td>
               {arrTotals.map((t, i) => (
-                <td key={i} className="font-mono font-medium text-black/40 text-sm py-2.5 px-3 text-right">{t}</td>
+                <td key={i} className="font-mono uppercase font-medium text-black/40 text-sm py-2.5 px-3 text-right">{t}</td>
               ))}
             </tr>
           </tbody>
@@ -673,7 +673,7 @@ export function TrackRecordContent() {
           ].map((m) => (
             <div key={m.label} className="border border-black/10 p-4 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{m.label}</p>
-              <p className="font-mono font-medium text-black text-3xl">{m.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-3xl">{m.value}</p>
             </div>
           ))}
         </div>
@@ -711,7 +711,7 @@ export function TrackRecordContent() {
           ].map((s) => (
             <div key={s.label} className="border border-black/10 p-3 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-              <p className="font-mono font-medium text-black text-4xl">{s.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-4xl">{s.value}</p>
               <p className="font-sans font-medium text-black/40 text-xs">{s.pct}</p>
             </div>
           ))}
@@ -728,7 +728,7 @@ export function TrackRecordContent() {
             <div key={cat.label} className="border border-black/10 p-3 bg-black/5">
               <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
-              <p className="font-mono font-medium text-black text-4xl">{cat.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-4xl">{cat.value}</p>
             </div>
           ))}
         </div>
@@ -759,7 +759,7 @@ export function TrackRecordContent() {
           ].map((m) => (
             <div key={m.label} className="border border-black/10 p-4 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{m.label}</p>
-              <p className="font-mono font-medium text-black text-xl">{m.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-xl">{m.value}</p>
             </div>
           ))}
         </div>
@@ -811,7 +811,7 @@ export function TrackRecordContent() {
           ].map((s) => (
             <div key={s.label} className="border border-black/10 p-3 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-              <p className="font-mono font-medium text-black text-lg">{s.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-lg">{s.value}</p>
               <p className="font-sans font-medium text-black/40 text-xs">{s.pct}</p>
             </div>
           ))}
@@ -828,7 +828,7 @@ export function TrackRecordContent() {
             <div key={cat.label} className="border border-black/10 p-3 bg-black/5">
               <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
-              <p className="font-mono font-medium text-black text-lg">{cat.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-lg">{cat.value}</p>
             </div>
           ))}
         </div>
@@ -862,7 +862,7 @@ export function TrackRecordContent() {
           ].map((m) => (
             <div key={m.label} className="border border-black/10 p-4 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{m.label}</p>
-              <p className="font-mono font-medium text-black text-4xl">{m.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-4xl">{m.value}</p>
             </div>
           ))}
         </div>
@@ -933,7 +933,7 @@ export function TrackRecordContent() {
           ].map((s) => (
             <div key={s.label} className="border border-black/10 p-3 bg-black/5">
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider mb-1">{s.label}</p>
-              <p className="font-mono font-medium text-black text-4xl">{s.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-4xl">{s.value}</p>
               <p className="font-sans font-medium text-black/40 text-xs">{s.pct}</p>
             </div>
           ))}
@@ -950,7 +950,7 @@ export function TrackRecordContent() {
             <div key={cat.label} className="border border-black/10 p-3 bg-black/5">
               <div className="w-full h-0.5 mb-2" style={{ backgroundColor: cat.color }} />
               <p className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider leading-tight mb-1">{cat.label}</p>
-              <p className="font-mono font-medium text-black text-4xl">{cat.value}</p>
+              <p className="font-mono uppercase font-medium text-black text-4xl">{cat.value}</p>
             </div>
           ))}
         </div>

@@ -26,7 +26,7 @@ export function ValorizacionesChart() {
             const barH = Math.max(Math.round((bar.value / MAX) * CHART_H), 6);
             return (
               <div key={bar.label} className="flex flex-col items-center justify-end flex-1 h-full">
-                <span className="font-mono font-medium text-black mb-1 leading-tight text-center" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
+                <span className="font-mono uppercase font-medium text-black mb-1 leading-tight text-center" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
                   {bar.display}
                 </span>
                 <div className={`w-full ${bar.platanus ? "bg-[#FFEC40]" : "bg-black/5"}`} style={{ height: barH }} />
@@ -38,7 +38,7 @@ export function ValorizacionesChart() {
         <div className="flex gap-3 mt-2">
           {bars.map((bar) => (
             <div key={bar.label} className="flex-1 text-center">
-              <span className="font-mono font-medium text-black leading-tight text-center block" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
+              <span className="font-mono uppercase font-medium text-black leading-tight text-center block" style={{ fontSize: "clamp(8px, 1vw, 11px)" }}>
                 {bar.label}
               </span>
             </div>
@@ -51,10 +51,10 @@ export function ValorizacionesChart() {
           const barW = Math.max(Math.round((bar.value / MAX) * 100), 2);
           return (
             <div key={bar.label} className="flex items-center gap-3">
-              <span className="font-mono font-medium text-black text-xs shrink-0 w-20">{bar.label}</span>
+              <span className="font-mono uppercase font-medium text-black text-xs shrink-0 w-20">{bar.label}</span>
               <div className="flex-1 flex items-center gap-2">
                 <div className={`h-5 ${bar.platanus ? "bg-[#FFEC40]" : "bg-black/10"}`} style={{ width: `${barW}%` }} />
-                <span className="font-mono font-medium text-black text-xs shrink-0">{bar.display}</span>
+                <span className="font-mono uppercase font-medium text-black text-xs shrink-0">{bar.display}</span>
               </div>
             </div>
           );
@@ -106,7 +106,7 @@ export function RetornosTable() {
               Entrada / Exit
             </th>
             {exits.map((e) => (
-              <th key={e} className="font-mono font-medium text-black text-xs text-center p-1.5 border border-black/10 bg-black/5">
+              <th key={e} className="font-mono uppercase font-medium text-black text-xs text-center p-1.5 border border-black/10 bg-black/5">
                 ${e}M
               </th>
             ))}
@@ -121,7 +121,7 @@ export function RetornosTable() {
                 {entry.platanus && <span className="block text-black bg-[#FFEC40] uppercase w-fit" style={{ fontSize: "10px" }}>Platanus</span>}
               </td>
               {retornosData[ri].map((val, ci) => (
-                <td key={ci} className={`font-mono font-medium text-xs text-center p-1.5 border border-black/10 ${cellColor(val)}`}>
+                <td key={ci} className={`font-mono uppercase font-medium text-xs text-center p-1.5 border border-black/10 ${cellColor(val)}`}>
                   {val}x
                 </td>
               ))}

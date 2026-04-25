@@ -25,7 +25,7 @@ function CaseSection({ title, children }: { title: string; children: React.React
     <details className="group border-b border-black/10">
       <summary className="flex items-center justify-between cursor-pointer py-4 list-none">
         <span className="font-mono font-medium text-black/40 text-xs uppercase tracking-wider">{title}</span>
-        <span className="font-mono font-medium text-black/40 text-xs group-open:rotate-90 transition-transform"><ChevronRight className="size-3.5" /></span>
+        <span className="font-mono uppercase font-medium text-black/40 text-xs group-open:rotate-90 transition-transform"><ChevronRight className="size-3.5" /></span>
       </summary>
       <div className="pb-6 space-y-3">{children}</div>
     </details>
@@ -61,9 +61,9 @@ function FundraisingTable({ rows }: { rows: { ronda: string; fecha: string; mont
           {rows.map((r) => (
             <tr key={r.ronda} className="border-b border-black/10">
               <td className="font-sans font-medium text-black/60 py-2 pr-4">{r.ronda}</td>
-              <td className="font-mono font-medium text-black/60 py-2 pr-4">{r.fecha}</td>
-              <td className="font-mono font-medium text-black/60 py-2 pr-4">{r.monto}</td>
-              <td className="font-mono font-medium text-black/60 py-2 pr-4">{r.valoracion}</td>
+              <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.fecha}</td>
+              <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.monto}</td>
+              <td className="font-mono uppercase font-medium text-black/60 py-2 pr-4">{r.valoracion}</td>
               <td className="font-sans font-medium text-black/60 py-2">{r.investors}</td>
             </tr>
           ))}
@@ -87,7 +87,7 @@ function CaseFintoc() {
               <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Fintoc</h3>
             </a>
           </div>
-          <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Prueba de concepto</span>
+          <span className="shrink-0 bg-[#FFEC40] text-black font-mono uppercase font-medium text-xs px-2 py-0.5">Prueba de concepto</span>
         </div>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Fintoc funciona como un intermediario de pagos y conexión bancaria a través de una API, permitiendo a otras empresas (fintechs, e-commerce, etc.) conectar sus aplicaciones directamente con las cuentas bancarias de sus usuarios de forma segura, simplificando pagos, conciliación y acceso a información financiera.
@@ -169,7 +169,7 @@ function CaseToku() {
               <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Toku</h3>
             </a>
           </div>
-          <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El caso que valida la tesis</span>
+          <span className="shrink-0 bg-[#FFEC40] text-black font-mono uppercase font-medium text-xs px-2 py-0.5">El caso que valida la tesis</span>
         </div>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Toku automatiza todo el proceso de cobranza y gestión de pagos recurrentes, ayudando a empresas con alto volumen a cobrar mejor y más rápido.
@@ -256,7 +256,7 @@ function CaseBemmbo() {
               <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Bemmbo</h3>
             </a>
           </div>
-          <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Primer exit Fondo I</span>
+          <span className="shrink-0 bg-[#FFEC40] text-black font-mono uppercase font-medium text-xs px-2 py-0.5">Primer exit Fondo I</span>
         </div>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Bemmbo automatiza rendiciones, conciliaciones bancarias y la gestión de cuentas por pagar y por cobrar, ayudando a empresas a eliminar procesos manuales y reducir errores contables.
@@ -321,7 +321,7 @@ function CaseGrupalia() {
               <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Grupalia</h3>
             </a>
           </div>
-          <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">Potencial fund returner</span>
+          <span className="shrink-0 bg-[#FFEC40] text-black font-mono uppercase font-medium text-xs px-2 py-0.5">Potencial fund returner</span>
         </div>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Grupalia es el primer neobanco para micronegocios en América Latina. Digitalizan préstamos grupales, ofreciendo a microemprendedores en México créditos 4x más rápidos y más económicos que las alternativas tradicionales.
@@ -408,7 +408,7 @@ function CaseBoom() {
               <h3 className="font-sans font-medium text-black" style={{ fontSize: "clamp(16px, 1.8vw, 22px)" }}>Boom</h3>
             </a>
           </div>
-          <span className="shrink-0 bg-[#FFEC40] text-black font-mono font-medium text-xs px-2 py-0.5">El valor de la comunidad</span>
+          <span className="shrink-0 bg-[#FFEC40] text-black font-mono uppercase font-medium text-xs px-2 py-0.5">El valor de la comunidad</span>
         </div>
         <p className="font-sans font-medium text-black/60 text-sm leading-relaxed mb-5">
           Boom construye equipos de growth impulsados por IA para e-commerce. Ofrecen a cada marca agentes autónomos de ventas, soporte y marketing que trabajan 24/7, recuperan carritos abandonados y ejecutan campañas de marketing personalizadas en redes sociales.

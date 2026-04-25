@@ -80,7 +80,7 @@ export function Slide7({ active }: P) {
           <div className="sr-only flex gap-6" style={f(on, 280)}>
             {STATS.map((stat, i) => (
               <div key={stat.label} className="flex flex-col">
-                <span className="font-mono font-medium text-[#FFEC40] tracking-wider" style={{ fontSize: "clamp(20px, 2.2vw, 34px)" }}>
+                <span className="font-mono uppercase font-medium text-[#FFEC40] tracking-wider" style={{ fontSize: "clamp(20px, 2.2vw, 34px)" }}>
                   {on ? <AnimatedCounter value={stat.value} suffix={stat.suffix} on={on} delay={400 + i * 150} /> : "0"}
                 </span>
                 <span className="font-mono font-medium text-white/40 text-sm uppercase tracking-wider">
