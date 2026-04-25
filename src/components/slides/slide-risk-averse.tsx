@@ -8,7 +8,7 @@ export function SlideRiskAverse({ active }: P) {
   return (
     <div className="slide aspect-video w-full relative flex items-center justify-start p-[6%_8%]">
       <div className="max-w-4xl space-y-6">
-        <div className="leading-[1.4]" style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
+        <div className="leading-[1.4]" style={{ fontSize: "32px" }}>
           <WordReveal
             text="Risk-averse mentality is a curse for startups."
             on={on}
@@ -18,7 +18,7 @@ export function SlideRiskAverse({ active }: P) {
           />
         </div>
 
-        <div className="leading-[1.5]" style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
+        <div className="leading-[1.5]" style={{ fontSize: "32px" }}>
           <WordReveal
             text="Funds in LatAm tend to favor safer investments: traction, traditional founder's CVs, proven business model."
             on={on}
@@ -28,7 +28,7 @@ export function SlideRiskAverse({ active }: P) {
           />
         </div>
 
-        <div className="leading-[1.5]" style={{ fontSize: "clamp(18px, 2.5vw, 38px)" }}>
+        <div className="leading-[1.5]" style={{ fontSize: "32px" }}>
           <WordReveal
             text="Pre-seed funds should invest in the unknown to maximize economic upside."
             on={on}

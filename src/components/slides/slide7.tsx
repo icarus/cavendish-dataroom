@@ -67,7 +67,7 @@ export function Slide7({ active }: P) {
 
       <div className="flex min-h-0 relative z-10" style={{ flex: "0 0 45%" }}>
         <div className="w-[46%] flex flex-col justify-center p-[5%_4%_5%_6%]">
-          <h2 className="font-sans font-medium text-white mb-4" style={{ fontSize: "clamp(22px, 3vw, 44px)", ...f(on, 0) }}>
+          <h2 className="font-sans font-medium text-white mb-4" style={{ fontSize: "38px", ...f(on, 0) }}>
             The <mark className="bg-[#FFEC40] text-black px-2 not-italic">Banana</mark> House
           </h2>
           <p className="font-sans font-medium text-white text-base leading-relaxed mb-3" style={f(on, 100)}>
@@ -80,7 +80,7 @@ export function Slide7({ active }: P) {
           <div className="sr-only flex gap-6" style={f(on, 280)}>
             {STATS.map((stat, i) => (
               <div key={stat.label} className="flex flex-col">
-                <span className="font-mono uppercase font-medium text-[#FFEC40] tracking-wider" style={{ fontSize: "clamp(20px, 2.2vw, 34px)" }}>
+                <span className="font-mono uppercase font-medium text-[#FFEC40] tracking-wider" style={{ fontSize: "28px" }}>
                   {on ? <AnimatedCounter value={stat.value} suffix={stat.suffix} on={on} delay={400 + i * 150} /> : "0"}
                 </span>
                 <span className="font-mono font-medium text-white/40 text-sm uppercase tracking-wider">

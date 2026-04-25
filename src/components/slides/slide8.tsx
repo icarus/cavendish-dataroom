@@ -84,7 +84,7 @@ function EventCard({ title, desc, images, index, on, hovered, dimmed, onHover, o
         <div className="flex flex-col items-center">
           <motion.h3
             className="text-balance font-mono font-medium text-white text-center leading-tight uppercase tracking-wider drop-shadow-lg"
-            style={{ fontSize: "clamp(16px, 1.4vw, 22px)" }}
+            style={{ fontSize: "18px" }}
             animate={{ y: hovered ? 0 : 24 }}
             transition={SPRING}
           >
@@ -127,7 +127,7 @@ export function Slide8({ active }: P) {
         transform: on ? "translateY(0)" : "translateY(12px)",
         transition: "opacity 0.6s ease, transform 0.6s ease",
       }}>
-        <h2 className="font-sans font-medium text-white" style={{ fontSize: "clamp(22px, 3vw, 46px)" }}>
+        <h2 className="font-sans font-medium text-white" style={{ fontSize: "38px" }}>
           Building the{" "}
           <mark className="bg-[#FFEC40] text-black px-1 not-italic">tech scene</mark>
           {" "}of LatAm

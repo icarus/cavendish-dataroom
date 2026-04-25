@@ -19,7 +19,7 @@ export function Slide12({ active }: P) {
         <button
           onClick={handleCopy}
           className="font-mono text-white uppercase text-center cursor-pointer bg-transparent border-none"
-          style={{ fontSize: "clamp(22px, 4vw, 62px)", ...f(on, 0) }}
+          style={{ fontSize: "51px", ...f(on, 0) }}
         >
           joaquin<span className="text-[#FFEC40]">@</span>platan.us
         </button>
