@@ -16,11 +16,13 @@ import { ExpandableSection } from "./_components/expandable-section";
 import Equipo from "./content/equipo.mdx";
 import TrackRecord from "./content/track-record.mdx";
 import CasosDeEstudio from "./content/casos-de-estudio.mdx";
+import Programa from "./content/programa.mdx";
 
 const NAV_ITEMS = [
   { id: "diagnostico", label: "Diagnóstico inicial" },
   { id: "comunidad", label: "Comunidad" },
   { id: "computin", label: "El cofundador técnico" },
+  { id: "programa", label: "Prog. de aceleración" },
   { id: "estrategia", label: "Estrategia de inversión" },
   { id: "portafolio", label: "Construcc. del portaf." },
   { id: "proceso", label: "Proceso de selección" },
@@ -150,6 +152,7 @@ export default function RabbitHolePage() {
         <SectionReveal><Diagnostico /></SectionReveal>
         <SectionReveal><Comunidad /></SectionReveal>
         <SectionReveal><Computin /></SectionReveal>
+        <SectionReveal><Programa /></SectionReveal>
         <SectionReveal><Estrategia /></SectionReveal>
         <SectionReveal>
           <ExpandableSection slug="portafolio" badge="05" title="Construcción del portafolio" description="Cómo planificamos la construcción del portafolio para lograr un retorno de 3x, los supuestos clave y la distribución de inversiones." />
