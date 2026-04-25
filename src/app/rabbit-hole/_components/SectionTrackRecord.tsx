@@ -17,10 +17,10 @@ function HBar({
 }) {
   const pct = Math.round((value / max) * 100);
   return (
-    <div className="flex items-center gap-4 py-3 border-b border-black/10 last:border-0 min-h-[52px]">
+    <div className="flex items-center gap-4 py-3 border-b border-black/10 last:border-0">
       <div className="w-36 shrink-0">
         <p className="font-sans font-medium text-black/60 text-sm leading-snug">{label}</p>
-        {sublabel && <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{sublabel}</p>}
+        <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{sublabel || "\u00A0"}</p>
       </div>
       <div className="flex-1 flex items-center gap-3">
         <div className="flex-1 bg-black/10 h-1.5">
@@ -48,7 +48,7 @@ function HBarMoney({
     ? `$${(value / 1_000_000).toFixed(1)}M`
     : `$${(value / 1_000).toFixed(0)}k`;
   return (
-    <div className="flex items-center gap-4 py-3 border-b border-black/10 last:border-0 min-h-[52px]">
+    <div className="flex items-center gap-4 py-3 border-b border-black/10 last:border-0">
       <div className="w-36 shrink-0">
         <p className="font-sans font-medium text-black/60 text-sm leading-snug">{label}</p>
         <p className="font-sans font-medium text-black/40 text-xs mt-0.5">{count} LP{count !== 1 ? "s" : ""}</p>
